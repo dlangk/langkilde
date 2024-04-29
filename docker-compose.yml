@@ -8,16 +8,13 @@ services:
       - ./certbot-logs:/var/log/letsencrypt
     entrypoint: >
       /bin/sh -c '
-      trap exit TERM; 
-      if [ ! -d "/etc/letsencrypt/live" ]; then 
-        certbot certonly --webroot --webroot-path=/webroot -d langkilde.se -d www.langkilde.se;
+      if [ ! -d "/etc/letsencrypt/live/langkilde.se" ]; then 
+        certbot certonly --webroot --webroot-path=/webroot -d 35.217.49.95;
       fi;
       while :; do 
-        certbot renew; 
-        sleep 12h & wait $${!}; 
-      done;'
-
-    command: [ "certonly", "--webroot", "--webroot-path=/webroot", "-d", "langkilde.se", "-d", "www.langkilde.se" ]
+        certbot renew --quiet;
+        sleep 12h;
+      done'
     networks:
       - webnet
     depends_on:
