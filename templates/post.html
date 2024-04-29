@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="divider"></div>
+
+<div class="post">
+    <h1 class="post-title">{{post.title}}</h1>
+    <p>
+        <small>Published on: {{post.pub_date}} | </small>
+        <a href="/post/{{ post.slug }}" class="post-link">permalink</a>
+    </p>
+    <div class="post-content">{{ post.content | safe }}</div>
+    <em>- Daniel Langkilde</em>
+    <p></p>
+</div>
+
+{% endblock %}

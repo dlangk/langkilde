@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--header-color); /* Dark background for better visibility */
+    width: 100%; /* Ensure it spans the full width of the viewport */
+    position: fixed; /* Fix the header at the top of the viewport */
+    top: 0; /* Align to the top edge of the viewport */
+    left: 0; /* Align to the left edge of the viewport */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    height: var(--header-height);
+    border-bottom: 3px solid black; /* Add a border at the bottom */
+}
+
+.header h2 {
+    font-size: 30px; /* Adjust size as needed */
+    padding-left: 20px; /* Add some space to the left */
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 768px) {
+    .header h2 {
+        font-size: 20px; /* Less padding on smaller screens */
+    }
+    .header-links {
+        margin-left: 5px; /* Adds space between the links */
+        margin-right: 5px;
+    }
+}
+
+.header a {
+    text-decoration: none; /* No underline for a cleaner look */
+}
+
+.header-links a {
+    margin-left: 20px; /* Adds space between the links */
+    text-decoration: none; /* Optional: removes the underline from links */
+    margin-right: 20px;
+}

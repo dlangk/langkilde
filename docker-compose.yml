@@ -1,0 +1,41 @@
+services:
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certs:/etc/letsencrypt
+      - ./webroot:/webroot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    command: [ "certonly", "--webroot", "--webroot-path=/webroot", "-d", "langkilde.se", "-d", "www.langkilde.se" ]
+    networks:
+      - webnet
+    depends_on:
+      - nginx
+
+  langkilde-se:
+    build: .
+    container_name: langkilde-se
+    restart: always
+    networks:
+      - webnet
+    expose:
+      - 8000
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx
+    restart: always
+    volumes:
+      - ./certs/nginx.crt:/etc/ssl/certs/nginx.crt
+      - ./certs/nginx.key:/etc/ssl/private/nginx.key
+    ports:
+      - "443:443"
+    depends_on:
+      - langkilde-se
+    networks:
+      - webnet
+
+networks:
+  webnet:

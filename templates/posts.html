@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="sidebar">
+    <h2>Posts</h2>
+    {% for post in posts %}
+    <p class="sidebar-post">
+        {{ post.pub_date }} | <a href="/post/{{ post.slug }}" class="post-link">{{ post.title }}</a>
+    </p>
+    <p class="spacer"></p>
+    {% endfor %}
+</div>
+
+<div class="divider"></div>
+
+<div class="post">
+    <h1>{{post.title}}</h1>
+    <p>
+        <small>Published on: {{post.pub_date}}</small>
+        <a href="/post/{{ post.slug }}" class="post-link">permalink</a>
+    </p>
+    {{ post.content | safe }}
+</div>
+
+{% endblock %}
