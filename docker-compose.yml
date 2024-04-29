@@ -28,8 +28,8 @@ services:
     container_name: nginx
     restart: always
     volumes:
-      - ./certs/nginx.crt:/etc/ssl/certs/nginx.crt
-      - ./certs/nginx.key:/etc/ssl/private/nginx.key
+      - ./certs/live/langkilde.se/fullchain.pem:/etc/ssl/certs/nginx.crt
+      - ./certs/live/langkilde.se/privkey.pem:/etc/ssl/private/nginx.key
     ports:
       - "443:443"
     depends_on:
