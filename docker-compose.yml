@@ -6,7 +6,17 @@ services:
       - ./certs:/etc/letsencrypt
       - ./webroot:/webroot
       - ./certbot-logs:/var/log/letsencrypt
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    entrypoint: >
+      /bin/sh -c '
+      trap exit TERM; 
+      if [ ! -d "/etc/letsencrypt/live" ]; then 
+        certbot certonly --webroot --webroot-path=/webroot -d langkilde.se -d www.langkilde.se;
+      fi;
+      while :; do 
+        certbot renew; 
+        sleep 12h & wait $${!}; 
+      done;'
+
     command: [ "certonly", "--webroot", "--webroot-path=/webroot", "-d", "langkilde.se", "-d", "www.langkilde.se" ]
     networks:
       - webnet
