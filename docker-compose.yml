@@ -30,6 +30,7 @@ services:
     volumes:
       - ./certs/live/langkilde.se/fullchain.pem:/etc/ssl/certs/nginx.crt
       - ./certs/live/langkilde.se/privkey.pem:/etc/ssl/private/nginx.key
+      - ./webroot:/webroot
     ports:
       - "443:443"
     depends_on:
