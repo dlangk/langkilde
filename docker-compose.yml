@@ -39,8 +39,7 @@ services:
     container_name: nginx
     restart: always
     volumes:
-      - ./certs/live/langkilde.se/fullchain.pem:/etc/ssl/certs/nginx.crt
-      - ./certs/live/langkilde.se/privkey.pem:/etc/ssl/private/nginx.key
+      - ./certs:/etc/letsencrypt:ro
       - ./webroot:/webroot
     ports:
       - "443:443"
