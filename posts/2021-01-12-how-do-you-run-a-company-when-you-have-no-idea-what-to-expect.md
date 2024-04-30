@@ -29,7 +29,7 @@ other hand spends 17-25%.
 At the top of the list in absolute spending is a former book store. Who could have imagined 20 years ago that the
 world’s biggest spender on research would be a retail company?
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/1610182852733-QSPL6D247E42KCBD0K37/Screen+Shot+2021-01-09+at+10.00.20.png)
+![](https://storage.googleapis.com/langkilde-se-images/5a0c9298-4074-43e5-8687-850b6d57c535.jpeg)
 
 One consequence of the perceived stability in automotive has been that most vehicle production projects are planned in
 minute detail. Automotive companies love planning. There is a “Start of Production” date that engineers and managers

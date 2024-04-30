@@ -66,7 +66,7 @@ To grossly oversimplify, there appears to be a matrix with two dimensions:
 
 * **AGI Impact.** Will AGI be great, or will it result in the extinction of humans?
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/96a1f2d9-6bad-497c-8f82-7bc8f26ba642/Screenshot+2023-04-06+at+13.22.28.png)
+![](https://storage.googleapis.com/langkilde-se-images/d2334493-322f-454c-8e2e-6713cd65c9f9.jpeg)
 
 I’ll focus on three groups that I’ll call: **“The Optimists,”** **“The Pessimists,”** and **“AGI is Distant.”**
 
@@ -118,21 +118,21 @@ this in the context of the so-called [Scaling Hypothesis](https://lastweekin.ai/
 models get better the larger they get. [Google BIG-bench](https://github.com/google/BIG-bench) has an excellent overview
 of progress so far that I keep referring to:
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/bf5ca31c-8ac7-4beb-b8ee-4d204537e3ee/Screenshot+2023-04-05+at+12.20.18.png)
+![](https://storage.googleapis.com/langkilde-se-images/993e2fac-2436-4463-9d0c-401a5bbde200.jpeg)
 
 Since models are getting larger and larger, and access to training data keeps increasing, you could make the case that
 we are in the early stages of an exponential trajectory. There is both quantitative and qualitative evidence of improved
 performance, so there is no denying this trend exists. But you could also argue that performance evaluations are limited
 in scope and that we will find performance on broader, real-world tasks less impressive.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/baabba5d-c421-44dc-a384-17239fda0a9d/fed1e39d-bd13-4499-a329-aa09ab6dfa48_1600x448.png)
+![](https://storage.googleapis.com/langkilde-se-images/30b0e6c9-3900-4eb4-8956-f93158bc9a13.jpeg)
 
 Since we cannot explain the connection between the number of parameters and the reasoning capabilities of
 transformer-based models, projections are speculation. No one knows if we will face diminishing returns or not. Some
 forms of progress arrive in an S-curve-like way. Early progress is slow; then, there is a rapid rush of improvement,
 followed by a plateau of diminishing returns. This could very well prove to be true for current models.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/7d490e76-d025-4c6c-8ba7-08697a44739c/Screenshot+2023-04-05+at+10.41.07.png)
+![](https://storage.googleapis.com/langkilde-se-images/2669e65c-2bfd-4a53-b581-53579b7d2d27.jpeg)
 
 Without an agreed-upon way to predict and explain how capabilities are related to the internal mechanics of these
 models, the scientific method is left in the dust cloud left behind by engineers. Whenever important issues become a

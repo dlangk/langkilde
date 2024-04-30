@@ -22,15 +22,15 @@ The higher the Sharpe Ratio, the more attractive the investment is from a risk-a
 
 In recent months I’ve kept returning to this report from Morgan Stanley, “[Public to Private Equity in the United States: A Long-Term Look](https://www.morganstanley.com/im/publication/insights/articles/articles_publictoprivateequityintheusalongtermlook_us.pdf).” In it, we find several interesting exhibits:
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/59ddc301-ad14-4e34-aa04-5169466f40bf/Screenshot+2023-01-09+at+09.30.38.png)
+![](https://storage.googleapis.com/langkilde-se-images/aed8f097-6b85-4609-ba98-2bb1f91cbb7d.jpeg)
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/1c44ed83-7d0a-45ad-82e2-c6aa18797e62/Screenshot+2023-01-09+at+09.31.00.png)
+![](https://storage.googleapis.com/langkilde-se-images/12030485-06d3-490d-a101-23ef93ce5997.jpeg)
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/4a40ad46-6623-4b6a-a648-5dfe1823b41b/Screenshot+2023-01-09+at+10.00.37.png)
+![](https://storage.googleapis.com/langkilde-se-images/ae214644-e82f-43e2-82d4-7540f962ccba.jpeg)
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/2b0ef398-6dde-4134-9966-c396e6f2307f/Screenshot+2023-01-09+at+09.46.17.png)
+![](https://storage.googleapis.com/langkilde-se-images/e1d35c01-98a6-48c3-b335-b8185c0ebf2c.jpeg)
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/2804b667-0e5a-4a39-b5a2-23e860d58e12/Screenshot+2023-01-09+at+09.34.27.png)
+![](https://storage.googleapis.com/langkilde-se-images/8f9690c6-a354-4d0b-a42d-4fd3ab414bce.jpeg)
 
   * **Venture Capital is a power-law asset class.** VCs depend on homeruns. You want to go to bat to hit it out of the park every time: high risk, high reward. Most venture investments yield <1x returns, i.e., less than what you put in. It is exceedingly rare to get returns above 4-5x. The line can barely be seen in the graph beyond that point. Interestingly there is a hump around 1, probably due to downside protection (e.g., “[liquidation preferences](https://www.investopedia.com/terms/l/liquidation-preference.asp)”).
 

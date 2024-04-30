@@ -51,7 +51,7 @@ word. If you create these vectors based on the context in which words ocrrus in 
 properties and open up for using linear algebra on them in cool ways (like in the picture below). Learn about
 embeddings.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/253b39f2-0950-477b-8c1b-78f552d2f7f9/1_mWerYTuy9xH4SlRY9fFg1A.jpeg)
+![](https://storage.googleapis.com/langkilde-se-images/672a00d7-ea8d-4c5f-a6ae-db9e50bd5cf6.jpeg)
 
 # Attention and Transformers
 
@@ -67,7 +67,7 @@ by [turning sequences into “images”](https://arxiv.org/pdf/1705.03122.pdf) a
 with CNNs is that they have a hard time learning distance relationships as “signal strength” diminishes with distance.
 Enter the Transformer.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/2a5c9658-1766-41e5-9bfb-b1dce2327ef1/Screenshot+2022-04-18+at+14.29.55.png)
+![](https://storage.googleapis.com/langkilde-se-images/90d0d7dd-b1b3-47b8-b6af-34fda1c81d44.jpeg)
 
 The Transformer follows the overall architecture of [encoder/decoders](https://arxiv.org/pdf/1406.1078.pdf).
 Transformers process sentences in the form of a sequence of embeddings that it learns during training. Each token in the
@@ -78,7 +78,7 @@ the Decoder produces the target output. This pattern provides a dimensionality r
 idea of finding abstractions. Transformers only pass on the information necessary for decoding from the input to the
 encoding.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/123ed51d-b808-46fb-b9a9-44992fec19ec/Screenshot+2022-04-19+at+13.10.17.png)
+![](https://storage.googleapis.com/langkilde-se-images/e9b1de67-9316-4836-a63d-6b3841448607.jpeg)
 
 Both the Encoder and Decoder make use of **attention**. So what is attention? The idea behind attention is to replace
 embeddings with _better_ embeddings that also contain information about the context in which the word appears.
@@ -90,7 +90,7 @@ introduces two matrices, W_Q and W_K by which we transform the words before we c
 matrices is not obvious. We want to put numbers into these matrices so that the model considers the right context words
 when interpreting a specific word.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/85b55944-61f9-4e57-841d-dd9c686d17ed/Screenshot+2022-04-20+at+10.25.02.png)
+![](https://storage.googleapis.com/langkilde-se-images/b5261eb9-c7cc-4059-afd2-1fdd58566943.jpeg)
 
 Prof. Lennart Svensson [has a great lecture explaining this](https://www.youtube.com/watch?v=0SmNEp4zTpc). We know that
 words that are related cluster with respect cosine distance of their word embeddings. One way to interpret the W_K
@@ -99,7 +99,7 @@ identical to the original word embeddings. The keys would preserve the original 
 If we then select W_Q so that our new embedding points in the same direction as the specific words we want the model to
 care about, their inner product will then be large.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/6b46072b-cb46-4792-a6ca-f6f892b3038c/Screenshot+2022-04-20+at+10.37.37.png)
+![](https://storage.googleapis.com/langkilde-se-images/bb928c2c-bd19-4770-9a9d-576227ebcafb.jpeg)
 
 **I think of attention this way:** attention means learning parameters that are used to create new embeddings for input
 words that contain information about the context. All of the parameters that fill these matrices are learned
@@ -115,25 +115,25 @@ through all of the details. The original Transformers paper has a nice illustrat
 attention heads for various sentences. As you can see from the first attention head, the weights
 resemble [dependency parsing](https://web.stanford.edu/~jurafsky/slp3/14.pdf), which I guess is exactly the point.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/c9081112-9644-458a-8c9f-374a6915aca5/Screenshot+2022-04-19+at+14.06.52.png)
+![](https://storage.googleapis.com/langkilde-se-images/566ea5f4-f02c-4278-87c0-91fed6c2b592.jpeg)
 
 Anyway, this is just the first step of the Encoder block. We feed the input sentence as a set of vectors with positional
 encoding, and we get a set of weights back that describe how each token should be regarded based on the entire sentence.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/d8bea8ad-716b-49a0-bdcd-4dfc60d50a95/Screenshot+2022-04-19+at+14.12.08.png)
+![](https://storage.googleapis.com/langkilde-se-images/bd2aef82-55f2-4750-9751-0a5732653634.jpeg)
 
 We add residual connections that carry over previous embeddings to subsequent layers, i.e. we mix together the original
 embeddings with the information learned from the multi-head attention mechanism. Finally, we add some layer
 normalization, and voila we have our basic Encoder block. The transformer then uses six of these stacked, with the
 output from the last block serving as input to the Decoder.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/7eeaad9f-c6ef-4cb8-b61d-a1cc6eb60f8d/Screenshot+2022-04-19+at+14.15.41.png)
+![](https://storage.googleapis.com/langkilde-se-images/3aa7603f-cbd8-4b8d-9a5e-32486926925e.jpeg)
 
 The Decoder is similar to the Encoder. One major difference is that the attention mechanism is “masked”, which means it
 gets a gradually increased visibility of the input sentence. This makes sense since we cannot time travel. Another
 difference is that it treats its most recent output as the last token of its input.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/b448f6fa-5559-4655-b2b4-dfc99059f3ef/Screenshot+2022-04-19+at+14.21.32.png)
+![](https://storage.googleapis.com/langkilde-se-images/8aa0a4d7-68a4-4a34-b258-b0e35daef331.jpeg)
 
 This kind of processing is called auto-regressive. A nice consequence of this is that the output can have a different
 length than the input. The Decoder ultimately outputs a vector the size of our known vocabulary, and the softmax layer
@@ -148,7 +148,7 @@ The core idea is to enrich the embeddings with features from the global context.
 If you want an even better explanation of all of this, I highly
 recommend [Prof. Lennart Svensson’s lecture](https://www.youtube.com/watch?v=0SmNEp4zTpc).
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/cde2d4b9-ff0f-4d47-8644-cf421aeea599/Screenshot+2022-04-19+at+14.25.15.png)
+![](https://storage.googleapis.com/langkilde-se-images/b7b48715-f3a3-4959-8085-c48460b0f8ab.jpeg)
 
 # Few-Shot Learners such as GPT-3
 
@@ -169,12 +169,12 @@ In order to achieve this, they build on the capacity of transformers. There is a
 parameters in language models is growing almost as fast as transistors. Each increase has brought improvements to all
 sorts of NLP tasks, and there is evidence that they get better and better the larger they get.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/3cf57c7f-05ee-4b04-9c71-ecec82f6a519/Screenshot+2022-04-19+at+14.39.02.png)
+![](https://storage.googleapis.com/langkilde-se-images/b84e1a84-9ae6-4543-ac53-5d2dacc54bc5.jpeg)
 
 In the paper the authors describe four different settings in which they want to evaluate their model. This is relevant
 to understand the title of the paper, and more importantly, when it works and not.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/54c385bf-e9fb-4a07-adfc-0d21972ff1a6/Screenshot+2022-04-19+at+14.45.48.png)
+![](https://storage.googleapis.com/langkilde-se-images/cda92869-531e-4abe-86fc-500439be5e45.jpeg)
 
 The title of the paper refers to “Few-Shot Learners” as it is described in the image above. The model architecture they
 use is basically the same as in several earlier papers such
@@ -183,14 +183,14 @@ and “[Improving Language Understanding by Generative Pre-Training](https://s3-
 the latter is the paper that coins the term GPT, which is short for Generative Pre-Training). The following figure
 describes the basic idea:
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/c2d56a09-b713-4d70-a142-30f473604102/Screenshot+2022-04-19+at+15.11.06.png)
+![](https://storage.googleapis.com/langkilde-se-images/eebb28a3-0257-47e4-a825-f7c070a7cfb8.jpeg)
 
 GPT uses a generative pre-training stage in which a language model learns language and then adds a supervised
 fine-tuning stage in which the pre-trained model is adapted to a target task. The amount of examples used defines the
 degree of fine-tuning (zero, one, few, etc). The Transformer architecture serves as the backbone of this pre-training
 stage. Here is how the authors describe the setup:
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/c4e1c378-9c36-4610-875b-0162198f2dd2/Screenshot+2022-04-19+at+15.16.22.png)
+![](https://storage.googleapis.com/langkilde-se-images/1ec6417e-5d0e-4aaf-b676-c016961dbcdc.jpeg)
 
 So, they are learning to predict words using Transformers. Notice the use of “unsupervised corpus”. Personally, I think
 this is misleading. The corpus is unsupervised in the sense that no one explicitly labeled the meaning of words in the
@@ -200,12 +200,12 @@ to provide structure somehow.
 Anyway, since the model is trained on continuous text, and not for example questions and answers, they apply some tricks
 to get data into shape.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/3eb61a56-8117-435d-8fb9-e02f13a8096e/Screenshot+2022-04-19+at+15.16.01.png)
+![](https://storage.googleapis.com/langkilde-se-images/2af322d4-3070-4f82-b387-c0d8f1f6f785.jpeg)
 
 This setup is improved on a bit for later versions of GPT, but GPT-3 follows the same pattern. They then feed these
 learning beasts huge amounts of text:
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/2f1fe41e-90b2-40ba-b80d-44611c5d4fa4/Screenshot+2022-04-19+at+15.17.32.png)
+![](https://storage.googleapis.com/langkilde-se-images/acaf9b09-5825-4cee-894b-420c86132ca9.jpeg)
 
 That’s a lot of human knowledge right there. This is where the supervised learning part comes in. In order for GPT-3 to
 work, we need to have access to enormous amounts of documented human knowledge. Whatever the model knows is a result of
@@ -214,12 +214,12 @@ all of the test data from this corpus since most data is somewhere on the intern
 you put this gigantic model to work is that it can generate long sequences of text that read as if written by a human.
 And all it needs is a few words to get started. For example, news article generation:
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/492c2b16-7aea-4bbb-9b51-0c31c6d825b1/Screenshot+2022-04-19+at+15.26.33.png)
+![](https://storage.googleapis.com/langkilde-se-images/9e5c2644-f828-483a-a246-1ae840d89bdb.jpeg)
 
 To evaluate they asked humans to determine if a news article was written by a human or by GPT-3. Results show that
 humans have a pretty hard time distinguishing real from robot.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/25e65ebb-4b0b-448a-bd47-67fa1d7a5fab/Screenshot+2022-04-19+at+15.26.27.png)
+![](https://storage.googleapis.com/langkilde-se-images/2e15223d-cc5b-4467-8fcd-a4610b33fab8.jpeg)
 
 So how is this possible? By now you should have some idea. By training a huge language model on a huge corpus of text we
 get a model that learns how to interpret words based on their context. Using that model, and a few tokens to give the
@@ -238,7 +238,7 @@ is “[Learning Transferable Visual Models From Natural Language Supervision](ht
 paper builds on the breakthroughs with autoregressive and masked language models and describes what the authors call
 CLIP (Contrastive Language-Image Pre-training).
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/99e5743b-a2e2-4d7f-90b4-6a0750749045/Screenshot+2022-04-19+at+16.15.09.png)
+![](https://storage.googleapis.com/langkilde-se-images/d56e312d-73bc-40ff-aa7e-fb420a9ef75a.jpeg)
 
 The idea behind the paper is to learn directly from raw text about images, rather than learn predefined object classes.
 Typically when training object detection models we define a set of classes and then proceed to label each object with
@@ -255,14 +255,14 @@ process generates, similar to GANs, semantically similar images. An even cooler 
 modify images by moving in the direction of any encoded text vector. This image gives a high-level overview of the
 unClip process.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/eff711fe-a386-4be2-b176-5b2656dd4e5f/Screenshot+2022-04-19+at+16.24.27.png)
+![](https://storage.googleapis.com/langkilde-se-images/d4936576-92af-41bb-8b64-ba1ade253f61.jpeg)
 
 The results are very, very cool. For example, you can naturally blend styles by interpolating the CLIP image embedding
 of different images and decoding the vectors.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/84ea2d41-cab0-4ea6-a75b-889660b85def/Screenshot+2022-04-19+at+16.27.04.png)
+![](https://storage.googleapis.com/langkilde-se-images/c66ff7f4-12f7-4e26-bec9-2dca5490ebad.jpeg)
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/9e8aaa5f-6597-4cb7-acf9-26bbb8f276e8/Screenshot+2022-04-19+at+16.28.03.png)
+![](https://storage.googleapis.com/langkilde-se-images/ade90f01-b3a0-4911-a263-026e21299558.jpeg)
 
 The reason this sort of continuous interpolation is possible is that the images and text are both embedded in the same
 latent space. That allows us to apply language-guided image manipulation. You can also write a text into a prompt and

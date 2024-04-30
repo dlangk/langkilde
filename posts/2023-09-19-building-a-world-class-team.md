@@ -35,7 +35,7 @@ determination.** It's exclusive but not based on gender, ethnicity, or experienc
 preferences, and determination. If someone isn't smart enough or driven enough, I reserve the right to terminate that
 person. And I think that's what most of you want. You want to work with like-minded, inspiring, and incredible people.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/23a5ce6d-0fcb-4f09-8ffe-f789a3fb5e39/Screenshot+2023-09-18+at+09.57.32.png)
+![](https://storage.googleapis.com/langkilde-se-images/5906ddf8-a8e9-4acc-90ef-b973e302a4dc.jpeg)
 
 Handling the Principal-Agent problem is the central challenge of managing teams and companies. You have to account for a
 vast range of things:
@@ -135,7 +135,7 @@ encourage creativity and progress. Being too relaxed is not suitable for doing a
 right before deadlines. Just look at the finishing time for the London Marathon. Spoiler: it is not a
 normal-distribution.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/0b10eda9-93c4-497c-8329-b46a990e1d51/Screenshot+2023-09-18+at+14.14.56.png)
+![](https://storage.googleapis.com/langkilde-se-images/d066b5e4-a1aa-4ccb-824d-aaf7bded9639.jpeg)
 
 **= > I believe that leaders need to create a strong sense of urgency but without scaring people.** I try to combine
 relentless urgency with profound optimism. We have to always be in a hurry to make progress, but we have to approach

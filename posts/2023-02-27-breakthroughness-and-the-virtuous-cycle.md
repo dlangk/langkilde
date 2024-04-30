@@ -12,7 +12,7 @@ starts early; you attend a good school, nurture relationships, read books, and h
 insignificant. Each person you meet or book you read might not feel like all that much. The beginning of an exponential
 curve is always tedious. But maybe, just maybe, you sense that speed is picking up.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/523faabc-3b10-4482-9003-2939dd98dd56/Screenshot+2023-02-27+at+09.33.25.png)
+![](https://storage.googleapis.com/langkilde-se-images/1e539247-fac2-4938-b14f-83b149152665.jpeg)
 
 Physicists have a set of carefully defined terms to describe this. There is force. Force is defined as an influence that
 causes the motion of an object with mass to change its velocity, i.e., to accelerate. And there is momentum. **Momentum
@@ -37,7 +37,7 @@ smooth performance improvements with size if decomposed successfully, but that t
 “breakthroughness.” Either way, it’s clear that critical mass unlocks the ability to perform tasks that are impossible
 with fewer parameters.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/ab1b3797-0c23-4cf2-b4dd-bd8681b3ed96/FU1QwphUsAATZed.jpeg)
+![](https://storage.googleapis.com/langkilde-se-images/bfa8d8c9-b7be-4cea-a170-69885542bf9f.jpeg)
 
 I’m
 reading “[Super Founders](https://www.amazon.se/Super-Founders-Reveals-Billion-Dollar-Startups/dp/1541768426/ref=asc_df_1541768426/?hvadid=476556295340&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1012511&hvnetw=g&hvpone=&hvpos=&hvptwo=&hvqmt=&hvrand=10669114641641229857&hvtargid=pla-1128305520704&linkCode=df0&psc=1&tag=shpngadsglede-21)”

@@ -79,23 +79,23 @@ So, how do we align model predictions with human values and preferences? Yann Le
 
 The battlefield for AI in the coming years, I think, can be found in the intersection between these two ideas: 1) Learn a latent representation by observing a lot of sequences, and 2) Fine-tune model predictions based on learning a policy through reinforcement learning from human feedback (RLHF). **This paradigm of RLHF is quickly getting adopted by cutting-edge companies.** There’s a great outline of this approach [over at 🤗](https://huggingface.co/blog/rlhf).
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/1e0aed52-2725-44a5-97d3-3cf4f500c8de/Screenshot+2023-03-22+at+10.33.40.png)
+![](https://storage.googleapis.com/langkilde-se-images/e54677a4-aa07-46d4-916e-60a0f7a54356.jpeg)
 
 In the example from 🤗, humans provide feedback on specific outputs. You prompt the model and then ask a human to rank different answers or suggest improved responses. That feedback is then used to fine-tune your language model. However, implicit in the model is the latent space. This latent space encodes everything the model has seen so that the representation maximizes your ability to predict items in sequences. We have known for a long time that such latent spaces preserve semantic relationships in various ways. Anthropic illustrates a 2D projection of a latent space this way:
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/8de0095e-d2e7-4cc4-89e7-a543f17ad79b/Screenshot+2023-01-30+at+18.31.13.png)
+![](https://storage.googleapis.com/langkilde-se-images/36dcca72-b6d7-4a76-837a-b523bd670102.jpeg)
 
 By asking humans for feedback, they ascribe human values to sequences that can be grouped in some high-dimensional space. A notable detail is that humans are noisy when asked to assign scalar rewards to outputs directly. Instead, the best way is to ask humans to rank items.
 
 I recently came across an excellent blogpost by Viet Le titled “[Building a Defensible Machine Learning Company in the Age of Foundation Models](https://vietle.substack.com/p/defensible-machine-learning).” He describes what he thinks a defensible flywheel looks like:
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/fee8f925-2a0e-43f0-ac4d-ee26c672223b/Screenshot+2023-03-22+at+10.58.31.png)
+![](https://storage.googleapis.com/langkilde-se-images/f0abc8be-4158-4c07-b479-cd32fcd27d3e.jpeg)
 
 **Combine these ideas, and you get a glimpse of the future.** I expect we will see larger and larger foundation models trained by large companies and institutions. These Foundation Models will learn from observing large quantities of empirical data. Companies will then create fine-tuned models based on some user interaction. Winners will be companies that can attract the most users that, in turn, generate the best proprietary feedback for your specific application.
 
 To speed up the process, we can apply human feedback directly to the latent space. Rather than have humans look at thousands of examples, we assume that clusters will form in high-dimensional space.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/780b1f1c-5d6b-49dc-a840-e169fc817620/Screenshot+2023-03-22+at+11.04.37.png)
+![](https://storage.googleapis.com/langkilde-se-images/89e6fa94-34dc-47af-a564-af89f77e29f3.jpeg)
 
 # What can the RLHF workflow be applied to?
 

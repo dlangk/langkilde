@@ -28,10 +28,10 @@ and the second one, **Flamingo** , was published in late April
 2022 ([blog](https://www.deepmind.com/blog/tackling-multiple-tasks-with-a-single-visual-language-model), [paper](https://arxiv.org/abs/2204.14198)).
 Both papers contain mind-blowing demo results (see examples below).
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/acbe208b-00a1-41f5-b18e-9a67430b3d05/Screenshot+2022-05-10+at+09.54.53.png)
+![](https://storage.googleapis.com/langkilde-se-images/3b6f9301-b2b4-4431-abfb-12fbc34bd14b.jpeg)
 **Caption:** Flamingos having conversations with humans.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/271cd69b-3054-4ae7-9249-1c0469a3ec0b/Screenshot+2022-05-10+at+09.55.35.png)
+![](https://storage.googleapis.com/langkilde-se-images/a61fb14d-bfd1-4e34-8269-b49009110502.jpeg)
 **Caption:** PaLM explaining jokes.
 
 So, how do we make sense of these papers? And what do they mean for the next wave of machine learning applications?
@@ -113,14 +113,14 @@ Diffusion models are used in DALLE2 to generate data by reversing a gradual nois
 noise”. Noise in this context is a rather complicated concept. It’s not a lack of sharpness or anything, it’s more
 radical than that. It’s more like taking a crude vector and finding various suitable images based on it.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/20ddb8bd-d5a6-4914-b44d-8bf3c7cb7b65/Screenshot+2022-05-12+at+12.03.44.png)
+![](https://storage.googleapis.com/langkilde-se-images/3da651f8-9397-4252-8693-d968e537f2fa.jpeg)
 **Caption:** Description from original paper.
 
 If you want to read more about it, I found this post to be very well
 written: [How DALL-E2 Actually Works](https://www.assemblyai.com/blog/how-dall-e-2-actually-works/). Below is an example
 from the DALLE2 paper showing the variations created by the diffusion model on the same core vector.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/fba07870-dd25-40a2-8665-b217f99329c4/Screenshot+2022-05-12+at+12.02.22.png)
+![](https://storage.googleapis.com/langkilde-se-images/d389ad7b-016f-4038-8ff9-42c49c5b7f7c.jpeg)
 
 ## Graph Neural Networks
 
@@ -132,7 +132,7 @@ like [RevGNNs](https://arxiv.org/pdf/2106.07476.pdf) appear to lower the cost dr
 useful for long-time planning in reinforcement learning. An example is this
 paper: “[World Model as a Graph: Learning Latent Landmarks for Planning](https://arxiv.org/pdf/2011.12491.pdf)”.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/ee0f42a5-a07c-40f4-b127-35ea2a33b329/Screenshot+2022-05-12+at+12.06.18.png)
+![](https://storage.googleapis.com/langkilde-se-images/3f3f940b-fddb-4492-875d-8b0116297084.jpeg)
 
 # What are the limitations of these models?
 
@@ -172,7 +172,7 @@ as “hallucinations” which might be a case of anthropomorphizing. It could al
 concepts in the data that the model picks a prediction that humans feel is nonsense, but that is actually statistically
 accurate. Which is correct, that which a human finds intuitive, or that which is most statistically likely?
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/ce63b3cc-2a91-4fb6-8846-1d98586d8ca9/Screenshot+2022-05-12+at+09.27.23.png)
+![](https://storage.googleapis.com/langkilde-se-images/8d100b39-b1d8-41f8-b7cb-7e266818795d.jpeg)
 **Caption:** From the Flamingo paper.
 
 ## Cherrypicked Results and Leading Questions
@@ -184,7 +184,7 @@ hard. Sure, the benchmarks are there to make sure performance evaluation is unbi
 numbers they show, there will be a lot of strange results if you interacted with a model. I also think humans tend to
 write leading questions. Take the following example:
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/e09d5f94-75b4-439b-8f30-f6b3f44a0734/Image+from+iOS.jpg)
+![](https://storage.googleapis.com/langkilde-se-images/de13e9d2-5035-4274-8418-c839e7386396.jpeg)
 **Caption:** Example of Flamingo interacting with a human. Are the questions leading it to the right response?
 
 ## It is all virtual
@@ -268,11 +268,11 @@ started a bunch, and others have followed in nearby domains. Here are some of my
 * **Primer.** “lets organizations quickly explore and utilize the world’s exponentially growing sources of text-based
   information” ([website](https://primer.ai))
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/3c43c3d8-7418-4e66-9671-8a8bea4aebdb/Screenshot+2022-05-12+at+10.02.33.png)
+![](https://storage.googleapis.com/langkilde-se-images/bf57eb94-ae50-4a2b-924d-eee87f919488.jpeg)
 
 Predictably, most of the companies are [based in the US](https://www.stateof.ai):
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/d31e113b-1d25-419e-a527-9f88df117e2f/Screenshot+2022-05-12+at+10.21.11.png)
+![](https://storage.googleapis.com/langkilde-se-images/b13d2460-f4d2-4d18-bf30-a3f29412fc95.jpeg)
 
 ## Access to Quality Knowledge becomes the Short-term Limitation
 

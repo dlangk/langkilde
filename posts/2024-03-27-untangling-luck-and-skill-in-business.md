@@ -25,7 +25,7 @@ the following aspects:
 network, and judgment. You could probably list ten other things, but these are the big ones. Skill is the ability to
 improve the odds of successful outcomes.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/88c078c3-3aa9-4efc-b541-57dbc3a77479/Screenshot+2024-03-27+at+08.07.54.png)
+![](https://storage.googleapis.com/langkilde-se-images/a58b069d-d898-457b-b0d8-9076d7076b6c.jpeg)
 
 **Unfortunately, we cannot do much about our IQ.** We’re born with the brain we get. We can, however, influence most of
 the rest.
@@ -71,7 +71,7 @@ inconsistencies.
 than through one's actions. If you place a bet with 10/1 odds and win, you are lucky. The worse the odds, the luckier
 you are if you win.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/ee2301be-30a6-4c73-a5f3-d188dd1ce0de/Screenshot+2024-03-27+at+08.07.59.png)
+![](https://storage.googleapis.com/langkilde-se-images/f0d6e49a-0c0f-49de-8064-6be6429c90f8.jpeg)
 
 **Untangling skill and luck requires an understanding of:**
 
@@ -102,7 +102,7 @@ probability distributions. Outlier outcomes are, by nature, unlikely. They are m
 a big bet on an unlikely event and winning. Data supports this as the correlation between income and intelligence is
 much stronger than the correlation between net worth and intelligence.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/713e2c03-e6e8-433c-921c-b055dd1e4c40/Screenshot+2024-03-27+at+08.53.43.png)
+![](https://storage.googleapis.com/langkilde-se-images/1fd2a726-bb07-4263-bfab-da1a2c5c7287.jpeg)
 
 [Source](https://gwern.net/doc/iq/ses/2007-zagorsky.pdf)
 
@@ -115,7 +115,7 @@ suggests how to identify problems that are valuable to solve. His advice is simp
 critical obstacle you can overcome to accelerate the world toward your vision. By definition, a critical obstacle is
 unsolved in a satisfactory way. If it already has a solution, it’s not a critical obstacle.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/1422f83a-e5a1-4548-9cb3-fc30c608b6b2/Screenshot+2024-03-27+at+08.22.57.png)
+![](https://storage.googleapis.com/langkilde-se-images/fbd3e874-129f-4844-b104-f327048f9513.jpeg)
 
 **You need to decide what your vision is.** No one can tell you your purpose; that’s up to you. I like to imagine what I
 want the world to look like in 10 years, 50 years, or 100 years. Then I work my way backward: What are the most critical
@@ -171,7 +171,7 @@ At this point, we have made two significant bets:
 
 * That we can generate enough demand for our solution from customers
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/c5f41156-6dc7-4fcb-9ee0-db2374397555/Screenshot+2024-03-27+at+08.08.06.png)
+![](https://storage.googleapis.com/langkilde-se-images/27cd9685-0b46-47c4-9232-026e26b4c601.jpeg)
 
 **The next random element is capital requirements.** Every company needs capital to fund innovation, but the early stage
 is unpredictable. You need to invest in both the experimentation platform mentioned earlier and the go-to-market
@@ -182,7 +182,7 @@ make assumptions about the number of customers you can serve and the amount they
 next major bet you are placing. Markets are chaotic. Thousands of companies crash into each other. Countless fundamental
 factors are aggregated. All of them crash into each other in “the market”.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/c1081a73-4671-4cea-98c6-d02953ab2eaf/Three-body_Problem_Animation_with_COM.gif)
+![](https://storage.googleapis.com/langkilde-se-images/8dbdd99f-bf89-4ae2-8416-5c877f125b9c.jpeg)
 
 A system of 3 bodies interacting gravitationally is chaotic.
 
@@ -199,7 +199,7 @@ obvious for a very long time.
 the [Acquired podcast](https://www.acquired.fm),**** I’ve become fond of the **7 Powers** framework to understand a
 company’s ability to capture value.
 
-![](https://images.squarespace-cdn.com/content/v1/5c2b12dae17ba3d4ccb3bdfd/55a59f00-b6bb-47c5-8c32-ca31b8629e7a/Screenshot+2024-03-27+at+08.08.15.png)
+![](https://storage.googleapis.com/langkilde-se-images/80bf68b4-9880-46e8-926f-5f4c16e0be26.jpeg)
 
 **7 Powers** was created by Hamilton Helmer, describing possible sources of persistent competitive advantage. A lot of
 it is focused on differentials against competitors. You want to establish a flywheel motion that compounds into a
