@@ -1,4 +1,5 @@
 static/images
+!static/images/langkilde.jpg
 certs
 *.iml
 __pycache__/

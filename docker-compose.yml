@@ -23,6 +23,8 @@ services:
   langkilde-se:
     build: .
     container_name: langkilde-se
+    volumes:
+      - ./posts:/posts
     restart: always
     networks:
       - webnet
