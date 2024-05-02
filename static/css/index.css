@@ -4,7 +4,12 @@
     justify-content: center;
 }
 
-.post-list {
+.post-list-link, .post-list-link:hover, .post-list-link:focus {
+    text-decoration: none; /* This ensures no underline appears at all */
+    color: inherit; /* This makes the link use the color of its text by default */
+}
+
+.post-list-item {
     width: 30vw; /* Width is 25% of the viewport width */
     height: 30vw;
     min-width: 200px;
@@ -21,16 +26,43 @@
     box-sizing: border-box; /* Includes padding and border in the width and height */
     background-color: var(--content-background);
     border: 3px solid black;
+    text-decoration: none;
+
+    transition: transform 0.3s ease;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.post-list h3 {
-    margin-top: 0;
-    margin-bottom: 5px;
-}
-
-.post-list p {
-    color:white;
+.post-list-title {
+    color: var(--link-color);
+    text-decoration: none;
     margin-top: 0;
     text-align: center;
     font-size: 0.9em;
+}
+
+.post-list-pub {
+    text-decoration: none;
+    color: white;
+    margin-top: 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.post-list-item:hover {
+    transform: scale(1.025); /* Slightly enlarges the post on hover */
+    background-color: var(--link-color); /* Changes background on hover */
+    color: var(--content-background);
+}
+
+.post-list-item:hover {
+    text-decoration: none;
+    transform: scale(1.025); /* Slightly enlarges the post on hover */
+    background-color: var(--link-color); /* Light grey background on hover */
+    color: var(--content-background);
+}
+
+.post-list-item:hover .post-list-title {
+    color: var(--content-background); /* Ensures text color is changed on hover */
+    font-weight: 600;
+    text-decoration: none; /* Reaffirms that no underline should appear */
 }

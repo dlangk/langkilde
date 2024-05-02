@@ -2,13 +2,16 @@
 
 {% block content %}
 
-<div class="post-list-container">
-    {% for post in posts %}
-    <div class="post-list">
-        <p><a href="/post/{{ post.slug }}" class="post-list-link">{{ post.title }}</a></p>
-        <p>{{ post.pub_date }}</p>
+    <div class="post-list-container">
+        {% for post in posts %}
+            <a href="/post/{{ post.slug }}" class="post-list-link">
+                <div class="post-list-item">
+                    <p class="post-list-title">{{ post.title }}</p>
+                    <p class="post-list-pub">{{ post.pub_date }}</p>
+                </div>
+            </a>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
+
 
 {% endblock %}
