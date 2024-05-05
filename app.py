@@ -1,15 +1,23 @@
+import os
+
 from flask import Flask, render_template, send_from_directory, jsonify, request
 
+from auth import login_blueprint, callback_blueprint
 from post import Post
 from rss import rss_blueprint
 from search import search_blueprint
-
+from update import update_blueprint
 from utils import get_posts, get_memes
 
 app = Flask(__name__)
 
+app.secret_key = 'monkeybanan'
+
 app.register_blueprint(search_blueprint, url_prefix='/')
 app.register_blueprint(rss_blueprint, url_prefix='/')
+app.register_blueprint(login_blueprint, url_prefix='/')
+app.register_blueprint(callback_blueprint, url_prefix='/')
+app.register_blueprint(update_blueprint, url_prefix='/')
 
 
 @app.route('/')
@@ -44,7 +52,6 @@ def posts():
 @app.route('/post/<slug>')
 def post(slug):
     # Here, fetch the post using the slug
-    # This is a pseudo-code function to retrieve a post; implement it according to your data storage
     post = Post("posts/" + slug + ".md")
     if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
         # Return only the necessary part of the post for AJAX requests
@@ -59,5 +66,11 @@ def custom_image(filename):
     return send_from_directory('static/images', filename)
 
 
+if os.getenv('FLASK_ENV') == 'development':
+    # Set up the Google OAuth2 client to work without HTTPS.
+    os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"  # ONLY FOR TESTING, REMOVE IN PRODUCTION
+    print("running in dev mode")
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.config['SESSION_COOKIE_SECURE'] = True
+    app.run(host="localhost", port=1987, debug=True)
