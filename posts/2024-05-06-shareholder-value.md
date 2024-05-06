@@ -1,6 +1,6 @@
 ---
 pub_date: 2024-05-06
-slug: 2024-04-07-shareholder-value
+slug: 2024-04-06-shareholder-value
 title: Shareholder Value
 ---
 
