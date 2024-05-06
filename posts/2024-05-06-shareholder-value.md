@@ -4,8 +4,8 @@ slug: 2024-05-06-shareholder-value
 title: Shareholder Value
 ---
 
-As a founder, your most important concern should be the obstacle you are overcoming, and the customers you are
-serving. I try to focus as much time as possible on these two things. **What are we solving and for whom?**
+As a founder, your most important concern should be the obstacles you are overcoming, and the customers you are
+serving. I try to focus as much time as possible on these two things.
 
 But, in order to solve interesting and hard problems, you need to hire a team and potentially buy things. For startups
 there are basically two main ways to get resources: turn a profit, or sell equity. You either sell goods and
@@ -14,7 +14,7 @@ startup. And you probably shouldn't risk your own savings either.
 
 **Turning a profit as a product company is hard.** It means you have to create a product that is valuable to someone
 else. That usually requires an upfront investment in both **product development** and **distribution**. Services is
-easier to get started with, but less profitable in the long-run (more on this later).
+easier to get started with, but less profitable in the long-run.
 
 **Startups typically raise money by selling shares.** A so-called "funding round". Startup people can't stop talking
 about funding rounds. Pre-seed, seed, series A and so on. If you decide to raise money by selling shares, you will

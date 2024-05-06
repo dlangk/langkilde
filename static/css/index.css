@@ -16,6 +16,7 @@
     max-width: 200px;
     min-height: 200px;
     max-height: 200px;
+    font-size: 18px;
     margin: 5px; /* Space between squares */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Optional: adds depth with shadow */
     display: flex;
