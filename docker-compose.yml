@@ -24,7 +24,7 @@ services:
     build: .
     container_name: langkilde-se
     volumes:
-      - ./posts:/posts
+      - ./posts:/app/posts
     restart: always
     networks:
       - webnet
