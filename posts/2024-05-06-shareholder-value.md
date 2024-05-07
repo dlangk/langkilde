@@ -27,7 +27,7 @@ account several different things: how much capital can be invested, how much ret
 will take to get that return. Long books have been written on the subject of investing, but the basic idea is simple:
 the higher your annual return, the better.
 
-This connects decisions you need to make as a founders. In order to raise money at favorable terms, you need to
+This connects decisions you need to make as a founder. In order to raise money at favorable terms, you need to
 convince investors that the future value of your company will be high. The valuation of your company today determines
 your cost of capital. The cost of capital, in turn, determines how much and how fast you can invest in product
 development and distribution.
