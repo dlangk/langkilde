@@ -39,6 +39,10 @@ in your interest as a founder to maximize the valuation in every round. Ideally,
 can raise enough money to get to the next milestone, but not so much that you can't raise money at a higher
 valuation the next time.
 
+As companies grow, the valuation becomes as much a function of the company's performance as your expectations about
+the future. Emphasis slowly shifts from the founder and the expectations, to metrics like growth, margin and
+profitability. Of course, leaders at a company, and expectations, are always a part of the equation.
+
 This introduces the next critical concept: **Enterprise Value** and **Shareholder Value**. Together with the **Cost of
 Capital**, these are the three most important financial concepts a founder needs to understand. Enterprise value is
 the value of your company. It's determined as the price per share times the number of shares. The price per share is
