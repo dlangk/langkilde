@@ -27,11 +27,6 @@ account several different things: how much capital can be invested, how much ret
 will take to get that return. Long books have been written on the subject of investing, but the basic idea is simple:
 the higher your annual return, the better.
 
-This connects decisions you need to make as a founder. In order to raise money at favorable terms, you need to
-convince investors that the future value of your company will be high. The valuation of your company today determines
-your cost of capital. The cost of capital, in turn, determines how much and how fast you can invest in product
-development and distribution.
-
 Let's say we start from zero: you have no product, no customers, no revenue. You create a company
 and offer angle investors to buy shares. How do you appraise this company? One way to do it would be to ask: "How much
 do we think this company could be worth in 10 years if this team is super-successful?". From what I understand,
@@ -45,34 +40,39 @@ can raise enough money to get to the next milestone, but not so much that you ca
 valuation the next time.
 
 This introduces the next critical concept: **Enterprise Value** and **Shareholder Value**. Together with the **Cost of
-capital**, these are the three most important financial concepts a founder needs to understand. Enterprise value is
+Capital**, these are the three most important financial concepts a founder needs to understand. Enterprise value is
 the value of your company. It's determined as the price per share times the number of shares. The price per share is
 determined by supply and demand: how many shares are available to buy, and how much are people willing to pay for
-them? Willingness to pay is determined by the future expected value of the company. Shareholder return is the annual
-return, i.e. the annual amount of money made, from holding a share. Returns come in two forms: increase in share
-price and dividends.
+them? Willingness to pay is determined by the future expected value of the company. Shareholder Value on the other
+hand is the value shareholders get from holding your shares. Shareholder value primarily comes in two forms: 1)
+increase in share price or 2) dividends.
 
 > If a company needs capital to grow, it's important to understand if the expected increase in
-> enterprise value exceeds the cost of capital. If it does, you will create shareholder value. If not, you will
-> destroy shareholder value.
+> enterprise value over time exceeds the cost of capital. If it does, you will create shareholder value. If not, you
+> will destroy shareholder value.
 
-The purpose of a company is to create shareholder value. If your goal is not to create shareholder value, you should 
+**The purpose of a company is to create shareholder value.** If your goal is not to create shareholder value, you should
 find a different way to solve the problem you are focused on. You can start an NGO, or a charity. Or go into academia.
 
-As a founder, this means you need to weigh the following things:
+As a founder, you need to take this into account. If you determined that it is in your interest to raise money, then
+you need to convince investors that the future value of your company will be high. The valuation of your company today
+determines your cost of capital. The cost of capital, in turn, determines how much and how fast you can invest in
+product development and distribution. If you get a really high valuation that translates into a low cost of capital.
+But, in order to provide shareholder value, you need to increase the enterprise value of your company a lot. You need to
+weigh the following things:
 
 - The cost of capital at which you can raise money
 - The expected future enterprise value of your company
 - The need for capital
 
-If you think you can convert capital into enterprise value at a higher rate than the cost of capital, you should 
-raise. If not, you should aim to turn a profit. I think a lot of startup founders get this wrong. They think the 
+If you think you can convert capital into enterprise value at a higher rate than the cost of capital, you should
+raise. If not, you should aim to turn a profit. I think a lot of startup founders get this wrong. They think the
 goal is to raise and spend money, when in fact the goal is to create shareholder value.
 
-Let's say you have a company that is growing at 100% per year. You generate $20M in revenue with a 45% margin. 
-Should you raise money? The answer comes down to: will it generate long-term shareholder value? Is the cost of 
-capital today versus the expected future enterprise value in favor or raising money?
+Let's say you have a company that is growing at 100% per year. You generate $20M in revenue with a 45% margin.
+Should you raise money? The answer comes down to: will it generate long-term shareholder value? Is the cost of
+capital today versus the expected future enterprise value in favor of raising money?
 
-This is a complex question without a simple answer. This post only scratches the surface. But I hope it gives you 
-some food for thought. As a founder, you need to understand the financial concepts that drive your company. That 
+This is a complex question without a simple answer. This post only scratches the surface. But I hope it gives you
+some food for thought. As a founder, you need to understand the financial concepts that drive your company. That
 said, the most important thing is still to focus on the problem you are solving and the customers you are serving.
