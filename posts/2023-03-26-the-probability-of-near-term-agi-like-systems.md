@@ -4,7 +4,7 @@ slug: 2023-03-26-the-probability-of-near-term-agi-like-systems
 title: The Probability Of Near-Term AGI-Like Systems
 ---
 
-Since I wrote “[The State of Machine Learning in 2022](https://langkilde.se/blog/2022/4/18/the-state-of-machine-learning-2022),” AI has entered the mainstream. The internet is flooded with content about how GPT-like models will change everything. I hazarded to make predictions in “[Next steps?](https://langkilde.se/blog/2022/5/10/the-future-of-machine-learning)” that now seem embarrassingly conservative in hindsight:
+Since I wrote “[The State of Machine Learning in 2022](https://langkilde.se/post/2022-04-18-the-state-of-machine-learning-2022),” AI has entered the mainstream. The internet is flooded with content about how GPT-like models will change everything. I hazarded to make predictions in “[Next steps?](https://langkilde.se/post/2022-05-10-the-future-of-machine-learning)” that now seem embarrassingly conservative in hindsight:
 
   * **More modalities are merged.** Outcome => _Confirmed_. 
 

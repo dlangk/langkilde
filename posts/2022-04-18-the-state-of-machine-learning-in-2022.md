@@ -1,6 +1,6 @@
 ---
-pub_date: 2022-04-19
-slug: 2022-04-19-the-state-of-machine-learning-in-2022
+pub_date: 2022-04-18
+slug: 2022-04-18-the-state-of-machine-learning-in-2022
 title: The State of Machine Learning in 2022
 ---
 

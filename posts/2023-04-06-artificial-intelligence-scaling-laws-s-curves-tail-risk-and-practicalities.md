@@ -148,7 +148,7 @@ searching decision trees, optimizing policies, and symbolic reasoning). Furtherm
 current auto-regressive language models become capable of self-improvement, but I cannot altogether reject the
 possibility of it happening. I have, however, started feeling comfortable calling LLMs a form of AI and not just mere
 machine-learning models. And I consider [AGI
-_-like_ systems to be already available](https://langkilde.se/blog/2023/3/22/updated-assumptions-about-agi) today.
+_-like_ systems to be already available](https://langkilde.se/post/2023-03-22-updated-assumptions-about-agi) today.
 
 # **AGI Impact**
 

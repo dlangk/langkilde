@@ -11,7 +11,7 @@ mildly ambitious people could get rich and powerful if they consistently knew th
 Right now, there is a considerable discussion about the impact of AI. Some throw around statements like, “We will have
 AI as capable as humans in just a few years!” Let’s combine Don’s realization of the value of knowing the future with
 thoughts about the possible consequences of super-human AI. These thoughts continue my post
-about [untangling skill and luck when building a business](https://langkilde.se/blog/2024/3/27/untangling-luck-and-skill-in-business).
+about [untangling skill and luck when building a business](https://langkilde.se/post/2024-03-27-untangling-luck-and-skill-in-business).
 My recent post concluded that human intelligence can help improve the odds of creating a great company, but there is so
 much randomness involved that outlier outcomes are still, to a large degree, the result of luck.
 

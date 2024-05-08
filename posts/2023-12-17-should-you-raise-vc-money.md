@@ -20,7 +20,7 @@ title: Should you raise VC money?
 
 **The risk-free rate has been declining since the 1980s.** This has encouraged investors to take more and more risk. The period from 2008 to 2021 offered an extraordinarily low cost of capital. Looking back, risk-free rates are now back to pre-2008 levels of interest rates, and the curve has shot up for the first time in decades. For the last 15 years, governments have stimulated the economy to first recover from the 2008 meltdown, and then the 2020 Covid lockdown. They did not want people to deposit their money into savings, so they turned down the yield on government-backed securities, thereby stimulating the economy. But those times are over now, and investors now get a 4.4% return on their money without taking any risk at all. Assuming all other assets have more risk, money managers will benchmark assets against the risk-free rate.
 
-**Why does this matter for a startup?** Well, one way to get yield is to seek riskier investments. And startups are incredibly risky. I wrote a lot about this [last winter](https://langkilde.se/blog/2023/1/9/building-extremely-valuable-companies). While returns can be high, the variance of return is high.
+**Why does this matter for a startup?** Well, one way to get yield is to seek riskier investments. And startups are incredibly risky. I wrote a lot about this [last winter](https://langkilde.se/post/2023-01-09-building-extremely-valuable-companies). While returns can be high, the variance of return is high.
 
 ![](https://storage.googleapis.com/langkilde-se-images/3389b20d-0d01-4755-a007-92b9cc33b94a.jpeg)
 

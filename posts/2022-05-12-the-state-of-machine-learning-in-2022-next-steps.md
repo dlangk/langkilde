@@ -5,7 +5,7 @@ title: The State of Machine Learning in 2022 - Next steps?
 ---
 
 I recently summarized
-the [state of machine learning](https://langkilde.se/blog/2022/4/18/the-state-of-machine-learning-2022). The post served
+the [state of machine learning](https://langkilde.se/post/2022-04-18-the-state-of-machine-learning-2022). The post served
 as a way to keep up with what _has happened_ until now. Predictably, it triggered a lot of questions about what _will
 happen._ Rather than
 make [bold predictions](https://www.businessinsider.com/elon-musk-history-of-full-self-driving-promise-2022-1?IR=T&r=US#:~:text=In%202015%2C%20billionaire%20Tesla%20CEO,still%20making%20the%20same%20promise.)
@@ -48,7 +48,7 @@ course, there are improvements and tricks used to make them perform better, but 
 same. It also turns out both papers make use of the same kind of **embeddings** that we’ve seen for the last 12-13 years
 now, i.e. models representing information as dense vectors. Finally, both models leverage **attention and transformers**
 to learn improved embeddings. We covered these concepts in
-the [previous blog post](https://langkilde.se/blog/2022/4/18/the-state-of-machine-learning-2022).
+the [previous blog post](https://langkilde.se/post/2022-04-18-the-state-of-machine-learning-2022).
 
 ## Larger Models are (still) Better
 
