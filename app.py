@@ -66,6 +66,11 @@ def custom_image(filename):
     return send_from_directory('static/images', filename)
 
 
+@app.route('/robot.txt')
+def robot():
+    return send_from_directory('static/', 'robot.txt')
+
+
 if os.getenv('FLASK_ENV') == 'development':
     # Set up the Google OAuth2 client to work without HTTPS.
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"  # ONLY FOR TESTING, REMOVE IN PRODUCTION
