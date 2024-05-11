@@ -66,9 +66,9 @@ def custom_image(filename):
     return send_from_directory('static/images', filename)
 
 
-@app.route('/robot.txt')
-def robot():
-    return send_from_directory('static/', 'robot.txt')
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory('static/', 'robots.txt')
 
 
 if os.getenv('FLASK_ENV') == 'development':
