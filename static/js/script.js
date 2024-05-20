@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const initialContent = contentArea.innerHTML;
     const initialPath = location.pathname;
 
-
     history.replaceState({path: initialPath, content: initialContent}, '', initialPath);
 
     // Setup sidebar links for AJAX content loading
@@ -45,6 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (history.pushState) {
                     history.pushState({path: url, content: contentArea.innerHTML}, '', url);
                 }
+
+                // Google Analytics tracking for virtual pageview
+                gtag('config', 'G-5RX4PLK2Y2', {'page_path': url});
             })
             .catch(error => console.error('Error loading the post:', error));
 
@@ -53,6 +55,5 @@ document.addEventListener("DOMContentLoaded", function () {
             top: 0,
             behavior: 'smooth' // For a smooth scroll
         });
-
     }
 });
