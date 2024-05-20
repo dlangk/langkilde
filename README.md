@@ -1,2 +1,1 @@
-# langkilde
-my personal website
+# https://langkilde.se/
