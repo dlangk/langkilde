@@ -10,7 +10,7 @@ update_blueprint = Blueprint('update', __name__)
 def update():
     user_info = session.get('user_info')
     print(user_info)
-    if not user_info or user_info.get('email') not in login.ALLOWED_EMAILS:
+    if not user_info or user_info.get('email') not in auth.login.ALLOWED_EMAILS:
         abort(403)  # Forbidden access if user not allowed
     try:
         # Example command: List directory contents
