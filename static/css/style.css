@@ -5,8 +5,8 @@
     --content-background: #282A36;
     --link-color: #FF5555;
     --selected-color: #6272A4;
-    --text-color: #F2F3F5;
-    --text-bold-color: #F8F8FF;
+    --text-color: rgba(242, 243, 245, 0.88);
+    --text-bold-color: #f8f8ff;
     --text-quote-color: #5E6069;
     --header-height: 70px;
     --header-height-plus: 75px;
@@ -16,7 +16,7 @@ body {
     display: flex;
     padding-top: 95px;
     padding-right: 1px;
-    font-family: Lato, "sans-serif";
+    font-family: "IBM Plex Sans", sans-serif;
     background-color: var(--main-color);
 }
 

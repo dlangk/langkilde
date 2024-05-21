@@ -5,9 +5,9 @@
     background-color: var(--content-background);
     color: var(--text-color);
     line-height: 28px;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 400;
-    letter-spacing: 0.2px;
+    /*letter-spacing: 0.5px;*/
     text-rendering: optimizelegibility;
     width: 100%; /* Ensure it spans the full width of the viewport */
     max-width: 600px;
