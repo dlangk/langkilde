@@ -72,16 +72,16 @@ sufficient to explain high-level behaviors and vice versa. The approximate prese
 future. Talking to consumers does not let us easily predict market movements. Hari Seldon has not been born yet. What is
 a useful signal and what is just noise? Most people are confused.
 
-**How is this related to LLMs?** And what does any of this have to do with predicting the future? Well, I'm starting to
-realize that most failures in business are the result of managers failing to sample reality with the right frequency and
-resolution. Their assumptions about how microscopic events explain emergent properties are no longer true. The
-connection between day-to-day events in a factory and strategic decisions is lost. Poor approximations of reality lead
-to detached decisions. If something was true for a very long time, people might even reject overwhelming evidence
-showing things have changed. I think language models will be massively limited by their inability to determine if
-assumptions have become outdated. We program language models with examples. If something has been true for a long time,
-it will be all over the internet. A language model will replicate that pattern. It will take time before appending new
-text to the corpus impacts predictions. What if an entity starts being referred to in a new way? Or what if a new
-relationship between two entities appears? Humans aren't great at updating, but we can do it. LLMs need to be retrained.
+**How is this related to LLMs?** Well, I'm starting to realize that most failures in business are the result of managers
+failing to sample reality with the right frequency and resolution. Their assumptions about how microscopic events
+explain emergent properties are no longer true. The connection between day-to-day events in a factory and strategic
+decisions is lost. Poor approximations of reality lead to detached decisions. If something was true for a very long
+time, people might even reject overwhelming evidence showing things have changed. I think language models will be
+massively limited by their inability to determine if assumptions have become outdated. We program language models with
+examples. If something has been true for a long time, it will be all over the internet. A language model will replicate
+that pattern. It will take time before appending new text to the corpus impacts predictions. What if an entity starts
+being referred to in a new way? Or what if a new relationship between two entities appears? Humans aren't great at
+updating, but we can do it. LLMs need to be retrained.
 
 **Now let me try to segue to whether LLMs are improving our ability to predict the future?** Well, yes and no, I guess.
 Yes, in the sense that if you describe a sequence of events, and there is an abstractly similar sequence that has played
