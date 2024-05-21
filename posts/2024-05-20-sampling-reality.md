@@ -42,9 +42,8 @@ discovery today comes from moving between domains. Discoveries in one field insp
 fractals for example. Mandelbrot developed the concept of fractals in the 1970s. Fractal geometry is today used to
 analyze and diagnose diseases by examining patterns in medical images, such as MRI scans, where abnormal fractal
 dimensions may indicate pathology. I think language models can be used to indentify patters in observations that humans
-would overlook. Once enough is written about the world, I'm sure LLMs will very subtle patterns for how different
-objects are described. This, in my opinion, would constitute knowledge creation. Making connections between concepts is
-discovery.
+would overlook. Once enough is written about the world, I'm sure LLMs will find very subtle patterns in how things are
+described. This, in my opinion, would constitute knowledge creation. Making connections between concepts is discovery.
 
 **But writing about a natural phenomenon does not mean what we write is necessarily true in the scientific sense.** We
 have developed the scientific process for a reason. Scientists are trained to make observations, form questions, test
@@ -67,7 +66,7 @@ too closely, events at the micro-level may obscure emerging macro-phenomenon. On
 much, we may imagine explanations to emergent behaviour that could easily be explained on the microscopic level. It's
 like with phenotypes and genotypes. We can inspect the genetic makeup of an organism and list its set of genes and their
 variants. But the genotype alone is not enough to predict the behaviour of the organism. The phenotype, i.e. the
-observable characteristics of the organism, are the result from the _interaction of its genotype with the environment_.
+observable characteristics of the organism, is the result from the _interaction of its genotype with the environment_.
 Such complex, adaptive, dynamic relationships can be found all over the place in nature. Low-level observations are not
 sufficient to explain high-level behaviours and vice versa. The approximate present does not predict the
 approximate future. Talking to consumers does not let us easily predict market movements. Hari Seldon has not been born
