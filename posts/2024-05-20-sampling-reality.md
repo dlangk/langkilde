@@ -83,25 +83,21 @@ that pattern. It will take time before appending new text to the corpus impacts 
 being referred to in a new way? Or what if a new relationship between two entities appears? Humans aren't great at
 updating, but we can do it. LLMs need to be retrained.
 
-**Now let me try to segue to whether LLMs are improving our ability to predict the future?** Well, yes and no, I guess.
-Yes, in the sense that if you describe a sequence of events, and there is an abstractly similar sequence that has played
-out in the past, then an LLM can see very subtle similarities. But it's still a hard no in the sense that the world is
-chaotic and offers limited predictability. And regardless of whether LLMs can predict the future, I'm confident this
-technology cannot create it. For this reason and many others, I'm not existentially worried about AI in its current
-form.
+**Now let me try to segue to whether LLMs are improving our ability to predict the future?** Well, yes and no, but
+mostly no. Yes, in the sense that if you describe a sequence of events, and there is an abstractly similar sequence that
+has played out in the past, then an LLM can see very subtle similarities. Data-driven decisions sound nice and LLMs are
+mostly great at making data-driven decisions. The problem is: most interesting new things are not an obvious
+extension of the past. They are unexpected outliers. Random events. Creating new things requires the courage to go
+against what is already accepted and understood. It requires humans that challenge data. Progress requires exploring,
+not exploiting. It's about injecting noise into the process and seeing what sticks. I think it's about sampling reality
+in new ways. Experimenting. That's how we create knowledge. I'm constantly surprised by how wrong people are about
+what reality is really like. Some people say: "That's impossible!" Other people do the impossible. Those who do the
+impossible do it because they did not realize it was supposed to be impossible. They venture out into the world and look
+at things with fresh eyes. Reasoning from first principle, rather than making assumptions. The only laws are the laws of
+nature. The rest is just a social construct. I see no evidence of AI being able to replicate the sort of behavior just
+outlined anytime soon. I won't say ever, but at least not for a long time.
 
-Data-driven decisions sound nice and LLMs are mostly great at making data-driven decisions. The problem is: most
-interesting new things are not an obvious continuation of the past. They are unexpected outliers. Random events.
-Creating new things requires the courage to go against what is already accepted and understood. It requires humans that
-challenge data. Progress is exploring, not exploiting. It's about injecting noise into the process and seeing what
-sticks. I think it's about sampling reality in new ways. Experimenting. Creating knowledge. I'm constantly surprised by
-how wrong people are about what reality is really like. Some people say: "That's impossible!" Other people do the
-impossible. Those who do the impossible do it because they did not realize it was supposed to be impossible. They
-venture out into the world and look at things with fresh eyes. Reasoning from first principle, rather than making
-assumptions. The only laws are the laws of nature. The rest is just a social construct. I see no evidence of AI being
-able to replicate the sort of behavior just outlined anytime soon. I won't say ever, but at least not for a long time.
-
-There is a collection of quotes from Einstein on this topic:
+Here is a collection of quotes from Einstein on this topic:
 
 - Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world,
   stimulating progress, giving birth to evolution.
@@ -113,4 +109,3 @@ All of this contributes to my passion for embodied AI, i.e. AI with a physical m
 the natural world. Exploring this world, and interacting with it, is way more interesting than living in a virtual
 world. Life is all about sampling reality through experimentation. That requires perception, prediction, planning, and
 actuation. Solving those problems seems way more exciting than compressing slightly more text into an LLM.
-
