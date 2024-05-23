@@ -40,6 +40,11 @@ def about():
     return render_template('about.html')
 
 
+@app.route('/investments')
+def investments():
+    return render_template('investments.html', memes=memes)
+
+
 @app.route('/posts')
 def posts():
     posts = get_posts()
