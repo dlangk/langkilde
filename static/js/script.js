@@ -1,3 +1,23 @@
+// Hamburger menu related stuff
+function toggleMenu() {
+    var menu = document.getElementById("menu");
+    if (menu.style.display === "block") {
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "block";
+    }
+}
+
+document.addEventListener('click', function (event) {
+    var menu = document.getElementById("menu");
+    var hamburger = document.querySelector('.hamburger-menu');
+
+    // Check if the click was outside the menu and hamburger menu
+    if (!hamburger.contains(event.target) && !menu.contains(event.target) && menu.style.display === 'block') {
+        menu.style.display = 'none';
+    }
+});
+
 document.addEventListener("DOMContentLoaded", function () {
 
     // Initial state for the content area and path
