@@ -109,9 +109,9 @@ much stronger than the correlation between net worth and intelligence.
 Another way to put this is: Can you “manufacture luck” when building a business? I think you can, to a point. There are
 definitely powerful frameworks that can improve your odds.
 
-**A critical factor necessary to create an outlier outcome is to have** **a** **bold vision and overcome huge obstacles.
-** I’m inspired by The Crux, a book by Richard Rumelt, one of the world's leading authorities on strategy. The book
-suggests how to identify problems that are valuable to solve. His advice is simple:**** Focus your energy on the most
+A critical factor necessary to create an outlier outcome is to have a bold vision and overcome huge obstacles. I’m
+inspired by The Crux, a book by Richard Rumelt, one of the world's leading authorities on strategy. The book
+suggests how to identify problems that are valuable to solve. His advice is simple: Focus your energy on the most
 critical obstacle you can overcome to accelerate the world toward your vision. By definition, a critical obstacle is
 unsolved in a satisfactory way. If it already has a solution, it’s not a critical obstacle.
 
@@ -188,7 +188,7 @@ A system of 3 bodies interacting gravitationally is chaotic.
 
 > Chaos is when the present determines the future but the approximate present does not approximately determine the
 > future.
-> 
+>
 > -- Edward Norton Lorenz
 
 Since world market is chaotic, estimating how much value you can create is very hard. Most huge companies today feel
@@ -196,17 +196,17 @@ obvious in retrospect. “Of course Nvidia is a successful company!” But the r
 obvious for a very long time.
 
 **To make matters worse, creating value is not enough. You also need to capture value.** Inspired by
-the [Acquired podcast](https://www.acquired.fm),**** I’ve become fond of the **7 Powers** framework to understand a
+the [Acquired podcast](https://www.acquired.fm), I’ve become fond of the **"7 Powers" framework** to understand a
 company’s ability to capture value.
 
 ![](https://storage.googleapis.com/langkilde-se-images/80bf68b4-9880-46e8-926f-5f4c16e0be26.jpeg)
 
-**7 Powers** was created by Hamilton Helmer, describing possible sources of persistent competitive advantage. A lot of
+"7 Powers" was created by Hamilton Helmer, describing possible sources of persistent competitive advantage. A lot of
 it is focused on differentials against competitors. You want to establish a flywheel motion that compounds into a
 growing advantage. Once that flywheel is started, you must ensure you do not run out of money. Sooner or later, you will
 be unstoppable. That is, until the world changes. When the internet was invented, the power dynamics of markets changed
-very quickly. The transaction cost of exchanging goods virtually rapidly disrupted incumbents. No business is safe. The
-faster the rate of change in the world, the more important it is to evolve constantly.
+very quickly. The transaction cost of exchanging goods basically disappears, and that rapidly disrupted incumbents. No
+business is safe. The faster the rate of change in the world, the more important it is to evolve constantly.
 
 Businesses are technical, social, and financial experiments. They bundle a considerable number of sources of randomness.
 
