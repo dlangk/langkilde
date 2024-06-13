@@ -81,9 +81,13 @@ of the complex system that is our free market. Founders like to think their skil
 success but as with all mutation there is
 a [huge amount of randomness](https://langkilde.se/post/2024-03-27-untangling-luck-and-skill-in-business). Equilibrium
 emerges temporarily, but as
-subsystems change equilibrium moves. And the complex systems can operate far from their equilibrium for a long time. The
-universe does not lend itself to prediction to such a degree that we can engineer highly complex systems. The
-computational cost of modelling enough details to predict the future likely exceeds our available energy.
+subsystems change equilibrium moves. And complex systems can operate far from their equilibrium for a long time,
+making it hard to tell if the situation is stable or not.
+
+The universe does not lend itself to prediction to such a degree that we can engineer highly complex systems. We
+over-estimate our ability to predict and engineer the future, and under-estimate the amount of randomness. The
+alternative is that we are not in control, which is uncomfortable to most humans. The computational cost of modelling
+enough details to predict the future likely exceeds our available energy.
 
 **Anti-Fragility**
 
