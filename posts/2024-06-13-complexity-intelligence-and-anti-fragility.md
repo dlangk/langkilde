@@ -107,9 +107,9 @@ with different temperature, humidity and food sources, and a surprisingly large 
 
 How is all of this connected to intelligence? Well, I think intelligence is a form of anti-fragility that has
 emerged through evolution as a defence against complexity. The human body, with its brain and nervous system, has
-increased its biological market share since it is able to withstand shocks and get stronger from them. We are
-designed to zero-shot learn complicated things while simultaneously fitting observations and experiences into models
-for vast, complex systems. We are resilient, adaptive and fast-learning.
+increased its biological market share since it is able to withstand shocks and get stronger from them. We have
+evolved the ability to zero-shot learn complicated things while simultaneously fitting observations and experiences
+into models for vast, complex systems. We are resilient, adaptive and fast-learning.
 
 Our current form of machine learning is better equipped to solve complicated problems. Problems that require
 storage and compute. The last few hundred years have promoted humans with good storage and compute. But those days
