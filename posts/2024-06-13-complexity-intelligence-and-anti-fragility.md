@@ -115,12 +115,14 @@ Our current form of machine learning is better equipped to solve complicated pro
 storage and compute. The last few hundred years have promoted humans with good storage and compute. But those days
 are over now. We have invented tools that can amplify our storage and compute, or delegate it all together. What's
 left to humans now is handling complexity. Solving linear, deterministic tasks that require an analytical approach
-is rapidly becoming a commodity. This has been ongoing since the invention of the computer, and accelerates as
-storage and compute increases. At one point, the ability to do arithmetics was highly sought after. Today we all
-have a calculator in our pocket. Or our watch. All analytical work is going in that direction. Crunching numbers,
-matching patterns, extrapolating trends - all of that is a commodity. Fortunately, that is not at all a threat to
-humanity. We did not build a dominant position in our ecosystem on memorization. We built our position on the
-ability to navigate complexitty. Lean into that.
+is rapidly becoming a commodity. This commoditization of storage and compute has been ongoing since the invention of
+the computer, and is exponentially accelerating. At one point, the ability to do arithmetics was highly sought after.
+Royal courts had scholars that memorized large amounts of text. Harvard
+had [human computers](https://en.wikipedia.org/wiki/Harvard_Computers). Today we all have a
+calculator in our pocket. Or our watch. All analytical work is going in that direction. Crunching numbers, matching
+patterns, extrapolating trends - all of that is a commodity. Fortunately, that is not at all a threat to humanity. We
+did not build a dominant position in our ecosystem on memorization. We built our position on the ability to navigate
+complexity. Lean into that.
 
 What is my point? My point is that intelligence is not primarily about solving complicated problems. It's actually
 about solving complex problems. Decision-making under uncertainty in unpredictable environment with a lot of
