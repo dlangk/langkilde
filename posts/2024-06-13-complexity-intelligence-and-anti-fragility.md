@@ -9,6 +9,8 @@ elegance is a noble one. I love refactoring code to improve abstractions and rem
 and fuzzy feeling when simplifying a business process. The enemy of simplicity is complexity. I think understanding
 intelligence requires a deep understanding of the difference between complex and complicated.
 
+![](https://storage.googleapis.com/langkilde-se-images/3f46e427-a400-493e-ab63-d46f53446368.jpeg)
+
 **Complicated Systems**
 
 Complicated systems include machines like airplanes, computer programs, and other engineered systems. These
