@@ -124,6 +124,6 @@ patterns, extrapolating trends - all of that is becoming a commodity. If your jo
 you are about to be automated. Fortunately, that is not at all a threat to humanity. We did not build a dominant
 position in our ecosystem on memorization. We built our position on the ability to navigate complexity. Lean into that.
 
-What is my point? My point is that intelligence is not primarily about solving complicated problems. It's actually
+**What is my point?** My point is that intelligence is not primarily about solving complicated problems. It's actually
 about solving complex problems. Decision-making under uncertainty in unpredictable environment with a lot of
 dependencies. Humans remain the uncontested champions of handling such challenges. 
