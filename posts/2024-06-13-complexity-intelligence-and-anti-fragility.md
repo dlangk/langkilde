@@ -61,8 +61,7 @@ Complex systems have a number of characteristics that make them different from c
 These are obviously terrible properties of a system if you like control and simplicity. Yet, anyone who has managed
 a team or built a company or run a political campaign knows that society is complex, not complicated. Groups of
 humans form complex systems. To make matters worse, a group of humans is a complex system made up of complex systems.
-And each human is a complex systems made up of many complex systems. The body is a complex system with countless
-interconnected components, feedback loops and emerging abilities.
+And each human body is a complex system with countless interconnected components, feedback loops and emerging abilities.
 
 People drastically underestimate how complex our bodies and brains are. I've recently taken up studying
 neuroanatomy and the first thing you realize is that talking about the brain gives you the impression that we
@@ -117,7 +116,7 @@ storage and compute increases. At one point, the ability to do arithmetics was h
 have a calculator in our pocket. Or our watch. All analytical work is going in that direction. Crunching numbers,
 matching patterns, extrapolating trends - all of that is a commodity. Fortunately, that is not at all a threat to
 humanity. We did not build a dominant position in our ecosystem on memorization. We built our position on the
-ability to navigate complexity. Lean into that.
+ability to navigate complexitty. Lean into that.
 
 What is my point? My point is that intelligence is not primarily about solving complicated problems. It's actually
 about solving complex problems. Decision-making under uncertainty in unpredictable environment with a lot of
