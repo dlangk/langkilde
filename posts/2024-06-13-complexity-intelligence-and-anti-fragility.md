@@ -120,9 +120,9 @@ the computer, and is exponentially accelerating. At one point, the ability to do
 Royal courts had scholars that memorized large amounts of text. Harvard
 had [human computers](https://en.wikipedia.org/wiki/Harvard_Computers). Today we all have a
 calculator in our pocket. Or our watch. All analytical work is going in that direction. Crunching numbers, matching
-patterns, extrapolating trends - all of that is a commodity. Fortunately, that is not at all a threat to humanity. We
-did not build a dominant position in our ecosystem on memorization. We built our position on the ability to navigate
-complexity. Lean into that.
+patterns, extrapolating trends - all of that is becoming a commodity. If your job is to make decisions based on data,
+you are about to be automated. Fortunately, that is not at all a threat to humanity. We did not build a dominant
+position in our ecosystem on memorization. We built our position on the ability to navigate complexity. Lean into that.
 
 What is my point? My point is that intelligence is not primarily about solving complicated problems. It's actually
 about solving complex problems. Decision-making under uncertainty in unpredictable environment with a lot of
