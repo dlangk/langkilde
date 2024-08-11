@@ -14,7 +14,7 @@ my post [Untangling Skill and Luck](https://langkilde.se/post/2024-03-27-untangl
 
 To me, the question of intelligence's relevance is one of understanding the relationship between our intelligence and our ability to predict the future. I think it's safe to say being more intelligent makes you able to better predict the future. Your average human can navigate some pretty complex scenarios, making lots of impressive predictions about the movement of objects and their interaction. We can abstract away lots of low-level detail and create models that allow sophisticated predictions.
 
-![[https://storage.googleapis.com/langkilde-se-images/4900511f95bf87afa734a73538b62282.png]]
+[https://storage.googleapis.com/langkilde-se-images/4900511f95bf87afa734a73538b62282.png](https://storage.googleapis.com/langkilde-se-images/4900511f95bf87afa734a73538b62282.png)
 
 **What about the marginal cost of predicting the future?** I recently talked to someone about why the "exponential mindset" prevalent in Silicon Valley might be tricking people into thinking things like self-driving cars will be available sooner than they actually will. I think the counter-acting force holding self-driving cars back is that the world is extremely sparse. To paraphrase [a classic](https://en.wikipedia.org/wiki/Irresistible_force_paradox): What happens when an exponential improvement meets a combinatorial explosion?
 
