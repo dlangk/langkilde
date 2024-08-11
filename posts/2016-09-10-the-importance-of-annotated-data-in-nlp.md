@@ -3,15 +3,9 @@ pub_date: 2016-09-10
 slug: 2016-09-10-the-importance-of-annotated-data-in-nlp
 title: The Importance of Annotated Data in NLP
 ---
+I’ve worked on Natural Language Processing (NLP) applications as an engineer for a few years now. It’s the most fun I’ve ever had, but there sure are challenges. Most importantly people underestimate the difficulties involved in getting well-annotated data.
 
-I’ve worked on Natural Language Processing (NLP) applications as an engineer for a few years now. It’s the most fun I’ve
-ever had, but there sure are challenges. Most importantly people underestimate the difficulties involved in getting
-well-annotated data.
-
-Human communication, and therefore natural language, is subjective and ambiguous. To succeed in building NLP
-applications you need to deal with this by making it very clear what your goal is, and what data you need to get there.
-So let us forget about the algorithms for a moment. Here are some of the key data challenges I’ve come across in
-trying to execute successful NLP projects:
+Human communication, and therefore natural language, is subjective and ambiguous. To succeed in building NLP applications you need to deal with this by making it very clear what your goal is, and what data you need to get there. So let us forget about the algorithms for a moment. Here are some of the key data challenges I’ve come across in trying to execute successful NLP projects:
 
 # What do you want from me?
 
