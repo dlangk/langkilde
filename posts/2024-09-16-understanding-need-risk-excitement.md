@@ -13,16 +13,16 @@ eternal. We want love, respect, intimacy, comforts, riches and so forth. When a 
 usually presents an entirely new way to satisfy these needs. But if it doesn't unlock a way to satisfy a deep desire,
 it will never be successful.
 
-When customers express their need it is often tempting to dismiss them as wrong. "Oh they don't know what they need, we
-know better." That's a slippery slope. While there is a major difference between **_how customers express their need_**,
-and **_what their actual need is_**, **_there is always a legitimate need_**. Your job is to reflect deeply
-about the nature of their need, filtering through everything they are saying to find what they really, really care
-about.
+When customers express their need it is often tempting to dismiss them as wrong. _"Oh they don't know what they need, we
+know better."_ That's a slippery slope I've been down many times. While there is a major difference between **_how
+customers express their need_**, and **_what their actual need is_** - **_there is always a legitimate need!_**.
+Your job as an innovator and product developer is to reflect deeply about the nature of their need, filtering through
+everything they are saying to find what they really, really care about. It's about listening and thinking deeply.
+There is so much bias, noise and confusion getting in the way of understanding what people really want.
 
-You also need to learn to shut out everyone else's opinions. It's easy to get lost in the noise. Tons of people will
-share opinions: team members will focus on simplify their work, investors will push for what they think is most
-valuable, leaders will ask for what grows their powers, and so forth. Don't let all that noise get in the way of
-listening deeply to customers needs.
+You need to learn to shut out everyone else's opinions. Tons of people will share opinions: team members will focus on
+simplify their work, investors will push for what they think is most valuable, leaders will ask for what grows their
+powers, and so forth. Don't let all that noise get in the way of listening deeply to customers needs.
 
 Once we have established there is a true need, we have to decide how radical you can be when pursuing a solution.
 That's about risk preference. There are no universal truths when talking about risk, it's all about preference. Action
