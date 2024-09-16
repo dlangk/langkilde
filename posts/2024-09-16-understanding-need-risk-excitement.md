@@ -20,9 +20,9 @@ Your job as an innovator and product developer is to reflect deeply about the na
 everything they are saying to find what they really, really care about. It's about listening and thinking deeply.
 There is so much bias, noise and confusion getting in the way of understanding what people really want.
 
-You need to learn to shut out everyone else's opinions. Tons of people will share opinions: team members will focus on
-simplify their work, investors will push for what they think is most valuable, leaders will ask for what grows their
-powers, and so forth. Don't let all that noise get in the way of listening deeply to customers needs.
+You need to learn to shut out everyone else's opinions. Tons of people will share opinions: team members will try to
+simplify their work, investors will push for what they think increases market cap short-term, leaders will ask for what
+grows their powers, and so forth. Don't let all that noise get in the way of listening deeply to customers needs.
 
 Once we have established there is a true need, we have to decide how radical you can be when pursuing a solution.
 That's about risk preference. There are no universal truths when talking about risk, it's all about preference. Action
