@@ -24,10 +24,10 @@ You need to learn to shut out everyone else's opinions. Tons of people will shar
 simplify their work, investors will push for what they think increases market cap short-term, leaders will ask for what
 grows their powers, and so forth. Don't let all that noise get in the way of listening deeply to customers needs.
 
-Once we have established there is a true need, we have to decide how radical you can be when pursuing a solution.
-That's about risk preference. There are no universal truths when talking about risk, it's all about preference. Action
-always comes with two costs: time and capital. The more radical the solution, the more time and capital it usually
-takes, and the more likely you are to fail.
+**Once we have established the nature of the true need, you have to decide how radical you can be when
+innovating.** That's about risk preference. There are no universal truths when talking about risk, it's all about
+preference. Action always comes with two costs: time and capital. The more radical the solution, the more time and
+capital it usually takes, and the more likely you are to fail.
 
 There are times when companies will choose to spend 80%+ of their resources on incremental innovation. Perhaps their
 market position is exposed to a lot of competition, and they need to secure what they have. Others may have a very
@@ -40,7 +40,7 @@ regularly bet everything. I think it's important to think about success on a ris
 about "risk-adjusted emotions". If I make a bold bet and fail, I'm less sad than if a sure bet goes sour. Personally,
 I think most people would benefit from taking more risk, but that's just me.
 
-Don't go about things in the wrong order. Don't start with a cool technology, or a cool solution. Always start with
+**Don't go about things in the wrong order.** Don't start with a cool technology, or a cool solution. Always start with
 a deep, powerful need. I've started thinking in terms of virality: how likely is it that someone with this need will
 be so excited about your solution that they share it with their friends? It takes a lot for someone to recommend a
 product. You want to find a desire so powerful that once solved it makes people really, really excited.
