@@ -1,3 +1,5 @@
+version: "3.8"
+
 services:
   certbot:
     image: certbot/certbot
@@ -16,7 +18,7 @@ services:
         sleep 12h;
       done'
     networks:
-      - webnet
+      - shared_network
     depends_on:
       - nginx
 
@@ -27,26 +29,10 @@ services:
       - ./posts:/app/posts
     restart: always
     networks:
-      - webnet
+      - shared_network
     expose:
       - 8000
 
-  nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
-    container_name: nginx
-    restart: always
-    volumes:
-      - ./certs:/etc/letsencrypt:ro
-      - ./webroot:/webroot
-    ports:
-      - "443:443"
-      - "80:80"
-    depends_on:
-      - langkilde-se
-    networks:
-      - webnet
-
 networks:
-  webnet:
+  shared_network:
+    external: true
