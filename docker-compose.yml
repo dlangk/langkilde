@@ -4,6 +4,9 @@ services:
   certbot:
     image: certbot/certbot
     container_name: certbot
+    depends_on:
+      nginx:
+        condition: service_healthy
     volumes:
       - ./certs:/etc/letsencrypt
       - ./webroot:/webroot
@@ -19,8 +22,6 @@ services:
       done'
     networks:
       - shared_network
-    depends_on:
-      - nginx
 
   langkilde-se:
     build: .
