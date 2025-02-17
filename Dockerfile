@@ -15,7 +15,7 @@ COPY . /app
 EXPOSE 8000
 
 # Set environment variables
-ENV FLASK_ENV=production
+ENV FLASK_ENV=development
 
 # Run app.py when the container launches using Gunicorn
-CMD ["gunicorn", "-w 4", "-b", "0.0.0.0:8000", "wsgi:app"]
+CMD ["gunicorn", "-w 4", "-b", "0.0.0.0:8000", "--reload", "wsgi:app"]
