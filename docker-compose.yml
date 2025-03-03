@@ -1,28 +1,6 @@
 version: "3.8"
 
 services:
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    depends_on:
-      nginx:
-        condition: service_healthy
-    volumes:
-      - ./certs:/etc/letsencrypt
-      - ./webroot:/webroot
-      - ./certbot-logs:/var/log/letsencrypt
-    entrypoint: >
-      /bin/sh -c '
-      if [ ! -d "/etc/letsencrypt/live/langkilde.se" ]; then 
-        certbot certonly --webroot --webroot-path=/webroot -d langkilde.se -d www.langkilde.se -d daniel.langkilde.se -d www.daniel.langkilde.se;
-      fi;
-      while :; do 
-        certbot renew --quiet;
-        sleep 12h;
-      done'
-    networks:
-      - shared_network
-
   langkilde-se:
     build: .
     container_name: langkilde-se
