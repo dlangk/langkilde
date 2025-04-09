@@ -1,8 +1,0 @@
-Flask==3.0.3
-Markdown==3.6
-gunicorn==22.0.0
-requests~=2.31.0
-python-dotenv
-google-auth-oauthlib
-google-auth
-google-cloud-secret-manager
