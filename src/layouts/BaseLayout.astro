@@ -1,0 +1,248 @@
+---
+const {title} = Astro.props;
+---
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{title}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+
+    <style>
+        /*--------------------------------------------------------------
+          1. Root Variables & Theme Overrides
+        --------------------------------------------------------------*/
+        :root {
+            --bg-color: #f0efea;
+            --text-color: #050505;
+            --font-size-base: 20px;
+            --accent-color: rgba(255, 77, 0, 0.6);      /* Note: removed redundant "FF" at the end */
+            --text-fade: rgba(87, 87, 87, 0.5); /* Faded text for post meta in light theme */
+        }
+
+        .dark {
+            --bg-color: #121212;
+            --text-color: #f0efea;
+            --accent-color: rgba(253, 123, 58, 0.7);
+            --text-fade: rgba(240, 240, 240, 0.4); /* Faded text for post meta in dark theme */
+        }
+
+        /*--------------------------------------------------------------
+          2. Global Styles
+        --------------------------------------------------------------*/
+        :global(body) {
+            font-family: "Newsreader", serif;
+            font-size: var(--font-size-base);
+            font-weight: 400;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        :global(a) {
+            color: inherit;
+        }
+
+        /*--------------------------------------------------------------
+          3. Layout Container
+        --------------------------------------------------------------*/
+        .layout-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        /*--------------------------------------------------------------
+          4. Sidebar Styles
+        --------------------------------------------------------------*/
+        :global(#sidebar) {
+            width: 300px !important;
+            flex: 0 0 250px; /* Prevents shrinking or growing */
+            margin-right: 3rem;
+            padding: 2rem;
+            position: sticky;
+            top: 2rem;
+            font-size: 14px;
+        }
+
+        :global(#sidebar ul) {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        :global(#sidebar ul li) {
+            font-family: "Newsreader", serif;
+            font-size: 20px;
+            color: var(--text-fade);
+            font-weight: 400;
+            line-height: 32px;
+            text-align: left;
+        }
+
+        :global(#sidebar a.active) {
+            color: var(--accent-color);
+        }
+
+        /* Hide Sidebar on Narrow Screens */
+        @media (max-width: 1000px) {
+            :global(#sidebar) {
+                display: none;
+            }
+        }
+
+        /*--------------------------------------------------------------
+          5. Main Content Styles
+        --------------------------------------------------------------*/
+        :global(main) {
+            width: 100%;
+            flex-grow: 1;
+            max-width: 700px;       /* Blog post column set to 500px wide */
+            margin: 0;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+
+        /* Optional inner container for main content */
+        :global(.main-inner) {
+            margin: 0 auto;
+            max-width: 500px;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+
+        /*--------------------------------------------------------------
+          6. Post Meta & Title Styles
+        --------------------------------------------------------------*/
+        :global(.title) {
+            font-size: 30px;
+        }
+
+        :global(.post-meta) {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            color: var(--text-fade);
+        }
+
+        :global(.post-meta .pubdate) {
+            font-family: "Newsreader", serif;
+            font-size: var(--font-size-base);
+            font-weight: 400;
+            line-height: 32px;
+            text-align: left;
+        }
+
+        :global(.post-meta .separator) {
+            margin: 0 0.5rem;
+            font-family: "Newsreader", serif;
+            font-weight: 400;
+            line-height: 32px;
+            color: var(--text-color);
+        }
+
+        :global(.post-meta .permalink) {
+            font-family: "Newsreader", serif;
+            text-align: left;
+            color: inherit;
+        }
+
+        /*--------------------------------------------------------------
+          7. Post Content Images
+        --------------------------------------------------------------*/
+        :global(.post-content img) {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /*--------------------------------------------------------------
+          8. Toggle Switch Styles
+        --------------------------------------------------------------*/
+        .toggle-switch {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+        }
+
+        .toggle-input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            position: absolute;
+        }
+
+        .toggle-label {
+            display: block;
+            width: 48px;
+            height: 24px;
+            background-color: #ddd;
+            border-radius: 999px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            top: 2px;
+            background-color: #111;
+            border-radius: 50%;
+            transition: transform 0.2s;
+        }
+
+        .toggle-input:checked + .toggle-label {
+            background-color: #333;
+        }
+
+        .toggle-input:checked + .toggle-label .toggle-slider {
+            transform: translateX(24px);
+            background-color: #f9f9f9;
+        }
+
+        /*--------------------------------------------------------------
+          9. Intro & Post List (Index Page) Styling
+        --------------------------------------------------------------*/
+        :global(.intro) {
+            margin-bottom: 2rem;
+        }
+
+        :global(.post-list) {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+<div class="toggle-switch">
+    <input type="checkbox" id="darkModeToggle" class="toggle-input">
+    <label for="darkModeToggle" class="toggle-label">
+        <span class="toggle-slider"></span>
+    </label>
+</div>
+
+<div class="layout-container">
+    <slot/>
+</div>
+
+<script>
+    // Set the toggle's initial state from localStorage
+    const toggle = document.getElementById("darkModeToggle");
+    const htmlEl = document.documentElement;
+    if (localStorage.getItem("theme") === "dark") {
+        htmlEl.classList.add("dark");
+        toggle.checked = true;
+    }
+    toggle.addEventListener("change", () => {
+        htmlEl.classList.toggle("dark");
+        localStorage.setItem("theme", htmlEl.classList.contains("dark") ? "dark" : "light");
+    });
+</script>
+</body>
+</html>

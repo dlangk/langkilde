@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const modules = import.meta.glob('../data/memes.md', {as: 'raw'});
+const raw = await modules['../data/memes.md']();
+const lines = raw
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line && !line.startsWith('---')); // remove empty lines + frontmatter
+---
+
+<BaseLayout title="Memes">
+    <style>
+        :global(main.index-main) {
+            max-width: 750px;
+            box-sizing: border-box;
+            padding: 4rem 1rem;
+            margin: 0;
+        }
+
+        :global(main.index-main img) {
+            max-width: 100%;
+            height: auto;
+        }
+
+        :global(.bottom-spacer) {
+            height: 70vh;
+        }
+    </style>
+
+    <nav id="sidebar">
+        <a href="/">← Home</a>
+    </nav>
+
+    <main class="index-main main-inner">
+        <h1>Memes</h1>
+        <p>
+            A meme is an idea, behavior, or style that spreads by means of imitation from person to person within a
+            culture and often carries symbolic meaning representing a particular phenomenon or theme. A meme acts as a
+            unit for carrying cultural ideas, symbols, or practices that can be transmitted from one mind to another
+            through writing, speech, gestures, rituals, or other imitable phenomena with a mimicked theme. Memes on my
+            list are copied from everywhere, as is the definition of a meme.
+        </p>
+        <br>
+        <ol style="padding-left: 1rem;">
+            {lines.map(line => (
+                    <li style="margin-bottom: 1rem;">{line}</li>
+            ))}
+        </ol>
+    </main>
+</BaseLayout>

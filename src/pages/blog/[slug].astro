@@ -1,0 +1,100 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, getEntryBySlug } from "astro:content";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+    return posts.map((post) => ({ params: { slug: post.slug } }));
+}
+
+const { slug } = Astro.params;
+const post = await getEntryBySlug("blog", slug);
+const { Content, headings } = await post.render();
+---
+
+<BaseLayout title={post.data.title}>
+    <style>
+        :global(.bottom-spacer) {
+            height: 70vh;
+        }
+        #sidebar ul#toc li {
+            margin-bottom: 12px; /* Adjust spacing as needed */
+        }
+    </style>
+
+    <nav id="sidebar">
+        <a href="/">← Home</a>
+        <h3>Sections</h3>
+        <ul id="toc">
+            {headings.map(heading => (
+                    <li><a href={`#${heading.slug}`}>{heading.text}</a></li>
+            ))}
+        </ul>
+    </nav>
+
+    <main>
+        <article>
+            <h1 class="title">{post.data.title}</h1>
+            <div class="post-meta">
+                <small class="pubdate">By Daniel Langkilde</small>
+                <span class="separator">|</span>
+                <small class="pubdate">{post.data.pubDate}</small>
+                <span class="separator">|</span>
+                <a href={Astro.url.pathname} class="permalink">Permalink</a>
+            </div>
+            <div class="post-content">
+                <Content />
+                <div class="bottom-spacer"></div>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sidebarLinks = document.querySelectorAll("#toc a[href^='#']");
+            const headings = Array.from(sidebarLinks).map(link => {
+                const id = link.getAttribute('href').substring(1);
+                const element = document.getElementById(id);
+                return { id, element };
+            }).filter(item => item.element);
+
+            // Smooth scrolling for sidebar links
+            sidebarLinks.forEach(link => {
+                link.addEventListener("click", e => {
+                    const targetId = link.getAttribute("href").substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (!targetElement) return;
+                    e.preventDefault();
+                    const offset = 25;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: targetPosition, behavior: "smooth" });
+                    history.pushState(null, "", `#${targetId}`);
+                });
+            });
+
+            // Robust active heading highlighting
+            const updateActiveHeading = () => {
+                const offset = 40; // better offset for visual comfort
+                let activeId = headings[0].id;
+
+                for (const { id, element } of headings) {
+                    if (element.getBoundingClientRect().top <= offset) {
+                        activeId = id;
+                    } else {
+                        break;  // exit early for efficiency
+                    }
+                }
+
+                sidebarLinks.forEach(link => {
+                    link.classList.toggle("active", link.getAttribute("href") === `#${activeId}`);
+                });
+            };
+
+            window.addEventListener("scroll", () => {
+                window.requestAnimationFrame(updateActiveHeading);
+            });
+
+            updateActiveHeading(); // ensure correct highlight on page load
+        });
+    </script>
+</BaseLayout>

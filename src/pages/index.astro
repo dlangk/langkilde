@@ -1,0 +1,129 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+posts.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
+---
+
+<BaseLayout title="Home">
+  <style>
+    :global(main.index-main) {
+      max-width: 750px;
+      box-sizing: border-box;
+      padding: 2.5rem 1rem;
+      margin: 0;
+    }
+    :global(main.index-main img) {
+      max-width: 100%;
+      height: auto;
+    }
+
+    :global(.intro-image) {
+      margin-top: 40px;  /* Adjust the value as needed */
+    }
+
+    :global(.post-list ul li) {
+      margin-bottom: 5px; /* Adjust as desired */
+      margin-left: -25px;
+    }
+
+    :global(.bottom-spacer) {
+      height: 90vh;
+    }
+
+  </style>
+
+  <nav id="sidebar" class="landing-sidebar">
+    <h1>Daniel Langkilde</h1>
+    <ul id="toc">
+      <li><a href="/about">About</a></li>
+      <li><a href="/investments">Investments</a></li>
+      <li><a href="/memes">Memes</a></li>
+    </ul>
+  </nav>
+
+  <main class="index-main main-inner">
+    <!-- Post List Section -->
+    <section class="post-list">
+      <h2>Writings</h2>
+      <ul>
+        {posts.map(post => (
+            <li>
+              <a href={`/blog/${post.slug}`}>
+                {post.data.title} <small>({post.data.pubDate})</small>
+              </a>
+            </li>
+        ))}
+      </ul>
+    </section>
+    <div class="bottom-spacer"></div>
+  </main>
+
+  <!-- TOC & Smooth Scrolling Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toc = document.getElementById("toc");
+      const headings = document.querySelectorAll("main.index-main h2");
+
+      // Build the TOC
+      headings.forEach(heading => {
+        if (!heading.id) {
+          heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, "-");
+        }
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = "#" + heading.id;
+        a.textContent = heading.textContent;
+        li.appendChild(a);
+        toc.appendChild(li);
+      });
+
+      const sidebarLinks = document.querySelectorAll("#toc a");
+
+      // Smooth scrolling for TOC links
+      sidebarLinks.forEach(link => {
+        link.addEventListener("click", e => {
+          const href = link.getAttribute("href");
+          if (!href.startsWith("#")) return;
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const target = document.getElementById(targetId);
+          if (target) {
+            const offset = 25;
+            const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: pos, behavior: "smooth" });
+            history.pushState(null, "", `#${targetId}`);
+          }
+        });
+      });
+
+      // Active highlighting based on scroll position
+      const updateActiveHeading = () => {
+        const offset = 25;
+        let closestHeading = null;
+        let minDistance = Infinity;
+        headings.forEach(heading => {
+          const distance = Math.abs(heading.getBoundingClientRect().top - offset);
+          if (distance < minDistance) {
+            minDistance = distance;
+            closestHeading = heading;
+          }
+        });
+        if (closestHeading) {
+          const id = closestHeading.id;
+          sidebarLinks.forEach(link => {
+            link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+          });
+        }
+      };
+
+      window.addEventListener("scroll", () => {
+        window.requestAnimationFrame(updateActiveHeading);
+      });
+
+      // Set the initial active heading on page load.
+      updateActiveHeading();
+    });
+  </script>
+</BaseLayout>
