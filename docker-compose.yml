@@ -1,0 +1,13 @@
+services:
+  langkilde-se:
+    build: .
+    container_name: langkilde-se
+    restart: always
+    networks:
+      - shared_network
+    ports:
+      - "8000:8080"  # maps container port 8080 to host port 8000
+
+networks:
+  shared_network:
+    external: true
