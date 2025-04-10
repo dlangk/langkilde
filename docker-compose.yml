@@ -1,7 +1,9 @@
 services:
-  langkilde-se:
+  astro:
     build: .
-    container_name: langkilde-se
+    container_name: astro
+    volumes:
+      - ./build:/app/dist  # Share Astro build output
     restart: always
     networks:
       - shared_network
