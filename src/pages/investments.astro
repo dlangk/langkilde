@@ -3,23 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Investments">
-    <style>
-        :global(main.index-main) {
-            max-width: 750px;
-            box-sizing: border-box;
-            padding: 4rem 1rem;
-            margin: 0;
-        }
-
-        :global(main.index-main img) {
-            max-width: 100%;
-            height: auto;
-        }
-
-        :global(.bottom-spacer) {
-            height: 70vh;
-        }
-    </style>
 
     <nav id="sidebar">
         <a href="/">← Home</a>
@@ -27,17 +10,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <ul id="toc"></ul>
     </nav>
 
-    <main class="index-main main-inner">
+    <main>
         <section class="intro">
             <h1>Founders are exceptional people.</h1>
-            <p>They are prepared to bet years of their life to make something they are passionate about come alive. I
-                love learning from Founders. Sometimes, when I meet someone really special, I invest. I invest if I
+            <p>
+                They are prepared to bet years of their life to make something they are passionate about come alive.
+                I love learning from Founders. Sometimes, when I meet someone really special, I invest. I invest if I
                 think I can add value and make money.
             </p>
         </section>
 
         <section class="investment">
-            <h2>Lovable</h2>
+            <h2 id="lovable">Lovable</h2>
             <p>
                 I invested in Lovable because Anton Osika is the right kind of crazy. He is bold and pushes for a
                 more aggressive, ambitious mindset in Europe. Anton and co-founder Fabian have what it takes to
@@ -47,7 +31,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </section>
 
         <section class="investment">
-            <h2>Nyctea</h2>
+            <h2 id="nyctea">Nyctea</h2>
             <p>
                 I invested in Nyctea because I've been consistently impressed by founder and CEO Dr.
                 Gustav Ferrand-Drake. Nyctea is on a mission to create affordable medicine by reducing the cost of
@@ -58,7 +42,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </section>
 
         <section class="investment">
-            <h2>IntuiCell</h2>
+            <h2 id="intuicell">IntuiCell</h2>
             <p>
                 I invested in IntuiCell because I was intrigued by its mission to reinvent the way machine learning
                 works. It's a bold and crazy ambition. Dr. Henrik Jörntell has spent his career understanding the
@@ -69,7 +53,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </section>
 
         <section class="investment">
-            <h2>Motorica</h2>
+            <h2 id="motorica">Motorica</h2>
             <p>
                 I invested in Motorica because I think the best way to build value using machine learning is to
                 create a unique dataset. Motorica's vision of "motion without capture" is a great example of this.
@@ -79,7 +63,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </section>
 
         <section class="investment">
-            <h2>Normain</h2>
+            <h2 id="normain">Normain</h2>
             <p>
                 I invested in Normain because I'm very impressed by Sara and Dennis Landfors. They have the
                 experience, determination, and judgement to build a great company. AI is perfect for offloading
@@ -88,73 +72,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 <a href="https://normain.com/" target="_blank">Link</a>
             </p>
         </section>
-        <div class="bottom-spacer"></div>
     </main>
 
-    <!-- TOC & Smooth Scrolling -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const toc = document.getElementById("toc");
-            const headings = document.querySelectorAll("main.index-main h2");
+            const headings = document.querySelectorAll("main.index-main h2[id]");
 
-            // Build the TOC
-            headings.forEach(heading => {
-                if (!heading.id) {
-                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, "-");
-                }
+            headings.forEach((heading) => {
                 const li = document.createElement("li");
                 const a = document.createElement("a");
-                a.href = "#" + heading.id;
+                a.href = `#${heading.id}`;
                 a.textContent = heading.textContent;
                 li.appendChild(a);
                 toc.appendChild(li);
             });
-
-            const sidebarLinks = document.querySelectorAll("#toc a");
-
-            // Smooth scrolling for TOC links
-            sidebarLinks.forEach(link => {
-                link.addEventListener("click", e => {
-                    const href = link.getAttribute("href");
-                    if (!href.startsWith("#")) return;
-                    e.preventDefault();
-                    const targetId = href.substring(1);
-                    const target = document.getElementById(targetId);
-                    if (target) {
-                        const offset = 25;
-                        const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                        window.scrollTo({top: pos, behavior: "smooth"});
-                        history.pushState(null, "", `#${targetId}`);
-                    }
-                });
-            });
-
-            // Active highlighting based on scroll position
-            const updateActiveHeading = () => {
-                const offset = 25;
-                let closestHeading = null;
-                let minDistance = Infinity;
-                headings.forEach(heading => {
-                    const distance = Math.abs(heading.getBoundingClientRect().top - offset);
-                    if (distance < minDistance) {
-                        minDistance = distance;
-                        closestHeading = heading;
-                    }
-                });
-                if (closestHeading) {
-                    const id = closestHeading.id;
-                    sidebarLinks.forEach(link => {
-                        link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
-                    });
-                }
-            };
-
-            window.addEventListener("scroll", () => {
-                window.requestAnimationFrame(updateActiveHeading);
-            });
-
-            // Set the initial active heading on page load.
-            updateActiveHeading();
         });
     </script>
 </BaseLayout>

@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.6.1"
+    "@astrojs/rss": "^4.0.11",
+    "astro": "^5.7.5",
+    "astro-google-analytics": "^1.0.3"
   }
 }

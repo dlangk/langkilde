@@ -8,14 +8,15 @@ Literature will tell you there are two types of products: new solutions to new p
 problems. The former is usually referred to as "disruptive innovation", while the latter "incremental innovation".
 
 ### An understanding of needs
+
 Both, however, must be based on a deep understanding of needs. At some abstract level, I think human needs are eternal.
 We want love, respect, intimacy, comforts, riches and so forth. When a new innovation comes around, it usually presents
 an entirely new way to satisfy these needs. But if it doesn't unlock a way to satisfy a deep desire, it will never be
 successful.
 
 When customers express their need it is often tempting to dismiss them as wrong. _"Oh they don't know what they need, we
-know better."_ That's a slippery slope I've been down many times. While there is a major difference between *
-*_how customers express their need_**, and **_what their actual need is_** - **_there is always a legitimate need!_**.
+know better."_ That's a slippery slope I've been down many times. While there is a major difference between _how
+customers express their need_, and _what their actual need is_ - **_there is always a legitimate need!_**.
 Your job as an innovator and product developer is to reflect deeply about the nature of their need, filtering through
 everything they are saying to find what they really, really care about. It's about listening and thinking deeply. There
 is so much bias, noise and confusion getting in the way of understanding what people really want.
@@ -25,6 +26,7 @@ simplify their work, investors will push for what they think increases market ca
 grows their powers, and so forth. Don't let all that noise get in the way of listening deeply to customers needs.
 
 ### Risk preference
+
 **Once we have established the nature of the true need, you have to decide how radical you can be when innovating.**
 That's about risk preference. There are no universal truths when talking about risk, it's all about preference. Action
 always comes with two costs: time and capital. The more radical the solution, the more time and capital it usually
@@ -41,7 +43,9 @@ are bored easily and regularly bet everything. I think it's important to think a
 I've started to think about "risk-adjusted emotions". If I make a bold bet and fail, I'm less sad than if a sure bet
 goes sour. Personally, I think most people would benefit from taking more risk, but that's just me.
 
-**Don't go about things in the wrong order.** Don't start with a cool technology, or a cool solution. Always start with
-a deep, powerful need. I've started thinking in terms of virality: how likely is it that someone with this need will be
-so excited about your solution that they share it with their friends? It takes a lot for someone to recommend a product.
-You want to find a desire so powerful that once solved it makes people really, really excited.
+### Don't go about things in the wrong order
+
+Don't start with a cool technology, or a cool solution. Always start with a deep, powerful need. I've started thinking
+in terms of virality: how likely is it that someone with this need will be so excited about your solution that they
+share it with their friends? It takes a lot for someone to recommend a product. You want to find a desire so powerful
+that once solved it makes people really, really excited.

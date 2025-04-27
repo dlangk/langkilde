@@ -3,21 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="About">
-    <style>
-        :global(main.index-main) {
-            max-width: 750px;
-            box-sizing: border-box;
-            padding: 0 1rem;
-            margin: 0;
-        }
-        :global(main.index-main img) {
-            max-width: 100%;
-            height: auto;
-        }
-        :global(.bottom-spacer) {
-            height: 70vh;
-        }
-    </style>
 
     <nav id="sidebar">
         <a href="/">← Home</a>
@@ -25,17 +10,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <ul id="toc"></ul>
     </nav>
 
-    <main class="index-main main-inner">
+    <main>
         <section class="intro">
             <br>
             <img src="https://storage.googleapis.com/langkilde-se-images/langkilde.jpg" alt="Daniel Langkilde" class="intro-image">
-            <h1>Daniel Langkilde</h1>
+            <h2 id="daniel-langkilde">Daniel Langkilde</h2>
             <p>
                 In my heart, I’m a programmer. By training, I’m a mathematician. And I’m a manager of a software company by
                 profession. My most significant competitive advantage is that I am relentlessly hardworking, addicted to
                 learning, and profoundly optimistic.
             </p>
-            <h2>Professional Bio</h2>
+            <h2 id="professional-bio">Professional Bio</h2>
             <p>
                 Daniel Langkilde is an experienced entrepreneur and machine learning expert. He started his career as
                 Team Lead for Collection & Analysis at <a href="https://www.recordedfuture.com/" target="_blank">Recorded Future</a>.
@@ -45,13 +30,13 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 President of the Student Union and a Member of the Board of Directors.
                 He has been a Visiting Scholar at both MIT and UC Berkeley.
             </p>
-            <h2>Personal Bio</h2>
+            <h2 id="personal-bio">Personal Bio</h2>
             <p>
                 I share my life with Louise and our son Isak. We live in <a href="https://visitsweden.com/where-to-go/southern-sweden/goteborg/things-do-gothenburg/" target="_blank">Göteborg, Sweden</a>.
                 I’ve previously lived in San Francisco, Shanghai, and Boston. I’m fluent in Swedish and English and speak basic Mandarin.
                 I enjoy cooking, photography, running, and coding.
             </p>
-            <h2>Links</h2>
+            <h2 id="links">Links</h2>
             <ul>
                 <li><a href="https://linkedin.com/in/daniellangkilde" target="_blank">LinkedIn - daniellangkilde</a></li>
                 <li><a href="https://github.com/dlangk" target="_blank">GitHub - dlangk</a></li>
@@ -60,70 +45,4 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="bottom-spacer"></div>
     </main>
 
-    <!-- TOC & Smooth Scrolling -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const toc = document.getElementById("toc");
-            const headings = document.querySelectorAll("main.index-main h2");
-
-            // Build the TOC
-            headings.forEach(heading => {
-                if (!heading.id) {
-                    heading.id = heading.textContent.trim().toLowerCase().replace(/\s+/g, "-");
-                }
-                const li = document.createElement("li");
-                const a = document.createElement("a");
-                a.href = "#" + heading.id;
-                a.textContent = heading.textContent;
-                li.appendChild(a);
-                toc.appendChild(li);
-            });
-
-            const sidebarLinks = document.querySelectorAll("#toc a");
-
-            // Smooth scrolling for TOC links
-            sidebarLinks.forEach(link => {
-                link.addEventListener("click", e => {
-                    const href = link.getAttribute("href");
-                    if (!href.startsWith("#")) return;
-                    e.preventDefault();
-                    const targetId = href.substring(1);
-                    const target = document.getElementById(targetId);
-                    if (target) {
-                        const offset = 25;
-                        const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                        window.scrollTo({ top: pos, behavior: "smooth" });
-                        history.pushState(null, "", `#${targetId}`);
-                    }
-                });
-            });
-
-            // Active highlighting based on scroll position
-            const updateActiveHeading = () => {
-                const offset = 25;
-                let closestHeading = null;
-                let minDistance = Infinity;
-                headings.forEach(heading => {
-                    const distance = Math.abs(heading.getBoundingClientRect().top - offset);
-                    if (distance < minDistance) {
-                        minDistance = distance;
-                        closestHeading = heading;
-                    }
-                });
-                if (closestHeading) {
-                    const id = closestHeading.id;
-                    sidebarLinks.forEach(link => {
-                        link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
-                    });
-                }
-            };
-
-            window.addEventListener("scroll", () => {
-                window.requestAnimationFrame(updateActiveHeading);
-            });
-
-            // Set the initial active heading on page load.
-            updateActiveHeading();
-        });
-    </script>
 </BaseLayout>
