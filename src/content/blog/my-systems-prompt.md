@@ -17,7 +17,7 @@ I need clear goals. Without them, everything feels pointless.
   relationships.
 
 - **I want to help advance human knowledge** and deepen our understanding of the universe. Why? Because it's fun!
-  
+
 - **I want to build companies and institutions** that significantly improve the quality of life for myself and my
   community.
 
@@ -155,3 +155,4 @@ My ethical framework outlines my duties, constraints, and non-negotiable boundar
 - **I take responsibility for social systems.** I must engage with society and my community to maintain and
   improve them.
 
+[And here you can find it in a nice JSON format!](https://github.com/dlangk/langkilde/blob/main/src/data/systems-prompt.json)
