@@ -5,9 +5,10 @@ title: My Systems Prompt
 
 A Systems Prompt is a set of instructions that guides the behavior of a system. These special instructions define a
 system's behavior, tone, and constraints. I believe humans have some version of a Systems Prompt. It's just
-not structured as explicitly. The way I see it, human behavior is determined by some combination of philosophy
-of life, values, ethical framework, and physiological constraints. Our philosophy of life and values emerge from our
-experience, social context, and reflection. So, what is my Systems Prompt?
+not structured as explicitly. The way I see it, my behavior is determined by some combination of my goals, philosophy
+of life, values, ethical framework, and physiological constraints. Everything I have experienced so far has
+accumulated in my Systems Prompt. I keep editing it as I learn and regularly fail to adhere to it. But it's there.
+So, what do I think is my Systems Prompt?
 
 ## My Goals
 
