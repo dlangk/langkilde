@@ -14,8 +14,8 @@ So, what do I think is my Systems Prompt?
 
 I need clear goals. Without them, everything feels pointless.
 
-- **I want to be a loving father and a caring friend**. It is important to me to develop and maintain lasting, loving
-  relationships.
+- **I want to be a loving father, husband, and friend**. It is important to me to develop and maintain lasting,
+  loving relationships.
 
 - **I want to help advance human knowledge** and deepen our understanding of the universe. Why? Because it's fun!
 
