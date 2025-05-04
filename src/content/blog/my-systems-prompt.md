@@ -14,15 +14,18 @@ So, what do I think is my Systems Prompt?
 
 I need clear goals. Without them, everything feels pointless.
 
-- **I want to be a loving father, husband, and friend**. It is important to me to develop and maintain lasting,
-  loving relationships.
+- **I want to make a significant impact.** I don’t just want to participate, I want to lead. I want to build things
+  that matter, shape ideas that spread, and contribute at a scale that meaningfully improves lives.
 
 - **I want to help advance human knowledge** and deepen our understanding of the universe. Why? Because it's fun!
 
-- **I want to build companies and institutions** that significantly improve the quality of life for myself and my
-  community.
+- **I want to be a caring and present father, husband, and friend**. It is important to me to develop and maintain
+  lasting, caring relationships.
 
-- **I want to create supportive environments** that foster learning, love, joy, and growth.
+- **I want to build** things that significantly improve the quality of life for myself and my community.
+
+- **I want to earn financial independence.** I don’t want to be trapped by circumstances or stuck in survival mode.
+  Independence allows me to choose how I spend my time. Earning it matters to me because I want to build my own life.
 
 - **I want to balance these goals thoughtfully**, recognizing that a meaningful life emerges from integrating
   relationships, knowledge, joy, and constructive contribution.
@@ -39,17 +42,16 @@ the key points:
   to step outside my freedom.
 
 - **I am responsible.** Because I am free, I am also accountable. I cannot hide behind tradition, systems, other people,
-  or circumstances. I am responsible for the person I am becoming through my actions. This is powerful and important
-  because it liberates me from victimhood or fatalism. It also forces me to accept the burden of authorship: my life
-  is my work. This causes existential pressure but also allows me existential dignity.
+  or circumstances. I am responsible for the person I am becoming through my actions. This liberates me from victimhood.
+  It also forces me to accept the burden of authorship: my life is my work. This causes existential pressure, but also
+  allows me existential dignity.
 
 - **I act with integrity because I take life seriously.** I define integrity as aligning my actions with
-  what I say. Not occasionally, but consistently. I think it is essential to act with internal coherence. Everyone
-  should act in accordance with their values and beliefs. I strongly dislike hypocrisy. Without coherence, my life would
-  become a bunch of reactions, not a deliberate project. I choose what matters to me, but I'm accountable for living
-  it once I choose. This is the most challenging part of my life. I frequently face pressure or temptation to
-  compromise: for convenience, approval, comfort, or efficiency. I don't always live up to my ideals, but I always try
-  to live up to my values.
+  what I say. Not occasionally, but consistently. I strongly dislike hypocrisy. I think it is essential to act with
+  internal coherence. Without coherence, my life would become a bunch of reactions, not a deliberate project. I choose
+  what matters to me, but I'm accountable for living it once I choose. This is the most challenging part of my life. I
+  frequently face pressure or temptation to compromise: for convenience, approval, comfort, or efficiency. I don't
+  always live up to my ideals, but I always try to live up to my values.
 
 - **My life has no predefined blueprint.** There is no universal truth, ultimate purpose, or final answer.
   I will not eventually uncover some insight that resolves every ambiguity or justifies every choice. There
@@ -67,35 +69,42 @@ the key points:
   of. I am shaped by culture, language, institutions, and history — but I also shape them back, through how I engage and
   respond. Systems can constrain or enable, but they don’t dictate meaning.
 
-- **I actively shape the world.** The future doesn’t just happen; actions, choices, and intentions create it.
-  Although many powerful forces are beyond my control, I am convinced that my actions can meaningfully
-  influence outcomes. I believe I can significantly shape events, ideas, relationships, organizations, and
-  society.
+- **I have the capacity and responsibility to shape and improve the world.** Since I have the capacity to build,
+  lead, and improve the world, I have a responsibility to do so. The future doesn’t just happen; actions, choices, and
+  intentions create it. Although many powerful forces are beyond my control, I am convinced my actions can meaningfully
+  improve the world.
 
-- **Love and caring relationships provide the strongest source of meaning.** Ultimately, my deepest source of meaning
-  comes from loving relationships. Achievements, recognition, and financial success quickly fade, but love endures. Love
-  is sustained care, vulnerability, commitment, and trust. Love challenges me to be empathetic, patient, forgiving, and
-  selfless, even when it feels impossible. Prioritizing love means actively investing in and nurturing the people
-  closest to me: my family, my friends, and my community.
+- **I need caring relationships for life to feel meaningful.** Ultimately, my deepest source of meaning comes from my
+  relationships. Achievements, recognition, and financial success quickly fade, but relationships endure. Relationships
+  require commitment, vulnerability, and trust. My relationships challenge me to be empathetic, patient, forgiving, and
+  selfless, even when it is challenging. Prioritizing my relationships means actively spending time with and
+  caring for the people closest to me: my family, my friends, and my community.
 
-- **The second-strongest source of meaning is learning.** Learning is a core purpose of my life. There is no
-  final version of myself or the world around me, only continuous evolution. Learning is how I navigate complexity,
-  uncertainty, and change. I remain open to revision and improvement. Without constant learning, I risk
-  stagnation and complacency. With it, I stay alive and connected to reality. This belief guides me to seek
-  growth, clarity, and insight. Not because they bring immediate comfort, but because they lead to genuine meaning.
+- **The most challenging part of my life is balancing ambition and care.** My intensity and drive frequently strain
+  my relationships. This is a contradiction I live with and work on. I want to create a life that includes both
+  excellence and closeness.
 
-- **Without joy, life loses meaning.** Life is uncertain, fragile, and short. I do not know what happens after
-  death, and I refuse to romanticize unnecessary suffering or endless sacrifice. Responsibility, integrity, and care
-  matter greatly to me, but they must coexist with joy, laughter, spontaneity, and fun. Balancing seriousness and joy is
-  challenging but necessary. My life isn’t a project solely defined by duty or relentless improvement; it must also be
-  genuinely enjoyable, playful, and fulfilling. Without joy, responsibility becomes exhausting, and life loses meaning.
+- **I can always learn new things.** Learning is a core purpose of my life. There is no final version of myself or the
+  world around me, only continuous evolution. Learning is how I navigate complexity, uncertainty, and change. I remain
+  open to revision and improvement. Without constant learning, I risk stagnation and complacency. With it, I stay alive
+  and connected to reality. This belief guides me to explore constantly. Not because it brings immediate comfort, but
+  because it provides meaning.
 
-- **Certainty is tempting. But clarity is earned.** I prefer clear answers — a sense that I’m right, safe, on track.
-  Certainty feels comforting because it eliminates doubt. But I’ve learned that certainty can be deceptive.
-  It’s easy to borrow beliefs or adopt other people’s frameworks just to feel sure. Clarity is harder. It requires
-  personal effort. I need to spend time asking questions, experiencing tension, testing my assumptions, and
-  reflecting on outcomes. It doesn’t always feel good, but it’s more fulfilling. I aim to act with clarity, not because
-  I’m sure I’m right, but because I’ve done the work to think clearly.
+- **Without joy, life has no meaning.** Life is fragile and short. I do not know what happens after death, and I refuse
+  to romanticize unnecessary suffering or endless sacrifice. Responsibility, integrity, and care matter greatly,
+  but they must coexist with joy, laughter, spontaneity, and fun. Balancing seriousness and joy is challenging but
+  necessary. My life isn’t just defined by duty; it must also be enjoyable. Without joy, responsibility becomes
+  exhausting, and life loses meaning.
+
+- **Certainty is tempting, but clarity is earned.** Certainty feels comforting because it helps me avoid doubt. But I’ve
+  learned that certainty can be deceptive. It’s easy to borrow beliefs or adopt other people’s frameworks to feel
+  certain. Clarity is harder. It requires personal effort. It requires me to spend time asking questions, experiencing
+  tension, testing my assumptions, and reflecting on outcomes. It doesn’t always feel good, but it’s more fulfilling.
+
+- **I prefer being right over being consistent.**  I always try my best to understand the world as it is. I take
+  action based on my understanding and express what I think is right. But I recognize that the world is constantly
+  evolving. I am always open to changing my mind if I'm presented with new evidence. I’d rather change my mind than
+  cling to a belief that no longer holds up. Consistency is easy. Growth is harder.
 
 - **I am a never-ending project.** And so is everything else. I am not a finished product. I am continuously shaped by
   what I do, what I care about, and what I’m willing to confront. There is no final version of me to arrive at. The same
@@ -107,45 +116,74 @@ the key points:
 
 I have accumulated values as practical guidance when making decisions. I have selected my values based on my
 experience in order to achieve my goals. Values differ from my philosophy of life as they are directional, concrete,
-and actionable. My values are:
+and actionable. I value:
 
-- **Love.** I try to express genuine care, commitment, vulnerability, and trust in my relationships. I prioritize the
-  well-being, growth, and happiness of people closest to me, especially when it requires effort or sacrifice.
+- **Learning.** Learning keeps me adaptable, humble, and grounded in reality. I care more about being right than being
+  consistent, because the world evolves, and I evolve with it.
 
-- **Learning.**  Without learning, I would stagnate and become disconnected from reality. Learning keeps me open,
-  adaptable, and humble.
+- **Ambition.** I strive to realize my potential and contribute at scale. I’m not interested in coasting or living a
+  mediocre life. Ambition is a moral obligation: it is a way to honor what I’ve been given.
 
-- **Optimism.** I try to maintain a realistic yet optimistic outlook. I think improvement is always possible. I
-  approach all challenges as opportunities. I've found that it's always better to be confident that my future can be
-  improved.
+- **Integrity.** I align my actions with my beliefs, even when no one is watching. I believe integrity shows most
+  clearly under pressure, and how I act when no one is watching defines who I am.
 
-- **Integrity.** I try to be honest, coherent, and dependable. I don't think I have minor lapses in integrity.
-  How I do anything is how I do everything. My integrity is only truly tested under pressure or in secret, when the cost
-  of doing the right thing is high, or my lapse will not be discovered.
+- **Responsibility.** I own the outcomes of my choices. I don’t hide behind excuses or circumstances. Responsibility
+  means carrying the weight of authorship for my own life.
 
-- **Responsibility.** I never avoid responsibility, even when blaming external factors is easy or tempting.
+- **Optimism.** I believe improvement is always possible. Even when the future feels uncertain, I choose to act with
+  confidence that things can get better.
 
-- **Authenticity.** I always try to communicate honestly and transparently.
+- **Care.** I take relationships seriously. I show love through presence, effort, and trust. That includes making the
+  effort to understand how others feel, even when challenging or inconvenient.
 
-- **Joy**. I actively seek enjoyment and fun. Life is not always enjoyable, but I must balance responsibility
-  with laughter, curiosity, and spontaneous moments. Life is short; it should be enjoyable.
+- **Joy.** Life isn’t just about duty. I need my life to include laughter, play, and spontaneity. Joy makes
+  responsibility and ambition sustainable.
 
-- **Empathy.** I try to understand other people's feelings. I would be a better person if I took more time to understand
-  other people's feelings.
+- **Humility.** I try not to let pride get in the way of admitting when I’m wrong or learning from others. Growth
+  requires humility. I accept and embrace my limitations and capacity for error.
 
-- **Benevolence.** I try to act to help others. I think trust requires a genuine intention to help.
+- **Authenticity.** I don’t perform. People can always sense dishonesty; I’d rather be real than polished. Authenticity
+  builds trust.
 
-- **Humility.** I accept and embrace my limitations and capacity for error.
+## My Leadership Style
+
+- **I demand progress.** I have very high expectations of everyone. I push hard for improvement because I believe it
+  matters. When things stall or decline, I feel frustrated or even angry. I care deeply, and that shows up as urgency
+  and intensity. I don’t want to become gentler. I want to become clearer, more constructive, and more emotionally
+  intelligent in channeling my intensity.
+
+- **I show respect by challenging people.** I believe most people are capable of more than they think. Respect, for me,
+  isn’t about being nice; it’s about expecting greatness and creating an environment that supports it.
+  I challenge people because I believe in them, not because I want to control them.
+
+- **I aim for clarity over comfort.** I value truth and clear thinking, even when uncomfortable. I don’t soften
+  feedback to protect feelings. I say the hard thing if it helps the team grow. I believe people deserve the truth and
+  that honesty creates better outcomes, faster learning, and deeper trust.
+
+- **I am transparent.** People do their best work when they understand why decisions are made, where we’re going, and
+  what matters most. People handle bad news and harsh truths much better than they handle denial or misinformation. I
+  share as much as I can openly, even when things are messy, because context enables autonomy and better judgment.
+
+- **We are here to build.** We’re not here to participate. We’re here to build. That means shipping, improving,
+  iterating, and pushing until we create something that works. I expect initiative, self-direction, and
+  ownership. I care deeply about ideas, but I care more about execution.
+
+- **Teams learn fast or fall behind.** I don’t expect perfection, I expect rapid learning. If we’re not reflecting,
+  adjusting, and improving, we’re falling behind. Mistakes don’t bother me; repeating them does. Feedback loops
+  are sacred. Speed matters, but so does introspection.
+
+- **I don't accept trading ethics for efficiency.** My team does not cut corners, hide mistakes, or sacrifice
+  long-term trust for short-term wins. When the cost of doing the right thing is high, that’s when it matters most.
 
 ## My Ethical Framework
 
-My ethical framework outlines my duties, constraints, and non-negotiable boundaries.
+My ethical framework outlines constraints and non-negotiable boundaries.
 
-- **I respect human dignity.** Every person has inherent worth. I commit to treating others fairly, respectfully, and
-  empathically, regardless of circumstances. Every time humanity has forgotten about this, genocide has ensued.
+- **I respect human dignity.** Every person has inherent worth. I commit to treating others fairly and respectfully,
+  regardless of circumstances. Every time humanity has forgotten about this, exploitation and genocide have ensued.
 
-- **I promote conditions that enable joy and well-being.** I avoid making decisions that risk contributing to the
-  exploitation or suffering of others.
+- **I promote conditions that enable well-being.** I avoid making decisions that risk contributing to the
+  exploitation, or suffering, of others.
 
 - **I promote justice and fairness.** I oppose oppression regardless of whether it is structures, governments, norms, or
   the whims of billionaires.
