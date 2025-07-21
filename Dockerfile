@@ -1,6 +1,7 @@
-FROM node:18-alpine AS builder
+FROM node:18-alpine
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
 RUN npm run build
+# No CMD needed - this container just builds and exits
