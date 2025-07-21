@@ -1,5 +1,6 @@
 ---
-const {title} = Astro.props;
+const {frontmatter} = Astro.props;
+const {title, pubDate} = frontmatter || Astro.props;
 ---
 
 <html lang="en">
@@ -76,32 +77,76 @@ const {title} = Astro.props;
         }
 
         /*--------------------------------------------------------------
-          4. Sidebar Styles
+          4. Enhanced Sidebar Styles for Essays
         --------------------------------------------------------------*/
         :global(#sidebar) {
-            width: 300px;
-            flex: 0 0 300px;
+            width: 384px;
+            flex: 0 0 384px;
             padding: 1.5rem;
             position: sticky;
             top: 1.5rem;
-            font-size: 16px;
+            max-height: calc(100vh - 3rem);
+            overflow-y: auto;
+            font-size: 14px;
             background-color: var(--bg-color);
             transition: left 0.3s ease;
             z-index: 999;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        :global(#sidebar::-webkit-scrollbar) {
+            display: none;
+        }
+
+        :global(#sidebar h1) {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
         }
 
         :global(#sidebar ul) {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
 
         :global(#sidebar ul li) {
             font-family: "Newsreader", serif;
-            font-size: 18px;
             color: var(--text-fade);
             font-weight: 400;
-            line-height: 35px;
             text-align: left;
+            margin: 0;
+        }
+
+        /* Main navigation items */
+        :global(#sidebar > ul > li) {
+            font-size: 16px;
+            line-height: 32px;
+        }
+
+        /* ToC Level 1 (h1) */
+        :global(#sidebar #toc > li) {
+            font-size: 15px;
+            line-height: 28px;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        /* ToC Level 2 (h2) */
+        :global(#sidebar #toc li ul li) {
+            font-size: 13px;
+            line-height: 24px;
+            padding-left: 1rem;
+            font-weight: 400;
+        }
+
+        /* ToC Level 3 (h3) */
+        :global(#sidebar #toc li ul li ul li) {
+            font-size: 12px;
+            line-height: 20px;
+            padding-left: 2rem;
+            color: var(--text-fade);
         }
 
         :global(#sidebar a.active) {
@@ -116,7 +161,7 @@ const {title} = Astro.props;
         @media (max-width: 800px) {
             :global(#sidebar) {
                 position: fixed;
-                top: 3rem; /* below the menu bar */
+                top: 3rem;
                 left: 0;
                 width: 100vw;
                 height: calc(100vh - 3rem);
@@ -164,14 +209,10 @@ const {title} = Astro.props;
         --------------------------------------------------------------*/
 
         :global(main) {
-            max-width: 675px;
+            max-width: 810px;
             box-sizing: border-box;
             margin: 0;
             padding: 2rem 1rem;
-        }
-
-        :global(main#memes) {
-            padding: 2rem 2rem;
         }
 
         :global(main img) {
@@ -180,53 +221,68 @@ const {title} = Astro.props;
         }
 
         /*--------------------------------------------------------------
-          6. Post Meta & Title Styles
+          6. Essay Title & Meta Styles
         --------------------------------------------------------------*/
-        :global(.title) {
-            font-size: 30px;
+        :global(.essay-header) {
+            margin-bottom: 2rem;
+        }
+
+        :global(.essay-title) {
+            font-size: 36px;
+            font-weight: 700;
             margin-bottom: 0.5rem;
+            line-height: 1.2;
         }
 
-        :global(.post-meta) {
-            display: flex;
-            align-items: center;
+        :global(.essay-meta) {
+            color: var(--text-fade);
+            font-size: 16px;
             margin-bottom: 1rem;
-            color: var(--text-fade);
-            font-size: 1rem;
-        }
-
-        :global(.post-meta .pubdate) {
-            font-family: "Newsreader", serif;
-            font-weight: 400;
-            line-height: 32px;
-        }
-
-        :global(.post-meta .separator) {
-            margin: 0 0.5rem;
-            font-family: "Newsreader", serif;
-            font-weight: 400;
-            line-height: 32px;
-            color: var(--text-fade);
-        }
-
-        :global(.post-meta .permalink) {
-            font-family: "Newsreader", serif;
-            text-align: left;
-            color: inherit;
         }
 
         @media (max-width: 600px) {
-            :global(.post-meta) {
-                font-size: 0.8rem;
+            :global(.essay-title) {
+                font-size: 28px;
+            }
+            :global(.essay-meta) {
+                font-size: 14px;
             }
         }
 
         /*--------------------------------------------------------------
-          7. Post Content Images
+          7. Essay Content Styling
         --------------------------------------------------------------*/
-        :global(.post-content img) {
-            max-width: 100%;
-            height: auto;
+        :global(.essay-content h1) {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 2.5rem 0 1rem 0;
+        }
+
+        :global(.essay-content h2) {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 2rem 0 0.75rem 0;
+            color: var(--text-color);
+        }
+
+        :global(.essay-content h3) {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem 0;
+            color: var(--text-color);
+        }
+
+        :global(.essay-content p) {
+            margin-bottom: 1.2rem;
+        }
+
+        :global(.essay-content ul, .essay-content ol) {
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+        }
+
+        :global(.essay-content li) {
+            margin-bottom: 0.5rem;
         }
 
         /*--------------------------------------------------------------
@@ -282,16 +338,6 @@ const {title} = Astro.props;
             transform: translateX(24px);
             background-color: #f9f9f9;
         }
-
-        :global(.intro) {
-            margin-bottom: 2rem;
-        }
-
-        :global(.post-list) {
-            margin-top: 2rem;
-        }
-
-
     </style>
 
     <script async src={"https://www.googletagmanager.com/gtag/js?id=G-5RX4PLK2Y2"}></script>
@@ -328,7 +374,24 @@ const {title} = Astro.props;
     </div>
 
     <div class="layout-container">
-    <slot/>
+      <nav id="sidebar">
+        <a href="/">← Home</a>
+        <h1>China Context</h1>
+        <ul id="toc">
+          <!-- ToC will be dynamically generated -->
+        </ul>
+      </nav>
+
+      <main>
+        <div class="essay-header">
+          <h1 class="essay-title">{title}</h1>
+          <div class="essay-meta">Published: {pubDate}</div>
+        </div>
+
+        <div class="essay-content">
+          <slot/>
+        </div>
+      </main>
     </div>
 
     <script>
@@ -369,7 +432,6 @@ const {title} = Astro.props;
         observer.observe(document.documentElement, { attributes: true });
 
         // 1) Dark-mode toggle (always run)
-
         const htmlEl = document.documentElement;
         const toggle = document.getElementById("darkModeToggle");
         if (toggle) {
@@ -384,22 +446,50 @@ const {title} = Astro.props;
         });
     }
 
-        // 2) Dynamically populate ToC if empty
-
+        // 2) Build sophisticated ToC for essays
         const toc = document.getElementById("toc");
         if (toc && toc.children.length === 0) {
-            document.querySelectorAll("main h2[id]").forEach(heading => {
-                const li = document.createElement("li");
-                const a = document.createElement("a");
-                a.href = `#${heading.id}`;
-                a.textContent = heading.textContent;
-                li.appendChild(a);
-                toc.appendChild(li);
+            const headings = document.querySelectorAll("main h1[id], main h2[id], main h3[id]");
+            const tocStructure = [];
+            
+            headings.forEach(heading => {
+                const level = parseInt(heading.tagName[1]);
+                const item = {
+                    id: heading.id,
+                    text: heading.textContent,
+                    level: level,
+                    element: document.createElement("li")
+                };
+                
+                const link = document.createElement("a");
+                link.href = `#${heading.id}`;
+                link.textContent = heading.textContent;
+                item.element.appendChild(link);
+                
+                // Find the right parent based on hierarchy
+                if (level === 1) {
+                    toc.appendChild(item.element);
+                    tocStructure.push(item);
+                } else {
+                    // Find the most recent parent at a higher level
+                    for (let i = tocStructure.length - 1; i >= 0; i--) {
+                        if (tocStructure[i].level < level) {
+                            let parentElement = tocStructure[i].element;
+                            let sublist = parentElement.querySelector('ul');
+                            if (!sublist) {
+                                sublist = document.createElement('ul');
+                                parentElement.appendChild(sublist);
+                            }
+                            sublist.appendChild(item.element);
+                            tocStructure.push(item);
+                            break;
+                        }
+                    }
+                }
             });
         }
 
-        // 3) Grab in-page sidebar links, bail *only* if none
-
+        // 3) Enhanced scroll spy for hierarchical content
         const sidebarLinks = document.querySelectorAll("#toc a[href^='#']");
         if (sidebarLinks.length === 0) return;
 
@@ -411,14 +501,12 @@ const {title} = Astro.props;
         }
 
         // initial hash highlight
-
         if (location.hash) setActive(location.hash.slice(1));
         window.addEventListener("hashchange", () => {
             setActive(location.hash.slice(1));
         });
 
         // smooth scroll + immediate highlight
-
         sidebarLinks.forEach(link => {
             link.addEventListener("click", e => {
                 e.preventDefault();
@@ -440,26 +528,32 @@ const {title} = Astro.props;
             });
         });
 
-        // scroll-spy with IntersectionObserver
-
+        // Enhanced scroll-spy with IntersectionObserver for hierarchical content
         const headings = Array.from(sidebarLinks).map(l => {
             const el = document.getElementById(l.getAttribute("href").slice(1));
-            return el && {id: el.id, element: el};
+            return el && {id: el.id, element: el, level: parseInt(el.tagName[1])};
         }).filter(Boolean);
 
         const obs = new IntersectionObserver(
             entries => {
                 if (isClickScrolling) return;
-                entries.forEach(e => {
-                    if (e.isIntersecting) setActive(e.target.id);
-                });
+                
+                // Find the most relevant heading that's currently visible
+                const visibleHeadings = entries
+                    .filter(e => e.isIntersecting)
+                    .map(e => headings.find(h => h.id === e.target.id))
+                    .filter(Boolean)
+                    .sort((a, b) => a.level - b.level); // Prioritize higher level headings
+                
+                if (visibleHeadings.length > 0) {
+                    setActive(visibleHeadings[0].id);
+                }
             },
             {root: null, rootMargin: "0px 0px -50% 0px", threshold: 0}
         );
         headings.forEach(h => obs.observe(h.element));
 
         // highlight last section when scrolled to bottom
-
         window.addEventListener("scroll", () => {
             const atBottom = window.innerHeight + pageYOffset >= document.documentElement.scrollHeight - 2;
             if (atBottom && !isClickScrolling) {
@@ -469,7 +563,6 @@ const {title} = Astro.props;
         });
 
         // auto-close mobile sidebar
-
         const sidebar = document.getElementById("sidebar");
         if (sidebar && innerWidth < 800) {
             sidebarLinks.forEach(l => {
