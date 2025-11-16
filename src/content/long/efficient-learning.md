@@ -1,9 +1,7 @@
 ---
 pubDate: "2025-11-16"
-title: "Efficient Learning"
+title: "Efficient Learning [WIP]"
 ---
-
-# Efficient Learning
 
 Everyone is currently obsessed with AI (I still prefer calling it machine learning). Every day brings new headlines quoting leaders at large-model labs predicting AGI within a few years. When I’m in Silicon Valley, all conversations are variations of the same two questions: “What’s your timeline?”, meaning when I think we’ll hit the singularity, and “What’s your p(doom)?”, i.e., how likely I think it is that AI will kill us all.
 
