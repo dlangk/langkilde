@@ -10,7 +10,10 @@ _This is an excerpt from a recent Company Update email I sent to the team at Kog
 
 **What does it take to build a world-class team?** To learn and evolve, I read biographies about companies and theirleaders and talk to as many CEOs of great companies as possible. A recurring theme of books and conversations is thecritical importance of strong teams of excellent people. That, in turn, requires great culture and outstandingleadership. But what is a great culture and outstanding leadership? I start with a few principles:
 
-\- **Transparency.** Great teams share information freely. They give and collect lots of feedback.  \- **Performance.** Great teams expect greatness. They challenge themselves and others to grow.  \- **Empowerment.** Great teams empower each other and win together.  \- **Rapid** **Iteration.** Great teams iterate faster than everyone else.
+- **Transparency.** Great teams share information freely. They give and collect lots of feedback.
+- **Performance.** Great teams expect greatness. They challenge themselves and others to grow.
+- **Empowerment.** Great teams empower each other and win together.
+- **Rapid Iteration.** Great teams iterate faster than everyone else.
 
 But, as we all know, culture is the sum of our daily actions, not something we write in a document. Let’s start withsome theory before we dig into specific challenges.
 
