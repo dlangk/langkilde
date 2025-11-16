@@ -3,12 +3,12 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import {getCollection, getEntryBySlug} from "astro:content";
 
 export async function getStaticPaths() {
-    const posts = await getCollection("short");
+    const posts = await getCollection("long");
     return posts.map((post) => ({params: {slug: post.slug}}));
 }
 
 const {slug} = Astro.params;
-const post = await getEntryBySlug("short", slug);
+const post = await getEntryBySlug("long", slug);
 const {Content, headings} = await post.render();
 ---
 

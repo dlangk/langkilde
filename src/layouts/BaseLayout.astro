@@ -298,10 +298,15 @@ const {title} = Astro.props;
     <script is:inline>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-    
+
+        const GA_ID = 'G-5RX4PLK2Y2';
+
+        const rawPath = window.location.pathname;
+        const normalizedPath = rawPath.replace(/\/+$/, '') || '/';
+
         gtag('js', new Date());
-        gtag('config', 'G-5RX4PLK2Y2', {
-            page_path: window.location.pathname
+        gtag('config', GA_ID, {
+            page_path: normalizedPath
         });
     </script>
 

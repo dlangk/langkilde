@@ -2,8 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 
-const posts = await getCollection("blog");
-posts.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
+const shortPosts = await getCollection("short");
+shortPosts.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
+
+const longPosts = await getCollection("long");
+longPosts.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
 ---
 
 <BaseLayout title="Home">
@@ -12,6 +15,8 @@ posts.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
     <h1>Daniel Langkilde</h1>
     <ul id="toc">
       <li><a href="/about">About</a></li>
+      <li><a href="#short-writing">Short Writings</a></li>
+      <li><a href="#long-writings">Long Writings</a></li>
       <li><a href="/investments">Investments</a></li>
       <li><a href="/memes">Memes</a></li>
       <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS Feed" />
@@ -19,13 +24,27 @@ posts.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
   </nav>
 
   <main>
-    <!-- Post List Section -->
-    <section class="post-list">
-      <h1>Writings</h1>
+    <!-- Short Writings Section -->
+    <section id="short-writing" class="post-list">
+      <h1>Short Writings</h1>
       <ul>
-        {posts.map(post => (
+        {shortPosts.map(post => (
             <li>
               <a href={`/blog/${post.slug}`}>
+                {post.data.title} <small>({post.data.pubDate})</small>
+              </a>
+            </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Long Writings Section -->
+    <section id="long-writings" class="post-list">
+      <h1>Long Writings</h1>
+      <ul>
+        {longPosts.map(post => (
+            <li>
+              <a href={`/long/${post.slug}`}>
                 {post.data.title} <small>({post.data.pubDate})</small>
               </a>
             </li>
