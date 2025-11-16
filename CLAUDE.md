@@ -49,7 +49,7 @@ langkilde/
 │   └── assets/            # Images and other assets
 ├── public/                # Static files (favicons, etc.)
 ├── dist/                  # Build output (gitignored)
-└── deployment scripts     # deploy.sh, quick-deploy.sh
+└── deploy.sh              # Production deployment script
 ```
 
 ## Common Development Tasks
@@ -78,14 +78,14 @@ Both types auto-generate table of contents from H2 headings
 
 ### Modifying Site Navigation
 
-Edit the sidebar links in `src/pages/index.astro:14-17`
+Edit the sidebar links in `src/pages/index.astro` (lines 17-22)
 
 ### Updating Styles
 
-Global styles and theme variables are in `src/layouts/BaseLayout.astro:13-295`
-- CSS variables for theming: lines 17-30
+Global styles and theme variables are in `src/layouts/BaseLayout.astro`
+- CSS variables for theming in `:root` and `.dark` selectors
 - Responsive breakpoints: 800px for mobile
-- Dark mode toggle: lines 372-385
+- Dark mode toggle logic in `<script>` section
 
 ## Key Features
 
@@ -101,42 +101,43 @@ Global styles and theme variables are in `src/layouts/BaseLayout.astro:13-295`
 - Content reflows for optimal reading
 
 ### Table of Contents
-- Auto-generated from H2 headings in blog posts
+- Auto-generated from H2 headings in writings
 - Smooth scroll navigation
 - Active section highlighting
 - Intersection Observer for scroll-spy
 
 ### RSS Feed
 - Automatically generated at `/rss.xml`
-- Includes all blog posts with title, date, and link
+- Includes all writings (both short and long) with title, date, and link
 - Implementation in `src/pages/rss.xml.ts`
 
 ## Deployment
 
-### Production Deployment (Full)
+The site is deployed as a static build served by NGINX. No Node.js runtime is involved in production.
+
+### Deployment Flow
+
 ```bash
 ./deploy.sh
 ```
-- Pulls latest code from git
-- Installs dependencies
-- Builds the application
-- Rebuilds Docker container
-- Restarts with docker-compose
 
-### Quick Deployment (Content Only)
-```bash
-./quick-deploy.sh
-```
-- Faster deployment for content-only changes
-- Skips Docker rebuild
-- Just pulls, builds, and restarts containers
+The deployment script performs the following steps:
 
-### Docker Setup
-- Uses Node 18 Alpine image
-- Builds to `dist/` directory
-- Nginx serves static files (separate container)
-- External network: `shared_network`
-- Production port: 8000
+1. **Verify repository** - Checks for `package.json` and `astro.config.mjs`
+2. **Pull latest code** - `git pull --ff-only`
+3. **Install dependencies** - `npm install`
+4. **Build static site** - `npm run build` (outputs to `./dist/`)
+5. **Sync to production** - `rsync dist/ → /srv/astro/` with `--delete` flag
+6. **Validate NGINX config** - `docker exec nginx nginx -t`
+7. **Reload NGINX** - `docker exec nginx nginx -s reload`
+
+### Production Architecture
+
+- **Build location**: `~/langkilde` on host
+- **Static files**: Synced to `/srv/astro/` on host
+- **Web server**: NGINX running in Docker container (defined in `~/nginx-langkilde-se/`)
+- **NGINX serves**: Static files from `/srv/astro/` over HTTPS
+- **No runtime Node**: Site is fully static, no app server required
 
 ## Important Implementation Details
 
@@ -156,7 +157,7 @@ Global styles and theme variables are in `src/layouts/BaseLayout.astro:13-295`
 ### Canvas Background
 - Subtle canvas element for potential animations
 - Currently renders solid background color
-- Implementation in BaseLayout.astro:337-369
+- Implementation in BaseLayout.astro `<script>` section
 
 ### Mobile Sidebar Behavior
 - Auto-closes when link is clicked
@@ -165,19 +166,19 @@ Global styles and theme variables are in `src/layouts/BaseLayout.astro:13-295`
 
 ## Common Gotchas
 
-1. **Port conflicts**: Dev server runs on 4321, production on 8000
-2. **Package-lock conflicts**: Deployment scripts auto-remove to prevent git conflicts
-3. **Docker network**: Requires external `shared_network` to exist
-4. **Frontmatter**: Blog posts MUST have `title` and `pubDate` or build fails
-5. **Build output**: `dist/` folder is gitignored, created during build
-6. **Mobile testing**: Use responsive mode, breakpoint at 800px
+1. **Dev server port**: Local dev server runs on port 4321
+2. **Frontmatter required**: All writings MUST have `title` and `pubDate` or build fails
+3. **Build output**: `dist/` folder is gitignored, created during build
+4. **Mobile testing**: Use responsive mode, breakpoint at 800px
+5. **Static deployment**: No Node.js runtime in production; site must be fully static
 
 ## Testing Checklist
 
-- [ ] Blog post renders with correct TOC
+- [ ] Short and long writings render with correct TOC
 - [ ] Dark mode toggle persists on reload
 - [ ] Mobile menu opens/closes properly
 - [ ] RSS feed generates valid XML
 - [ ] All internal links work
 - [ ] Images load correctly
-- [ ] Build completes without errors
+- [ ] Build completes without errors (`npm run build`)
+- [ ] Deployment script runs successfully (`./deploy.sh`)
