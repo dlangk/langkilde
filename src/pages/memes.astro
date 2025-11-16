@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const modules = import.meta.glob('../data/memes.md', {as: 'raw'});
+const modules = import.meta.glob('../data/memes.md', {query: '?raw', import: 'default'});
 const raw = await modules['../data/memes.md']();
 const lines = raw
     .split('\n')
