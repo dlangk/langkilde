@@ -50,6 +50,6 @@ surrounded by kids and grandkids. Yes, it sometimes sucks now, but for most of m
 
 - **Reduce the risk of excessive comparison.** I’ve gradually left all social media except LinkedIn. The less I know about random people’s lives, the better. I also have an app that locks LinkedIn for most of the day when I'm on vacation, so I can't idle-scroll. I want to keep track of my loved ones and my friends, and that's best done in person. No Instagram, no TikTok, no Snapchat. Delete it all.
 
-**I don’t really have any grand conclusions.** This is just how this year has felt for me. I don’t think feeling insufficient is something we can get rid of, and I'm not sure exhaustion necessarily means I'm doing something wrong. But I do believe the story we tell ourselves matters. For me, the answer right now is to have clear goals, accept that I need to focus on conserving energy, and take time to really recover.
+**I don’t really have any grand conclusions.** This is just how this year has felt for me. I don’t think feeling insufficient is something we can get rid of, and I'm not sure exhaustion necessarily means I'm doing something wrong. But I do believe the story we tell ourselves matters. Do yourself a favor and make it a kind story. For me, the story right now is that I have clear goals, that I need focus on conserving energy, and that I need to take time to really recover.
 
 I hope you allow yourself to slow down a little over the holidays. 🎅🏼
