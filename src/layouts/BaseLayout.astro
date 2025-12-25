@@ -230,10 +230,18 @@ const {title} = Astro.props;
         }
 
         /*--------------------------------------------------------------
-          8. Remove Dividers
+          8. Dividers
         --------------------------------------------------------------*/
         :global(hr) {
             display: none;
+        }
+
+        :global(.post-content hr) {
+            display: block;
+            border: none;
+            border-top: 1px solid rgba(128, 128, 128, 0.2);
+            width: 50%;
+            margin: 2rem auto;
         }
 
         /*--------------------------------------------------------------
