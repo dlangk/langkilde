@@ -49,10 +49,12 @@ docker exec nginx nginx -s reload
 log_info "Purging Cloudflare cache..."
 CF_ZONE_ID=$(sed -n '1p' ~/.cloudflare)
 CF_TOKEN=$(sed -n '2p' ~/.cloudflare)
-curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
+CF_RESPONSE=$(curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
   -H "Authorization: Bearer ${CF_TOKEN}" \
   -H "Content-Type: application/json" \
-  --data '{"purge_everything":true}' | grep -q '"success":true' && \
+  --data '{"purge_everything":true}')
+echo "$CF_RESPONSE"
+echo "$CF_RESPONSE" | grep -q '"success":true' && \
   log_info "Cache purged successfully" || log_warn "Cache purge may have failed"
 
 log_info "✅ Deployment complete. New Astro build is now served from /srv/astro."
