@@ -47,6 +47,10 @@ log_info "Reloading nginx inside container 'nginx'..."
 docker exec nginx nginx -s reload
 
 log_info "Purging Cloudflare cache..."
+if [ ! -f ~/.cloudflare ]; then
+  log_error "~/.cloudflare not found! Create it with zone ID on line 1 and API token on line 2."
+  exit 1
+fi
 CF_ZONE_ID=$(sed -n '1p' ~/.cloudflare)
 CF_TOKEN=$(sed -n '2p' ~/.cloudflare)
 CF_RESPONSE=$(curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
@@ -54,7 +58,7 @@ CF_RESPONSE=$(curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${CF_Z
   -H "Content-Type: application/json" \
   --data '{"purge_everything":true}')
 echo "$CF_RESPONSE"
-echo "$CF_RESPONSE" | grep -q '"success":true' && \
+echo "$CF_RESPONSE" | grep -q '"success": true' && \
   log_info "Cache purged successfully" || log_warn "Cache purge may have failed"
 
 log_info "✅ Deployment complete. New Astro build is now served from /srv/astro."
