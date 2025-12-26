@@ -7,7 +7,7 @@ We live in a high-pressure world. This is true both in a macro and micro sense. 
 
 What is then the long-term defensible competitive advantage in such an environment? **Constantly adapting to new, complex situations.** This is true as much on a personal level, as on an organizational level.
 
-### Stability vs. Uncertainty
+## Stability vs. Uncertainty
 
 The automotive industry for most of its existence has been the epitome of rational efficiency. Everything is optimized, price pressured, planned, and predicted. And due to the sheer size of the market, and capital expenditure required, it has been a generally stable environment. There has been a limited pressure to reinvent yourself.
 
@@ -25,7 +25,7 @@ As you might have noticed, Tesla (mostly) does not follow the traditional model 
 
 It’s much more demanding to operate in an environment where everything is uncertain. Uncertainty is not, by the way, the same as “disorder”. You can work in a very structured way with plenty of uncertainty.
 
-### Three Forces that Push Toward Detailed Planning
+## Three Forces that Push Toward Detailed Planning
 
 As a founder, I understand more and more why a completely incremental approach is so hard to maintain. There are three forces that contribute to a tendency towards detailed planning.
 
@@ -37,27 +37,27 @@ As a founder, I understand more and more why a completely incremental approach i
 
 Ironically the risks associated with systematically avoiding risks are larger than suffering the occasional negative experience. Personally, I think this is what causes larger companies to lose their edge. The challenge of navigating the risk-reward nexus can be found all the way from starting a company, to funding it, to setting the vision and scope for the company and maintaining its edge as it grows. It’s really hard to think really big. It takes a tremendous amount of courage and a gigantic risk appetite. You have to be comfortable with the risk of failure.
 
-### How to Run a Company Amidst Uncertainty
+## How to Run a Company Amidst Uncertainty
 
 So, what to do then? How do you run a company when you have no idea what to expect?
 
-**Empower your team**
+### Empower your team
 
 Hire amazing people and give them the resources and the mandate to solve hard problems. Put everyone close to the issue they are solving. Allow everyone to talk to each other without being forced to go through layers of management. My mentor has always told me: “ _smart people with the same information and the same goals usually come to the same conclusion. You just need to ensure they have the same information and the same goals.”_ I firmly believe in this.
 
 It takes a lot of patience and trust to let your team solve audacious problems without detailed supervision. But it usually pays off fairly quickly.
 
-**Strive for greatness**
+### Strive for greatness
 
 Freedom is powerful. But it also requires a mission. You need to be motivated to perform to capture the benefits of freedom. There are many ways to find motivation; making a client happy, saving the day, learning new things, meeting interesting people, getting rich, traveling the world, getting recognition from your peers. Whatever your source of motivation, there needs to be urgency. Time is always of the essence.
 
 Dare to demand outstanding results from yourself, and those around you.
 
-**Focus**
+### Focus
 
 The hardest thing in life is saying no. To friends, to family, to colleagues, to customers. To yourself. The inability to cut away the noise often dilutes strategies. We cannot consider every option and every alternative all the time. We’d get nowhere. Just as a person cannot be good at everything. The curse of endless opportunities is limited time. We need to choose and learn to ignore that which we are missing out on. I sometimes err on the side of simplifying too much, but I’d rather do that than get stuck thinking about all options. I pick something, try it, learn, and move on. This approach isn’t just personal, I incorporate this mentality at Annotell too. That takes courage and leadership. And a fair amount of tolerance for conflict, since saying no means disappointing others.
 
-### Seems simple, right? It’s not.
+## Seems simple, right? It’s not.
 
 It’s a ton of hard work. It requires very strict hiring, thoughtful work from everyone involved, patience, and perseverance. And it’s fragile. A few bad apples easily spoil the bunch.
 
