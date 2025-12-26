@@ -18,7 +18,7 @@ const {Content, headings} = await post.render();
         <a href="/">← Home</a>
         <h3>Sections</h3>
         <ul id="toc">
-            {headings.map(heading => (
+            {headings.filter(h => h.depth === 2).map(heading => (
                     <li><a href={`#${heading.slug}`}>{heading.text}</a></li>
             ))}
         </ul>
