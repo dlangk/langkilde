@@ -5,19 +5,19 @@ title: Reflections on Life and Entrepreneurship
 
 I regularly reflect on what I have experienced to extract patterns and ideas to guide my next steps. I have two goals: 1) enjoy life with loved ones and 2) build extraordinary things. Balancing these two things is hard, so most of my reflections are about the tension between them. Year by year, my thinking evolves. This could probably be ten posts, but I'm writing for myself more than anyone else, so there is no need to optimize for engagement. This is my latest iteration:
 
-### Play the Long Game
+## Play the Long Game
 
 **Always play the long game.** Or: "Be stubborn on vision, but flexible on details," as Jeff Besoz put it. If you combine this with "build with leverage," you quickly realize that you should hire for all non-strategic activities if you want to create something huge. I avoid ever finding myself doing repetitive manual work. I still think you need to learn by doing many things yourself. You cannot build a business around something you do not understand. Get your hands dirty. Just do not get stuck doing the same thing over and over. It accumulates no value and comes with zero leverage. Hire for such tasks. I _"squint"_ a lot. What I mean by that is I deliberately do not see most of the details. A practical example: I do not always pay my bills on time if I'm busy with something more substantial. Sure, I might get slapped with a late fee, but if the leverage on what I'm doing exceeds that late fee, I'm happy to pay it. I even did this when I had much less money than today. There are long periods when I let nothing distract me from the high-leverage activity I'm engaged in. I will postpone everything else until I'm done. I should add that I'm not judging, i.e., there can be great pleasure in craftsmanship. If you get joy from perfecting a task, you should do it. All I'm saying is that it is pretty unlikely it will lead to an extraordinary impact.
 
 * **Don't play too long of a game.** Imagine postponing everything of short-term value in life, and then BAM: you get diagnosed with terminal cancer and have six months to live. Will you regret what you've done with your life if that happens? Then you should probably change things. Treat yourself—balance in all things. If you do not celebrate success, reward yourself with time off, eat good food, exercise, and all the other things that make life worth living, you will soon regret many decisions.
 
-### Prioritize Emotional Health
+## Prioritize Emotional Health
 
 Almost all situations have an emotional component, so it's helpful to express your feelings. Share them with loved ones, coworkers, and friends. Doing so helps to build trust, understanding, and connection. And it makes you much more resilient.
 
 * **See a therapist.** At least try it if you haven't. Work through your issues. We all have them. Confront them and process them. "Fixing" them isn't the goal; it is more about learning to live with them. While the stigma around mental health issues is weakened, I think too many people avoid dealing with them.
 
-### Money, Time, and Leverage
+## Money, Time, and Leverage
 
 **There is never enough money.** I've set new goals for myself every year for as long as I can remember. Some of them have been related to money. Get a salary of a minimum of $X/month. Buy a house for $Y million. Pay off all my student debt before turning 30. Not so humble but relevant context: I was a millionaire without student debt by 30. As you progress, I promise you that you will always find a new level you haven't reached that becomes your new desire. I have learned that you have to balance such goals with goals for quality of life. As much as I want to reach specific financial goals, I also want to make sure I am taking time to appreciate the people in my life.
 
@@ -25,15 +25,15 @@ Almost all situations have an emotional component, so it's helpful to express yo
 
 * **Build with leverage.** The best way to get _both time and money_ is to focus on activities with leverage. Is the work I am putting in generating more value than the price of an hour of work? Am I accumulating wealth long-term as a consequence of my actions? Equity in a product company is the ultimate way to leverage your time. Whatever improvements you provide to the company generate more value in your equity, assuming the product is resold with low direct cost (e.g., software). This is why consulting is the worst job in the world. It comes with higher short-term salary and no responsibility, but without long-term value. It is the fast food of work.
 
-### Uniqueness and Competition
+## Uniqueness and Competition
 
 **Value comes from scarcity.** I know, I know, everyone knows about supply and demand. But I still regularly fail to remember this simple thing. To create something extraordinarily valuable, you have to be unique. You have to constantly work on your positioning to find a "blue ocean". Relentless experimentation is required since new things aren't found by looking at what others do. It can only be found by independently trying new things. Ask your customers as often as you can, "What do you think of our offering? Is it similar to something else? What is it most similar to?" Virtually all companies are similar to someone else, so be paranoid and persistent when asking. Then work on your positioning in relation to others until you look like nothing else. Some might say, "we care too much about the competition." Only listen to those people if you are accused of copying the competition. Copying has very low returns. Care about the competition by way of being different. If your offering overlaps, move in a new direction.
 
 * **Higher quality is a weak form of uniqueness.** Once there are alternatives in the market, and unless quality is objectively measurable and better to the point of being a different product, buying will trend to the cheapest option. You might think your version is 10x better, but I haven't seen many examples of when that can be proven so that customers will pay 10x more. Most people overestimate their differentiation. Be careful not to underestimate the power of pricing, or cheaper competitors will crush you. Innovate to the point of uniqueness, or make sure you win the price race. To quote Peter Thiel: "Competition is for losers."
 
-### Luck, Betting, and Outcomes
+## Luck, Betting, and Outcomes
 
-**A one-in-a-million outcome [requires betting](https://langkilde.se/post/2022-07-20-extraordinary-success-requires-betting) and luck.** Successful people usually have a powerful internal locus of control, i.e., they believe that their actions and decisions directly and significantly influence their behavior, choices, and outcomes. While that is true for most of the area under the curve, outliers are primarily random. Serendipitous timing and coincidence play a considerable part. Of course, luck in the hands of a passive person will not make much of a difference. You can manufacture some amount of luck by seeking the right circumstances. But excellent performance may not be enough to reach the one-in-a-million outcome you dream about. You also need a fair amount of luck, and acknowledging that will make you happier.
+**A one-in-a-million outcome [requires betting](https://langkilde.se/blog/extraordinary-success-requires-betting/) and luck.** Successful people usually have a powerful internal locus of control, i.e., they believe that their actions and decisions directly and significantly influence their behavior, choices, and outcomes. While that is true for most of the area under the curve, outliers are primarily random. Serendipitous timing and coincidence play a considerable part. Of course, luck in the hands of a passive person will not make much of a difference. You can manufacture some amount of luck by seeking the right circumstances. But excellent performance may not be enough to reach the one-in-a-million outcome you dream about. You also need a fair amount of luck, and acknowledging that will make you happier.
 
 * **Focus on the quality of your efforts, not the outcome of your bets.** Since extraordinary outcomes require luck, you cannot get sad if you do not experience a one-in-a-million outcome. I suspect a large number of people work very hard but are never lucky enough to attain what they think is their full potential. Recognizing this fact does not take away from the extraordinary effort it takes to capitalize on luck. It simply means you must be kind to yourself and focus on your work. The part that is up to chance isn't worth worrying about.
 
@@ -45,7 +45,7 @@ Almost all situations have an emotional component, so it's helpful to express yo
 
 Companies rarely invent new things but frequently retrofit scientific results for commercial use. There is a transition from research to product that usually takes years. The first scientific results are meh. If you squint, you can sort of see a future unicorn. But mostly, it just looks like a very unstable donkey. Year by year, progress is made. At some point, you hit an inflection point where the technology is ready for commercial use. Timing that inflection requires luck. If you find yourself in the right place at the right time, then be prepared to put in an extraordinary amount of work. What you will be doing at this point isn't inventing something new but instead connecting new technology to users in a way that brings them value. Doing that in a scalable way, with strong marketing, sales, and customer success, is the lion's share of building a business. The science part is usually done long before then. Sure, if your company has plenty of cash flow, you can invest in research, but that's very different from product development. Product development is about wrapping new technology in a layer of usability that makes it possible to distribute it scalably.
 
-### Think Globally, Scale Quickly
+## Think Globally, Scale Quickly
 
 **Build for massive size and a global footprint quickly when you find something promising.** Building a global footprint will be necessary to survive, no matter how strong your idea or team is. Competition is ruthless, so you must weaponize money and size to stay ahead. That means seeking places where money and talent come at higher concentration. While the playing field is increasingly leveled as more and more companies adopt remote working policies, networks are still best made on the ground and in person. So start setting up hubs around the world quickly.
 
@@ -55,17 +55,17 @@ Companies rarely invent new things but frequently retrofit scientific results fo
 
 * **Creating means committing long enough.** It takes time and effort to create something. You have to pick an option and work on it for long enough so that something comes out. There is always the risk you bet on the wrong horse. But if you constantly switch from one thing to the next without actually following through, you will not create anything. Learn to live with the risk of wasting time and instead make things constantly. If what you make isn't appreciated, make something else.
 
-### Sacrifice and Hard Work
+## Sacrifice and Hard Work
 
 **Achievement requires sacrifices.** Each individual has to decide what they are willing to sacrifice to achieve their goals. I've realized that while I'm prepared to sacrifice more than most people I've met, there are limits. Deep down, I think moving to San Fransisco would increase my chances of building a global business. But doing that is not more important than my family. I want to be close to my relatives. I want to raise my child in Sweden. When you pick role models, ask yourself, "Does this person value what I value? Am I prepared to make the sacrifices this person has made?". Remind yourself constantly when you look at other people's achievements: "Is the alternative cost of their achievements acceptable to me?".
 
 * **Most people underestimate the power of hard work.** Being persistent, patient, and ready to make sacrifices are some of the most critical traits for achieving success. For all the talk of sustainability and reasonable working hours, I do not think anyone profoundly changed the world working 9-17. All highly successful people I know are obsessed and push themselves to the brink of burning out. I'm not saying everyone should work to exhaustion; I'm just saying that's what it takes to achieve extraordinary things. Again, balancing things is the hard part…
 
-* **Sometimes all it takes to succeed is to be [the last one standing](https://langkilde.se/post/2022-04-09-the-energy-to-keep-going).** Most people are not prepared to endure the hardship required for success. There are always reasons to give up and stop. Competitors are too strong, your product is not good enough, and you are exhausted. What is even worse is that: sometimes, the right thing is to quit. Maybe you are, like Sisyphus, fighting a futile battle. It is impossible to say in general, but I see more people stopping than not, and most that keep going are eventually successful. Persistence combined with evolution is the way to go.
+* **Sometimes all it takes to succeed is to be [the last one standing](https://langkilde.se/blog/the-energy-to-keep-going/).** Most people are not prepared to endure the hardship required for success. There are always reasons to give up and stop. Competitors are too strong, your product is not good enough, and you are exhausted. What is even worse is that: sometimes, the right thing is to quit. Maybe you are, like Sisyphus, fighting a futile battle. It is impossible to say in general, but I see more people stopping than not, and most that keep going are eventually successful. Persistence combined with evolution is the way to go.
 
 * **Are you prepared to be ruthless when you have to?** Even if it is indirect, inflicting pain on others is part of building a global business. You will have to fire underperforming people, you need to negotiate hard, you will have to disappoint people, and you will make enemies no matter how nice you try to be. Are you comfortable with this? How far are you willing to go to win?
 
-### Relationships and Influence
+## Relationships and Influence
 
 **The world runs on relationships.** Forging long-term, strong bonds with other people is one of the most critical differentiators to innovate and build. The benefits include:
 
@@ -77,7 +77,7 @@ Companies rarely invent new things but frequently retrofit scientific results fo
 
 * **Champions for your ideas.** Ideas are ubiquitous, but having influence is not. Sometimes, for something to go from impossible to apparent, all you need are a few key people supporting the idea. Humans are prone to groupthink, and nudging the group onto a new trajectory requires influence. A strong network of influential people will radically improve your chances of establishing an idea.
 
-### The Power of Storytelling
+## The Power of Storytelling
 
 **The world runs on stories.** For millennia we have been telling each other stories. Great leaders have inspired people by crafting a narrative that provides purpose. A core human need is a sense of purpose and inspiration. Without it, we quickly get depressed. We need to believe in something or someone.
 

@@ -5,7 +5,7 @@ title: Building a world-class team
 
 _This is an excerpt from a recent Company Update email I sent to the team at Kognic:_
 
-### Foundations of a Great Team
+## Foundations of a Great Team
 
 **What does it take to build a world-class team?** To learn and evolve, I read biographies about companies and their leaders and talk to as many CEOs of great companies as possible. A recurring theme of books and conversations is the critical importance of strong teams of excellent people. That, in turn, requires great culture and outstanding leadership. But what is a great culture and outstanding leadership? I start with a few principles:
 
@@ -16,7 +16,7 @@ _This is an excerpt from a recent Company Update email I sent to the team at Kog
 
 But, as we all know, culture is the sum of our daily actions, not something we write in a document. Let's start with some theory before we dig into specific challenges.
 
-### The Principal-Agent Problem
+## The Principal-Agent Problem
 
 The [Principal-Agent](https://en.wikipedia.org/wiki/Principal%E2%80%93agent_problem) problem describes the conflict of interest that arises when one entity takes action on behalf of another. The problem worsens the larger the discrepancy between the two entities' interests and information. The difference between what the agent does and what is actually in the principal's interest is known as the "agency cost." To make this more concrete: Shareholders in a company hire a CEO. How can shareholders trust the CEO to make decisions in their interest? How are you sure the CEO does not just act in her best interest? The CEO will have time, expertise, and information that shareholders do not. The same problem applies to all executives and their teams.
 
@@ -24,7 +24,7 @@ I usually share something one of my mentors tells me: "_Smart people with the sa
 
 ![](https://storage.googleapis.com/langkilde-se-images/5906ddf8-a8e9-4acc-90ef-b973e302a4dc.jpeg)
 
-### Motivation, Culture, and High Expectations
+## Motivation, Culture, and High Expectations
 
 Handling the Principal-Agent problem is the central challenge of managing teams and companies. You have to account for a vast range of things:
 
@@ -32,11 +32,11 @@ Handling the Principal-Agent problem is the central challenge of managing teams 
 
 **I tell everyone who is about to join Kognic: there are much easier jobs than working at Kognic.** We offer a high-growth environment and are determined to be the best in the world. That's a mindset that we are looking for in candidates and ourselves. You must be smart and driven to thrive in our environment. And we must have the courage to assume we can continue hiring insanely intelligent and driven people. Sometimes, that means it will take longer to hire for specific roles. It also means hiring managers must be attractive leaders for whom great talent wants to work. Leaders cannot sit around and complain about facing a low-quality hiring pipeline. That's just a symptom they are not spending enough time out there attracting talent. **Great leaders are talent magnets**. Poor leadership is the main reason great talent leaves. This does not mean we expect everyone to work crazy hours - it is a marathon, not a sprint. You will have bad days and good days. We cannot always bring our best every day - but we can always be committed to becoming the best over time. I'd much rather feel the heat of high expectations than be bored, and we look for people like that when hiring. It's not for everyone, but it is what we look for at Kognic.
 
-### Balancing High Performance with Psychological Safety
+## Balancing High Performance with Psychological Safety
 
 **How do you balance high expectations with being friendly and social?** I'm proud that we have a "zero asshole policy." I do not tolerate team members going around being rude or disrespectful. Hearing someone talk shit about someone else when they are not around is a grave offense in my book. If you have feedback, tell it to that person's face. If that doesn't help, bring it to your or their manager. Once you've done that, act like a professional. There is no reason we cannot combine being fair to each other, have fun together, and expect extraordinary things from each other. Sure, leaders in the company need to be prepared to make difficult decisions that might hurt people when required. But there's no reason to be an asshole about it. I think we've done an excellent job balancing high performance with a strong social bond in the team. Toxic team members can quickly spread a lot of negative energy. Everyone should welcome raising issues, but the best people can constructively raise issues. They don't just whine about it. Most people I talk to are impressed by how friendly and nice our team is, and I agree. Clearly, we can both create a high-performance culture and be nice. All that said, at the end of the day, we are _colleagues first, friends second_. I will always make decisions based on what is in the interest of Kognic and our mission to accelerate alignment. Sometimes, that will be at the expense of individuals. I acknowledge this, and I think all companies and leaders should be honest about this. I encourage everyone to have a solid social network outside of work. If you don't, you become very vulnerable.
 
-### Trust, Empowerment, and Accountability
+## Trust, Empowerment, and Accountability
 
 **How do you balance being challenged with being trusted?** There is an inherent tension between having a manager who challenges you and feeling that you are trusted. I think we all want to feel trusted. But I also firmly believe that high-performing individuals want to be challenged. I would never work for a leader who doesn't express expectations or cannot push my personal growth. I want to work for people I admire and am inspired by, and I think we need people who feel this way across the company. Steve Jobs despised "[the professional-managerial class](https://www.youtube.com/watch?v=QplyFXgIx7Q)", and so does Elon Musk. I tend to agree: Kognic wants leaders who are able to jump into the arena when needed and who can inspire teams to do better based on their experience and expertise. Clearly, great ICs **_are not necessarily_** great leaders, but the best leaders are usually **_also_** great ICs in some area. We have to believe we can find those that are both. We have several great examples of people like this at Kognic: leaders who could step into most roles and do a pretty good job. I expect those who lead at Kognic to know what is going on in their team, to have a working knowledge of essential details, and to have the ability to inspire their team members with their experience and expertise. And what you lack in experience, you can always make up for with determination, grit, or raw talent. In my case, I make up for my lack of experience by working more—a lot more. I need to collect and spend way more time analyzing information to be the CEO Kognic needs since I'm 35 years old without any previous experience running a company. I'm not complaining; I'm just saying it takes a huge effort.
 
@@ -54,7 +54,7 @@ Handling the Principal-Agent problem is the central challenge of managing teams 
 
 **There are some limits to transparency.** We do not publicly criticize a person's performance. We do not share all the details when someone is terminated. We cannot talk about sensitive aspects of negotiations with customers or investors. We cannot share if/when someone offers to buy the company. There are limits. But we set a high bar for what should be shared. We always share if we have problems in a process or if some deal is going south. We openly share our call reports, meeting reports, financials, etc. I'd much rather send a few emails too many than too few.
 
-### Leaders Create Accelerating Flywheels
+## Leaders Create Accelerating Flywheels
 
 **Leaders create accelerating flywheels.** The most successful leaders create "flywheel teams." Teams that accelerate more and more and eventually spin really, really fast with minimum external force applied. That requires removing friction, setting a clear focus, and ensuring everyone on the team is excellent. When I read, e.g., the biography about Musk, he appears not to scale. At all. I think that's his greatest weakness. Teams appear highly dependent on his intervention. While he gets the urgency right and can attract incredibly talented people, he constantly involves himself to such a degree that the future of his companies is uncertain without him. I suspect he craves being at the center of attention more than is in the interest of his companies. But I guess you must take the good and the bad with some people.
 

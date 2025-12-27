@@ -11,7 +11,7 @@ title: Untangling Luck and Skill in Business
 2. What it takes to create and capture value
 3. What the primary sources of randomness are
 
-### What Does It Mean to Be Skilled?
+## What Does It Mean to Be Skilled?
 I think skill combines IQ, training, experience, communication, determination, network, and judgment. You could probably list ten other things, but these are the big ones. Skill is the ability to improve the odds of successful outcomes.
 
 ![](https://storage.googleapis.com/langkilde-se-images/a58b069d-d898-457b-b0d8-9076d7076b6c.jpeg)
@@ -31,7 +31,7 @@ Gaining **Experience** is the process of creating and updating beliefs with new 
 
 **Judgment** involves making decisions based on sound principles and values. It means distinguishing between right and wrong and acting accordingly. Integrity is the ability to hold oneself to a consistent set of ethical principles and do the right thing even when it is inconvenient. It requires self-awareness and reflection to avoid bias and inconsistencies. 
 
-### What Does It Mean to Be Lucky?
+## What Does It Mean to Be Lucky?
 To be lucky is to benefit from favorable circumstances that occur by chance rather than through one's actions. If you place a bet with 10/1 odds and win, you are lucky. The worse the odds, the luckier you are if you win.
 
 ![](https://storage.googleapis.com/langkilde-se-images/f0d6e49a-0c0f-49de-8064-6be6429c90f8.jpeg)
@@ -42,7 +42,7 @@ To be lucky is to benefit from favorable circumstances that occur by chance rath
 * Probability of a favorable outcome for each sequence of actions (probabilities)
 * The ability to rapidly adapt to the arrival of new information (robustness)
 
-### Building a Business Is a Bundle of Bets
+## Building a Business Is a Bundle of Bets
 You bet on a market, a trend, a technology, a founder, a CEO, a team, an obstacle, a solution, a business model, a plan, a brand, and more. All these different factors are rolled up into one giant bet. Entrepreneurs, executives, and investors are paid on the assumption that they can untangle all the bets and improve the odds. Their IQ, training, experience, communication, determination, network, and judgment should give them an edge.
 
 **When I examine my performance as a business leader, I’m trying to ask myself: Was this outcome the result of skill or random events?** Did I apply my skill to estimate and influence the distribution of possible outcomes? Could I have increased the odds of a more favorable outcome by better analysis or different actions? It’s essential in this context to factor in time and available information. Retroactively evaluating a decision is only fair with the same time constraints and information. Hindsight is, after all, 20/20.
@@ -55,7 +55,7 @@ You bet on a market, a trend, a technology, a founder, a CEO, a team, an obstacl
 
 Another way to put this is: Can you “manufacture luck” when building a business? I think you can, to a point. There are definitely powerful frameworks that can improve your odds.
 
-### Bold Visions and Critical Obstacles
+## Bold Visions and Critical Obstacles
 
 A critical factor necessary to create an outlier outcome is to have a bold vision and overcome huge obstacles. I’m inspired by The Crux, a book by Richard Rumelt, one of the world's leading authorities on strategy. The book suggests how to identify problems that are valuable to solve. His advice is simple: Focus your energy on the most critical obstacle you can overcome to accelerate the world toward your vision. By definition, a critical obstacle is unsolved in a satisfactory way. If it already has a solution, it’s not a critical obstacle.
 
@@ -67,11 +67,11 @@ A critical factor necessary to create an outlier outcome is to have a bold visio
 
 **To make commercial product innovation even more complex, it depends on other people, i.e., your customers.** A sufficiently large group of customers must agree that they face the critical obstacle you focus on. And they must agree with you that your solution overcomes their obstacle in a satisfying way. And they must be in a position to pay for your solution. Most companies fail to launch valuable products because they fail to validate with customers that the obstacle is critical.
 
-### The Complexity of Customer Validation
+## The Complexity of Customer Validation
 
 **I think customer feedback is the most confusing aspect of entrepreneurship.** During times of major disruption, when new technology emerges that solves problems in an unseen way, social structures become a major adoption factor. Maybe your customer is scared of change and unwilling to risk their current status quo? Or perhaps they want to buy, but management will not approve it? Or maybe the buyer's status is threatened by this new technology? Or does your solution risk replacing existing teams? Or maybe customers are just so invested in their current way of working that they want to avoid disrupting that? This feedback can easily be confused with “you are not overcoming a critical obstacle.” You might have a way to overcome a critical obstacle; your customer may not realize or appreciate it. But they could also be right, and you could be wrong. Or you are both right; the timing just isn’t there. There is a big graveyard of startups with products overcoming obstacles that aren’t critical. This is a significant source of randomness when building a business. Not only are you betting you can overcome a critical obstacle, but you are also betting there will be demand for your solution. There is a saying that "first-time founders focus on products, second-time founders focus on distribution."
 
-### The Role of Determination
+## The Role of Determination
 
 Outlier outcomes require placing high-conviction bets before it is obvious and being right. I quote from earlier:
 
@@ -102,7 +102,7 @@ A system of 3 bodies interacting gravitationally is chaotic.
 
 Since world market is chaotic, estimating how much value you can create is very hard. Most huge companies today feel obvious in retrospect. “Of course Nvidia is a successful company!” But the reality is that it was usually far from obvious for a very long time.
 
-### Creating and Capturing Value
+## Creating and Capturing Value
 
 **To make matters worse, creating value is not enough. You also need to capture value.** Inspired by the [Acquired podcast](https://www.acquired.fm), I’ve become fond of the **"7 Powers" framework** to understand a company’s ability to capture value.
 

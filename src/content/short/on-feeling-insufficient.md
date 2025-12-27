@@ -21,7 +21,7 @@ Getting children changes everything, whether you like it or not. I’m an introv
 
 It’s because of all of this that I feel compelled to write something about my emotional journey. Maybe to cope. Maybe to relieve some of the pressure. Maybe to make it a little bit easier for someone out there.
 
-One word sums up my emotional state during 2025. I’ve been feeling:\
+One word sums up my emotional state during 2025. I’ve been feeling:
 ## **Insufficient**
 
 We’ve all felt this way at some point. We all want to be good enough. To live up to expectations. Humans need recognition and love. What’s different right now, at least for me, is that my feeling of being insufficient never stops. It doesn’t even take a break. If anything, it’s getting stronger. Maybe it’s having kids. Maybe it's all the challenges our company has faced this year. Maybe it’s the world getting more complex. Maybe it’s the looming presence of war. I don’t know.

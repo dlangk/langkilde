@@ -3,13 +3,13 @@ pubDate: "2023-07-27"
 title: Learning World Models for Robust AI
 ---
 
-**I recently declared that I’m [more excited than worried](https://langkilde.se/post/2023-06-08-why-i-am-excited-about-ai) about recent progress in AI! 🚀** The main reason is my belief that there is a low near-term probability of self-improving AI. I cannot convince myself that asymptotic self-improvement is imminent. That said, I cannot dismiss the potentially catastrophic impact of a runaway scenario; I just think it’s still a long way off. While the short-term disruption caused by new AI technology might be significant, I think it will be manageable. Assuming self-improvement does not kick in, the benefits of AI massively outweigh the downsides. Part of arriving at this conclusion is the incredible complexity involved in creating embodied AI capable of independent self-improvement. I’ve taken time this summer to read various suggestions of how embodied AI might be made real, and I want to share some thoughts.
+**I recently declared that I’m [more excited than worried](https://langkilde.se/blog/why-i-am-excited-about-ai/) about recent progress in AI! 🚀** The main reason is my belief that there is a low near-term probability of self-improving AI. I cannot convince myself that asymptotic self-improvement is imminent. That said, I cannot dismiss the potentially catastrophic impact of a runaway scenario; I just think it’s still a long way off. While the short-term disruption caused by new AI technology might be significant, I think it will be manageable. Assuming self-improvement does not kick in, the benefits of AI massively outweigh the downsides. Part of arriving at this conclusion is the incredible complexity involved in creating embodied AI capable of independent self-improvement. I’ve taken time this summer to read various suggestions of how embodied AI might be made real, and I want to share some thoughts.
 
-### Learning World Models
+## Learning World Models
 
 **I think a “world model” is necessary for robust intelligence.** I’ve read most of the recent papers by Yann LeCun, and I tend to agree with his position that models need “[grounding](v).” He points out that all known machine learningtechniques are inferior even to simple animals with respect to their learning efficiency. Supervised learning (SL)methods require vast amounts of labels, reinforcement learning (RL) methods require insane amounts of trials, andself-supervised learning (SSL) requires an enormous amount of unlabeled samples. Our current auto-regressive languagemodels are no different. Language models require massive amounts of text for their self-supervised learning to findefficient representations that allow human-like token predictions. Animals and humans, on the other hand, can learn veryquickly, we can reason and plan, and we understand how the world works. How is that possible?
 
-### Representing Reality
+## Representing Reality
 
 For the sake of this post, assume that we all operate in a shared, objective reality. We observe this reality by sensingobjects in space and tracking them through time. The photons that hit our retinas are translated into electrical signalsthat flow through our brains. Out the other end comes nerve signals telling our bodies to move. How the brain works isstill a mystery, but we can build a world model to predict the future and plan our actions. How is our world modelcreated, and how does it work?
 
@@ -39,7 +39,7 @@ The biological body is so complex and has 10,000 to 100,000 sensors distributed 
 
 **Every aspect of a robust world model needs to be learned from experience and interaction to solve this.** Putdifferently, our world model must be a fully differentiable end-to-end model. The world model is optimized to allow thebest possible prediction of the future as measured by our ability to maximize some reward function. This would meanmerging the perception, prediction, and planning steps into an end-to-end differentiable model. When the development ofautomated mobility took off about 15 years ago, this was impossible. As a result, a “divide-and-conquer” method wasapplied. Also, many people insist an explicit intermediate representation is required to validate systems. That’s a poorexcuse not to pursue an end-to-end differentiable approach. There will always be ways to decode a latent model intosomething that can be inspected, and unit tests can be designed to test safety-critical aspects of the model.
 
-### A Possible Architecture for Robust Embodied AI
+## A Possible Architecture for Robust Embodied AI
 
 LeCun outlines an end-to-end approach in his positionpaper, “[A Path Towards Autonomous Machine Intelligence](https://openreview.net/pdf?id=BZ5a1r-kVsf). He proposes afoundational architecture for achieving this form of efficient learning with six components: Configurator, Perception,World Model, Cost, Memory, and Actor.
 
@@ -61,7 +61,7 @@ The idea is that a **Configurator** interacts with all modules by modulating the
 
 7. **Memory** : after every action, the states and associated costs from the intrinsic cost and the critic are stored in   the short-term memory. These pairs can be used later to train or adapt the critic.
 
-### Predictions in Latent Spaces
+## Predictions in Latent Spaces
 
 LeCun is famous for his “cake analogy,” i.e., _“If intelligence is a cake, the bulk of the cake is self-supervisedlearning, the icing on the cake is supervised learning, and the cherry on the cake is reinforcement learning (RL).”_ Theidea is that humans leverage capabilities such as predicting and reasoning to infer the future from availableinformation. We do not just learn from explicit labels. “ _Prediction is the essence of intelligence_.”
 
@@ -83,7 +83,7 @@ LeCun has, for example,proposed [VICReg](https://arxiv.org/abs/2105.04906?fbclid
 
 ![](https://storage.googleapis.com/langkilde-se-images/1afd2c38-0d73-4616-85ed-c45f487f5c49.jpeg)
 
-### Latent Spaces and Reward Functions
+## Latent Spaces and Reward Functions
 
 The future belongs to self-supervised methods that observe large quantities of recordings to derive the most informativelatent representations for some reward function that requires you to predict the future. This means:
 

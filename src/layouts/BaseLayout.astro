@@ -20,6 +20,7 @@ const {title} = Astro.props;
             --font-size-base: 20px;
             --accent-color: rgba(255, 77, 0, 0.6);
             --text-fade: rgba(87, 87, 87, 0.3);
+            --quote-bg: rgba(0, 0, 0, 0.035);
         }
 
         .dark {
@@ -27,6 +28,7 @@ const {title} = Astro.props;
             --text-color: #f0efea;
             --accent-color: rgba(253, 123, 58, 0.7);
             --text-fade: rgba(240, 240, 240, 0.25);
+            --quote-bg: rgba(255, 255, 255, 0.05);
         }
 
         /*--------------------------------------------------------------
@@ -247,7 +249,17 @@ const {title} = Astro.props;
         }
 
         /*--------------------------------------------------------------
-          9. Toggle Switch Styles
+          9. Blockquotes
+        --------------------------------------------------------------*/
+        :global(.post-content blockquote) {
+            background-color: var(--quote-bg);
+            padding: 1rem 1.5rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+        }
+
+        /*--------------------------------------------------------------
+          10. Toggle Switch Styles
         --------------------------------------------------------------*/
         .toggle-switch {
             position: fixed;
@@ -399,7 +411,13 @@ const {title} = Astro.props;
         });
     }
 
-        // 2) Dynamically populate ToC if empty
+        // 2) Make links in post content open in new tab
+        document.querySelectorAll('.post-content a').forEach(link => {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+        });
+
+        // 3) Dynamically populate ToC if empty
 
         const toc = document.getElementById("toc");
         if (toc && toc.children.length === 0) {

@@ -5,7 +5,7 @@ title: Should you raise VC money?
 
 **There is a constant dance between technology and capital.** Technology improves and disrupts, and capital chases the latest and greatest innovation that provides yield. I recently returned to Sweden from an extended stay in the Bay Area. My focus was to learn as much as I could about the fundraising landscape. To build successful, valuable companies you need to understand how financial markets work. Building great products is still the most value-generating work a founder can spend time on, but it isn’t the only piece of the puzzle. Here are some reflections based on my recent experiences talking to investors. A major question for me is “What businesses are a good fit for venture capital?”, and I’ll try and establish that towards the end.
 
-### Amount of Capital in the World
+## Amount of Capital in the World
 
 First of all: There are massive amounts of capital in the world that need to be allocated. According to [SIFMA](https://www.sifma.org/resources/research/research-quarterly-equities/#:~:text=The%20U.S.%20equity%20markets%20are,the%20next%20largest%20market%2C%20China.), the global equity market will be around US$106 trillion dollars in 2023. US$45.5 trillion dollars of that is in the US, EU US$11.8 trillion dollars, and China US$11 trillion dollars. According to [St. Louise Feb](https://fred.stlouisfed.org/series/MABMM301USM189S), the US [M3 money](https://en.wikipedia.org/wiki/Money_supply) supply (cash, etc) was US$20+ trillion dollars.
 
@@ -13,11 +13,11 @@ There are around 41,000 listed companies in the world with a combined market val
 
 ![](https://storage.googleapis.com/langkilde-se-images/7302ce6b-c2f0-4924-9590-1b31414f29f9.jpeg)
 
-### Who Owns Global Equity Markets?
+## Who Owns Global Equity Markets?
 
 Where is the money that makes up global equity markets coming from? According to the OECD, there are four main categories of owners: Institutional investors (like mutual funds, banking institutions, hedge funds, insurance companies, venture capital funds, and pension providers), public sector owners (central or local government), private corporations (other companies) and strategic individual investors (rich people). About 41% of the global stock market cap is held by institutional investors, making them the largest category. In the West, their ownership is even higher.
 
-### Yield and the Risk-Free Rate
+## Yield and the Risk-Free Rate
 
 **What do these people want?** More money. One way to get more money is to buy an asset that provides **yield**. The yield on a security is a measure of the ex-ante return to a holder of the security. Some assets, like fixed-income securities like bonds, provide yield in the form of coupon rates. The yield for “risk-free” assets (i.e. securities with virtually zero risk of loss) set the "risk-free rate". Most people consider 10-year US Treasury bonds (US10Y) to set the risk-free rate. If you buy a US10Y you receive a fixed interest payment every 6 months. The government pays you for locking up money with them for 10 years. Right now, that rate is ~4.4%. Different securities have different ways of providing yield (cash dividends etc) but the principle is the same as for coupon rates.
 
@@ -25,9 +25,9 @@ Where is the money that makes up global equity markets coming from? According to
 
 **The risk-free rate has been declining since the 1980s.** This has encouraged investors to take more and more risk. The period from 2008 to 2021 offered an extraordinarily low cost of capital. Looking back, risk-free rates are now back to pre-2008 levels of interest rates, and the curve has shot up for the first time in decades. For the last 15 years, governments have stimulated the economy to first recover from the 2008 meltdown, and then the 2020 Covid lockdown. They did not want people to deposit their money into savings, so they turned down the yield on government-backed securities, thereby stimulating the economy. But those times are over now, and investors now get a 4.4% return on their money without taking any risk at all. Assuming all other assets have more risk, money managers will benchmark assets against the risk-free rate.
 
-### How Interest Rates Affect Startups
+## How Interest Rates Affect Startups
 
-**Why does this matter for a startup?** Well, one way to get yield is to seek riskier investments. And startups are incredibly risky. I wrote a lot about this [last winter](https://langkilde.se/post/2023-01-09-building-extremely-valuable-companies). While returns can be high, the variance of return is high.
+**Why does this matter for a startup?** Well, one way to get yield is to seek riskier investments. And startups are incredibly risky. I wrote a lot about this [last winter](https://langkilde.se/blog/building-extremely-valuable-companies/). While returns can be high, the variance of return is high.
 
 ![](https://storage.googleapis.com/langkilde-se-images/3389b20d-0d01-4755-a007-92b9cc33b94a.jpeg)
 
@@ -43,7 +43,7 @@ Where is the money that makes up global equity markets coming from? According to
 
 ![](https://storage.googleapis.com/langkilde-se-images/f3e39d09-020e-4aa5-8e51-ef18d1f3a7a0.jpeg)
 
-### Valuation and Expected Returns
+## Valuation and Expected Returns
 
 **Let’s assume, for the sake of argument, that our company ends up in a glorious $500M exit.** 
 
@@ -57,13 +57,13 @@ Babam. Now, all of a sudden, we can get one $48.7M windfall instead. That means 
 
 ![](https://storage.googleapis.com/langkilde-se-images/924f3891-c589-4a35-b450-b2cb0a1239c5.jpeg)
 
-### Current State of Venture Markets
+## Current State of Venture Markets
 
 **What this means is that right now, there are a lot of very highly valued startups that probably aren’t worth the price put on them in their latest funding round.** Another chart from Battery shows a very crowded box for $1B+ startups that soon need to start providing liquidity to venture funds. Venture funds are typically close-ended, i.e. investors lock their money up for 10 years. But after that, they expect to get their money back again. If a VC has a portfolio of companies that they cannot sell, they cannot return money to their investors. That creates a sort of Mexican standoff. If investors in a VC fund push for liquidity, VCs are forced to “mark to market”, i.e. put a price on their assets. Another interesting tidbit: turns out investing in a fund doesn’t mean you have to give them money right away. The VC fund instead _calls_ on capital when needed. Right now, some investors might not be able to honor such a cash call, since they haven’t gotten money back from previous investments. If the IPO market is dead, there is limited liquidity in the secondary market, and the company does not provide revenue enough to defend its valuation, you have a toxic cocktail. **This is the state of the current market.**
 
 ![](https://storage.googleapis.com/langkilde-se-images/f65f010b-6cfd-4449-a3ed-71a66cb3a0aa.jpeg)
 
-### How Venture Firms Respond
+## How Venture Firms Respond
 
 How do venture firms make sure they make money in a market like this? Well, they only invest in truly extraordinary companies. For Series B, we’re talking:
 
@@ -78,7 +78,7 @@ How do venture firms make sure they make money in a market like this? Well, they
 * **Low friction sales motion.** This is why everyone loves product-led growth (PLG). No sales team! 🎉
 * **Experienced team.** There are a lot of ways to fuck up.
 
-### Alignment Between Founders and Investors
+## Alignment Between Founders and Investors
 
 **Here is where VCs and founders (can) have conflicting priorities.** Investors seeking extraordinary outcomes are not interested in “safe bets”. If the probability of success is 10%, 20%, or 30% doesn’t change the math as much as looking for companies with a possible $10B outcome instead of a $100M. The 100x difference in potential outcome far exceeds the impact of better odds of survival. And, in the end, most startups fail anyway, so they assume there aren’t any “sure things”.
 
@@ -88,6 +88,6 @@ How do venture firms make sure they make money in a market like this? Well, they
 
 I’m starting to understand that the best investors seek a mutual fit between the founder, the company, and their investment. You have to establish shared expectations: How much risk are we taking? What sort of returns are we expecting? What sort of company are you building? How comfortable are you “going for broke”? Can you provide $100M in returns to a fund? $1B? Does the business you envision support such an outcome? Does the market? **Difficult questions you have to deal with before you raise money.**
 
-### Conclusion: Who Should Raise VC?
+## Conclusion: Who Should Raise VC?
 
 Personally, I think it takes years of experience running a startup before you can honestly reason about these things. First-time founders have no idea what they are getting into, for better or worse. Second-time founders who had a moderately successful first try, understand how things work, and are _still_ determined to take VC money - those are the ones who probably should. It doesn’t mean they will succeed, but I’m certain their odds are way better.

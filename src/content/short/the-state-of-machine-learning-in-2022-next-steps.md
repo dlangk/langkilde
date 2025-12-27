@@ -3,7 +3,7 @@ pubDate: "2022-05-12"
 title: The State of Machine Learning in 2022 - Next steps?
 ---
 
-I recently summarized the [state of machine learning](https://langkilde.se/post/2022-04-18-the-state-of-machine-learning-2022). The post
+I recently summarized the [state of machine learning](https://langkilde.se/blog/the-state-of-machine-learning-in-2022/). The post
 served as a way to keep up with what _has happened_ until now. Predictably, it triggered a lot of questions about what _will happen._ Rather than make [bold predictions](https://www.businessinsider.com/elon-musk-history-of-full-self-driving-promise-2022-1?IR=T&r=US#:~:text=In%202015%2C%20billionaire%20Tesla%20CEO,still%20making%20the%20same%20promise.) of future breakthroughs, it seems better to ask “what is a suitable framework based on which we can interpret new results and guess possible future capabilities?”.
 
 In general, a challenge with keeping up with machine learning research is that a list of “the latest cool stuff” gets old very quickly. At least if results are considered in too much detail. There are new results published all the time, but in reality, “breakthroughs” are rather few. Most papers are “improved state-of-the-art by 1%”-noise. I do not think you can predict the future of research since a lot of innovation is accidental and unexpected. But we can do a lot better than random guessing. It is necessary to try predicting the future since there is a lot at stake for society, business, and humans. So, here are some thoughts on how to reason about the future of machine learning:
@@ -20,9 +20,9 @@ So, how do we make sense of these papers? And what do they mean for the next wav
 
 All research builds on previous results, so we should ask ourselves: what is _actually_ new about these papers? It is tempting to focus on the amazing demo output, but a more interesting question is “why does it work better than before?”. Later, we will of course also focus on when it does not work.
 
-Let’s start with what is _not_ _new_. The core concepts of **numerical optimization** and **deep neural networks** have remained largely unchanged for a long time. Neither PaLM nor Flamingo changes anything about these core concepts. Of course, there are improvements and tricks used to make them perform better, but the fundamental idea is more or less the same. It also turns out both papers make use of the same kind of **embeddings** that we’ve seen for the last 12-13 years now, i.e. models representing information as dense vectors. Finally, both models leverage **attention and transformers** to learn improved embeddings. We covered these concepts in the [previous blog post](https://langkilde.se/post/2022-04-18-the-state-of-machine-learning-2022).
+Let’s start with what is _not_ _new_. The core concepts of **numerical optimization** and **deep neural networks** have remained largely unchanged for a long time. Neither PaLM nor Flamingo changes anything about these core concepts. Of course, there are improvements and tricks used to make them perform better, but the fundamental idea is more or less the same. It also turns out both papers make use of the same kind of **embeddings** that we’ve seen for the last 12-13 years now, i.e. models representing information as dense vectors. Finally, both models leverage **attention and transformers** to learn improved embeddings. We covered these concepts in the [previous blog post](https://langkilde.se/blog/the-state-of-machine-learning-in-2022/).
 
-### Larger Models are (still) Better
+## Larger Models are (still) Better
 
 It turns out that the progress shown in recent papers is mostly about **size** , both in model and data**.** To quote the authors of the PaLM paper:
 
@@ -30,7 +30,7 @@ It turns out that the progress shown in recent papers is mostly about **size** ,
 
 The fact that transformers can be parallelized, and the emergence of new, innovative ways to train models such as [Pathways](https://blog.google/technology/ai/introducing-pathways-next-generation-ai-architecture/) make it possible to train larger and larger models. The unexpected result is that **we should expect models to keep improving as they keep growing.** People have been suggesting this for years, but I’ve always believed more sophisticated representation methods would be required. I mean, intuitively more context when learning should make a model more capable, but the fact that the latent space can organize the information so successfully is surprising. At least to me. It could have very well been that information got “jumbled” as the model grows, but it appears not to. It also appears as if concepts can be combined and reused across domains in a surprisingly robust way.
 
-### Chain-of-Thought
+## Chain-of-Thought
 
 Besides size, a new thing from my perspective is that PaLM demonstrates that when model scaling is combined with **chain-of-thought prompting** the model can solve problems that require multi-step mathematical or commonsense reasoning to produce the correct answer. I hadn’t read much about this concept before, so _for me,_ this was new. It looks like the best paper to read on this is “[Chain of Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/pdf/2201.11903.pdf)”. The purpose is to handle so-called “[system-2](https://en.wikipedia.org/wiki/Thinking,_Fast_and_Slow)” tasks such as logical, mathematical, and common sense reasoning. Large language models exhibit flat scaling curves for such tasks, i.e. they will not improve with the size of the model. To handle this, the authors propose a way for these models to decompose multi-step problems into intermediate steps. The idea is basically to let the model generate a coherent set of short sentences that lead to the answer to a reasoning problem.
 
@@ -40,7 +40,7 @@ Turning to Flamingo, the most interesting aspect of this model is that it is:
 
 Basically, it can process images and text interchangeably in a sequence and predict a suitable next sequence of text tokens. When considered together with DALLE2 I assume it’s just a matter of time before it can also respond with an image every now and then. Imagine the human operator inputting a sequence of text and images, and then asking “Show me what you are thinking”, to which the model would output an image capturing its “state of mind”. Such an exchange should be possible.
 
-### Diffusion Models
+## Diffusion Models
 
 It is clear that GANs have a powerful new contender: [diffusion models](https://arxiv.org/pdf/2006.11239.pdf). To quote [Lilian Weng](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/):
 
@@ -61,17 +61,17 @@ A concept that is not covered by the papers I’ve focused on, but that is offer
 
 As impressive as the demos are, there are still limitations to these models. Knowing their limitations, and how likely it is that we can overcome those limitations, will be important to predict what is possible in the future.
 
-### The need for webscale human-curated knowledge
+## The need for webscale human-curated knowledge
 
 These models still depend on **annotated data**. You might protest, and the authors of these papers like to highlight that they avoid the need for large amounts of annotated data. At the same time, they clearly rely on "webscale datasets". It turns out the internet is made by humans. All the text written, and the image captions created, are written by humans. So in fact, the concepts manifested in the model’s latent space, need to first be described by humans in text and associated with images. And as a result, these models will also learn whatever undesired concepts and biases are present online. How to handle that, and mitigate that, will be a big part of making these models aligned with our interests.
 
 What these papers show is that _if you have webscale amounts of human-curated knowledge_ a lot of tasks can be solved using the same foundational model. So in that sense, _you do not need task-specific annotated data_ assuming the task is a subset of what is described on the internet. Which tasks are implicitly described online, and which are not, is not clear to me at this point.
 
-### Fixed Amount of Thinking
+## Fixed Amount of Thinking
 
 These models all have a limited amount of [FLOPS](https://en.wikipedia.org/wiki/FLOPS) to spend, i.e. they are not "continuously active". This limits what tasks can be solved. Input is fed through the network and output is generated. Once that is done, nothing else can happen. I’m not actually sure how big this limitation is scientifically, or if it's more an issue of cost/energy. Maybe the government or military can keep one of these models spinning continuously. Just hook it up to a nuclear reactor or something? Humans can choose to think more about something if it is complicated. These models cannot.
 
-### Models are still Great at Bullshitting
+## Models are still Great at Bullshitting
 
 Models are still great at bullshitting when they "do not know" the answer. I get the impression they are "biased for action" in the sense that most versions of these systems prefer some output over "I do not know". In fact, it seems models are “extremely sure” all the time, even when the output is more or less ungrounded. Paper authors describe this as "hallucinations" which might be a case of anthropomorphizing. It could also be that there are sufficiently similar concepts in the data that the model picks a prediction that humans feel is nonsense, but that is actually statistically accurate. Which is correct, that which a human finds intuitive, or that which is most statistically likely?
 
@@ -128,7 +128,7 @@ Predictably, most of the companies are [based in the US](https://www.stateof.ai)
 
 ![](https://storage.googleapis.com/langkilde-se-images/b13d2460-f4d2-4d18-bf30-a3f29412fc95.jpeg)
 
-### Access to Quality Knowledge Becomes Limitation
+## Access to Quality Knowledge Becomes Limitation
 
 I think machine learning systems are already suffering from the same problems humans do: a lot of them are garbage. I mean, being a human does not guarantee you are a good, productive member of society. Becoming a great person requires careful “tuning” through education, parenting, selective reading, coaching, and mentoring. If we just consume everything around us all the time and give in to all our urges, we become awful people.
 
@@ -136,7 +136,7 @@ I think we will find that as more capable ML systems emerge, we will lose some o
 
 I think we can spend eternity curating a knowledge base and debating what is right. I mean, that’s how we spend most of our time anyway right? As soon as you have enough food and shelter, we climb the Maslow stairs and spend our time pondering the meaning of life. An algorithm could do that forever without any really progress. Sure, it might pick an [optimization problem to focus on](https://www.lesswrong.com/tag/paperclip-maximizer), and that might be bad. But it’s also possible it will [just make and watch soap operas](https://en.wikipedia.org/wiki/The_Murderbot_Diaries) all day. Who knows?
 
-### Reading Recommendations
+## Reading Recommendations
 
 **The State of AI.** During my research on this, I’ve spent a lot of time reading the excellent stuff that Nathan Benaich is publishing ([twitter](https://twitter.com/nathanbenaich), [website](https://www.stateof.ai)).
 
@@ -152,6 +152,6 @@ My last link will be from that site, and it is probably a good place to go next.
 
 Read this: [It Looks Like You’re Trying To Take Over The World](https://www.gwern.net/fiction/Clippy)
 
-### Conclusion
+## Conclusion
 
 The last few weeks have made me begin to adjust my assumptions about what machine learning will be able to do. I now think it is likely that the scaling hypothesis will hold, and that we will experience human-level competency in virtual entities in the next few years. That’s going to bring massive change to society, work and business. Be prepared.

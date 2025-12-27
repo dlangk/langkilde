@@ -4,7 +4,7 @@ title: The Probability Of Near-Term AGI-Like Systems
 ---
 
 Since I
-wrote “[The State of Machine Learning in 2022](https://langkilde.se/post/2022-04-18-the-state-of-machine-learning-2022),” AI has entered the mainstream. The internet is flooded with content about how GPT-like models will change everything. I hazarded to make predictions in “[Next steps?](https://langkilde.se/post/2022-05-10-the-future-of-machine-learning)” that now seem embarrassingly conservative in hindsight:
+wrote “[The State of Machine Learning in 2022](https://langkilde.se/blog/the-state-of-machine-learning-in-2022/),” AI has entered the mainstream. The internet is flooded with content about how GPT-like models will change everything. I hazarded to make predictions in “[Next steps?](https://langkilde.se/blog/the-state-of-machine-learning-in-2022-next-steps/)” that now seem embarrassingly conservative in hindsight:
 
 * **More modalities are merged.** Outcome => _Confirmed_.
 
@@ -22,17 +22,17 @@ wrote “[The State of Machine Learning in 2022](https://langkilde.se/post/2022-
 
 So, where are we now? Most people feel overwhelmed by the rate of progress and struggle to sort through all information. This is an attempt to summarize my view.
 
-### Drastically updated probability of near-term probability of AGI
+## Drastically updated probability of near-term probability of AGI
 
 Those who know me know I’ve always been skeptical about hyperbolic claims around AI. I always preferred machine learning over artificial intelligence because AI felt pompous. My understanding of the available technology gave me no reason to think we were close to some sort of human-like intelligence. But I’d rather be correct than consistent. **It is fair to call today’s algorithms a form of AI. And maybe even AGI-like. At the very least, I have changed my mind about the  possibility of near-term AGI-like systems, and I’m implementing many behavioral updates to align my life with my new view.** This process started more than a year ago, but it has only accelerated since.
 
-### Defining Artificial General Intelligence (AGI) is a distraction
+## Defining Artificial General Intelligence (AGI) is a distraction
 
 **First of all: Spending time defining “what is human intelligence” and “what is AGI” is a distraction.** I get why the question is appealing, and I think it is philosophically interesting. But discussing it isn’t necessary for addressing the progress we have made and the opportunities and challenges that brings. Great physicists will tell you that there is always another level of “why” that will stump them. The challenge is to find questions that we can make meaningful progress on now.
 
 We know, for a fact, that currently available language models can answer questions that make them a viable substitute for humans for a wide range of tasks. So in that sense, we have access to some form of general intelligence. I do not believe it is a form equivalent to the intelligence humans possess, but that’s not important. **Defining the tool, and relating it to humans, has no impact on its usefulness**. As a society, we must accept that large swaths of human workers are about to become obsolete.
 
-### Progress will most likely be faster than we can imagine
+## Progress will most likely be faster than we can imagine
 
 There is evidence that AI researchers use feedback loops based on LLVMs to accelerate progress further. The impact of this is hard to predict. Assuming scaling laws keep holding and more funding is directed to training LLVMs, I think it is fair to assume there is a compounding acceleration of progress. That means **progress in AI is on an exponential trajectory.** Of course, it is possible we will find limitations that result in diminishing marginal returns. But from my perspective, there is a higher expected reward from assuming it will continue accelerating.
 
@@ -40,11 +40,11 @@ As with all new technology, descriptions of progress will be dismissed as hyperb
 
 You could start to notice in the mid-2010s that LLMs improved. Open AI was founded on the premise that we might get on an exponential trajectory toward AGI. The seeds of progress are training data, computation, and improved algorithms. Of course, it was clear there were many considerable hurdles ahead. Multimodality, logical reasoning, transfer learning across tasks, and long-term memory were all unsolved. But one by one LLVMs are overcoming these hurdles.
 
-### The short-term impact of increasingly capable AI systems is underestimated
+## The short-term impact of increasingly capable AI systems is underestimated
 
 People tend to be bad at recognizing and acknowledging exponential growth in its early phases. Politics is, ironically, both a slow and a short-term process. Most politicians are currently worried about the price of electricity, inflation, or the war in Ukraine. I get that. That said, we need to act with urgency to prepare for the violent disruption that AI will bring to the labor market. Large groups of people will need to reskill quickly. History shows this has a mostly negative impact on earnings. While I’m optimistic the long-term impact of AI will be positive, we should prepare for the short-term disruption.
 
-### The Alignment Problem
+## The Alignment Problem
 
 I will quote from [Anthropic’s website](https://www.anthropic.com/index/core-views-on-ai-safety):
 
@@ -52,7 +52,7 @@ I will quote from [Anthropic’s website](https://www.anthropic.com/index/core-v
 
 I think aligning AI systems with human values, and human preferences will be the main activity for both companies and governments for the foreseeable future. There is a new programming paradigm emerging with the advent of LLVMs. It’s already over ten years ago that we moved from programming with code to programming with examples. We are now in the middle of yet another transition: fine-tuning large models based on human feedback. I want to try and explain what I mean by that.
 
-### Curating “The Essence of Concepts” in Latent Spaces
+## Curating “The Essence of Concepts” in Latent Spaces
 
 **My interpretation of LLVMs is that they learn “the Essence of Concepts.”** Let me explain. Around 2010 it became clear that with enough labeled data, you can learn almost any task. Construct your dataset, carefully assemble labels, specify a loss function and neural network architecture, train your network, and deploy. This approach has been applied successfully to many tasks for the past decade.
 
@@ -70,7 +70,7 @@ The surprising thing in recent years has been the extraordinary capacity demonst
 
 **The consequence is that programming now becomes a matter of curating the concepts encoded in a latent space. We do not have the tools for this as of today.** For me, the alignment problem is equivalent to curating the concepts encoded in a latent space. We want to shape concepts to align them with human values and human preferences. That way, model predictions will be acceptable to users.
 
-### Learn a Policy from Human Feedback (RLHF) on Latent Spaces
+## Learn a Policy from Human Feedback (RLHF) on Latent Spaces
 
 So, how do we align model predictions with human values and preferences? Yann LeCun has been building on Geoffrey Hintons observation about the brain, and in his 2016 NIPS talk, said that:
 
@@ -96,15 +96,15 @@ To speed up the process, we can apply human feedback directly to the latent spac
 
 ![](https://storage.googleapis.com/langkilde-se-images/89e6fa94-34dc-47af-a564-af89f77e29f3.jpeg)
 
-### What can the RLHF workflow be applied to?
+## What can the RLHF workflow be applied to?
 
 Anything. Assuming you have enough recorded data in sequences and a ton of computing. Most existing limitations will most likely be overcome with time and money. I expect this is the most viable way to learn how to drive, walk, operate machinery, communicate, and do all the other things humans do. It seems reasonably likely that multi-modal transformers will be enough for many, many applications.
 
-### Does this mean AGI is solved?
+## Does this mean AGI is solved?
 
 No. Not even close. While LLVMs are an amazing step towards AGI, there are many, many things that such models cannot solve. I think we will see many novel model architectures in the years ahead and that GPT-styled models are a step on the ladder as opposed to the ultimate solution. But again, that doesn’t mean we shouldn’t embrace them and push them to their limit. It just means there’s a lot more to explore, discover and create.
 
-### What’s next?
+## What’s next?
 
 Well, a lot, probably. But here are some obvious things:
 

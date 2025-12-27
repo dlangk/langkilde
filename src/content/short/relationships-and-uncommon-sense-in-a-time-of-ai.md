@@ -9,7 +9,7 @@ What is valuable in a world where neural networks can combine and interpolate an
 
 **So what are the consequences of this technology for humans?** What will be valuable skills in a future permeated by Generative AI? To hypothesize about this, we have to start by understanding the strengths and weaknesses of this new technology:
 
-### Comparative Strengths of Machine Learning
+## Comparative Strengths of Machine Learning
 
 * **Can ingest all available information.** A human couldn't read all available text in a lifetime. Computers can read it in months or weeks, and they get faster and faster every day.
 
@@ -21,7 +21,7 @@ What is valuable in a world where neural networks can combine and interpolate an
 
 * **Able to combine concepts in unrestrained ways.** I find that combining concepts is the most exciting aspect of Generative AI. E.g. "Show me a dragon made of ice cream in the style of Salvador Dali." Humans will always be a bit hesitant to create really crazy combinations. Computers do not suffer from such inhibitions. A lot of science and business is about combining concepts from different domains to create novel solutions. Tesla came about as "what would a car company look like if it was set up and run like a software company?". What works in one domain can sometimes be transferred to new domains, unlocking new possibilities.
 
-### Comparative Strengths of Humans
+## Comparative Strengths of Humans
 
 * **Sparse Meta-Reasoning.** I ask myself questions about the meaning of life. The fact that I am aware of the absence of a clear objective function for existence feels significant. The process of finding purpose in a societal context is something humans are, so far, uniquely capable of. Even with perfect reinforcement learning, an objective function will be required. Humans are, in theory, free to pick their own. Most people default to something boring like money or fame, but our limitations are self-imposed. We can also do this based on very few examples, i.e., we do not really know much about all the choices humans make in life, and yet most of us can guide our own life surprisingly well.
 
@@ -47,7 +47,7 @@ Meta-Reasoning." Research in this domain is guided by questions like:
 These questions give a clue to what yet-to-be-understood human abilities we still haven't transferred to computers. That
 means that while recent breakthroughs are extraordinary, we are far from done.
 
-### Conclusion: Dream weird things with friends
+## Conclusion: Dream weird things with friends
 
 **If you want an edge on computers, you must build many global, solid relationships and make deliberate but risky bets.
 **

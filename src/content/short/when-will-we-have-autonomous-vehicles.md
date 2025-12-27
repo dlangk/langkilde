@@ -5,7 +5,7 @@ title: When will we have Autonomous Vehicles?
 
 [Kognic](https://www.kognic.com), the company Oscar and I founded last year, has decided to focus exclusively on ground truth generation for autonomous vehicles. This means we get the privilege of working with a lot of different companies involved in developing autonomous vehicles. It also means the most common question I get is “When do you think we will have self-driving cars?” **I think we are still decades away from regular people getting into their car and asking it to drive them to work. Let me explain why.**
 
-### Three words matter in my opinion: sparsity, fragility and complexity.
+## Three words matter in my opinion: sparsity, fragility and complexity.
 
 **Sparse** is when something is thinly distributed. The world is sparse in that a lot of things rarely happen. Sure, a lot of our everyday life is boring business as usual. But every so often something unexpected happens. Modern machine learning systems are unable to improvise, or generalize to the unseen. That means they act unpredictably when handling rare events.
 
@@ -19,7 +19,7 @@ To build an autonomous vehicle you need to deal with complex object interactions
 
 **Then there are parts of driving that will be very, very hard for computers.** Construction sites, temporary roads, complex intersections, environments with lots of pedestrians, poorly marked roads and more. These situations are extra sparse, fragile and complex, which is why it will take a very long time for autonomous vehicles to fully master them.
 
-### So what does this mean for autonomous vehicles?
+## So what does this mean for autonomous vehicles?
 
 **Well, I’m an optimist but a realist.** On the way to full self-driving, i.e. just riding in your car, not driving it, we will have increasingly competent active safety systems. These systems will save lives in a range of situations, and save drivers from long, boring stretches of highway driving. This will be valuable, but not game-changing. The more radical economic results from autonomous vehicles will not occur until we can remove the driver. One option to make this happen sooner is to create special zones where we reduce the sparsity, fragility, and complexity of things. For example, special zones where only goods transportation is allowed, and no pedestrians can enter.
 
