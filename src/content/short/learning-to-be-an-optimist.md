@@ -7,7 +7,7 @@ title: Learning to be an Optimist
 >
 > Nat Friedman, CEO of GitHub
 
-### Realism vs. Optimism
+## Realism vs. Optimism
 
 I was born and raised in Sweden, a country that favors consensus and realistic planning. We've survived all sorts of hardships by working together. At the same time, we're an increasingly individualistic society that promotes successful people as role models. This creates an interesting tension between success and realism. While we increasingly celebrate success, we still have a certain lack of imagination in execution.
 
@@ -15,7 +15,7 @@ If someone suggested in 2003 that they would revolutionize the automotive indust
 
 > _If the situation is unsustainable, and the options are impossible, the situation wins._
 
-### Some Things Are Inevitable
+## Some Things Are Inevitable
 
 I may not be clear how, when or at what cost - but it is clear it will happen eventually. We will have to adapt to limit climate change. We will have to find new ways to grow food. We will have to find ways to build more efficient housing. We will have to find new sources of raw materials in space. We will have to find even better sources of renewable energy. I'm confident we will, even if I do not know how yet. I have a firm belief in human ingenuity, and our ability to create a better world for ourselves.
 

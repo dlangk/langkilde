@@ -3,9 +3,9 @@ pubDate: "2024-01-02"
 title: Let's start a VC fund and make money!
 ---
 
-A few days ago, I asked myself "[Should you raise VC money](https://langkilde.se/post/2023-11-22-the-force-of-money)?". My conclusion was: Yes if you can imagine delivering 100x returns in 10 years. But it's not obvious why such a huge outcome is required. To understand a challenge that includes other people (which is most of them) I try to enter _their_ mind and view the world from _their_ perspective. If I can figure out what _they want_ and how _they see the world_, it's much easier for me to, let's be honest, _get what I want_.
+A few days ago, I asked myself "[Should you raise VC money](https://langkilde.se/blog/should-you-raise-vc-money/)?". My conclusion was: Yes if you can imagine delivering 100x returns in 10 years. But it's not obvious why such a huge outcome is required. To understand a challenge that includes other people (which is most of them) I try to enter _their_ mind and view the world from _their_ perspective. If I can figure out what _they want_ and how _they see the world_, it's much easier for me to, let's be honest, _get what I want_.
 
-### Building Our Imaginary VC Fund
+## Building Our Imaginary VC Fund
 
 **So, let's start an imaginary venture capital fund and do some investing.** What do we need? Well, first of all, we need money. We want to run a professional venture capital fund, so we will want to raise money from others, such as pension funds and high net-worth individuals (HNWIs). They are known as Limited Partners (LPs) because they will assume both a limited risk and consequently a limited share of potential profits. We call ourselves General Partners (GPs) since we have full responsibility for our investments. To start a venture fund, we need to decide on the following things:
 
@@ -23,7 +23,7 @@ A few days ago, I asked myself "[Should you raise VC money](https://langkilde.se
 
 There can be more exotic configurations but these are the important basics. Now, the hard part begins. How do we plan to allocate this money?
 
-### Setting Investment Assumptions
+## Setting Investment Assumptions
 
 We have to make assumptions about round sizes, valuations, graduation probabilities, and exit valuations. To mock our venture fund, I've used a tool called [Tactyc](https://tactyc.io). We will need to configure:
 
@@ -57,7 +57,7 @@ It is in this list of variables that the future of our little venture fund is hi
 
 ![](https://storage.googleapis.com/langkilde-se-images/0b5dd75a-afe2-4a40-888d-5ec925d96692.jpeg)
 
-### Allocation and Outcomes
+## Allocation and Outcomes
 
 So, in summary, we'd make 32 pre-seed investments, 8 follow-on seed investments and 4 follow-on Series A investments.
 
@@ -71,7 +71,7 @@ Due to management fees and expenses, we have 16.1 MSEK in investable capital. Re
 
 ![](https://storage.googleapis.com/langkilde-se-images/2d4ddf60-19f4-4a8e-9c34-35d3eea93643.jpeg)
 
-### The Power Law of Venture Capital
+## The Power Law of Venture Capital
 
 **Where would our proceeds come from?** Let's take a look.
 
@@ -79,7 +79,7 @@ Due to management fees and expenses, we have 16.1 MSEK in investable capital. Re
 
 **This is known as "the power law of venture capital".** We expect 2 exits from 32 pre-seed investments and the vast majority of proceeds is from the 0.5 companies that survive to a post-Series E exit at 10BSEK. 94% of our investments will return <1x. It turns out that increasing the probability of graduating or exiting at earlier rounds, does not make up for a homerun outcome. It also turns out you have to move fast for the math to work. If we increase the time companies spend in each round, the time to reach that glorious 10BSEK exit increases. If we double the time per stage from 24 to 48 months, then our net IRR drops down to ~11%. Nasdaq 100 has historically given you ~10% annual return, with a much, much lower variance. So, if you can't get **huge fast,** you won't provide a very compelling investing opportunity for VCs. The best of the best, like Sequoia, have historically been providing 20%+ net IRR on funds. That's what makes you a Tier 1 VC. LPs will throw money at you if you can show that sort of performance consistently.
 
-### What VCs Look for in Companies
+## What VCs Look for in Companies
 
 **The most money-making VCs tell me they are looking for the T2D3**, i.e. the triple, triple, double, double, double in revenue. If a founder has a credible plan to deliver a T2D3 5-year sprint, they have a much better chance at being a good fit for a VC than almost everyone else. Most companies are not close to this. You need to be able to go from $1M to $10M ARR fast, and then keep going. The best public SaaS companies are still growing 50% even though they passed $200-300M ARR. Meritech has a great comparison table [on the site](https://www.meritechcapital.com/benchmarking/comps-table). If we sort by EV / Implied ARR we see what it takes to get a 10x plus valuation. Hint: A lot.
 
@@ -103,19 +103,19 @@ You can derive these numbers by working your way backward from the imaginary exi
 
 To imagine an "unlimited upside" on a "venture timeline" VCs will want to see very strong growth. They need such an extraordinary outcome every 20-40 investments, and the best way to make it happen is to only bet on companies that have a good chance of making it. If it's clear from the start that the goal is not to reach $1B+ they will turn you down no matter how good you are. A high chance of a medium outcome does not fit with the fund structure of a VC.
 
-### Why is Venture Capital So Difficult?
+## Why is Venture Capital So Difficult?
 
 The combination of **low liquidity** (i.e. once you invest in a startup your money is locked up for a long time), **low probability of survival** (most startups blow up for one reason or another), **the startup valley of death** (the period after launch until you find product-sales-fit), **random macro-economic circumstances** (high-interest rates, wars, and pandemics), **unexpected technology disruptions** (LLMs) and many other things make the outcome outlined above very hard to achieve. And even then, it's not _that_ much more effective than just putting your money in the Nasdaq index.
 
-### Why Are Some Funds Successful?
+## Why Are Some Funds Successful?
 
-Well, some of it is luck. They may or may not admit it, but you only need to get lucky once in a while to get that super-high-performance outcome. That can then fuel your funds for years. It will boost your reputation which gives you better investment opportunities, and it will make it easier to raise money from LPs. This is known as the "The Virtuous Cycle", and it applies to entrepreneurs as well. I wrote about this [in the past](https://langkilde.se/post/2023-02-27-breakthroughness-and-the-virtuous-cycle):
+Well, some of it is luck. They may or may not admit it, but you only need to get lucky once in a while to get that super-high-performance outcome. That can then fuel your funds for years. It will boost your reputation which gives you better investment opportunities, and it will make it easier to raise money from LPs. This is known as the "The Virtuous Cycle", and it applies to entrepreneurs as well. I wrote about this [in the past](https://langkilde.se/blog/breakthroughness-and-the-virtuous-cycle/):
 
 > It turns out one of the statistically most important advantages you can have is being a "second-time founder." Entrepreneurs with experience in scaling a business, even to a modest size, are significantly more likely to start a billion-dollar business. The book argues that a large part of this advantage is a result of preferential access. Second-time founders already have a network of potential early-stage employees, investors, and advisors to lean on. That's a game changer for a nascent company. Another conclusion in the book is that successful founders usually have been creating organizations and networks from a very early age. That likely contributes to an accumulated network. Of course, there are lots of other traits that improve your odds, too, like: intelligence, adaptability, vision, risk tolerance, and operational efficiency.
 
 **All of the above is true for great VCs as well.** Having raised and deployed a fund that delivered great returns to LPs significantly increases the probability that you will do it again.
 
-### Conclusions and Reflections
+## Conclusions and Reflections
 
 **So, what are my conclusions?** Well, I guess I sympathize more with VCs now. I understand why they are so picky. I would be picky too, now that I know the math behind it. To fit into a top-performing venture capital fund's portfolio you need to:
 

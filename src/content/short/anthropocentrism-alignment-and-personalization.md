@@ -19,7 +19,7 @@ title: Anthropocentrism, Alignment, and Personalization
 
 * Human goals, preferences, and ethics are constantly changing. This protects us from automation.
 
-### Anthropocentrism and Human Importance
+## Anthropocentrism and Human Importance
 
 I follow closely the AI debate currently unfolding. The most extreme part of the debate is whether AI is an existential threat to humans. This post explores how we have tried to protect the long-term well-being of humanity, and what might make sense now. Humans have a long history of favoring humans. Already in The Book of Genesis, which could be as old as 3400 years, you can read in verse 1:26:
 
@@ -45,11 +45,12 @@ There are striking similarities between such research and the ultimate purpose o
 
 At the receiving end of regulation is the free market. Of all the forms for creating value we've tried, free democratic markets powered by independent academia have been our most significant source of progress. So whatever regulation we impose, it needs to be carefully balanced with the value of a free market. Most current AI regulation is a joke. And, while I'm at it, GDPR is a complete waste of money and time that makes Europe drastically less able to compete. I consider it my duty to avoid implementing any compromises due to GDPR. I share this to make sure you do not mistake my reasoning in this post as pro "big government." I think a small government is probably better in most cases, but we definitely need governments.
 
-Anyway, central to free markets are independent companies. Companies have a very straightforward, well-defined objective function: **maximize shareholder value**. In a way, **companies operate as distributed, super-intelligent AIs**. People work together to perform calculations and take actions that aim to capture as much value as possible.
+Anyway, central to free markets is independent companies. Companies have a straightforward, well-defined objective: 
+**maximize shareholder value**. In a way, **companies operate as distributed, super-intelligent AIs**. People work together to perform calculations and take actions that aim to capture as much value as possible.
 
-It turns out that regulation of markets can help us escape certain local minima that, if not escaped, would deplete common goods. Take electrification as an example: Tesla has received [billions in subsidies](https://www.latimes.com/business/la-fi-hy-musk-subsidies-20150531-story.html), and buyers of Tesla cars have enjoyed [aggressive tax benefits](https://www.reuters.com/business/autos-transportation/tesla-pushes-norways-ev-sales-new-record-2021-10-01/). As a taxpayer, I'm happy to contribute to getting us off our oil addiction faster. While companies would likely have realized the necessity of transitioning to electric vehicles anyway, government action undeniably accelerated our transition. Most industries welcome regulation. Pharmaceutical companies, for example, want a level playing field. If anyone could launch a drug without rigorous testing, the market would be impossible for doctors and patients to navigate. A messy pharma market would ultimately hurt drug companies.
+It turns out that market regulation can help us avoid certain local minima that, if not avoided, would deplete common goods. Take electrification as an example: Tesla has received [billions in subsidies](https://www.latimes.com/business/la-fi-hy-musk-subsidies-20150531-story.html), and buyers of Tesla cars have enjoyed [aggressive tax benefits](https://www.reuters.com/business/autos-transportation/tesla-pushes-norways-ev-sales-new-record-2021-10-01/). As a taxpayer, I'm happy to contribute to getting us off our oil addiction faster. While companies would likely have realized the necessity of transitioning to electric vehicles anyway, government action undeniably accelerated our transition. Most industries welcome regulation. Pharmaceutical companies, for example, want a level playing field. If anyone could launch a drug without rigorous testing, the market would be impossible for doctors and patients to navigate. A messy pharma market would ultimately hurt drug companies.
 
-### The Debate: Will Technology Replace Humans?
+## The Debate: Will Technology Replace Humans?
 
 I see a connection between companies in a free market, the tragedy of the commons, and AI. Let me explain: Because of their objective function, companies naturally focus on efficiency and automation. Often, that boils down to removing humans from processes. Less manual effort means more profitability. **An extreme outcome of this work would be that humans are no longer needed. Is such an outcome an expression of human goals, preferences, and ethical principles?**
 
@@ -65,7 +66,7 @@ I see at least three possible lines of reasoning when responding to this questio
 
 **3\. AI risks evolving into AGI, which, if not aligned properly, could cause massive problems for humanity. As a result, we need to slow down until we have alignment figured out.** The "Doomers" aren't worried about such trivial issues as the preservation of meaningful work. They are concerned about the risk of AGI causing the extinction of humanity. They argue we should stop, or at least slow down, the development of AGI until we have figured out to prevent human extinction. If you are indeed worried about this, then anything we can do to stop AGI from causing extinction is fair game, including, but not limited to, regulation.
 
-### Humans' Goals, Preferences, and Ethics Evolve
+## Humans' Goals, Preferences, and Ethics Evolve
 
 Our best defense against automation is that we do not know the meaning of life. I mentioned alignment as the process of steering systems toward humans' intended goals, preferences, and ethics. I think discussing our purpose is an eternal activity. Humans have always looked at the sky and asked ourselves: "Why are we here?" Culture is built on mystery, and doubt sits at the heart of the human condition. We do not know why we are here, and that's great. That means there will always be things to explore. We cannot automate a process for which we do not know the objective function.
 
@@ -75,7 +76,7 @@ This uncertainty has given rise to ideologies, beliefs, religions, doctrines, et
 
 Since there is no single axiomatic purpose for human existence, humanity has developed a vast range of different cultures, each providing its own version of "Why". There is a fascinating discourse about "Are GPT models biased or not?". Of course, they are. They reflect the cultural norms present in the training data. It is impossible to eradicate bias, since we cannot sterilize the human experience and wash away culture. We are one with culture. Instead, a more feasible solution is personalization. Just as there are different newspapers, books, and social circles, we will want AIs that reflect our worldview.
 
-### The Subjective Human Experience is Valuable
+## The Subjective Human Experience is Valuable
 
 This is not a prediction or speculation. This is a value statement. I think humans are _more_ important than machines. I consider this a moral axiom. I cannot prove why this is true. I just decided it is. I have decided that the subjective human experience of consciousness is valuable and should be protected. Every time humans have questioned this principle, disaster has ensued, like the Holocaust. We have a moral obligation to preserve other humans' subjective experiences. And we should strive to maximize the happiness of all humans. If, at some point, automation or even AGI threatens the long-term safety of humans, then I choose humans over machines. I'd much rather shut down AI than risk wiping out humanity, but I don't think there is any reason to shut down AI progress based on available data.
 

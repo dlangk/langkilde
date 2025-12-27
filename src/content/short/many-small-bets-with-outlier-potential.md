@@ -5,7 +5,7 @@ title: Many small bets with outlier potential
 
 Most of my writing is about the balance between risk and reward. I can't stop thinking about it. My whole life revolves around identifying opportunities, estimating the risk involved in capturing value, and then deciding on what to do. All under significant uncertainty. I constantly work on improving my thinking around risk and reward.
 
-### Your Risk Baseline
+## Your Risk Baseline
 
 **What levels of risk am I comfortable with?** When placed in an organization or situation that requires or assumes a higher or lower risk baseline than your preference, you will struggle. You will feel others are either reckless or cowards.
 
@@ -15,13 +15,13 @@ My approach to evolving my reasoning about risk is to read as much as I can, tal
 >
 > -- Sebastian Mallaby, The Power Law, 2022
 
-### Context Matters in Risk-Taking
+## Context Matters in Risk-Taking
 
 **Risk can only be understood in the context of what you might lose.** All financially successful entrepreneurs and venture capitalists have taken risks. Usually an extraordinary amount of it. "No risk, no reward", after all. But what might seem like a big risk to one person, may be a rounding error to someone else. Many famous people who celebrate taking risks are financially independent. Just like people who tell you to "follow your heart and have fun" often toiled through extreme pains to get rich. Advice can only be understood in context. What does a person have to lose by saying "You should take risks"? What do they gain? I think about that when I read the sentence above. And I think about that when I read writings by Sam Altman, Marc Andreessen, Peter Thiel, Elon Musk, Roelof Botha, and other promoters of risk. A common denominator between these people is that they all had major success early in life. They have been financially independent for most of their adult life. Another important factor is that they were not born rich. Even if they did bet big, they would always have a few tens of millions of dollars stoved away for a rainy day. For someone not born with money, that's essentially an endless amount. If you are born into wealth, having less will feel like a failure, so then you might experience risk differently. Risk becomes a matter of social status and comparative achievement. Generational wealth seems to mess with people's perspectives.
 
 Some might say "But what about Elon Musk, he has bet everything a few times". Well, I don't think that's true actually. I'm sure he always kept a few million dollars off the table. Either way, for every Elon Musk, there are at least ten [Henrik Fisker](https://www.theinformation.com/articles/how-kleiner-perkins-missed-out-on-tesla-and-why-thats-ok-in-the-long-run) who go bust. [Survival bias](https://en.wikipedia.org/wiki/Survivorship_bias#:~:text=Survivorship%20bias%20or%20survival%20bias,conclusions%20because%20of%20incomplete%20data.) is real. I strongly recommend reading "[Speed & Scale](https://speedandscale.com/book/)" by investor John Doerr where he describes betting on Fisker instead of Tesla. Random events had a major impact on the outcome.
 
-### Luck, Timing, Talent
+## Luck, Timing, Talent
 
 **A wise man I know always says "Luck, Timing, Talent. In that order."** I think about that a lot. There is a deep, and humbling, truth to it - especially in the context of outlier outcomes. Up to a certain point, I maintain that you can influence rewards through hard work and talent. But eventually, effort and rewards are decoupled. At least in a financial sense. Founders who build billion-dollar companies do not work a billion times harder than other talented founders.
 
@@ -35,15 +35,15 @@ All that said, there is no doubt prolific and hard-working people are positioned
 
 If you work hard and seek high-risk, high-reward situations, you are likely to get lucky more than others. The better you are at skewing the odds through strategic positioning, the further you can increase your odds of being lucky. Reversely, those who consistently avoid risk also reduce their chances of being lucky.
 
-### Applying Venture Capital Thinking to Life
+## Applying Venture Capital Thinking to Life
 
 **Venture capitalists make a living by exposing themselves to many small-ish bets, each with the potential to create outlier outcomes.** I think the same strategy can be applied in almost any context: business leadership, personal life, etc. Position yourself so that you can make small, highly leveraged bets with fast feedback, i.e. bets with a small downside and a large upside within about a year. If you can create a flow of such opportunities, and work hard to maximize the odds of each bet, then you are in a good position to get a few great outcomes.
 
-### Founder vs. Investor Alignment
+## Founder vs. Investor Alignment
 
 **An interesting consequence of this strategy is that investors and founders are not aligned.** Most founders only have one company. Most likely, the vast majority of their net worth is concentrated in that one entity. They probably have little or no optionality. If their company fails, they get nothing. And they may struggle to ever get close to what they had again. Most investors can afford to write off a few of their investments. Venture capitalists _expect_ to write off most of them. This becomes particularly clear right now when raising money is hard. Founders have been encouraged to take risks and burn money in their pursuit of growth. Venture capital investors hunt outlier outcomes. But if commercial progress is not consistent with the outlier model, and there is a contraction in the funding ecosystem, then investors might suddenly consider your company "sunken cost". I guess each generation needs to relearn this by going through a boom-bust cycle.
 
-### My Risk-Reward Strategy
+## My Risk-Reward Strategy
 
 **So, what's my conclusion from all this?** My goal is to make it easy to make many small bets, in proportion to available capital, each with potentially extraordinary rewards.
 

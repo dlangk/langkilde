@@ -9,7 +9,7 @@ What is valuable in a world where neural networks can combine and interpolate an
 
 **So what are the consequences of this technology for humans?** What will be valuable skills in a future permeated by Generative AI? To hypothesize about this, we have to start by understanding the strengths and weaknesses of this new technology:
 
-### Comparative Strengths of Machine Learning
+## Comparative Strengths of Machine Learning
 
 * **Can ingest all available information.** A human couldn't read all available text in a lifetime. Computers can read it in months or weeks, and they get faster and faster every day.
 
@@ -21,7 +21,7 @@ What is valuable in a world where neural networks can combine and interpolate an
 
 * **Able to combine concepts in unrestrained ways.** I find that combining concepts is the most exciting aspect of Generative AI. E.g. "Show me a dragon made of ice cream in the style of Salvador Dali." Humans will always be a bit hesitant to create really crazy combinations. Computers do not suffer from such inhibitions. A lot of science and business is about combining concepts from different domains to create novel solutions. Tesla came about as "what would a car company look like if it was set up and run like a software company?". What works in one domain can sometimes be transferred to new domains, unlocking new possibilities.
 
-### Comparative Strengths of Humans
+## Comparative Strengths of Humans
 
 * **Sparse Meta-Reasoning.** I ask myself questions about the meaning of life. The fact that I am aware of the absence of a clear objective function for existence feels significant. The process of finding purpose in a societal context is something humans are, so far, uniquely capable of. Even with perfect reinforcement learning, an objective function will be required. Humans are, in theory, free to pick their own. Most people default to something boring like money or fame, but our limitations are self-imposed. We can also do this based on very few examples, i.e., we do not really know much about all the choices humans make in life, and yet most of us can guide our own life surprisingly well.
 
@@ -40,18 +40,17 @@ What is valuable in a world where neural networks can combine and interpolate an
 Before I conclude, I want to mention something I recently came across. There is a field of cognitive psychology called "
 Meta-Reasoning." Research in this domain is guided by questions like:
 
-* How are reasoning and problem-solving processes that extend over time monitored in the brain? When are we "done thinking"? How do we track what thought processes are ongoing in the brain? Are we even keeping track, or is it just running all the time randomly?
+* How are reasoning and problem-solving processes that extend over time monitored in the brain? When are we "done thinking"? How do we track what thought processes are ongoing in the brain? Are we even keeping track, or is it just running randomly all the time?
 
 * What determines whether to continue, switch strategies, or terminate thinking about a problem? Do we systematically do this? Or is it all random?
 
 These questions give a clue to what yet-to-be-understood human abilities we still haven't transferred to computers. That
 means that while recent breakthroughs are extraordinary, we are far from done.
 
-### Conclusion: Dream weird things with friends
+## Conclusion: Dream weird things with friends
 
-**If you want an edge on computers, you must build many global, solid relationships and make deliberate but risky bets.
-**
+**If you want an edge on computers, you must build many global, solid relationships and make deliberate but risky bets.**
 
-Throughout history, humans could gain status and influence by having a great memory or excellent arithmetic skills. Reading large quantities of information, and passing logical tests, is still the cornerstone of education. Those with the best memory and ability to pattern match get the highest grades, jobs, and salaries. At least in general. I think that is about to change.
+Throughout history, humans could gain status and influence by having a great memory or excellent arithmetic skills. Reading large quantities of information, and passing logical tests, is still the cornerstone of education. Those with the best memory and pattern-matching ability get the highest grades, jobs, and salaries, at least in general. I think that is about to change.
 
 Memory and pattern-matching are becoming commoditized. Generative AI is to pattern matching what calculators are to math. We will inevitably have conversational agents that instantly generate text and images drawing on all human knowledge. Whether this constitutes human intelligence or not, it will be extremely useful. Prompting a knowledge base will augment memory and move the competitive edge from processing power to "uncommon sense." Or put differently: Make sure to dream about weird things that should be real, and then convince your friends to help you make them real. So far, computers are bad at that.
