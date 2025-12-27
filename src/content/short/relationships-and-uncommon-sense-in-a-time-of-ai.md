@@ -40,7 +40,7 @@ What is valuable in a world where neural networks can combine and interpolate an
 Before I conclude, I want to mention something I recently came across. There is a field of cognitive psychology called "
 Meta-Reasoning." Research in this domain is guided by questions like:
 
-* How are reasoning and problem-solving processes that extend over time monitored in the brain? When are we "done thinking"? How do we track what thought processes are ongoing in the brain? Are we even keeping track, or is it just running all the time randomly?
+* How are reasoning and problem-solving processes that extend over time monitored in the brain? When are we "done thinking"? How do we track what thought processes are ongoing in the brain? Are we even keeping track, or is it just running randomly all the time?
 
 * What determines whether to continue, switch strategies, or terminate thinking about a problem? Do we systematically do this? Or is it all random?
 
@@ -49,9 +49,8 @@ means that while recent breakthroughs are extraordinary, we are far from done.
 
 ## Conclusion: Dream weird things with friends
 
-**If you want an edge on computers, you must build many global, solid relationships and make deliberate but risky bets.
-**
+**If you want an edge on computers, you must build many global, solid relationships and make deliberate but risky bets.**
 
-Throughout history, humans could gain status and influence by having a great memory or excellent arithmetic skills. Reading large quantities of information, and passing logical tests, is still the cornerstone of education. Those with the best memory and ability to pattern match get the highest grades, jobs, and salaries. At least in general. I think that is about to change.
+Throughout history, humans could gain status and influence by having a great memory or excellent arithmetic skills. Reading large quantities of information, and passing logical tests, is still the cornerstone of education. Those with the best memory and pattern-matching ability get the highest grades, jobs, and salaries, at least in general. I think that is about to change.
 
 Memory and pattern-matching are becoming commoditized. Generative AI is to pattern matching what calculators are to math. We will inevitably have conversational agents that instantly generate text and images drawing on all human knowledge. Whether this constitutes human intelligence or not, it will be extremely useful. Prompting a knowledge base will augment memory and move the competitive edge from processing power to "uncommon sense." Or put differently: Make sure to dream about weird things that should be real, and then convince your friends to help you make them real. So far, computers are bad at that.

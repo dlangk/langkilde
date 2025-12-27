@@ -259,7 +259,34 @@ const {title} = Astro.props;
         }
 
         /*--------------------------------------------------------------
-          10. Toggle Switch Styles
+          10. Post Content Lists
+        --------------------------------------------------------------*/
+        :global(.post-content ul),
+        :global(.post-content ol) {
+            margin: 0.5rem 0;
+            padding-left: 1.6rem;
+        }
+
+        :global(.post-content li) {
+            margin-bottom: 1.2rem;
+        }
+
+        :global(.post-content li ul),
+        :global(.post-content li ol) {
+            margin-top: 0.05rem;
+            margin-bottom: 0;
+        }
+
+        :global(.post-content li li) {
+            margin-bottom: 0.1rem;
+        }
+
+        :global(.post-content li p) {
+            margin: 0;
+        }
+
+        /*--------------------------------------------------------------
+          11. Toggle Switch Styles
         --------------------------------------------------------------*/
         .toggle-switch {
             position: fixed;
