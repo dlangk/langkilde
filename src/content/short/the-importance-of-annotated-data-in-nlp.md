@@ -36,7 +36,7 @@ Ideally, we now know what we want, how to test if we have it and which sentences
 There are many platforms out there such
 as [Amazon mTurks](https://www.mturk.com/mturk/welcome), [Crowdflower](http://crowdflower.com/) and others.
 
-**_EDIT:_**_Since writing this post, I’ve founded_[ _Kognic_](https://www.kognic.com/) _, a company dedicated to
+**_EDIT:_**_ Since writing this post, I’ve founded_[ _Kognic_](https://www.kognic.com/) _, a company dedicated to
 producing consistently annotated data. Get in touch if you want to know more._
 
 Maybe one of those works for you. Maybe you need very skilled annotators that require extensive training to understand the guideline. There’s no easy answer here. Your task might require special tools such as a way to give certain labels to substrings of texts. You need to understand that this part is more complicated than you might think. You need to figure out **exactly how workers will produce your annotations** early on in your project, or you might hit a very hard wall.
