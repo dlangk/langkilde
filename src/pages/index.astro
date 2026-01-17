@@ -1,16 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { sortByDate } from "../lib/utils";
+import { PATHS } from "../lib/constants";
 
-const shortPosts = await getCollection("short");
-shortPosts.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
-
-const longPosts = await getCollection("long");
-longPosts.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
+const shortPosts = sortByDate(await getCollection("short"));
+const longPosts = sortByDate(await getCollection("long"));
 ---
 
 <BaseLayout title="Home">
-
   <nav id="sidebar" class="landing-sidebar">
     <h1>Daniel Langkilde</h1>
     <ul id="toc">
@@ -19,7 +17,12 @@ longPosts.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
       <li><a href="#long-writings">Long Writings</a></li>
       <li><a href="/investments">Investments</a></li>
       <li><a href="/memes">Memes</a></li>
-      <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS Feed" />
+      <link
+        rel="alternate"
+        type="application/rss+xml"
+        href="/rss.xml"
+        title="RSS Feed"
+      />
     </ul>
   </nav>
 
@@ -28,13 +31,15 @@ longPosts.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
     <section id="short-writing" class="post-list">
       <h1>Short Writings</h1>
       <ul>
-        {shortPosts.map(post => (
+        {
+          shortPosts.map((post) => (
             <li>
-              <a href={`/blog/${post.slug}`}>
+              <a href={`${PATHS.short}/${post.slug}`}>
                 {post.data.title} <small>({post.data.pubDate})</small>
               </a>
             </li>
-        ))}
+          ))
+        }
       </ul>
     </section>
 
@@ -42,16 +47,17 @@ longPosts.sort((a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate));
     <section id="long-writings" class="post-list">
       <h1>Long Writings</h1>
       <ul>
-        {longPosts.map(post => (
+        {
+          longPosts.map((post) => (
             <li>
-              <a href={`/long/${post.slug}`}>
+              <a href={`${PATHS.long}/${post.slug}`}>
                 {post.data.title} <small>({post.data.pubDate})</small>
               </a>
             </li>
-        ))}
+          ))
+        }
       </ul>
     </section>
     <div class="bottom-spacer"></div>
   </main>
-
 </BaseLayout>

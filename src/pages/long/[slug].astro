@@ -1,44 +1,23 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import {getCollection, getEntryBySlug} from "astro:content";
+import PostPage from "../../components/PostPage.astro";
+import { getCollection, getEntryBySlug } from "astro:content";
 
 export async function getStaticPaths() {
-    const posts = await getCollection("long");
-    return posts.map((post) => ({params: {slug: post.slug}}));
+  const posts = await getCollection("long");
+  return posts.map((post) => ({ params: { slug: post.slug } }));
 }
 
-const {slug} = Astro.params;
+const { slug } = Astro.params;
 const post = await getEntryBySlug("long", slug);
-const {Content, headings} = await post.render();
+const { Content, headings } = await post.render();
 ---
 
 <BaseLayout title={post.data.title}>
-
-    <nav id="sidebar">
-        <a href="/">← Home</a>
-        <h3>Sections</h3>
-        <ul id="toc">
-            {headings.filter(h => h.depth === 2).map(heading => (
-                    <li><a href={`#${heading.slug}`}>{heading.text}</a></li>
-            ))}
-        </ul>
-    </nav>
-
-    <main>
-        <article>
-            <h1 class="title">{post.data.title}</h1>
-            <div class="post-meta">
-                <small class="pubdate">By Daniel Langkilde</small>
-                <span class="separator">|</span>
-                <small class="pubdate">{post.data.pubDate}</small>
-                <span class="separator">|</span>
-                <a href={Astro.url.pathname} class="permalink">Permalink</a>
-            </div>
-
-            <div class="post-content">
-                <Content/>
-            </div>
-        </article>
-    </main>
-
+  <PostPage
+    post={post}
+    headings={headings}
+    Content={Content}
+    pathname={Astro.url.pathname}
+  />
 </BaseLayout>

@@ -1,0 +1,47 @@
+---
+import { SITE } from "../lib/constants";
+
+interface Props {
+  post: {
+    data: { title: string; pubDate: string };
+  };
+  headings: { depth: number; slug: string; text: string }[];
+  Content: any;
+  pathname: string;
+}
+
+const { post, headings, Content, pathname } = Astro.props;
+---
+
+<nav id="sidebar">
+  <a href="/">← Home</a>
+  <h3>Sections</h3>
+  <ul id="toc">
+    {
+      headings
+        .filter((h) => h.depth === 2)
+        .map((heading) => (
+          <li>
+            <a href={`#${heading.slug}`}>{heading.text}</a>
+          </li>
+        ))
+    }
+  </ul>
+</nav>
+
+<main>
+  <article>
+    <h1 class="title">{post.data.title}</h1>
+    <div class="post-meta">
+      <small class="pubdate">By {SITE.author}</small>
+      <span class="separator">|</span>
+      <small class="pubdate">{post.data.pubDate}</small>
+      <span class="separator">|</span>
+      <a href={pathname} class="permalink">Permalink</a>
+    </div>
+
+    <div class="post-content">
+      <Content />
+    </div>
+  </article>
+</main>

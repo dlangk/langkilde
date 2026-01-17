@@ -1,17 +1,11 @@
 import { defineCollection, z } from "astro:content";
 
-const short = defineCollection({
-  schema: z.object({
-    title: z.string(),
-    pubDate: z.string(),
-  }),
+const postSchema = z.object({
+  title: z.string(),
+  pubDate: z.string(),
 });
 
-const long = defineCollection({
-  schema: z.object({
-    title: z.string(),
-    pubDate: z.string(),
-  }),
-});
+const short = defineCollection({ schema: postSchema });
+const long = defineCollection({ schema: postSchema });
 
 export const collections = { short, long };

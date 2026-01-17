@@ -1,0 +1,392 @@
+/*--------------------------------------------------------------
+  0. Self-hosted Fonts
+--------------------------------------------------------------*/
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/newsreader-normal-400.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/newsreader-normal-700.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/newsreader-italic-400.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/newsreader-italic-700.ttf") format("truetype");
+}
+
+/*--------------------------------------------------------------
+  1. Root Variables & Theme Overrides
+--------------------------------------------------------------*/
+:root {
+  --bg-color: #f6f5ef;
+  --text-color: #050505;
+  --font-size-base: 20px;
+  --accent-color: rgba(255, 77, 0, 0.6);
+  --text-fade: rgba(87, 87, 87, 0.3);
+  --quote-bg: rgba(0, 0, 0, 0.035);
+}
+
+.dark {
+  --bg-color: #121212;
+  --text-color: #f0efea;
+  --accent-color: rgba(253, 123, 58, 0.7);
+  --text-fade: rgba(240, 240, 240, 0.25);
+  --quote-bg: rgba(255, 255, 255, 0.05);
+}
+
+/*--------------------------------------------------------------
+  2. Global Styles
+--------------------------------------------------------------*/
+body {
+  font-family: "Newsreader", serif;
+  font-size: var(--font-size-base);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* Canvas Background */
+#canvas-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+a {
+  color: inherit;
+}
+
+@media (max-width: 800px) {
+  main.main-inner {
+    padding-top: 4rem;
+  }
+}
+
+/*--------------------------------------------------------------
+  3. Layout Container
+--------------------------------------------------------------*/
+.layout-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 100vh;
+  gap: 5rem;
+}
+
+/*--------------------------------------------------------------
+  4. Sidebar Styles
+--------------------------------------------------------------*/
+#sidebar {
+  width: 300px;
+  flex: 0 0 300px;
+  padding: 1.5rem;
+  position: sticky;
+  top: 1.5rem;
+  font-size: 16px;
+  background-color: var(--bg-color);
+  transition: left 0.3s ease;
+  z-index: 999;
+}
+
+#sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sidebar ul li {
+  font-family: "Newsreader", serif;
+  font-size: 18px;
+  color: var(--text-fade);
+  font-weight: 400;
+  line-height: 1.3;
+  text-align: left;
+  margin-bottom: 0.75rem;
+}
+
+#sidebar a.active {
+  color: var(--accent-color);
+}
+
+.sidebar-toggle {
+  display: none;
+}
+
+/* Responsive Sidebar Toggle */
+@media (max-width: 800px) {
+  #sidebar {
+    position: fixed;
+    top: 3rem; /* below the menu bar */
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 3rem);
+    background: var(--bg-color);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.05);
+    overflow-y: auto;
+    z-index: 999;
+    padding: 2rem 1rem;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  #sidebar.open {
+    transform: translateY(0);
+  }
+
+  .sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--text-fade);
+    padding: 0 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 1000;
+    cursor: pointer;
+  }
+
+  main,
+  main.index-main,
+  main.main-inner {
+    padding-top: 4rem;
+  }
+}
+
+/*--------------------------------------------------------------
+  5. Main Content Styles
+--------------------------------------------------------------*/
+main {
+  max-width: 675px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 2rem 1rem;
+}
+
+main#memes {
+  padding: 2rem 2rem;
+}
+
+main img {
+  max-width: 100%;
+  height: auto;
+}
+
+/*--------------------------------------------------------------
+  6. Post Meta & Title Styles
+--------------------------------------------------------------*/
+.title {
+  font-size: 30px;
+  margin-bottom: 0.5rem;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: var(--text-fade);
+  font-size: 1rem;
+}
+
+.post-meta .pubdate {
+  font-family: "Newsreader", serif;
+  font-weight: 400;
+  line-height: 32px;
+}
+
+.post-meta .separator {
+  margin: 0 0.5rem;
+  font-family: "Newsreader", serif;
+  font-weight: 400;
+  line-height: 32px;
+  color: var(--text-fade);
+}
+
+.post-meta .permalink {
+  font-family: "Newsreader", serif;
+  text-align: left;
+  color: inherit;
+}
+
+@media (max-width: 600px) {
+  .post-meta {
+    font-size: 0.8rem;
+  }
+}
+
+/*--------------------------------------------------------------
+  7. Post Content Images
+--------------------------------------------------------------*/
+.post-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: zoom-in;
+}
+
+/*--------------------------------------------------------------
+  8. Dividers
+--------------------------------------------------------------*/
+hr {
+  display: none;
+}
+
+.post-content hr {
+  display: block;
+  border: none;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  width: 50%;
+  margin: 2rem auto;
+}
+
+/*--------------------------------------------------------------
+  9. Blockquotes
+--------------------------------------------------------------*/
+.post-content blockquote {
+  background-color: var(--quote-bg);
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+}
+
+/*--------------------------------------------------------------
+  10. Post Content Lists
+--------------------------------------------------------------*/
+.post-content ul,
+.post-content ol {
+  margin: 0.5rem 0;
+  padding-left: 1.6rem;
+}
+
+.post-content li {
+  margin-bottom: 1.2rem;
+}
+
+.post-content li ul,
+.post-content li ol {
+  margin-top: 0.05rem;
+  margin-bottom: 0;
+}
+
+.post-content li li {
+  margin-bottom: 0.1rem;
+}
+
+.post-content li p {
+  margin: 0;
+}
+
+/*--------------------------------------------------------------
+  11. Image Lightbox
+--------------------------------------------------------------*/
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  cursor: zoom-out;
+}
+
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+/*--------------------------------------------------------------
+  12. Toggle Switch Styles
+--------------------------------------------------------------*/
+.toggle-switch {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+
+.toggle-input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-label {
+  display: block;
+  width: 48px;
+  height: 24px;
+  background-color: #ddd;
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.toggle-slider {
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  top: 2px;
+  background-color: #111;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.toggle-input:checked + .toggle-label {
+  background-color: #333;
+}
+
+.toggle-input:checked + .toggle-label .toggle-slider {
+  transform: translateX(24px);
+  background-color: #f9f9f9;
+}
+
+/*--------------------------------------------------------------
+  13. Misc
+--------------------------------------------------------------*/
+.intro {
+  margin-bottom: 2rem;
+}
+
+.post-list {
+  margin-top: 2rem;
+}

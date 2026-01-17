@@ -1,27 +1,28 @@
-import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
+import rss from "@astrojs/rss";
+import { getCollection } from "astro:content";
+import { SITE, PATHS } from "../lib/constants";
 
 export async function GET() {
-    const shortPosts = await getCollection('short');
-    const longPosts = await getCollection('long');
+  const shortPosts = await getCollection("short");
+  const longPosts = await getCollection("long");
 
-    const allPosts = [
-        ...shortPosts.map(post => ({
-            title: post.data.title,
-            pubDate: post.data.pubDate,
-            link: `/blog/${post.slug}`,
-        })),
-        ...longPosts.map(post => ({
-            title: post.data.title,
-            pubDate: post.data.pubDate,
-            link: `/long/${post.slug}`,
-        })),
-    ].sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+  const allPosts = [
+    ...shortPosts.map((post) => ({
+      title: post.data.title,
+      pubDate: post.data.pubDate,
+      link: `${PATHS.short}/${post.slug}`,
+    })),
+    ...longPosts.map((post) => ({
+      title: post.data.title,
+      pubDate: post.data.pubDate,
+      link: `${PATHS.long}/${post.slug}`,
+    })),
+  ].sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime());
 
-    return rss({
-        title: 'Daniel Langkilde – Writings',
-        description: 'Be Busy Building.',
-        site: 'https://langkilde.se',
-        items: allPosts,
-    });
+  return rss({
+    title: `${SITE.author} – Writings`,
+    description: SITE.description,
+    site: SITE.url,
+    items: allPosts,
+  });
 }
