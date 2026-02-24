@@ -12,7 +12,7 @@ I regularly write "Company Update" emails to the Kognic team. It's no surprise t
 Over the past three weeks, I've built more with Claude Code than I've done by hand in the last five years. Granted, this was on a "synthetic" project (my Yatzy workbench), but we are already seeing the same technology reshape our Engineering team. Most team members have already fully adopted agentic coding methods, and the rest are in the process of getting there.
 
 We've also made it crystal clear:
-**We expect everyone to adopt Claude in their workflows before this summer.**
+**We expect everyone to adopt Claude, not just engineers, right now.**
 
 In the past, I've deliberately avoided being hyperbolic about how AI will transform work. I've felt that most AI lab narratives exaggerated actual model performance. **Not anymore. The technology is ready for broad adoption now.**
 
