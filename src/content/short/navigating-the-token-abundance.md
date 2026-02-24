@@ -7,7 +7,7 @@ I regularly write "Company Update" emails to the team at Kognic. It's probably n
 
 ---
 
-# AI: This Time is Different
+## AI: This Time is Different
 
 Over the past three weeks, I've built more with Claude Code than I've done by hand in the last five years. Granted, this was on a "synthetic" project (my Yatzy workbench), but we are already seeing the same technology reshape our Engineering team. Most team members have already fully adopted agentic coding methods, and the rest are in the process of getting there.
 
@@ -19,7 +19,7 @@ At Kognic, we choose to embrace this change. We succeed because we constantly st
 
 In this email, I want to reflect on some of the challenges we are likely to face now. The next three years will be emotionally demanding. We all need to prove ourselves as lifelong learners. Gaining superpowers does not mean stopping effort; it means increasing your leverage. If you start delegating your thinking to LLMs, you will quickly become useless. The secret is to fuse AI into your workflow so you can amplify your own power and contribution. Here is what I think matters as we learn:
 
-# Separating Truth from Bullshit
+## Separating Truth from Bullshit
 
 The most challenging part of our new reality is that text has never been worth less. We live in an age of token abundance. Content flows from every endpoint at an unprecedented rate. I feel my brain working overtime, processing everything that comes at me from morning to evening. There is just too much text. Chatbots are amazingly powerful, but so fucking talkative. I now understand how you all feel when I get started... 😅
 
@@ -37,7 +37,7 @@ This means we need personal frameworks to quickly detect bullshit. I've been bui
 
 - *Debate important things.* Grab a group of smart people and ask them to research a topic. By all means, bring AI-produced research, but then debate your views without your laptop. Debating an idea requires understanding it.
 
-# The Human Touch
+## The Human Touch
 
 What I fear most is that you will stop thinking for yourself. I see some concerning signs of this, and it scares the living shit out of me. If you are asked to write a reflection on your recent personal growth, do not let a fucking AI write it. I can't believe I feel a need to say that, but I do.
 
@@ -49,7 +49,7 @@ What I fear most is that you will stop thinking for yourself. I see some concern
 
 - *Only then, polish with AI.* Some of you suck at writing reports. I know, I read them. If that's you, then of course, use AI to clean things up. I'd much rather read text that flows naturally. But I can tell when you lean on the AI too much. The best approach is to fine-tune it to your voice and just use it to fix grammar and flow. Don't let the AI polish away your personality.
 
-# Leadership is Telling a Great Story
+## Leadership is Telling a Great Story
 
 I've fallen in love with the word legible. It means "clear enough to read." For ideas to gain traction, they must be legible to their audience.
 
@@ -63,7 +63,7 @@ Of course, there are great storytellers who use stories to distort the truth. Th
 
 - *Use specific examples.* Abstract ideas without specificity are hard to get excited about. Research shows that concrete, specific language activates sensory and motor cortices — not just the language center of the brain. When you say "a customer's LiDAR-camera fusion was labeling a cyclist as a trash bag at 40 meters, and nobody caught it for three months," that's a different experience than "we help improve annotation quality." One paints a picture. The other is background noise.
 
-# The Challenge
+## The Challenge
 
 Your goal should be to combine these three things: *Critical Thinking* + *The Human Touch* + *Telling a Great Story*.
 
