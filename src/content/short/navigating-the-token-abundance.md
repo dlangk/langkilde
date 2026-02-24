@@ -3,7 +3,7 @@ pubDate: "2026-02-24"
 title: Navigating the Token Abundance
 ---
 
-I regularly write "Company Update" emails to the team at Kognic. It's probably no surprise that most of these emails are focus on the impact of AI. Here is my latest email:
+I regularly write "Company Update" emails to the Kognic team. It's no surprise that most of these emails are focused on the impact of AI. Here is my latest email:
 
 ---
 
@@ -11,7 +11,8 @@ I regularly write "Company Update" emails to the team at Kognic. It's probably n
 
 Over the past three weeks, I've built more with Claude Code than I've done by hand in the last five years. Granted, this was on a "synthetic" project (my Yatzy workbench), but we are already seeing the same technology reshape our Engineering team. Most team members have already fully adopted agentic coding methods, and the rest are in the process of getting there.
 
-We've also made it crystal clear: **We expect everyone to adopt Claude in their workflows before this summer.**
+We've also made it crystal clear:
+**We expect everyone to adopt Claude in their workflows before this summer.**
 
 In the past, I've deliberately avoided being hyperbolic about how AI will transform work. I've felt that most AI lab narratives exaggerated actual model performance. **Not anymore. The technology is ready for broad adoption now.**
 
@@ -31,7 +32,7 @@ This means we need personal frameworks to quickly detect bullshit. I've been bui
 
 - **Good explanations are Why-Focused.** They explain the underlying mechanism, not just the pattern. My mom used to work in drug safety. The FDA won't let you sell a drug unless you can argue clearly why it works. It's not enough that it's effective; you need to understand the mechanism. I think we need to apply this standard to business reasoning, too.
 
-- **Gather independent, first-hand information.** I keep coming back to this. The best example: run Deep Research on the data annotation market and read what comes out. It's useless crap. That's revealing. It gives me reason to think a lot of LLM-powered research is actually crap, it's just that I can't always tell. The reason is obvious: LLMs take whatever they find, however little there is, and turn it into a plausible-sounding story. They treat everything on a company's website as true. They treat market research reports as true regardless of source. They assume all search results are relevant. Anyone who has used the internet knows this is completely false. Deep Research works for stable things, like math and physics. LLMs are great at packaging knowledge. But as always, the "shit in, shit out" rule applies. Evaluating source credibility has never been more important.
+- **Gather independent, first-hand information.** I keep coming back to this. The best example: run Deep Research on the data annotation market and read what comes out. It's useless crap. That's revealing. It gives me reason to think a lot of LLM-powered research is actually crap; I just can't always tell. The reason is obvious: LLMs take whatever they find, however little there is, and turn it into a plausible-sounding story. They treat everything on a company's website as true. They treat market research reports as true regardless of source. They assume all search results are relevant. Anyone who has used the internet knows this is completely false. Deep Research works for stable things, like math and physics. LLMs are great at packaging knowledge. But as always, the "shit in, shit out" rule applies. Evaluating source credibility has never been more important.
 
 - **Actively seek information that disproves your beliefs.** This is one of the hardest things to do in life. If you are uncertain or afraid of something, push harder on it. Go deeper. Ask more questions. Truth is always better than ignorance, even if it's short-term uncomfortable. Kognic survives because we face every challenge and setback with an open mind. Smart, successful people are bloodhounds for bullshit, and they hunt down every uncertainty and resolve it.
 
@@ -65,7 +66,8 @@ Of course, there are great storytellers who use stories to distort the truth. Th
 
 ## The Challenge
 
-Your goal should be to combine these three things: **Critical Thinking** + **The Human Touch** + **Telling a Great Story**.
+Your goal should be to combine these three things:
+**Critical Thinking** + **The Human Touch** + **Telling a Great Story**.
 
 It's what separates leaders who get things done from leaders who merely have good ideas. We live in an age of token abundance. Text is cheap. Content is everywhere. Anyone can sound articulate with the push of a button. The premium is no longer on being able to write things down.
 
