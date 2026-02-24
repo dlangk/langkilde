@@ -62,12 +62,11 @@ Of course, there are great storytellers who use stories to distort the truth. Th
 
 - **Think in terms of transformation, not information.** A common mistake is treating communication as a matter of clinical information transfer: "If I provide the facts and my conclusions, they'll get it." Wrong. People don't process information that way. To pull listeners in, you need tension. A problem. A before-and-after. The listener needs to feel inside something that moves.
 
-- **Use specific examples.** Abstract ideas without specificity are hard to get excited about. Research shows that concrete, specific language activates sensory and motor cortices — not just the language center of the brain. When you say "a customer's LiDAR-camera fusion was labeling a cyclist as a trash bag at 40 meters, and nobody caught it for three months," that's a different experience than "we help improve annotation quality." One paints a picture. The other is background noise.
+- **Use specific examples.** Abstract ideas without specificity are hard to get excited about. Research shows that concrete, specific language activates sensory and motor cortices, not just the language center of the brain. Saying, for example, "a customer's AD system was unable to detect cyclists when it rains beyond 40 meters, and nobody caught it for three months," has much more impact than saying "we help improve annotation quality."
 
 ## The Challenge
 
-Your goal should be to combine these three things:
-**Critical Thinking** + **The Human Touch** + **Telling a Great Story**.
+Your goal should be to combine these three things: **Critical Thinking** + **The Human Touch** + **Telling a Great Story**.
 
 It's what separates leaders who get things done from leaders who merely have good ideas. We live in an age of token abundance. Text is cheap. Content is everywhere. Anyone can sound articulate with the push of a button. The premium is no longer on being able to write things down.
 
