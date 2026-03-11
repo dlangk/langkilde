@@ -1,0 +1,171 @@
+---
+// ThinkingDiagram.astro - Three paradigms of LLM inference
+---
+
+<div class="thinking-diagram">
+<p class="td-header">From Generation To Reasoning</p>
+
+<!-- Panel 1: Autoregressive Generation -->
+<div class="td-panel">
+<svg viewBox="0 0 440 185" xmlns="http://www.w3.org/2000/svg">
+  <text x="220" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text-color)" font-family="system-ui, sans-serif">1. Autoregressive Generation</text>
+  <text x="220" y="36" text-anchor="middle" font-size="9.5" fill="var(--text-color)" font-family="system-ui, sans-serif">Each token gets one forward pass. No planning phase.</text>
+  <!-- Attention arcs to last token -->
+  <path d="M 385 70 Q 217 40 49 70" fill="none" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.2"/>
+  <path d="M 385 70 Q 241 40 97 70" fill="none" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.25"/>
+  <path d="M 385 70 Q 265 40 145 70" fill="none" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.3"/>
+  <path d="M 385 70 Q 289 40 193 70" fill="none" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.35"/>
+  <path d="M 385 70 Q 313 40 241 70" fill="none" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.38"/>
+  <path d="M 385 70 Q 337 40 289 70" fill="none" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.42"/>
+  <path d="M 385 70 Q 361 56 337 70" fill="none" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.45"/>
+  <!-- 8 tokens -->
+  {[30,78,126,174,222,270,318,366].map((x, i) => (
+    <g>
+      <rect x={x} y="70" width="38" height="26" rx="4" fill="var(--td-std-fill)" stroke="var(--td-std-stroke)" stroke-width="1.2"/>
+      <text x={x+19} y="84" text-anchor="middle" font-size="9" font-weight="600" fill="var(--text-color)" font-family="monospace">{`t${String.fromCharCode(0x2081+i)}`}</text>
+    </g>
+  ))}
+  <!-- Brace -->
+  <path d="M 30 102 Q 30 118 217 118 Q 404 118 404 102" fill="none" stroke="var(--text-fade)" stroke-width="1"/>
+  <text x="217" y="132" text-anchor="middle" font-size="9" fill="var(--text-color)" font-family="system-ui, sans-serif">All tokens are output without any seperation between reasoning and responsing.</text>
+  <!-- Info box -->
+  <rect x="30" y="142" width="380" height="32" rx="4" fill="var(--td-box-neutral-fill)" stroke="var(--text-fade)" stroke-width="0.8"/>
+  <text x="220" y="155" text-anchor="middle" font-size="8.5" fill="var(--text-color)" font-family="system-ui, sans-serif">The compute budget is fixed by: Depth of the network × Number of output tokens.</text>
+  <text x="220" y="167" text-anchor="middle" font-size="8.5" fill="var(--text-color)" font-family="system-ui, sans-serif">The model must "know" the answer from pre-training.</text>
+</svg>
+</div>
+
+<!-- Panel 2: Extended Thinking -->
+<div class="td-panel">
+<svg viewBox="0 0 440 210" xmlns="http://www.w3.org/2000/svg">
+  <text x="220" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text-color)" font-family="system-ui, sans-serif">2. Extended Thinking → Response</text>
+  <text x="220" y="36" text-anchor="middle" font-size="9.5" fill="var(--text-color)" font-family="system-ui, sans-serif">Generate reasoning tokens first. Respond with those in context.</text>
+  <!-- Legend -->
+  <rect x="30" y="48" width="10" height="10" rx="2" fill="var(--td-think-fill)" stroke="var(--td-think-stroke)" stroke-width="0.8"/>
+  <text x="44" y="56" font-size="8" fill="var(--text-color)" font-family="system-ui, sans-serif">thinking</text>
+  <rect x="90" y="48" width="10" height="10" rx="2" fill="var(--td-resp-fill)" stroke="var(--td-resp-stroke)" stroke-width="0.8"/>
+  <text x="104" y="56" font-size="8" fill="var(--text-color)" font-family="system-ui, sans-serif">response</text>
+  <line x1="158" y1="54" x2="178" y2="54" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.5"/>
+  <text x="183" y="57" font-size="8" fill="var(--text-color)" font-family="system-ui, sans-serif">attention</text>
+  <!-- Separator -->
+  <line x1="287" y1="62" x2="287" y2="103" stroke="var(--td-separator)" stroke-width="1" stroke-dasharray="4,3"/>
+  <!-- Attention arcs from r₁ back to thinking tokens -->
+  <path d="M 318 75 Q 183 45 48 75" fill="none" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.2"/>
+  <path d="M 318 75 Q 205 45 92 75" fill="none" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.22"/>
+  <path d="M 318 75 Q 227 45 136 75" fill="none" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.24"/>
+  <path d="M 318 75 Q 249 45 180 75" fill="none" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.26"/>
+  <path d="M 318 75 Q 271 48 224 75" fill="none" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.28"/>
+  <path d="M 318 75 Q 293 60 268 75" fill="none" stroke="var(--td-arc-blue)" stroke-width="1" opacity="0.3"/>
+  <!-- 6 thinking tokens -->
+  {[30,74,118,162,206,250].map((x, i) => (
+    <g>
+      <rect x={x} y="75" width="36" height="26" rx="4" fill="var(--td-think-fill)" stroke="var(--td-think-stroke)" stroke-width="1.2"/>
+      <text x={x+18} y="89" text-anchor="middle" font-size="9" font-weight="600" fill="var(--text-color)" font-family="monospace">{`θ${String.fromCharCode(0x2081+i)}`}</text>
+    </g>
+  ))}
+  <!-- 3 response tokens -->
+  {[300,344,388].map((x, i) => (
+    <g>
+      <rect x={x} y="75" width="36" height="26" rx="4" fill="var(--td-resp-fill)" stroke="var(--td-resp-stroke)" stroke-width="1.2"/>
+      <text x={x+18} y="89" text-anchor="middle" font-size="9" font-weight="600" fill="var(--text-color)" font-family="monospace">{`r${String.fromCharCode(0x2081+i)}`}</text>
+    </g>
+  ))}
+  <!-- Braces -->
+  <path d="M 30 107 Q 30 119 158 119 Q 286 119 286 107" fill="none" stroke="var(--td-think-stroke)" stroke-width="1"/>
+  <text x="158" y="132" text-anchor="middle" font-size="9" fill="var(--td-think-text)" font-family="system-ui, sans-serif">Thinking tokens (hidden from user)</text>
+  <path d="M 300 107 Q 300 119 362 119 Q 424 119 424 107" fill="none" stroke="var(--td-resp-stroke)" stroke-width="1"/>
+  <text x="362" y="132" text-anchor="middle" font-size="9" fill="var(--td-resp-text)" font-family="system-ui, sans-serif">Response</text>
+  <!-- Insight box -->
+  <rect x="24" y="142" width="392" height="55" rx="4" fill="var(--td-box-green-fill)" stroke="var(--td-box-green-stroke)" stroke-width="0.8"/>
+  <text x="220" y="157" text-anchor="middle" font-size="8.5" font-weight="600" fill="var(--td-think-text)" font-family="system-ui, sans-serif">Key mechanism: attention from response tokens back to thinking tokens</text>
+  <text x="220" y="171" text-anchor="middle" font-size="8.5" fill="var(--text-color)" font-family="system-ui, sans-serif">Each thinking token is a forward pass that transforms the model's representation.</text>
+  <text x="220" y="185" text-anchor="middle" font-size="8.5" fill="var(--text-color)" font-family="system-ui, sans-serif">Response tokens attend to this enriched context → higher quality output.</text>
+</svg>
+</div>
+
+<!-- Panel 3: Interleaved Thinking -->
+<div class="td-panel">
+<svg viewBox="0 0 440 250" xmlns="http://www.w3.org/2000/svg">
+  <text x="220" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="var(--text-color)" font-family="system-ui, sans-serif">3. Interleaved Thinking</text>
+  <text x="220" y="36" text-anchor="middle" font-size="9.5" fill="var(--text-color)" font-family="system-ui, sans-serif">Think → Act → Observe → Think again. Reasoning adapts to new information.</text>
+  <!-- Legend -->
+  <rect x="14" y="48" width="10" height="10" rx="2" fill="var(--td-think-fill)" stroke="var(--td-think-stroke)" stroke-width="0.8"/>
+  <text x="28" y="56" font-size="7.5" fill="var(--text-color)" font-family="system-ui, sans-serif">thinking</text>
+  <rect x="82" y="48" width="10" height="10" rx="2" fill="var(--td-tool-fill)" stroke="var(--td-tool-stroke)" stroke-width="0.8"/>
+  <text x="96" y="56" font-size="7.5" fill="var(--text-color)" font-family="system-ui, sans-serif">tool call</text>
+  <rect x="150" y="48" width="10" height="10" rx="2" fill="var(--td-result-fill)" stroke="var(--td-result-stroke)" stroke-width="0.8"/>
+  <text x="164" y="56" font-size="7.5" fill="var(--text-color)" font-family="system-ui, sans-serif">tool result</text>
+  <rect x="228" y="48" width="10" height="10" rx="2" fill="var(--td-resp-fill)" stroke="var(--td-resp-stroke)" stroke-width="0.8"/>
+  <text x="242" y="56" font-size="7.5" fill="var(--text-color)" font-family="system-ui, sans-serif">response</text>
+  <!-- Block group backgrounds -->
+  <rect x="11" y="87" width="70" height="30" rx="6" fill="var(--td-think-fill)" stroke="var(--td-think-stroke)" stroke-width="0.6" opacity="0.3"/>
+  <rect x="83" y="87" width="36" height="30" rx="6" fill="var(--td-tool-fill)" stroke="var(--td-tool-stroke)" stroke-width="0.6" opacity="0.3"/>
+  <rect x="121" y="87" width="36" height="30" rx="6" fill="var(--td-result-fill)" stroke="var(--td-result-stroke)" stroke-width="0.6" opacity="0.3" stroke-dasharray="3,2"/>
+  <rect x="159" y="87" width="70" height="30" rx="6" fill="var(--td-think-fill)" stroke="var(--td-think-stroke)" stroke-width="0.6" opacity="0.3"/>
+  <rect x="231" y="87" width="36" height="30" rx="6" fill="var(--td-tool-fill)" stroke="var(--td-tool-stroke)" stroke-width="0.6" opacity="0.3"/>
+  <rect x="269" y="87" width="36" height="30" rx="6" fill="var(--td-result-fill)" stroke="var(--td-result-stroke)" stroke-width="0.6" opacity="0.3" stroke-dasharray="3,2"/>
+  <rect x="307" y="87" width="36" height="30" rx="6" fill="var(--td-think-fill)" stroke="var(--td-think-stroke)" stroke-width="0.6" opacity="0.3"/>
+  <rect x="345" y="87" width="70" height="30" rx="6" fill="var(--td-resp-fill)" stroke="var(--td-resp-stroke)" stroke-width="0.6" opacity="0.3"/>
+  <!-- Attention arcs from θ₅ back -->
+  <path d="M 325 87 Q 177 57 29 87" fill="none" stroke="var(--td-arc-green)" stroke-width="1" opacity="0.18"/>
+  <path d="M 325 87 Q 194 57 63 87" fill="none" stroke="var(--td-arc-green)" stroke-width="1" opacity="0.18"/>
+  <path d="M 325 87 Q 232 57 139 87" fill="none" stroke="var(--td-tool-stroke)" stroke-width="1" opacity="0.18"/>
+  <path d="M 325 87 Q 251 57 177 87" fill="none" stroke="var(--td-arc-green)" stroke-width="1" opacity="0.18"/>
+  <path d="M 325 87 Q 268 60 211 87" fill="none" stroke="var(--td-arc-green)" stroke-width="1" opacity="0.18"/>
+  <path d="M 325 87 Q 306 74 287 87" fill="none" stroke="var(--td-tool-stroke)" stroke-width="1" opacity="0.18"/>
+  <!-- Tokens: θ₁ θ₂ -->
+  <rect x="14" y="90" width="30" height="24" rx="4" fill="var(--td-think-fill)" stroke="var(--td-think-stroke)" stroke-width="1.2"/>
+  <text x="29" y="103" text-anchor="middle" font-size="8" font-weight="600" fill="var(--text-color)" font-family="monospace">θ₁</text>
+  <rect x="48" y="90" width="30" height="24" rx="4" fill="var(--td-think-fill)" stroke="var(--td-think-stroke)" stroke-width="1.2"/>
+  <text x="63" y="103" text-anchor="middle" font-size="8" font-weight="600" fill="var(--text-color)" font-family="monospace">θ₂</text>
+  <!-- Tool call 1 -->
+  <rect x="86" y="90" width="30" height="24" rx="4" fill="var(--td-tool-fill)" stroke="var(--td-tool-stroke)" stroke-width="1.2"/>
+  <text x="101" y="104" text-anchor="middle" font-size="11" fill="var(--text-color)">⚙</text>
+  <!-- Result 1 -->
+  <rect x="124" y="90" width="30" height="24" rx="4" fill="var(--td-result-fill)" stroke="var(--td-result-stroke)" stroke-width="1.2"/>
+  <text x="139" y="104" text-anchor="middle" font-size="11" fill="var(--text-color)">→</text>
+  <!-- θ₃ θ₄ -->
+  <rect x="162" y="90" width="30" height="24" rx="4" fill="var(--td-think-fill)" stroke="var(--td-think-stroke)" stroke-width="1.2"/>
+  <text x="177" y="103" text-anchor="middle" font-size="8" font-weight="600" fill="var(--text-color)" font-family="monospace">θ₃</text>
+  <rect x="196" y="90" width="30" height="24" rx="4" fill="var(--td-think-fill)" stroke="var(--td-think-stroke)" stroke-width="1.2"/>
+  <text x="211" y="103" text-anchor="middle" font-size="8" font-weight="600" fill="var(--text-color)" font-family="monospace">θ₄</text>
+  <!-- Tool call 2 -->
+  <rect x="234" y="90" width="30" height="24" rx="4" fill="var(--td-tool-fill)" stroke="var(--td-tool-stroke)" stroke-width="1.2"/>
+  <text x="249" y="104" text-anchor="middle" font-size="11" fill="var(--text-color)">⚙</text>
+  <!-- Result 2 -->
+  <rect x="272" y="90" width="30" height="24" rx="4" fill="var(--td-result-fill)" stroke="var(--td-result-stroke)" stroke-width="1.2"/>
+  <text x="287" y="104" text-anchor="middle" font-size="11" fill="var(--text-color)">→</text>
+  <!-- θ₅ -->
+  <rect x="310" y="90" width="30" height="24" rx="4" fill="var(--td-think-fill)" stroke="var(--td-think-stroke)" stroke-width="1.2"/>
+  <text x="325" y="103" text-anchor="middle" font-size="8" font-weight="600" fill="var(--text-color)" font-family="monospace">θ₅</text>
+  <!-- r₁ r₂ -->
+  <rect x="348" y="90" width="30" height="24" rx="4" fill="var(--td-resp-fill)" stroke="var(--td-resp-stroke)" stroke-width="1.2"/>
+  <text x="363" y="103" text-anchor="middle" font-size="8" font-weight="600" fill="var(--text-color)" font-family="monospace">r₁</text>
+  <rect x="382" y="90" width="30" height="24" rx="4" fill="var(--td-resp-fill)" stroke="var(--td-resp-stroke)" stroke-width="1.2"/>
+  <text x="397" y="103" text-anchor="middle" font-size="8" font-weight="600" fill="var(--text-color)" font-family="monospace">r₂</text>
+  <!-- Block labels -->
+  <text x="46" y="128" text-anchor="middle" font-size="7.5" fill="var(--text-color)" font-family="system-ui, sans-serif">Plan</text>
+  <text x="101" y="128" text-anchor="middle" font-size="7.5" fill="var(--text-color)" font-family="system-ui, sans-serif">read file</text>
+  <text x="139" y="128" text-anchor="middle" font-size="7.5" fill="var(--text-color)" font-family="system-ui, sans-serif">result</text>
+  <text x="194" y="128" text-anchor="middle" font-size="7.5" fill="var(--text-color)" font-family="system-ui, sans-serif">Revise</text>
+  <text x="249" y="128" text-anchor="middle" font-size="7.5" fill="var(--text-color)" font-family="system-ui, sans-serif">run test</text>
+  <text x="287" y="128" text-anchor="middle" font-size="7.5" fill="var(--text-color)" font-family="system-ui, sans-serif">result</text>
+  <text x="325" y="128" text-anchor="middle" font-size="7.5" fill="var(--text-color)" font-family="system-ui, sans-serif">Assess</text>
+  <text x="380" y="128" text-anchor="middle" font-size="7.5" fill="var(--text-color)" font-family="system-ui, sans-serif">Respond</text>
+  <!-- External world indicators -->
+  <line x1="139" y1="114" x2="139" y2="136" stroke="var(--td-result-stroke)" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="139" y="145" text-anchor="middle" font-size="6.5" fill="var(--td-result-stroke)" font-family="system-ui, sans-serif" font-style="italic">external</text>
+  <line x1="287" y1="114" x2="287" y2="136" stroke="var(--td-result-stroke)" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <text x="287" y="145" text-anchor="middle" font-size="6.5" fill="var(--td-result-stroke)" font-family="system-ui, sans-serif" font-style="italic">external</text>
+  <!-- Insight box -->
+  <rect x="14" y="155" width="412" height="82" rx="4" fill="var(--td-box-purple-fill)" stroke="var(--td-box-purple-stroke)" stroke-width="0.8"/>
+  <text x="220" y="170" text-anchor="middle" font-size="8.5" font-weight="600" fill="var(--td-tool-text)" font-family="system-ui, sans-serif">Key difference: thinking tokens now attend to tool results from the environment</text>
+  <text x="220" y="185" text-anchor="middle" font-size="8.5" fill="var(--text-color)" font-family="system-ui, sans-serif">θ₃,θ₄ reason about file contents returned by the first tool call.</text>
+  <text x="220" y="198" text-anchor="middle" font-size="8.5" fill="var(--text-color)" font-family="system-ui, sans-serif">θ₅ reasons about test results, and revises the plan if the test failed.</text>
+  <text x="220" y="215" text-anchor="middle" font-size="8.5" font-weight="600" fill="var(--text-color)" font-family="system-ui, sans-serif">The model no longer reasons only from information in the prompt.</text>
+  <text x="220" y="228" text-anchor="middle" font-size="8.5" fill="var(--text-color)" font-family="system-ui, sans-serif">It discovers new information, reasons about it, and adapts - like a human engineer.</text>
+</svg>
+</div>
+
+<p class="td-footer">In all three paradigms, the per-token computation is identical (one forward pass through the network). The difference is in scaffolding: which tokens are generated, what they attend to, and whether the model interacts with external tools between reasoning steps.</p>
+</div>

@@ -66,7 +66,7 @@ the key points:
 
 - **My meaning does not only live inside me, nor only in external structures.** It emerges from the friction and
   alignment between the two. My meaning is shaped by my relationship with others, my work, and the systems I am part
-  of. I am shaped by culture, language, institutions, and history — but I also shape them back, through how I engage and
+  of. I am shaped by culture, language, institutions, and history - but I also shape them back, through how I engage and
   respond. Systems can constrain or enable, but they don’t dictate meaning.
 
 - **I have the capacity and responsibility to shape and improve the world.** Since I have the capacity to build,

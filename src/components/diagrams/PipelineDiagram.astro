@@ -1,0 +1,365 @@
+---
+// PipelineDiagram.astro - LLM Training & Inference Pipeline
+//
+// ============================================================
+// EDITABLE CONTENT - labels, tooltips, and captions
+// ============================================================
+
+const title = "Training & Inference Pipeline";
+const subtitle = "A typical pipeline from raw data to test-time compute.";
+const caption = "Each training stage draws on a different source of signal, from self-supervised text (essentially free) through human preferences (expensive) to automated verification (free again for verifiable domains). Reasoning RL and agentic RL use verifiable outcomes, breaking the human-annotation bottleneck.";
+const feedbackLabel = "Feedback: inference logs";
+
+// Node labels and hover tooltips (edit text here)
+const labels: Record<string, { label: string; tip: string }> = {
+  rawData:   { label: "Raw Data",                    tip: "Text, code, and web data collected for training." },
+  curation:  { label: "Data Curation & Mixing",      tip: "Filter, deduplicate, and mix data sources into a balanced training set." },
+  corpus:    { label: "Pre-Training Corpus",          tip: "Cleaned, tokenized dataset ready for pre-training." },
+  pretrain:  { label: "Base Pre-Training",            tip: "Train the base model via next-token prediction on trillions of tokens." },
+  anneal:    { label: "Pre-Training Annealing",       tip: "Gradually reduce learning rate on high-quality data to stabilize weights." },
+  coldStart: { label: "Cold-Start Reasoning RL",      tip: "Bootstrap reasoning via RL with verifiable rewards (math, code)." },
+  flywheel:  { label: "Synthetic Data Flywheel",      tip: "Use the model to generate and filter its own training data." },
+  sft:       { label: "Supervised Fine-Tuning",       tip: "Train on curated demonstrations of desired behavior." },
+  prefOpt:   { label: "Preference Optimization",  tip: "Learn from pairwise human or AI preference comparisons." },
+  prmTrain:  { label: "Process Reward Training",                 tip: "Train a Process Reward Model to score each reasoning step." },
+  agenticRL: { label: "Agentic & Tool-Use RL",        tip: "RL on multi-step tasks with tool calls, graded by task completion." },
+  verifier:  { label: "The Verifier",                 tip: "Scores reasoning traces for correctness at each step." },
+  generator: { label: "The Generator",                tip: "Produces responses and reasoning traces." },
+  testTime:  { label: "Test-Time Compute",            tip: "Search, sample, and verify at inference time using extra compute." },
+  response:  { label: "User Response",                tip: "Final answer delivered to the user." },
+};
+
+// Edge labels (edit text here)
+const edgeLabels = {
+  annealToSft:       "Weights",
+  coldToFlywheel:    "Raw Reasoner",
+  flywheelToPrm:     "Process Reward Traces",
+  flywheelToSft:     "Synthetic Fine-Tuning",
+  annealToFlywheel:  "Base Verifier",
+};
+
+// ============================================================
+// LAYOUT - positions and wiring (rarely needs editing)
+// ============================================================
+
+const layout: Record<string, { cx: number; cy: number; w: number; h: number; type: string }> = {
+  rawData:   { cx: 270, cy: 24,  w: 100, h: 24, type: "data"  },
+  curation:  { cx: 270, cy: 64,  w: 170, h: 26, type: "proc"  },
+  corpus:    { cx: 270, cy: 104, w: 148, h: 24, type: "data"  },
+  pretrain:  { cx: 270, cy: 144, w: 140, h: 26, type: "proc"  },
+  anneal:    { cx: 270, cy: 186, w: 170, h: 26, type: "proc"  },
+  coldStart: { cx: 142, cy: 258, w: 180, h: 26, type: "proc"  },
+  flywheel:  { cx: 142, cy: 312, w: 180, h: 26, type: "proc"  },
+  sft:       { cx: 395, cy: 358, w: 170, h: 26, type: "proc"  },
+  prefOpt:   { cx: 395, cy: 418, w: 190, h: 26, type: "proc"  },
+  prmTrain:  { cx: 142, cy: 392, w: 140, h: 26, type: "proc"  },
+  agenticRL: { cx: 395, cy: 478, w: 170, h: 26, type: "proc"  },
+  verifier:  { cx: 170, cy: 468, w: 120, h: 28, type: "model" },
+  generator: { cx: 395, cy: 540, w: 120, h: 28, type: "model" },
+  testTime:  { cx: 270, cy: 604, w: 190, h: 30, type: "infer" },
+  response:  { cx: 270, cy: 660, w: 130, h: 26, type: "data"  },
+};
+
+// Merge labels + layout into final node objects
+const nodes = Object.fromEntries(
+  Object.keys(layout).map(id => [id, { ...layout[id], ...labels[id] }])
+);
+
+// Edge path computation
+interface EdgeDef {
+  d: string;
+  label?: string;
+  labelX?: number;
+  labelY?: number;
+  labelAnchor?: string;
+  labelRotate?: boolean;
+  dashed?: boolean;
+  feedback?: boolean;
+}
+
+function bottom(id: string) { const n = layout[id]; return { x: n.cx, y: n.cy + n.h / 2 }; }
+function top(id: string) { const n = layout[id]; return { x: n.cx, y: n.cy - n.h / 2 }; }
+
+const edgePaths: EdgeDef[] = [];
+
+// Main spine
+for (const [from, to] of [["rawData","curation"],["curation","corpus"],["corpus","pretrain"],["pretrain","anneal"]]) {
+  const fb = bottom(from), tt = top(to);
+  edgePaths.push({ d: `M ${fb.x} ${fb.y} L ${tt.x} ${tt.y}` });
+}
+
+// anneal -> coldStart (angle-left, enters from right side)
+{
+  const fb = bottom("anneal");
+  const to = layout["coldStart"];
+  const rightEdge = to.cx + to.w / 2;
+  edgePaths.push({ d: `M ${fb.x} ${fb.y} L ${fb.x} ${to.cy} L ${rightEdge} ${to.cy}` });
+}
+
+// anneal -> sft (angle-right)
+{
+  const fb = bottom("anneal"), tt = top("sft");
+  const midY = fb.y + (tt.y - fb.y) * 0.45;
+  edgePaths.push({
+    d: `M ${fb.x} ${fb.y} L ${fb.x} ${midY} L ${tt.x} ${midY} L ${tt.x} ${tt.y}`,
+    label: edgeLabels.annealToSft, labelX: (fb.x + tt.x) / 2 + 8, labelY: midY - 6, labelAnchor: "start"
+  });
+}
+
+// coldStart -> flywheel
+{
+  const fb = bottom("coldStart"), tt = top("flywheel");
+  edgePaths.push({
+    d: `M ${fb.x} ${fb.y} L ${tt.x} ${tt.y}`,
+    label: edgeLabels.coldToFlywheel, labelX: Math.min(fb.x, tt.x) - 6, labelY: (fb.y + tt.y) / 2, labelAnchor: "end"
+  });
+}
+
+// flywheel -> prmTrain
+{
+  const fb = bottom("flywheel"), tt = top("prmTrain");
+  edgePaths.push({
+    d: `M ${fb.x} ${fb.y} L ${tt.x} ${tt.y}`,
+    label: edgeLabels.flywheelToPrm, labelX: Math.min(fb.x, tt.x) - 6, labelY: (fb.y + tt.y) / 2, labelAnchor: "end"
+  });
+}
+
+// prmTrain -> verifier
+{
+  const fb = bottom("prmTrain"), tt = top("verifier");
+  edgePaths.push({ d: `M ${fb.x} ${fb.y} L ${tt.x} ${tt.y}` });
+}
+
+// flywheel -> sft (cross-right)
+{
+  const from = layout["flywheel"], to = layout["sft"];
+  const startX = from.cx + from.w / 2, startY = from.cy + 4;
+  const ttop = { x: to.cx, y: to.cy - to.h / 2 };
+  const midX = startX + 20;
+  edgePaths.push({
+    d: `M ${startX} ${startY} L ${midX} ${startY} L ${midX} ${ttop.y - 12} L ${ttop.x} ${ttop.y - 12} L ${ttop.x} ${ttop.y}`,
+    label: edgeLabels.flywheelToSft, labelX: (midX + ttop.x) / 2, labelY: ttop.y - 18, labelAnchor: "middle"
+  });
+}
+
+// anneal -> flywheel (dashed, routed far left at x=28)
+{
+  const from = layout["anneal"], to = layout["flywheel"];
+  const x1 = 28;
+  const ttop = { x: to.cx, y: to.cy - to.h / 2 };
+  edgePaths.push({
+    d: `M ${from.cx - from.w/2} ${from.cy} L ${x1} ${from.cy} L ${x1} ${ttop.y - 10} L ${ttop.x} ${ttop.y - 10} L ${ttop.x} ${ttop.y}`,
+    label: edgeLabels.annealToFlywheel, labelX: x1 - 12, labelY: (from.cy + to.cy) / 2, labelAnchor: "end", labelRotate: true,
+    dashed: true
+  });
+}
+
+// sft -> prefOpt -> agenticRL -> generator
+for (const [from, to] of [["sft","prefOpt"],["prefOpt","agenticRL"],["agenticRL","generator"]]) {
+  const fb = bottom(from), tt = top(to);
+  edgePaths.push({ d: `M ${fb.x} ${fb.y} L ${tt.x} ${tt.y}` });
+}
+
+// verifier -> testTime
+{
+  const fb = bottom("verifier"), tt = top("testTime");
+  const midY = tt.y - 20;
+  edgePaths.push({ d: `M ${fb.x} ${fb.y} L ${fb.x} ${midY} L ${tt.x} ${midY} L ${tt.x} ${tt.y}` });
+}
+
+// generator -> testTime
+{
+  const fb = bottom("generator"), tt = top("testTime");
+  const midY = tt.y - 20;
+  edgePaths.push({ d: `M ${fb.x} ${fb.y} L ${fb.x} ${midY} L ${tt.x} ${midY} L ${tt.x} ${tt.y}` });
+}
+
+// testTime -> response
+{
+  const fb = bottom("testTime"), tt = top("response");
+  edgePaths.push({ d: `M ${fb.x} ${fb.y} L ${tt.x} ${tt.y}` });
+}
+
+// feedback: testTime -> curation
+{
+  const from = layout["testTime"], to = layout["curation"];
+  const rightX = 500;
+  edgePaths.push({
+    d: `M ${from.cx + from.w/2} ${from.cy} L ${rightX} ${from.cy} L ${rightX} ${to.cy} L ${to.cx + to.w/2} ${to.cy}`,
+    feedback: true, dashed: true
+  });
+}
+
+const nodeEntries = Object.entries(nodes);
+---
+
+<div class="pipeline-diagram">
+  <p class="pl-title">{title}</p>
+  <p class="pl-subtitle" set:html={subtitle} />
+
+  <svg viewBox="0 0 520 695" xmlns="http://www.w3.org/2000/svg" class="pl-svg">
+    <defs>
+      <marker id="plArrowMain" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto">
+        <polygon points="0 0, 6 2.5, 0 5" class="pl-arrow-main"/>
+      </marker>
+      <marker id="plArrowFeedback" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto">
+        <polygon points="0 0, 6 2.5, 0 5" class="pl-arrow-feedback"/>
+      </marker>
+    </defs>
+
+    <!-- Column backgrounds -->
+    <rect x={38} y={226} width={208} height={270} rx={6} class="pl-col-bg-left"/>
+    <rect x={282} y={226} width={218} height={342} rx={6} class="pl-col-bg-right"/>
+
+    <!-- Column labels -->
+    <text x={142} y={238} text-anchor="middle" font-size="8" font-weight="600" class="pl-col-label">VERIFIER PATH</text>
+    <text x={395} y={238} text-anchor="middle" font-size="8" font-weight="600" class="pl-col-label">GENERATOR PATH</text>
+
+    <!-- Edges -->
+    {edgePaths.map((e) => (
+      <g>
+        <path
+          d={e.d}
+          fill="none"
+          class={e.feedback ? "pl-edge-feedback" : "pl-edge"}
+          stroke-width={e.feedback ? 1.2 : 1}
+          opacity={e.dashed ? (e.feedback ? 0.6 : 0.5) : 0.7}
+          stroke-dasharray={e.dashed ? (e.feedback ? "5,3" : "4,3") : "none"}
+          marker-end={e.feedback ? "url(#plArrowFeedback)" : "url(#plArrowMain)"}
+        />
+        {e.label && (
+          <text
+            x={e.labelX} y={e.labelY}
+            text-anchor={e.labelAnchor || "middle"}
+            dominant-baseline="middle"
+            font-size="7.5"
+            class="pl-edge-label"
+            font-style="italic"
+            transform={e.labelRotate ? `rotate(-90, ${e.labelX}, ${e.labelY})` : undefined}
+          >{e.label}</text>
+        )}
+      </g>
+    ))}
+
+    <!-- Nodes -->
+    {nodeEntries.map(([id, node]) => {
+      const lo = layout[id];
+      const x = lo.cx - lo.w / 2;
+      const y = lo.cy - lo.h / 2;
+      const isModel = lo.type === "model";
+      const isInfer = lo.type === "infer";
+      return (
+        <g class="pl-node-group" data-tip={node.tip}>
+          <rect
+            x={x} y={y} width={lo.w} height={lo.h}
+            rx={isModel ? lo.h / 2 : 4}
+            class={`pl-node pl-node-${lo.type}`}
+            stroke-width={isModel || isInfer ? 1.5 : 1}
+          />
+          <text
+            x={lo.cx} y={lo.cy + 1}
+            text-anchor="middle"
+            dominant-baseline="middle"
+            font-size={isModel ? 10 : 9}
+            font-weight={isModel || isInfer ? 600 : 500}
+            class="pl-node-text"
+            style="pointer-events: none;"
+          >{node.label}</text>
+        </g>
+      );
+    })}
+
+    <!-- Feedback loop label -->
+    <text x={508} y={340} text-anchor="middle" font-size="8" font-weight="500" class="pl-feedback-label" transform="rotate(90, 508, 340)">
+      {feedbackLabel}
+    </text>
+  </svg>
+
+  <!-- Legend -->
+  <div class="pl-legend">
+    <div class="pl-legend-item">
+      <div class="pl-legend-swatch pl-node-data"></div>
+      <span>Data artifact</span>
+    </div>
+    <div class="pl-legend-item">
+      <div class="pl-legend-swatch pl-node-proc"></div>
+      <span>Training step</span>
+    </div>
+    <div class="pl-legend-item">
+      <div class="pl-legend-swatch pl-node-model" style="border-radius: 6px;"></div>
+      <span>Trained model</span>
+    </div>
+    <div class="pl-legend-item">
+      <div class="pl-legend-swatch pl-node-infer"></div>
+      <span>Inference</span>
+    </div>
+  </div>
+
+  <p class="pl-caption">{caption}</p>
+</div>
+
+<script>
+  function initPipelineTooltips() {
+    let tip: HTMLDivElement | null = null;
+    let hideTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    function removeTip() {
+      if (hideTimeout) clearTimeout(hideTimeout);
+      if (tip) { tip.remove(); tip = null; }
+    }
+
+    function scheduleHide() {
+      if (hideTimeout) clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(removeTip, 150);
+    }
+
+    document.querySelectorAll<SVGGElement>(".pl-node-group[data-tip]").forEach((g) => {
+      const text = g.dataset.tip;
+      if (!text) return;
+
+      g.style.cursor = "pointer";
+
+      g.addEventListener("mouseenter", () => {
+        removeTip();
+        tip = document.createElement("div");
+        tip.className = "annotation-tooltip";
+        tip.textContent = text;
+        document.body.appendChild(tip);
+
+        tip.addEventListener("mouseenter", () => { if (hideTimeout) clearTimeout(hideTimeout); });
+        tip.addEventListener("mouseleave", scheduleHide);
+
+        const rect = g.getBoundingClientRect();
+        const tipRect = tip.getBoundingClientRect();
+
+        let left = rect.left + rect.width / 2 - tipRect.width / 2;
+        let top = rect.top - tipRect.height - 6;
+
+        if (left < 8) left = 8;
+        if (left + tipRect.width > window.innerWidth - 8) left = window.innerWidth - tipRect.width - 8;
+        if (top < 8) top = rect.bottom + 6;
+
+        tip.style.left = `${left + window.scrollX}px`;
+        tip.style.top = `${top + window.scrollY}px`;
+      });
+
+      g.addEventListener("mouseleave", scheduleHide);
+
+      g.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (tip) { removeTip(); } else {
+          g.dispatchEvent(new MouseEvent("mouseenter"));
+        }
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      const target = e.target as Element;
+      if (!target.closest(".pl-node-group") && !target.closest(".annotation-tooltip")) {
+        removeTip();
+      }
+    });
+  }
+
+  initPipelineTooltips();
+</script>

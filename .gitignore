@@ -41,3 +41,9 @@ ehthumbs.db
 # └───────────────────────────────────────────────
 static/*
 !static/images/langkilde.jpg
+
+# ┌───────────────────────────────────────────────
+# │ Local images staged for upload to GCS
+# └───────────────────────────────────────────────
+images/*
+!images/.gitkeep

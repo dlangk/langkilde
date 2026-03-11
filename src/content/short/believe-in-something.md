@@ -9,7 +9,7 @@ title: Believe in something
 
 > "_When dealing with people, let us remember we are not dealing with creatures of logic. We are dealing with creatures of emotion, creatures bristling with prejudices and motivated by pride and vanity._"
 >
-> — Dale Carnegie
+> - Dale Carnegie
 
 **Companies invest a great deal of money in ensuring they make logical decisions.** Large companies believe the only good decisions are based on facts. The problem is that in most situations there is not enough information to make a logical decision. Instead, you have to resort to emotion and ethics.
 

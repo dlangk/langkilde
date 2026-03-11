@@ -1,0 +1,383 @@
+---
+// HarnessDiagram.astro - Anatomy of an Agentic Coding Harness
+//
+// ============================================================
+// EDITABLE CONTENT - labels, tooltips, and captions
+// ============================================================
+
+const title = "Agentic Harnessing";
+const subtitle = "It turns out the scaffolding around models matters as much as the model itself.";
+const caption = "The harness manages everything except the model's weights: which tools are available, how tool descriptions are written, how context is compressed when the window fills up, how errors are caught and retried, and when to ask the human for approval.";
+
+// Section labels
+const sectionLabels = {
+  config:  "CONFIGURATION",
+  loop:    "AGENT LOOP",
+  context: "CONTEXT MANAGEMENT",
+  tools:   "TOOLS",
+  safety:  "SAFETY & QUALITY GATES",
+  env:     "ENVIRONMENT",
+};
+
+// Node labels and tooltips (edit text here)
+const labels: Record<string, { label: string; tip: string }> = {
+  developer:    { label: "Developer",              tip: "The human user who initiates tasks and provides feedback." },
+  // Configuration
+  claudeMd:     { label: "CLAUDE.md",              tip: "Project-level instructions and conventions the agent follows." },
+  systemPrompt: { label: "System Prompt",           tip: "Core behavioral instructions injected at conversation start." },
+  permissions:  { label: "Permissions",             tip: "Controls which tools require approval before execution." },
+  mcpConfig:    { label: "MCP Config",              tip: "Model Context Protocol server configurations for external integrations." },
+  toolDefs:     { label: "Tool Defs",               tip: "Definitions of available tools: parameters, descriptions, and constraints." },
+  // Agent loop
+  observe:      { label: "Observe",                 tip: "Read tool results and user messages to understand the current state." },
+  think:        { label: "Think",                   tip: "Reasoning tokens where the model plans its next action." },
+  act:          { label: "Act",                     tip: "Invoke one or more tools to make progress on the task." },
+  // Context management
+  compaction:   { label: "Compaction",              tip: "Summarize older messages when the context window fills up." },
+  repoMap:      { label: "Repo Map",                tip: "Structural overview of the codebase injected as context." },
+  workingNotes: { label: "Working Notes",           tip: "Scratchpad the agent uses to track progress across turns." },
+  subAgents:    { label: "Sub-agents",              tip: "Specialized child agents dispatched for parallel or isolated work." },
+  todoList:     { label: "Todo List",               tip: "Structured task list the agent maintains and checks off." },
+  // Tools
+  bash:         { label: "Bash",                    tip: "Execute shell commands in the user's terminal." },
+  fileEdit:     { label: "File Edit",               tip: "Make targeted string replacements in existing files." },
+  fileRead:     { label: "File Read",               tip: "Read file contents from the local filesystem." },
+  fileWrite:    { label: "File Write",              tip: "Create or overwrite files on disk." },
+  grep:         { label: "Grep",                    tip: "Search file contents with regex patterns." },
+  glob:         { label: "Glob",                    tip: "Find files by name patterns across the codebase." },
+  webSearch:    { label: "WebSearch",               tip: "Search the web for documentation and references." },
+  webFetch:     { label: "WebFetch",                tip: "Fetch and read content from URLs." },
+  notebook:     { label: "Notebook",                tip: "Read and edit Jupyter notebook cells." },
+  task:         { label: "Task",                    tip: "Create and manage background tasks." },
+  batchTool:    { label: "BatchTool",               tip: "Run multiple tool calls in a single batch." },
+  mcp:          { label: "MCP ...",                  tip: "Any tools provided by connected MCP servers." },
+  // Safety
+  syntaxLinter: { label: "Syntax Linter",           tip: "Check code for syntax errors before committing." },
+  humanApproval:{ label: "Human Approval",          tip: "Prompt the user before executing risky or irreversible actions." },
+  loopDetect:   { label: "Loop Detection",          tip: "Detect when the agent is stuck repeating the same actions." },
+  riskScoring:  { label: "Risk Scoring",            tip: "Classify actions by reversibility and blast radius." },
+  git:          { label: "Git",                     tip: "Version control safety: never force-push, always create new commits." },
+  // Environment
+  fileSystem:   { label: "File System",             tip: "The local filesystem the agent reads from and writes to." },
+  gitRepo:      { label: "Git Repository",          tip: "The version-controlled repository and its history." },
+  shell:        { label: "Shell / Terminal",         tip: "The user's shell environment where commands execute." },
+  testRunner:   { label: "Test Runner",             tip: "Test frameworks the agent can invoke to verify changes." },
+  mcpServers:   { label: "MCP Servers",             tip: "External servers providing additional tools and resources." },
+  // Output
+  response:     { label: "Response / Commit",       tip: "Final output delivered to the user: text, code changes, or commits." },
+};
+
+// Loop annotations
+const loopRepeatLabel = "repeat until no tool calls remain";
+const loopExitLabel = "Text-only response → exit loop";
+const feedbackLabel = "reject & retry";
+
+// Legend items
+const legendItems = [
+  { label: "Configuration", cls: "config" },
+  { label: "Agent Loop",    cls: "loop" },
+  { label: "Context Mgmt",  cls: "context" },
+  { label: "Tools",         cls: "tools" },
+  { label: "Safety Gates",  cls: "safety" },
+  { label: "Environment",   cls: "env" },
+];
+
+// ============================================================
+// LAYOUT - positions and sizes (rarely needs editing)
+// ============================================================
+
+const W = 520;
+const midX = W / 2;
+
+// Section background rects: [x, y, w, h, type]
+const sections = [
+  { y: 52,  h: 56,  type: "config" },
+  { y: 128, h: 130, type: "loop" },
+  { y: 274, h: 56,  type: "context" },
+  { y: 348, h: 76,  type: "tools" },
+  { y: 440, h: 56,  type: "safety" },
+  { y: 516, h: 56,  type: "env" },
+];
+
+// Section label positions: [x, y, type]
+const sectionLabelPositions = [
+  { x: 24, y: 66,  type: "config" },
+  { x: 24, y: 145, type: "loop" },
+  { x: 24, y: 288, type: "context" },
+  { x: 24, y: 362, type: "tools" },
+  { x: 24, y: 454, type: "safety" },
+  { x: 24, y: 530, type: "env" },
+];
+
+// Node layout: id -> { x, y, w, h, section, bold?, mono?, sublabel?, icon? }
+interface NodeLayout {
+  x: number; y: number; w: number; h: number;
+  section: string; bold?: boolean; mono?: boolean;
+  sublabel?: string; icon?: string; fontSize?: number;
+}
+
+const nodeLayout: Record<string, NodeLayout> = {
+  developer:     { x: midX - 60, y: 8,   w: 120, h: 28, section: "user", bold: true, icon: "👤" },
+  // Config row
+  claudeMd:      { x: 24,  y: 74,  w: 92,  h: 26, section: "config", mono: true },
+  systemPrompt:  { x: 124, y: 74,  w: 92,  h: 26, section: "config" },
+  permissions:   { x: 224, y: 74,  w: 92,  h: 26, section: "config" },
+  mcpConfig:     { x: 324, y: 74,  w: 80,  h: 26, section: "config" },
+  toolDefs:      { x: 412, y: 74,  w: 80,  h: 26, section: "config" },
+  // Agent loop
+  observe:       { x: 50,  y: 160, w: 100, h: 36, section: "loop", bold: true, sublabel: "Read tool results" },
+  think:         { x: 210, y: 160, w: 100, h: 36, section: "loop-think", bold: true, sublabel: "Reasoning tokens" },
+  act:           { x: 370, y: 160, w: 100, h: 36, section: "loop", bold: true, sublabel: "Invoke tools" },
+  // Context row
+  compaction:    { x: 24,  y: 296, w: 90,  h: 26, section: "context" },
+  repoMap:       { x: 122, y: 296, w: 80,  h: 26, section: "context" },
+  workingNotes:  { x: 210, y: 296, w: 94,  h: 26, section: "context" },
+  subAgents:     { x: 312, y: 296, w: 84,  h: 26, section: "context" },
+  todoList:      { x: 404, y: 296, w: 84,  h: 26, section: "context" },
+  // Tools row 1
+  bash:          { x: 24,  y: 370, w: 72,  h: 22, section: "tools", mono: true },
+  fileEdit:      { x: 104, y: 370, w: 72,  h: 22, section: "tools", mono: true },
+  fileRead:      { x: 184, y: 370, w: 72,  h: 22, section: "tools", mono: true },
+  fileWrite:     { x: 264, y: 370, w: 72,  h: 22, section: "tools", mono: true },
+  grep:          { x: 344, y: 370, w: 72,  h: 22, section: "tools", mono: true },
+  glob:          { x: 424, y: 370, w: 64,  h: 22, section: "tools", mono: true },
+  // Tools row 2
+  webSearch:     { x: 24,  y: 398, w: 72,  h: 22, section: "tools", mono: true, fontSize: 7.5 },
+  webFetch:      { x: 104, y: 398, w: 72,  h: 22, section: "tools", mono: true, fontSize: 7.5 },
+  notebook:      { x: 184, y: 398, w: 72,  h: 22, section: "tools", mono: true, fontSize: 7.5 },
+  task:          { x: 264, y: 398, w: 72,  h: 22, section: "tools", mono: true },
+  batchTool:     { x: 344, y: 398, w: 72,  h: 22, section: "tools", mono: true, fontSize: 7.5 },
+  mcp:           { x: 424, y: 398, w: 64,  h: 22, section: "tools", mono: true, fontSize: 7.5 },
+  // Safety row
+  syntaxLinter:  { x: 24,  y: 462, w: 100, h: 26, section: "safety" },
+  humanApproval: { x: 132, y: 462, w: 108, h: 26, section: "safety" },
+  loopDetect:    { x: 248, y: 462, w: 100, h: 26, section: "safety" },
+  riskScoring:   { x: 356, y: 462, w: 82,  h: 26, section: "safety" },
+  git:           { x: 446, y: 462, w: 42,  h: 26, section: "safety" },
+  // Environment row
+  fileSystem:    { x: 24,  y: 538, w: 90,  h: 26, section: "env" },
+  gitRepo:       { x: 122, y: 538, w: 90,  h: 26, section: "env" },
+  shell:         { x: 220, y: 538, w: 90,  h: 26, section: "env" },
+  testRunner:    { x: 318, y: 538, w: 80,  h: 26, section: "env" },
+  mcpServers:    { x: 406, y: 538, w: 82,  h: 26, section: "env" },
+  // Output
+  response:      { x: midX - 80, y: 595, w: 160, h: 30, section: "user", bold: true },
+};
+
+// Merge labels + layout
+const nodes = Object.fromEntries(
+  Object.keys(nodeLayout).map(id => [id, { ...nodeLayout[id], ...labels[id] }])
+);
+const nodeEntries = Object.entries(nodes);
+
+// Vertical arrows between sections: [y1, y2]
+const spineArrows = [
+  { y1: 36,  y2: 52 },   // developer -> config
+  { y1: 108, y2: 128 },  // config -> loop
+  { y1: 258, y2: 274 },  // loop -> context
+  { y1: 330, y2: 348 },  // context -> tools
+  { y1: 424, y2: 440 },  // tools -> safety
+  { y1: 496, y2: 516 },  // safety -> env
+  { y1: 572, y2: 595 },  // env -> response
+];
+---
+
+<div class="harness-diagram">
+  <p class="hd-title">{title}</p>
+  <p class="hd-subtitle">{subtitle}</p>
+
+  <svg viewBox={`0 0 ${W} 640`} xmlns="http://www.w3.org/2000/svg" class="hd-svg">
+    <defs>
+      <marker id="hdArrow" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto">
+        <polygon points="0 0, 6 2.5, 0 5" class="hd-arrow-main"/>
+      </marker>
+      <marker id="hdArrowLoop" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto">
+        <polygon points="0 0, 6 2.5, 0 5" class="hd-arrow-loop"/>
+      </marker>
+      <marker id="hdArrowFeedback" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto">
+        <polygon points="0 0, 6 2.5, 0 5" class="hd-arrow-feedback"/>
+      </marker>
+    </defs>
+
+    <!-- Section backgrounds -->
+    {sections.map((s) => (
+      <rect
+        x={16} y={s.y} width={W - 32} height={s.h}
+        rx={s.type === "loop" ? 8 : 6}
+        class={`hd-section-bg hd-section-${s.type}`}
+        stroke-width={s.type === "loop" ? 1.2 : 0.6}
+      />
+    ))}
+
+    <!-- Section labels -->
+    {sectionLabelPositions.map((sl) => (
+      <text
+        x={sl.x} y={sl.y}
+        font-size="8" font-weight="700" letter-spacing="0.5px"
+        class={`hd-section-label hd-label-${sl.type}`}
+      >{sectionLabels[sl.type as keyof typeof sectionLabels]}</text>
+    ))}
+
+    <!-- Spine arrows -->
+    {spineArrows.map((a) => (
+      <line
+        x1={midX} y1={a.y1} x2={midX} y2={a.y2}
+        stroke-width="1.2"
+        class="hd-edge"
+        marker-end="url(#hdArrow)"
+      />
+    ))}
+
+    <!-- Agent loop internal arrows: Observe -> Think -> Act -->
+    <line x1={150} y1={178} x2={210} y2={178} stroke-width="1.2" class="hd-edge-loop" marker-end="url(#hdArrowLoop)"/>
+    <line x1={310} y1={178} x2={370} y2={178} stroke-width="1.2" class="hd-edge-loop" marker-end="url(#hdArrowLoop)"/>
+
+    <!-- Loop-back: Act -> Observe -->
+    <path
+      d="M 470 178 Q 490 178 490 210 Q 490 240 260 240 Q 30 240 30 210 Q 30 178 50 178"
+      fill="none" stroke-width="1.2" stroke-dasharray="4,3"
+      class="hd-edge-loop"
+      marker-end="url(#hdArrowLoop)"
+    />
+    <text x={midX} y={248} text-anchor="middle" font-size="7.5" font-style="italic" class="hd-loop-label">
+      {loopRepeatLabel}
+    </text>
+    <text x={midX} y={222} text-anchor="middle" font-size="7" class="hd-muted-label">
+      {loopExitLabel}
+    </text>
+
+    <!-- Feedback arrow: Safety -> Agent Loop -->
+    <path
+      d="M 498 474 Q 508 474 508 400 Q 508 300 508 200 Q 508 170 490 170"
+      fill="none" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"
+      class="hd-edge-feedback"
+      marker-end="url(#hdArrowFeedback)"
+    />
+    <text
+      x={512} y={330}
+      font-size="7" font-style="italic"
+      class="hd-feedback-label"
+      transform="rotate(90, 512, 330)"
+    >{feedbackLabel}</text>
+
+    <!-- Nodes -->
+    {nodeEntries.map(([id, node]) => {
+      const lo = nodeLayout[id];
+      const fs = lo.fontSize || 8.5;
+      const hasIcon = !!lo.icon;
+      const textX = hasIcon ? lo.x + 20 : lo.x + lo.w / 2;
+      const textAnchor = hasIcon ? "start" : "middle";
+      return (
+        <g class="hd-node-group" data-tip={node.tip}>
+          <rect
+            x={lo.x} y={lo.y} width={lo.w} height={lo.h} rx={4}
+            class={`hd-node hd-node-${lo.section}`}
+            stroke-width="1.2"
+          />
+          {lo.icon && (
+            <text x={lo.x + 8} y={lo.y + lo.h / 2 + 1} font-size="11" dominant-baseline="middle">{lo.icon}</text>
+          )}
+          <text
+            x={textX}
+            y={lo.sublabel ? lo.y + lo.h / 2 - 4 : lo.y + lo.h / 2 + 1}
+            text-anchor={textAnchor}
+            dominant-baseline="middle"
+            font-size={fs}
+            font-weight={lo.bold ? 700 : 500}
+            class={`hd-node-text ${lo.mono ? "hd-mono" : ""}`}
+            style="pointer-events: none;"
+          >{node.label}</text>
+          {lo.sublabel && (
+            <text
+              x={textX}
+              y={lo.y + lo.h / 2 + 8}
+              text-anchor={textAnchor}
+              dominant-baseline="middle"
+              font-size="7"
+              class="hd-node-sublabel"
+              style="pointer-events: none;"
+            >{lo.sublabel}</text>
+          )}
+        </g>
+      );
+    })}
+  </svg>
+
+  <!-- Legend -->
+  <div class="hd-legend">
+    {legendItems.map((item) => (
+      <div class="hd-legend-item">
+        <div class={`hd-legend-swatch hd-swatch-${item.cls}`}></div>
+        <span>{item.label}</span>
+      </div>
+    ))}
+  </div>
+
+  <p class="hd-caption">{caption}</p>
+</div>
+
+<script>
+  function initHarnessTooltips() {
+    let tip: HTMLDivElement | null = null;
+    let hideTimeout: ReturnType<typeof setTimeout> | null = null;
+
+    function removeTip() {
+      if (hideTimeout) clearTimeout(hideTimeout);
+      if (tip) { tip.remove(); tip = null; }
+    }
+
+    function scheduleHide() {
+      if (hideTimeout) clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(removeTip, 150);
+    }
+
+    document.querySelectorAll<SVGGElement>(".hd-node-group[data-tip]").forEach((g) => {
+      const text = g.dataset.tip;
+      if (!text) return;
+
+      g.style.cursor = "pointer";
+
+      g.addEventListener("mouseenter", () => {
+        removeTip();
+        tip = document.createElement("div");
+        tip.className = "annotation-tooltip";
+        tip.textContent = text;
+        document.body.appendChild(tip);
+
+        tip.addEventListener("mouseenter", () => { if (hideTimeout) clearTimeout(hideTimeout); });
+        tip.addEventListener("mouseleave", scheduleHide);
+
+        const rect = g.getBoundingClientRect();
+        const tipRect = tip.getBoundingClientRect();
+
+        let left = rect.left + rect.width / 2 - tipRect.width / 2;
+        let top = rect.top - tipRect.height - 6;
+
+        if (left < 8) left = 8;
+        if (left + tipRect.width > window.innerWidth - 8) left = window.innerWidth - tipRect.width - 8;
+        if (top < 8) top = rect.bottom + 6;
+
+        tip.style.left = `${left + window.scrollX}px`;
+        tip.style.top = `${top + window.scrollY}px`;
+      });
+
+      g.addEventListener("mouseleave", scheduleHide);
+
+      g.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (tip) { removeTip(); } else {
+          g.dispatchEvent(new MouseEvent("mouseenter"));
+        }
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      const target = e.target as Element;
+      if (!target.closest(".hd-node-group") && !target.closest(".annotation-tooltip")) {
+        removeTip();
+      }
+    });
+  }
+
+  initHarnessTooltips();
+</script>

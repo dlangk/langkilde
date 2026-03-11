@@ -15,7 +15,7 @@ title: Artificial Intelligence and Scaling Laws
 
 * Ultimately, your feelings about current AI development depend on **how you prefer to handle tail risk.** What do you do if there is a tiny, tiny probability of a really, really bad outcome?
 
-* **In the meantime, we should enjoy all the great products we can now build while dealing with the practical issues we know to be real** — misinformation, labor market reskilling, carbon emissions, and more. But none of these are reasons to stop progress.
+* **In the meantime, we should enjoy all the great products we can now build while dealing with the practical issues we know to be real** - misinformation, labor market reskilling, carbon emissions, and more. But none of these are reasons to stop progress.
 
 ## Background
 

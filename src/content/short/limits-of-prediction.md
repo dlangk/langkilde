@@ -3,7 +3,7 @@ pubDate: "2024-08-11"
 title: Limits of Prediction
 ---
 
-Communities are what make humans the dominant species on Earth. By gathering in groups and working together, passing wisdom between generations, we have created robust societies that long outlive individuals. Community requires a desire to belong. The deep desire to belong experienced by humans likely evolved with our "discovery" of the power of community. But humans also need to feel special—like we make a difference. It's often the case that successful people have a strong internal locus of control, meaning they believe they have personal agency over their lives and can make a significant impact.
+Communities are what make humans the dominant species on Earth. By gathering in groups and working together, passing wisdom between generations, we have created robust societies that long outlive individuals. Community requires a desire to belong. The deep desire to belong experienced by humans likely evolved with our "discovery" of the power of community. But humans also need to feel special-like we make a difference. It's often the case that successful people have a strong internal locus of control, meaning they believe they have personal agency over their lives and can make a significant impact.
 
 ## How important is intelligence?
 

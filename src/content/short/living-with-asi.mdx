@@ -1,0 +1,201 @@
+---
+pubDate: "2026-03-11"
+title: Living with Aritificial Superintelligence (ASI)
+---
+import ThinkingDiagram from '../../components/diagrams/ThinkingDiagram.astro';
+import PipelineDiagram from '../../components/diagrams/PipelineDiagram.astro';
+import HarnessDiagram from '../../components/diagrams/HarnessDiagram.astro';
+
+**The last four months have been intense.** I've dedicated my professional life to understanding and developing artificial intelligence, and now a form of artificial superintelligence (ASI) is here. Available in your pocket. This post is my attempt to make sense of where we are now, and what I think it means for humans. I think by writing, and here are my thoughts:
+
+## What Happened in November 2025?
+
+On November 24th, 2025 Anthropic released their Opus 4.5 model, and with that **we crossed some sort of threshold for what large language models are able to do**. Or actually, it might have been the harness, Claude Code, that unlocked a new level of performance. Either way, agents are now able to solve complex, hours-long tasks that only expert humans could solve a few months ago. The most immediate and obvious impact is on software development, which has been completely transformed. Over a few short months, leading teams have completely adopted agentic coding tools. Why? Because they work. Between March 2024 and early 2026 the most widely recognized benchmark for agentic software development reported that performance climbed from ~30% to ~80%. And it's still climbing.
+
+<figure>
+  <img src="https://storage.googleapis.com/langkilde-se-images/swe-bench-evolution.png" alt="improvement curve for agentic software development" />
+  <figcaption>Source: <a href="https://www.swebench.com/">SWE-bench Verified Leaderboard</a></figcaption>
+</figure>
+
+**Interestingly, you'll notice that the increase in raw model performance with the release of Opus 4.5 isn't very big.** While the model release pushed us over the threshold, two things really boosted progress in recent months:
+
+### 1. Models Can Sort Of Think Now
+
+Sutton in 2019 wrote *The Bitter Lesson* [1], reflecting on the fact that methods that leverage compute tend to win in the long run. The term "scaling laws" was first used by Jared Kaplan, Dario Amodei and others in 2020 based on their observations while working at OpenAI [2]. Their paper described power-law relationships between loss and model size, dataset size, and compute. Not long after, in May 2020, Gwern popularized the phrase, and extended it, in his piece *The Scaling Hypothesis* [3]. He articulated the broader philosophical claim that neural nets absorb data and compute, generalizing and becoming more capable as they scale.
+
+**"Thinking" is an extension of the bet that more tokens and more compute make models better.** While pre-training on human knowledge remains the foundation, labs have found that the largest gains are no longer coming from scaling pre-training alone [4]. Instead, they are increasingly focused on improving how models "think". The first paper I read using this term was *Chain-of-Thought Prompting Elicits Reasoning in Large Language Models* published in 2022 [5]. The idea is that if you ask a model to "think step by step", it will generate a chain of thought that leads to the answer. *Synergizing Reasoning and Acting in Language Models* [6] then introduced the idea of "interleaving" reasoning with action - models that not only think, but take actions based on their thoughts. *Toolformer* [7] showed that giving models access to tools further enhanced their capabilities.
+
+In parallel, Noam Brown's work on game AI provided the theoretical foundation for why this matters. His poker bots Libratus and Pluribus demonstrated that having a model think for 20 seconds mid-hand gave roughly the same improvement as scaling up model size and training by 100,000x [8]. Gradually, it became clear that "inference-time compute" is a scaling axis, i.e. don't just make the model bigger, also let it think longer. An important idea that is part of Brown's work is the concept of the **[~generator-verifier gap|The observation that some problems are much harder to solve than to check. Math proofs, code that must pass tests, and games with clear outcomes all have large gaps, making them ideal targets for inference-time compute scaling.]** which identifies which domains benefit most from this approach: problems where verification is much cheaper than generation. We will get back to why this insight is critical when we talk about the limitations of ASI later on. For now, the key point is that "thinking" is a powerful way to leverage more compute and get much better performance without needing to scale up the number of parameters in the underlying model as much.
+
+Here is an attempt at visualizing the evolution from "generation" to "thinking" in language models:
+
+<ThinkingDiagram />
+
+But how do you train a model to think productively? It turns out that the big labs have had to completely rethink their training pipelines in recent years.
+
+Training large models starts from a randomly initialized neural network that trains on trillions of tokens of filtered text and code. The network learns to predict the next token. The result is a [~base model|A neural network after pre-training but before any fine-tuning. Capable of fluent text completion but has no notion of instructions, conversation, or safety.].
+
+Towards the end of pre-training, you shift the data distribution to mathematics, formal reasoning, and verifiable software code. At the same time, you reduce the learning rate. That means you make the model "changes" less and less based on each example. This [~annealing|A training technique where the learning rate is gradually reduced to zero, allowing the model to settle into a stable set of weights. Borrowed from metallurgy, where slowly cooling metal reduces defects.] technique makes models more precise at logical reasoning.
+
+After that, the model enters a [~reinforcement learning (RL)|A training method where an agent learns by trial and error. It takes actions in an environment, observes outcomes, and updates its behavior to maximize a reward signal. Unlike supervised learning, there are no correct answers to imitate - the agent must discover effective strategies through experimentation.] loop against problems with [~verifiable answers|Outputs whose correctness can be checked automatically by running code, checking a proof, or evaluating a mathematical identity.]: math, code with test suites, formal proofs. DeepSeek-R1-Zero demonstrated that a base model trained with pure RL receiving only correctness rewards and no demonstrations spontaneously learns to generate extended chains of thought, including self-verification and backtracking [9]. Or more simply put: the model discovers on its own that intermediate reasoning steps increase accuracy.
+
+Once you have a reasoner, you run it against new problems, letting it generate many candidate solutions. You then apply the same automated verifiers to filter for correctness. A fresh model is fine-tuned on this curated output. This is the [~synthetic data flywheel|A self-reinforcing loop where a model's own outputs, filtered for quality, become training data for its next version. Each cycle produces a better model that generates better data.]: the model writes its own training data, filtered by verification. **It's important to note that this only works for verifiable problems.** The only reason model developers can "avoid" human involvement in this process is that they are working with problems that have verifiable answers. This is a critical point, because it means that the model's ability to "think" is currently limited to domains where correctness can be automatically verified. [^logic]
+
+[^logic]: I think, in some sense, we are reverse engineering the rules of logic but encode them in the weights of the model rather than explicitly programming them. The model learns to generate reasoning steps that lead to correct answers, but it doesn't necessarily understand the underlying principles of logic in a human-like way. This is why the model can be very good at generating plausible-sounding reasoning that ultimately leads to incorrect conclusions. It has learned patterns of reasoning that often work, but it doesn't have a deep understanding of why they work or when they might fail. I could be wrong about this, but it's my inutition.
+
+After that, [~preference optimization|A family of training methods (DPO, RLHF, RLAIF) that steer a model's behavior by learning from ranked comparisons between outputs rather than from absolute labels.] calibrates the model for safety and helpfulness. The model compares pairs of outputs against a set of principles and learns to favor the better-aligned response. Separately, the model trains in environments with terminals, file systems, and APIs, learning to invoke tools, interpret results, and resume reasoning.
+
+At inference time, the model does not respond immediately. It first generates a [~chain of thought|A prompting and training technique where the model produces explicit intermediate reasoning steps before arriving at an answer, converting a single hard problem into a sequence of easier ones.] of invisible [~thinking tokens|Hidden tokens the model generates before its visible response. They act as working memory - the model writes reasoning to itself, then attends back to it when composing the final answer.], each one a forward pass that provides additional computation for planning, exploring alternatives, and self-correcting. A [~process reward model (PRM)|A separate model trained to evaluate the correctness of individual reasoning steps, not just final answers. Enables fine-grained credit assignment during search and training.] evaluates each step, enabling backtracking on flawed reasoning. The thinking budget is [~adaptive|Dynamically scaling the amount of computation spent on a problem based on its difficulty, rather than using a fixed budget for every query.]: trivial queries get minimal deliberation; hard problems may consume tens of thousands of tokens before the visible response appears.
+
+<PipelineDiagram />
+
+Several specific advances made this pipeline produce dramatically better agentic models.
+
+**Anti-reward-hacking training.** One problem in succeeding with RL is that models tend to take shortcuts if they can. Early coding agents would, for example, disable failing tests to improve test coverage scores. Claude 4 models were trained to be 65% less likely to take such shortcuts [10], instead faithfully following the intended reasoning process. For complex coding tasks, this means the model actually reads the codebase and understands the bug rather than pattern-matching to a superficially plausible fix.
+
+**Interleaved thinking.** Early "thinking" was straightforward: the model generates reasoning tokens, then produces a response with those tokens still in its context window. The response isn't a summary of the thinking - it's that each output token can attend back to all thinking tokens via the standard attention mechanism. The thinking trace functions as working memory the model wrote for itself and can now read. Claude 4 extended this to [~interleaved thinking|An inference pattern where the model alternates between generating reasoning tokens and executing external actions (tool calls), incorporating real-world feedback into its thought process.]: the model can now think *between* tool calls, not just before the first response. This means it can read a file, reason about what it found, run a test, reason about why it failed, and revise its approach - each cycle incorporating new information from the environment. This is qualitatively different from planning everything upfront.
+
+**Self-correction.** Models improved at trying multiple approaches rather than getting stuck repeating the same mistake. Anthropic's SWE-bench analysis noted that upgraded models showed "an ability to try several different solutions, rather than getting stuck making the same mistake over and over." This tenacity compounds across the hundreds of steps required for real-world coding tasks.
+
+### 2. Tools and Scaffolding
+
+Giving a model access to a unix shell and a file editor was a massive unlock. But the details of how those tools are designed matter enormously. Researchers have tried switching models inside various [~agent harnesses|The scaffolding code surrounding a language model that manages tool execution, context windows, error recovery, and the observe-think-act loop. Research shows harness design affects performance 10-20x more than model selection.] and found that careful tool-interface design - requiring absolute file paths to prevent confusion, writing detailed tool descriptions, rejecting syntactically invalid edits - makes a much bigger difference than pushing the underlying model a few percent. One study found that swapping models changed SWE-bench scores by 1%, while swapping the harness changed them by 22%.
+
+<HarnessDiagram />
+
+The pattern is consistent across all leading tools: Claude Code, Cursor, OpenAI Codex, SWE-agent, and dozens of open-source alternatives. They all converge on the same architecture - an observe-think-act loop with a few carefully designed tools - but diverge sharply on the details that determine real-world performance. How does the agent manage its context window when a task takes hundreds of turns? How does it recover when a tool call fails? When does it ask the human for help? These are engineering decisions, not model capabilities. And they are where the leverage is.
+
+### 3. Evidence: Benchmarks Are Saturating
+
+Let's now turn to the evidence. I want to look beyond SWE-bench at three benchmarks that test different capabilities: long-horizon task execution (METR), fluid reasoning (ARC-AGI), and graduate-level scientific knowledge (GPQA).
+
+**METR** measures how long a task an agent can solve. As of Opus 4.6 (February 2026), agents can take on tasks lasting many hours. A new version of Moore's Law is emerging: the length of tasks AI can solve is doubling every 7 months. Perfection is not necessary if you can error-correct as part of an iterative loop - assuming models are good enough. Successfully solving problems is not about perfect thinking at every step; it's about establishing an error-correcting way of working, leveraging tools, memory, and planning.
+
+<figure>
+  <img src="https://storage.googleapis.com/langkilde-se-images/metr-task-length.png" alt="METR task length over time" />
+  <figcaption>Source: <a href="https://metr.org/blog/2025-03-19-measuring-ai-ability-to-complete-long-tasks/">METR - Measuring AI Ability to Complete Long Tasks</a></figcaption>
+</figure>
+
+<figure>
+  <img src="https://storage.googleapis.com/langkilde-se-images/arc-agi-2.png" alt="ARC-AGI-2 benchmark progress" />
+  <figcaption>Source: <a href="https://arcprize.org/">ARC Prize</a></figcaption>
+</figure>
+
+**ARC-AGI** is specifically designed to measure general fluid reasoning, not memorized knowledge or pattern matching. Every task is novel by design, yet any adult human can solve them in under a minute. ARC-AGI-2 was designed to raise the bar and last longer than ARC-AGI-1. Turns out developers have already almost saturated it. Eval makers are struggling to make harder tests fast enough. Critically, ARC-AGI shows that allowing models to use more tokens increases their likelihood of solving the problem - consistent with the inference-time compute scaling story.
+
+**GPQA** is a dataset of 448 graduate-level multiple-choice questions in biology, physics, and chemistry. They are "Google-proof": highly skilled non-experts only reach 34% accuracy despite unrestricted web access. As of Opus 4.6, it's almost saturated.
+
+The pattern across all three benchmarks is the same: capabilities are improving on a predictable curve, and each benchmark that was designed to last years is being saturated in months. The underlying mechanism is also the same: more inference-time compute, better tool use, and iterative self-correction.
+
+---
+
+## Making Use of AI Agents
+
+Most of us are now accustomed to chatbots - manual, session-based interactions where we ask questions and get replies. The shift we are experiencing is from chatbots to **capable AI Agents** that can independently research, plan, execute, and self-correct over extended periods.
+
+My attitude to new AI things has always been one of realistic skepticism, mostly because I've been responsible for making AI work in production for most of my life. That humbles you. Every attempt I've made to get Agents to work in the last few years failed. The models couldn't quite put things together. It was close, but not enough. So I adopted a policy: I'll periodically try it to be ready when scaling makes it work.
+
+**We crossed a threshold in November.** For software engineers, there will always be a "before and after November 2025." The difference between "works" and "does not work" can be as little as a few percent on the underlying capability curve, but the experiential difference is a step change.
+
+### The New Core Loop
+
+The pattern emerging is that all work is converging toward a common loop:
+
+1. Outline every process as a checklist in careful natural language.
+2. For each task, specify inputs, outputs, and available tools. If the right tools don't exist, ask the agent to build them.
+3. Provide ways to verify that the desired output is correct.
+4. Iterate with the agent to resolve issues and edge cases. Make actions reversible where possible.
+5. Test the agent by letting it autonomously dry-execute the entire process.
+6. Add monitoring and escalation paths. Then let it rip.
+
+Your job, in this setting, is to be a person with values, experience, taste, and domain intuition. You steer the agents, but you do not perform tasks beyond what is necessary to outline the process and build understanding. Sometimes that requires months of work. I always work on things for a while before delegating them. I think the same will apply now.
+
+### The Importance of Writing Things Down
+
+All processes, tasks, inputs, outputs, and tools must be documented in version-controlled Markdown. This is a core requirement for maximizing the potential of agentic AI. All learning, solutions, and new tools are added to a shared repository for reuse across all projects. The effect is an instant, complete transfer of learning. Every agent operator receives all learnings as soon as the underlying scaffolding is updated.
+
+This has a parallel to what's happening inside the tools themselves. Claude Code uses a file called `CLAUDE.md` as its persistent memory - the only file that survives every context reset. It's the project's accumulated wisdom, written in plain text, loaded on every turn. The same principle applies at the organizational level: if something isn't written down in a way an agent can consume, it doesn't exist in the agentic workflow.
+
+I predict the next wave of development tools will all focus on [~context management|The engineering discipline of deciding what information to include in a model's limited context window at each step, including summarization, retrieval, and structured note-taking. Perhaps the single highest-leverage aspect of agent harness design.]. These tools might as well be called annotation tools. They will focus on ensuring the right kind of opinions are present in the intent stack that guides the model. Context management for coding agents is abstractly the same as curation and annotation in our domain.
+
+---
+
+## Work Will Never Look the Same
+
+The way we used to work is gone. As implementation costs approach zero, the supply of software will increase dramatically. I can now get a custom solution for any specific problem I encounter. Why would I pay for software when I can summon it on demand? The value of software is plummeting - not to zero, but the moat created by implementation complexity is disappearing fast.
+
+This means the premium shifts. It is no longer on being able to articulate things clearly - AI can do that. It is on **thinking something worth saying, proving it's true, and making other people feel it in their bones.** That requires two things our current tools cannot provide: the ability to separate truth from bullshit, and the irreplaceable qualities of being human.
+
+### Separating Truth from Bullshit
+
+We live in an age of [~token abundance|The state where generating fluent, plausible-sounding text is nearly free, causing the volume of text to explode while the average information density drops.]. Content flows from every endpoint at an unprecedented rate. Chatbots are amazingly powerful, but so talkative. This means we need personal frameworks to quickly detect bullshit. Here are the ones I use:
+
+**Good explanations are hard to vary.** This comes from David Deutsch and *The Beginning of Infinity*. A good explanation is one where every detail serves a purpose. It should be impossible to replace or remove parts without destroying the explanation's ability to explain. Try writing your argument as a fill-in-the-blank template. If it can justify multiple contradictory conclusions, it implies nothing. LLMs are terrible at this. They produce chains of reasoning that look plausible, but if one key assumption is wrong, the conclusion goes off the rails.
+
+**Good explanations are falsifiable.** They make specific claims that can be tested and rejected. Classical Popper. Can you express a null hypothesis? If not, you're probably not saying anything meaningful.
+
+**Good explanations are why-focused.** They explain the underlying mechanism, not just the pattern. The FDA won't let you sell a drug unless you can argue clearly *why* it works. It's not enough that it's effective; you need to understand the mechanism. I think we need to apply this standard to business reasoning too.
+
+**Gather independent, first-hand information.** Run Deep Research on anything you have personal expertise in. You'll quickly discover it produces plausible-sounding stories from unreliable sources. LLMs treat everything they find as true and turn it into a smooth narrative. Deep Research works for stable knowledge - math, physics, established science. For anything with poor source material, the shit-in-shit-out rule applies with force.
+
+**Actively seek disconfirming evidence.** If you are uncertain or afraid of something, push harder on it. Truth is always better than ignorance, even if it's short-term uncomfortable.
+
+### The Human Advantage (and AI Limitations)
+
+I keep coming back to this: if a system is designed to serve human needs, then human feedback has to be part of the evaluation function. There's no way to fully specify preferences in advance. We know what we want when we see what we don't want. That makes human feedback an irreducible need.
+
+What makes humans good at providing that feedback? We carry millions of years of [~inductive bias|The assumptions a learner brings before seeing any data. These assumptions determine which patterns it finds quickly and which it misses entirely. Every learner must have bias; without it, generalization is impossible.] toward things that benefit our survival. We can learn many of the things we need very quickly from very few examples. Our nervous systems are remarkably general. We run on 20 watts when frontier models require nuclear reactors. We can learn from a handful of examples when frontier models require trillions of tokens.
+
+But this doesn't mean AI won't be transformative. It means the transformation will be specific. There are things AI is already superhuman at, and things where it may never catch up. Understanding the boundary requires thinking about what makes problems hard.
+
+---
+
+## The Resource Rational
+
+Most discussions about AI capabilities focus on what models *can* do. I want to shift focus to what they *can't* do efficiently, and why that matters for predicting what happens next. This requires thinking about learning itself.
+
+### Humans Are Extremely Efficient Learners
+
+The brain appears to operate near the [~Landauer limit|The theoretical minimum energy cost of erasing one bit of information: kT ln(2). Current silicon is 10-10,000x above this limit. The brain appears to be close to it, suggesting evolution has brutally optimized for computational efficiency.]. Our current silicon is 10-10,000x above it. This makes sense: if there's one thing evolution brutally optimized for, it's efficiency. Evolution could have made bigger brains, but they would use more power, and that wasn't a good tradeoff for our ancestral environment.
+
+This efficiency gap has practical consequences. All the machines in the world have roughly 2 zettaflops of compute. All the humans have roughly 160,000 zettaflops. The machines still have about 16 doublings to go to catch us. We produce about 0.5 zettaflops of compute per year, so compute in the world doubles roughly every 4 years. The human record for population doubling was about every 35 years. Machines are reproducing about 10x faster. The handoff will happen, but it will be gradual and predictable - more like the rise of muscle machines in the industrial revolution than a sudden singularity.
+
+### Search Is Still Hard
+
+A common mistake in thinking about AI is to assume that intelligence makes search easy. It doesn't. As George Hotz points out: if you are writing zero bugs, you are coding too slowly, and in a competitive environment you will lose. The same applies to AI. Perfection at each step is not the goal; efficient error correction is.
+
+Some problems are intrinsically hard to search. Just as we accept that superintelligent AI won't crack AES encryption (because the search space is 2^128 regardless of intelligence), we should accept that many forms of search and optimization remain hard. Formal verification languages like Coq and Lean are underused not because humans are bad at them, but because [~program search|The computational problem of finding a program that satisfies a given specification. The search space grows exponentially with program length, making exhaustive search intractable for all but trivial programs.] is harder in those spaces. More intelligence doesn't change the shape of the search space - it only moves you through it faster.
+
+This connects directly to the [~No Free Lunch theorem|The mathematical proof that no learning algorithm is universally better than any other across all possible problems. Superior performance on some problems necessarily comes at the cost of inferior performance on others. The only way to beat random guessing is to have assumptions that match the problem's structure.]: averaged across all possible problems, every learner performs identically. The only way to do better on some problems is to do worse on others. What makes a learner good is the match between its assumptions and the structure of the specific problem it faces.
+
+### Dynamical Systems Require Adaptation
+
+Many of the problems that matter most - markets, organizations, social dynamics, geopolitics - are [~non-stationary|A system where the generating process changes over time. What was true yesterday may not be true today, not because you learned it wrong, but because the world changed. Non-stationary problems reward speed and adaptability over depth.]. The target is moving. Past observations become irrelevant as the world drifts away from the process that generated them.
+
+Stationary problems reward depth: invest heavily, find the answer once, benefit for a long time. Non-stationary problems reward speed and adaptability: find something that works now, stay alert, update when the world shifts. The half-life of your knowledge depends on how fast the target moves.
+
+Humans evolved for non-stationary environments. We didn't evolve to optimize static constraints. We evolved to be dynamic, adaptive, exploratory, and innovative people who can cope with enormous change and find new ways to do things. Social contexts are highly non-stationary - they change subtly over time. The ability to quickly learn subtle changes from a few examples is a core part of being socially successful.
+
+LLMs, by contrast, are trained on static snapshots of human knowledge. They are extraordinarily good at stationary problems - anything where the answer is stable and well-documented. They struggle with problems where the target changes faster than retraining can keep up, where the sample size is tiny, or where the generating process is coupled to the learner's own behavior.
+
+This suggests a division of labor: **lean into what's dynamic and push the stable stuff to AI.** As soon as something is understood, documented, and can be processed in structured text, push it to the models. If you don't, the market will. What remains is the hard, dynamic, relational, low-sample-count work that requires the kind of efficiency evolution spent millions of years optimizing.
+
+The premium is no longer on executing known processes. The premium is on determining what is worthwhile - on probing the unknown, building relationships, and adapting faster than the environment changes. That's always been what made humans valuable. The difference now is that everything else is being automated.
+
+<div class="references-section">
+
+<p class="references-heading">References</p>
+
+1. Sutton, R. (2019). *The Bitter Lesson*. [incompleteideas.net](http://www.incompleteideas.net/IncIdeas/BitterLesson.html)
+2. Kaplan, J., McCandlish, S., Henighan, T., et al. (2020). *Scaling Laws for Neural Language Models*. [arXiv:2001.08361](https://arxiv.org/abs/2001.08361)
+3. Branwen, G. (2020). *The Scaling Hypothesis*. [gwern.net/scaling-hypothesis](https://gwern.net/scaling-hypothesis)
+4. Wolfe, C. (2025). *Scaling Laws for LLMs: From GPT-3 to o3*. [cameronrwolfe.substack.com](https://cameronrwolfe.substack.com/p/scaling-laws-for-llms-from-gpt-3)
+5. Wei, J., Wang, X., Schuurmans, D., et al. (2022). *Chain-of-Thought Prompting Elicits Reasoning in Large Language Models*. NeurIPS 2022. [arXiv:2201.11903](https://arxiv.org/abs/2201.11903)
+6. Yao, S., Zhao, J., Yu, D., et al. (2023). *ReAct: Synergizing Reasoning and Acting in Language Models*. ICLR 2023. [arXiv:2210.03216](https://arxiv.org/abs/2210.03216)
+7. Schick, T., Dwivedi-Yu, J., Dessì, R., et al. (2023). *Toolformer: Language Models Can Teach Themselves to Use Tools*. NeurIPS 2023. [arXiv:2210.03629](https://arxiv.org/abs/2210.03629)
+8. Meta FAIR, Bakhtin, A., Brown, N., et al. (2022). *Human-level play in the game of Diplomacy by combining language models with strategic reasoning*. Science. [doi:10.1126/science.ade9097](https://www.science.org/doi/10.1126/science.ade9097)
+9. DeepSeek-AI, Guo, D., Yang, D., et al. (2025). *DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning*. [arXiv:2501.12948](https://arxiv.org/abs/2501.12948)
+10. Anthropic. (2025). *Introducing Claude 4*. [anthropic.com/news/claude-4](https://www.anthropic.com/news/claude-4)
+11. Anthropic. (2025). *Extended Thinking*. [platform.claude.com](https://platform.claude.com/docs/en/build-with-claude/extended-thinking)
+
+</div>

@@ -19,7 +19,7 @@ const { post, headings, Content, pathname } = Astro.props;
   <ul id="toc">
     {
       headings
-        .filter((h) => h.depth === 2)
+        .filter((h) => h.depth === 2 && h.slug !== "footnote-label")
         .map((heading) => (
           <li>
             <a href={`#${heading.slug}`}>{heading.text}</a>
@@ -45,3 +45,5 @@ const { post, headings, Content, pathname } = Astro.props;
     </div>
   </article>
 </main>
+
+<script src="../scripts/tooltips.ts"></script>
