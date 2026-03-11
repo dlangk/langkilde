@@ -392,12 +392,28 @@ hr {
   cursor: help;
 }
 
+/* Tooltip backdrop overlay - dims everything behind the tooltip */
+.tooltip-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: transparent;
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+  animation: backdrop-fade-in 0.15s ease-out;
+}
+
+@keyframes backdrop-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .annotation-tooltip {
   position: absolute;
   z-index: 10000;
   max-width: 320px;
-  padding: 0.4rem 0.6rem;
-  font-size: 14px;
+  padding: 0.5rem 0.7rem;
+  font-size: 16px;
   line-height: 1.4;
   color: var(--text-color);
   background: var(--bg-color);
