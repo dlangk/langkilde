@@ -392,20 +392,99 @@ hr {
   cursor: help;
 }
 
-/* Tooltip backdrop overlay - dims everything behind the tooltip */
-.tooltip-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: transparent;
-  backdrop-filter: blur(2px);
-  pointer-events: none;
-  animation: backdrop-fade-in 0.15s ease-out;
+/* Step list - numbered prose steps on a gray background */
+.step-list {
+  background: var(--step-list-bg, rgba(128, 128, 128, 0.08));
+  border-left: 3px solid var(--accent-color);
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  margin: 1.5rem 0;
 }
 
-@keyframes backdrop-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.step-list ol {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.step-list ol li {
+  counter-increment: step;
+  position: relative;
+  padding-left: 2.4rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+  font-size: 0.95em;
+}
+
+.step-list ol li:not(:last-child) {
+  border-bottom: 1px solid var(--text-fade);
+  padding-bottom: 0.6rem;
+}
+
+.step-list ol li:last-child {
+  margin-bottom: 0;
+}
+
+.step-list ol li::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 0.85em;
+  color: var(--accent-color);
+  opacity: 0.8;
+}
+
+/* Quiz block - multiple choice questions on a gray background */
+.quiz-block {
+  background: var(--step-list-bg, rgba(128, 128, 128, 0.08));
+  border-left: 3px solid var(--accent-color);
+  border-radius: 4px;
+  padding: 1rem 1.2rem;
+  margin: 1.5rem 0;
+  font-size: 0.95em;
+}
+
+.quiz-block .quiz-stem {
+  margin: 0 0 0.8rem 0;
+  line-height: 1.5;
+}
+
+.quiz-block ol {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: option;
+}
+
+.quiz-block ol li {
+  counter-increment: option;
+  position: relative;
+  padding-left: 2.4rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.quiz-block ol li:not(:last-child) {
+  border-bottom: 1px solid var(--text-fade);
+  padding-bottom: 0.6rem;
+}
+
+.quiz-block ol li:last-child {
+  margin-bottom: 0;
+}
+
+.quiz-block ol li::before {
+  content: counter(option, upper-alpha) ")";
+  position: absolute;
+  left: 0;
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 0.85em;
+  color: var(--accent-color);
+  opacity: 0.8;
 }
 
 .annotation-tooltip {

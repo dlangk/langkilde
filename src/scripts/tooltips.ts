@@ -1,21 +1,8 @@
 let hideTimeout: ReturnType<typeof setTimeout> | null = null;
 
-function addBackdrop() {
-  removeBackdrop();
-  const backdrop = document.createElement("div");
-  backdrop.className = "tooltip-backdrop";
-  document.body.appendChild(backdrop);
-}
-
-function removeBackdrop() {
-  document.querySelectorAll(".tooltip-backdrop").forEach((el) => el.remove());
-}
-
-function createTooltip(target: HTMLElement, content: string, html = false, backdrop = false) {
+function createTooltip(target: HTMLElement, content: string, html = false) {
   removeTooltips();
   if (hideTimeout) clearTimeout(hideTimeout);
-
-  if (backdrop) addBackdrop();
 
   const tip = document.createElement("div");
   tip.className = "annotation-tooltip";
@@ -54,7 +41,6 @@ function createTooltip(target: HTMLElement, content: string, html = false, backd
 function removeTooltips() {
   if (hideTimeout) clearTimeout(hideTimeout);
   document.querySelectorAll(".annotation-tooltip").forEach((el) => el.remove());
-  removeBackdrop();
 }
 
 function scheduleHide() {
@@ -68,9 +54,9 @@ function init() {
     const explanation = el.dataset.explanation;
     if (!explanation) return;
 
-    el.addEventListener("mouseenter", () => createTooltip(el, explanation, false, true));
+    el.addEventListener("mouseenter", () => createTooltip(el, explanation));
     el.addEventListener("mouseleave", scheduleHide);
-    el.addEventListener("focus", () => createTooltip(el, explanation, false, true));
+    el.addEventListener("focus", () => createTooltip(el, explanation));
     el.addEventListener("blur", removeTooltips);
 
     // Mobile: tap to toggle
@@ -79,7 +65,7 @@ function init() {
       if (document.querySelector(".annotation-tooltip")) {
         removeTooltips();
       } else {
-        createTooltip(el, explanation, false, true);
+        createTooltip(el, explanation);
       }
     });
   });
@@ -98,7 +84,7 @@ function init() {
     clone.querySelectorAll("a[data-footnote-backref]").forEach((a) => a.remove());
     const text = clone.textContent?.trim() || "";
 
-    el.addEventListener("mouseenter", () => createTooltip(el, text, false, true));
+    el.addEventListener("mouseenter", () => createTooltip(el, text));
     el.addEventListener("mouseleave", scheduleHide);
 
     el.addEventListener("click", (e) => {
@@ -106,7 +92,7 @@ function init() {
       if (document.querySelector(".annotation-tooltip")) {
         removeTooltips();
       } else {
-        createTooltip(el, text, false, true);
+        createTooltip(el, text);
       }
     });
   });
