@@ -13,7 +13,7 @@ const post = await getEntryBySlug("short", slug);
 const { Content, headings } = await post.render();
 ---
 
-<BaseLayout title={post.data.title}>
+<BaseLayout title={post.data.title} image={post.data.image}>
   <PostPage
     post={post}
     headings={headings}

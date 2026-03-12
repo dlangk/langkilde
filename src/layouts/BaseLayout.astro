@@ -4,7 +4,7 @@ import DarkModeToggle from "../components/DarkModeToggle.astro";
 import MobileMenu from "../components/MobileMenu.astro";
 import Analytics from "../components/Analytics.astro";
 
-const { title, description = "Essays on entrepreneurship, AI, technology, and business by Daniel Langkilde." } = Astro.props;
+const { title, description = "Essays on entrepreneurship, AI, technology, and business by Daniel Langkilde.", image = "https://storage.googleapis.com/langkilde-se-images/langkilde.jpg" } = Astro.props;
 ---
 
 <html lang="en">
@@ -14,7 +14,7 @@ const { title, description = "Essays on entrepreneurship, AI, technology, and bu
     <title>{title}</title>
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://storage.googleapis.com/langkilde-se-images/langkilde.jpg" />
+    <meta property="og:image" content={image} />
     <meta property="og:url" content={Astro.url.href} />
     <meta property="og:type" content="website" />
     <Analytics />
