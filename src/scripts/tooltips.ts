@@ -140,6 +140,21 @@ function init() {
   // Reference marker tooltips (with clickable links)
   bindRefMarkers(document);
 
+  // Smooth scroll for in-article anchor links (not sidebar, not footnote refs, not ref markers)
+  document.querySelectorAll<HTMLAnchorElement>('.post-content a[href^="#"]').forEach((el) => {
+    if (el.dataset.footnoteRef || el.classList.contains("ref-marker")) return;
+    el.addEventListener("click", (e) => {
+      const id = el.getAttribute("href")?.slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.pageYOffset - 15;
+      window.scrollTo({ top, behavior: "smooth" });
+      history.pushState(null, "", `#${id}`);
+    });
+  });
+
   // Dismiss tooltips when tapping elsewhere (mobile)
   document.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
