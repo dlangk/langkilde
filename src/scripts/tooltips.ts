@@ -1,7 +1,13 @@
 let hideTimeout: ReturnType<typeof setTimeout> | null = null;
 
 function createTooltip(target: HTMLElement, content: string, html = false) {
-  removeTooltips();
+  // Capture position BEFORE removing tooltips, since target may live inside one
+  const rect = target.getBoundingClientRect();
+  const nested = target.closest(".annotation-tooltip") !== null;
+
+  if (!nested) {
+    removeTooltips();
+  }
   if (hideTimeout) clearTimeout(hideTimeout);
 
   const tip = document.createElement("div");
@@ -21,7 +27,11 @@ function createTooltip(target: HTMLElement, content: string, html = false) {
     scheduleHide();
   });
 
-  const rect = target.getBoundingClientRect();
+  // Bind nested ref-markers inside HTML tooltips
+  if (html) {
+    bindRefMarkers(tip);
+  }
+
   const tipRect = tip.getBoundingClientRect();
 
   let left = rect.left + rect.width / 2 - tipRect.width / 2;
@@ -46,6 +56,36 @@ function removeTooltips() {
 function scheduleHide() {
   if (hideTimeout) clearTimeout(hideTimeout);
   hideTimeout = setTimeout(removeTooltips, 150);
+}
+
+function bindRefMarkers(root: HTMLElement | Document) {
+  root.querySelectorAll<HTMLAnchorElement>("a.ref-marker").forEach((el) => {
+    const refNum = el.dataset.ref;
+    if (!refNum) return;
+
+    const refAnchor = document.getElementById(`ref-${refNum}`);
+    if (!refAnchor) return;
+
+    const li = refAnchor.closest("li");
+    if (!li) return;
+
+    const clone = li.cloneNode(true) as HTMLElement;
+    const anchorEl = clone.querySelector(`a[id="ref-${refNum}"]`);
+    if (anchorEl) {
+      const parent = anchorEl.parentElement;
+      if (parent && parent.tagName === "P" && parent.children.length === 1) {
+        parent.remove();
+      } else {
+        anchorEl.remove();
+      }
+    }
+
+    const html = clone.innerHTML.trim();
+    if (!html) return;
+
+    el.addEventListener("mouseenter", () => createTooltip(el, html, true));
+    el.addEventListener("mouseleave", scheduleHide);
+  });
 }
 
 function init() {
@@ -79,12 +119,12 @@ function init() {
     const footnote = document.getElementById(footnoteId);
     if (!footnote) return;
 
-    // Get text content, stripping the back-reference arrow
+    // Get HTML content, stripping the back-reference arrow
     const clone = footnote.cloneNode(true) as HTMLElement;
     clone.querySelectorAll("a[data-footnote-backref]").forEach((a) => a.remove());
-    const text = clone.textContent?.trim() || "";
+    const html = clone.innerHTML?.trim() || "";
 
-    el.addEventListener("mouseenter", () => createTooltip(el, text));
+    el.addEventListener("mouseenter", () => createTooltip(el, html, true));
     el.addEventListener("mouseleave", scheduleHide);
 
     el.addEventListener("click", (e) => {
@@ -92,42 +132,13 @@ function init() {
       if (document.querySelector(".annotation-tooltip")) {
         removeTooltips();
       } else {
-        createTooltip(el, text);
+        createTooltip(el, html, true);
       }
     });
   });
 
   // Reference marker tooltips (with clickable links)
-  document.querySelectorAll<HTMLAnchorElement>("a.ref-marker").forEach((el) => {
-    const refNum = el.dataset.ref;
-    if (!refNum) return;
-
-    const refAnchor = document.getElementById(`ref-${refNum}`);
-    if (!refAnchor) return;
-
-    // Get the <li> and clone its HTML (minus the id anchor paragraph)
-    const li = refAnchor.closest("li");
-    if (!li) return;
-
-    const clone = li.cloneNode(true) as HTMLElement;
-    // Remove the injected anchor element (may be inside a <p> or directly in <li>)
-    const anchorEl = clone.querySelector(`a[id="ref-${refNum}"]`);
-    if (anchorEl) {
-      const parent = anchorEl.parentElement;
-      // Only remove the parent if it's a wrapper <p> with no other content
-      if (parent && parent.tagName === "P" && parent.children.length === 1) {
-        parent.remove();
-      } else {
-        anchorEl.remove();
-      }
-    }
-
-    const html = clone.innerHTML.trim();
-    if (!html) return;
-
-    el.addEventListener("mouseenter", () => createTooltip(el, html, true));
-    el.addEventListener("mouseleave", scheduleHide);
-  });
+  bindRefMarkers(document);
 
   // Dismiss tooltips when tapping elsewhere (mobile)
   document.addEventListener("click", (e) => {
