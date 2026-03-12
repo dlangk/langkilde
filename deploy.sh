@@ -66,7 +66,7 @@ log_info "Build cache cleared"
 
 echo ""
 log_step "4/7 Installing/updating npm dependencies..."
-npm install --silent
+npm install --silent --legacy-peer-deps
 
 echo ""
 log_step "5/7 Building Astro static site..."
