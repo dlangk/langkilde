@@ -19,10 +19,10 @@ const { post, headings, Content, pathname } = Astro.props;
   <ul id="toc">
     {
       headings
-        .filter((h) => h.depth === 2 && h.slug !== "footnote-label")
+        .filter((h) => (h.depth === 2 || h.depth === 3) && h.slug !== "footnote-label")
         .map((heading) => (
-          <li>
-            <a href={`#${heading.slug}`}>{heading.text}</a>
+          <li class={heading.depth === 3 ? "toc-h3" : ""}>
+            <a href={`#${heading.slug}`}>{heading.depth === 3 ? `› ${heading.text}` : heading.text}</a>
           </li>
         ))
     }

@@ -5,9 +5,9 @@
 // EDITABLE CONTENT - labels, tooltips, and captions
 // ============================================================
 
-const title = "Agentic Harnessing";
-const subtitle = "It turns out the scaffolding around models matters as much as the model itself.";
-const caption = "The harness manages everything except the model's weights: which tools are available, how tool descriptions are written, how context is compressed when the window fills up, how errors are caught and retried, and when to ask the human for approval.";
+const title = "The Agent Harness";
+const subtitle = "The harness manages everything except the model's weights: which tools are available, how tool descriptions are written, how context is compressed when the window fills up, how errors are caught and retried, and when to ask the human for approval.";
+const caption = "";
 
 // Section labels
 const sectionLabels = {
@@ -21,22 +21,22 @@ const sectionLabels = {
 
 // Node labels and tooltips (edit text here)
 const labels: Record<string, { label: string; tip: string }> = {
-  developer:    { label: "Developer",              tip: "The human user who initiates tasks and provides feedback." },
+  developer:    { label: "Human Input",                   tip: "The human user who initiates tasks and provides feedback." },
   // Configuration
   claudeMd:     { label: "CLAUDE.md",              tip: "Project-level instructions and conventions the agent follows." },
   systemPrompt: { label: "System Prompt",           tip: "Core behavioral instructions injected at conversation start." },
   permissions:  { label: "Permissions",             tip: "Controls which tools require approval before execution." },
-  mcpConfig:    { label: "MCP Config",              tip: "Model Context Protocol server configurations for external integrations." },
-  toolDefs:     { label: "Tool Defs",               tip: "Definitions of available tools: parameters, descriptions, and constraints." },
+  credentials:  { label: "Credentials",             tip: "API keys, tokens, and secrets the agent needs to access external services." },
+  toolDefs:     { label: "Tools",               tip: "Definitions of available tools: parameters, descriptions, and constraints." },
   // Agent loop
-  observe:      { label: "Observe",                 tip: "Read tool results and user messages to understand the current state." },
-  think:        { label: "Think",                   tip: "Reasoning tokens where the model plans its next action." },
-  act:          { label: "Act",                     tip: "Invoke one or more tools to make progress on the task." },
+  plan:         { label: "Plan",                    tip: "Talk to the user to understand intent, then reason about how to proceed." },
+  act:          { label: "Act",                     tip: "Use tools and tokens to make progress on the task." },
+  review:       { label: "Review",                  tip: "Read results to verify if the task is done or needs another iteration." },
   // Context management
   compaction:   { label: "Compaction",              tip: "Summarize older messages when the context window fills up." },
   repoMap:      { label: "Repo Map",                tip: "Structural overview of the codebase injected as context." },
-  workingNotes: { label: "Working Notes",           tip: "Scratchpad the agent uses to track progress across turns." },
-  subAgents:    { label: "Sub-agents",              tip: "Specialized child agents dispatched for parallel or isolated work." },
+  workingNotes: { label: "Scratchpad",           tip: "Scratchpad the agent uses to track progress across turns." },
+  subAgents:    { label: "Sub-Agents",              tip: "Specialized child agents dispatched for parallel or isolated work." },
   todoList:     { label: "Todo List",               tip: "Structured task list the agent maintains and checks off." },
   // Tools
   bash:         { label: "Bash",                    tip: "Execute shell commands in the user's terminal." },
@@ -47,40 +47,32 @@ const labels: Record<string, { label: string; tip: string }> = {
   glob:         { label: "Glob",                    tip: "Find files by name patterns across the codebase." },
   webSearch:    { label: "WebSearch",               tip: "Search the web for documentation and references." },
   webFetch:     { label: "WebFetch",                tip: "Fetch and read content from URLs." },
-  notebook:     { label: "Notebook",                tip: "Read and edit Jupyter notebook cells." },
+  ask:          { label: "Ask",                     tip: "Ask the human a clarifying question mid-task." },
   task:         { label: "Task",                    tip: "Create and manage background tasks." },
   batchTool:    { label: "BatchTool",               tip: "Run multiple tool calls in a single batch." },
-  mcp:          { label: "MCP ...",                  tip: "Any tools provided by connected MCP servers." },
   // Safety
   syntaxLinter: { label: "Syntax Linter",           tip: "Check code for syntax errors before committing." },
   humanApproval:{ label: "Human Approval",          tip: "Prompt the user before executing risky or irreversible actions." },
   loopDetect:   { label: "Loop Detection",          tip: "Detect when the agent is stuck repeating the same actions." },
   riskScoring:  { label: "Risk Scoring",            tip: "Classify actions by reversibility and blast radius." },
-  git:          { label: "Git",                     tip: "Version control safety: never force-push, always create new commits." },
+  git:          { label: "Git",                     tip: "Version control: commit, diff, branch, and push changes." },
   // Environment
   fileSystem:   { label: "File System",             tip: "The local filesystem the agent reads from and writes to." },
   gitRepo:      { label: "Git Repository",          tip: "The version-controlled repository and its history." },
-  shell:        { label: "Shell / Terminal",         tip: "The user's shell environment where commands execute." },
-  testRunner:   { label: "Test Runner",             tip: "Test frameworks the agent can invoke to verify changes." },
-  mcpServers:   { label: "MCP Servers",             tip: "External servers providing additional tools and resources." },
+  shell:        { label: "Shell",         tip: "The user's shell environment where commands execute." },
+  compute:   { label: "CPU / GPU",             tip: "The hardware the agent can use to execute code." },
+  network:      { label: "Network",                  tip: "APIs, web services, and external endpoints the agent can reach." },
   // Output
-  response:     { label: "Response / Commit",       tip: "Final output delivered to the user: text, code changes, or commits." },
+  response:     { label: "Response",                tip: "Final output delivered to the user: text, code changes, or commits." },
 };
 
 // Loop annotations
-const loopRepeatLabel = "repeat until no tool calls remain";
-const loopExitLabel = "Text-only response → exit loop";
+const loopRepeatLabel = "repeat until task is complete";
+const loopExitLabel = "Done → exit loop";
 const feedbackLabel = "reject & retry";
 
-// Legend items
-const legendItems = [
-  { label: "Configuration", cls: "config" },
-  { label: "Agent Loop",    cls: "loop" },
-  { label: "Context Mgmt",  cls: "context" },
-  { label: "Tools",         cls: "tools" },
-  { label: "Safety Gates",  cls: "safety" },
-  { label: "Environment",   cls: "env" },
-];
+// Legend items (removed)
+const legendItems: { label: string; cls: string }[] = [];
 
 // ============================================================
 // LAYOUT - positions and sizes (rarely needs editing)
@@ -122,12 +114,12 @@ const nodeLayout: Record<string, NodeLayout> = {
   claudeMd:      { x: 24,  y: 74,  w: 92,  h: 26, section: "config", mono: true },
   systemPrompt:  { x: 124, y: 74,  w: 92,  h: 26, section: "config" },
   permissions:   { x: 224, y: 74,  w: 92,  h: 26, section: "config" },
-  mcpConfig:     { x: 324, y: 74,  w: 80,  h: 26, section: "config" },
+  credentials:   { x: 324, y: 74,  w: 80,  h: 26, section: "config" },
   toolDefs:      { x: 412, y: 74,  w: 80,  h: 26, section: "config" },
   // Agent loop
-  observe:       { x: 50,  y: 160, w: 100, h: 36, section: "loop", bold: true, sublabel: "Read tool results" },
-  think:         { x: 210, y: 160, w: 100, h: 36, section: "loop-think", bold: true, sublabel: "Reasoning tokens" },
-  act:           { x: 370, y: 160, w: 100, h: 36, section: "loop", bold: true, sublabel: "Invoke tools" },
+  plan:          { x: 50,  y: 160, w: 100, h: 36, section: "loop-think", bold: true, sublabel: "Understand intent" },
+  act:           { x: 210, y: 160, w: 100, h: 36, section: "loop", bold: true, sublabel: "Use tools & tokens" },
+  review:        { x: 370, y: 160, w: 100, h: 36, section: "loop", bold: true, sublabel: "Verify if done" },
   // Context row
   compaction:    { x: 24,  y: 296, w: 90,  h: 26, section: "context" },
   repoMap:       { x: 122, y: 296, w: 80,  h: 26, section: "context" },
@@ -144,22 +136,21 @@ const nodeLayout: Record<string, NodeLayout> = {
   // Tools row 2
   webSearch:     { x: 24,  y: 398, w: 72,  h: 22, section: "tools", mono: true, fontSize: 7.5 },
   webFetch:      { x: 104, y: 398, w: 72,  h: 22, section: "tools", mono: true, fontSize: 7.5 },
-  notebook:      { x: 184, y: 398, w: 72,  h: 22, section: "tools", mono: true, fontSize: 7.5 },
+  ask:           { x: 184, y: 398, w: 72,  h: 22, section: "tools", mono: true },
   task:          { x: 264, y: 398, w: 72,  h: 22, section: "tools", mono: true },
   batchTool:     { x: 344, y: 398, w: 72,  h: 22, section: "tools", mono: true, fontSize: 7.5 },
-  mcp:           { x: 424, y: 398, w: 64,  h: 22, section: "tools", mono: true, fontSize: 7.5 },
+  git:           { x: 424, y: 398, w: 64,  h: 22, section: "tools", mono: true },
   // Safety row
   syntaxLinter:  { x: 24,  y: 462, w: 100, h: 26, section: "safety" },
   humanApproval: { x: 132, y: 462, w: 108, h: 26, section: "safety" },
   loopDetect:    { x: 248, y: 462, w: 100, h: 26, section: "safety" },
-  riskScoring:   { x: 356, y: 462, w: 82,  h: 26, section: "safety" },
-  git:           { x: 446, y: 462, w: 42,  h: 26, section: "safety" },
+  riskScoring:   { x: 356, y: 462, w: 132, h: 26, section: "safety" },
   // Environment row
   fileSystem:    { x: 24,  y: 538, w: 90,  h: 26, section: "env" },
   gitRepo:       { x: 122, y: 538, w: 90,  h: 26, section: "env" },
   shell:         { x: 220, y: 538, w: 90,  h: 26, section: "env" },
-  testRunner:    { x: 318, y: 538, w: 80,  h: 26, section: "env" },
-  mcpServers:    { x: 406, y: 538, w: 82,  h: 26, section: "env" },
+  compute:       { x: 318, y: 538, w: 80,  h: 26, section: "env" },
+  network:       { x: 406, y: 538, w: 82,  h: 26, section: "env" },
   // Output
   response:      { x: midX - 80, y: 595, w: 160, h: 30, section: "user", bold: true },
 };
@@ -170,16 +161,8 @@ const nodes = Object.fromEntries(
 );
 const nodeEntries = Object.entries(nodes);
 
-// Vertical arrows between sections: [y1, y2]
-const spineArrows = [
-  { y1: 36,  y2: 52 },   // developer -> config
-  { y1: 108, y2: 128 },  // config -> loop
-  { y1: 258, y2: 274 },  // loop -> context
-  { y1: 330, y2: 348 },  // context -> tools
-  { y1: 424, y2: 440 },  // tools -> safety
-  { y1: 496, y2: 516 },  // safety -> env
-  { y1: 572, y2: 595 },  // env -> response
-];
+// Vertical arrows between sections (removed: sections are not a linear flow)
+const spineArrows: { y1: number; y2: number }[] = [];
 ---
 
 <div class="harness-diagram">
@@ -218,21 +201,28 @@ const spineArrows = [
       >{sectionLabels[sl.type as keyof typeof sectionLabels]}</text>
     ))}
 
-    <!-- Spine arrows -->
-    {spineArrows.map((a) => (
-      <line
-        x1={midX} y1={a.y1} x2={midX} y2={a.y2}
-        stroke-width="1.2"
-        class="hd-edge"
-        marker-end="url(#hdArrow)"
-      />
-    ))}
+    <!-- Outer dotted boundary around all sections -->
+    <rect
+      x={6} y={46} width={W - 12} height={536}
+      rx={8}
+      fill="none"
+      stroke="var(--text-fade)"
+      stroke-width="1.2"
+      stroke-dasharray="6,4"
+      opacity="0.6"
+    />
 
-    <!-- Agent loop internal arrows: Observe -> Think -> Act -->
+    <!-- Arrow: Human -> outer block -->
+    <line x1={midX} y1={36} x2={midX} y2={46} stroke-width="1.2" class="hd-edge" marker-end="url(#hdArrow)"/>
+
+    <!-- Arrow: outer block -> Response -->
+    <line x1={midX} y1={582} x2={midX} y2={595} stroke-width="1.2" class="hd-edge" marker-end="url(#hdArrow)"/>
+
+    <!-- Agent loop internal arrows: Plan -> Act -> Review -->
     <line x1={150} y1={178} x2={210} y2={178} stroke-width="1.2" class="hd-edge-loop" marker-end="url(#hdArrowLoop)"/>
     <line x1={310} y1={178} x2={370} y2={178} stroke-width="1.2" class="hd-edge-loop" marker-end="url(#hdArrowLoop)"/>
 
-    <!-- Loop-back: Act -> Observe -->
+    <!-- Loop-back: Review -> Plan -->
     <path
       d="M 470 178 Q 490 178 490 210 Q 490 240 260 240 Q 30 240 30 210 Q 30 178 50 178"
       fill="none" stroke-width="1.2" stroke-dasharray="4,3"
@@ -245,20 +235,6 @@ const spineArrows = [
     <text x={midX} y={222} text-anchor="middle" font-size="7" class="hd-muted-label">
       {loopExitLabel}
     </text>
-
-    <!-- Feedback arrow: Safety -> Agent Loop -->
-    <path
-      d="M 498 474 Q 508 474 508 400 Q 508 300 508 200 Q 508 170 490 170"
-      fill="none" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"
-      class="hd-edge-feedback"
-      marker-end="url(#hdArrowFeedback)"
-    />
-    <text
-      x={512} y={330}
-      font-size="7" font-style="italic"
-      class="hd-feedback-label"
-      transform="rotate(90, 512, 330)"
-    >{feedbackLabel}</text>
 
     <!-- Nodes -->
     {nodeEntries.map(([id, node]) => {

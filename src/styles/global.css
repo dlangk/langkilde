@@ -122,12 +122,27 @@ a {
 
 #sidebar ul li {
   font-family: "Newsreader", serif;
-  font-size: 18px;
-  color: var(--text-fade);
+  font-size: 17px;
+  color: var(--text-color);
+  opacity: 0.5;
   font-weight: 400;
   line-height: 1.3;
   text-align: left;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.3rem;
+}
+
+#sidebar ul li.toc-h3 {
+  font-size: 12px;
+  margin-bottom: 0.3rem;
+  padding-left: 0.6rem;
+}
+
+#sidebar ul li.toc-h3 + li:not(.toc-h3) {
+  margin-top: 0.75rem;
+}
+
+#sidebar li:has(a.active) {
+  opacity: 1;
 }
 
 #sidebar a.active {

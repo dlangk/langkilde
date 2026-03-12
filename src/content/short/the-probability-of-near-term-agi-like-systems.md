@@ -24,13 +24,13 @@ So, where are we now? Most people feel overwhelmed by the rate of progress and s
 
 ## Drastically updated probability of near-term probability of AGI
 
-Those who know me know I’ve always been skeptical about hyperbolic claims around AI. I always preferred machine learning over artificial intelligence because AI felt pompous. My understanding of the available technology gave me no reason to think we were close to some sort of human-like intelligence. But I’d rather be correct than consistent. **It is fair to call today’s algorithms a form of AI. And maybe even AGI-like. At the very least, I have changed my mind about the  possibility of near-term AGI-like systems, and I’m implementing many behavioral updates to align my life with my new view.** This process started more than a year ago, but it has only accelerated since.
+Those who know me know I've always been skeptical about hyperbolic claims around AI. I always preferred machine learning over artificial intelligence because AI felt pompous. My understanding of the available technology gave me no reason to think we were close to some sort of human-like intelligence. But I'd rather be correct than consistent. **It is fair to call today's algorithms a form of AI. And maybe even AGI-like. At the very least, I have changed my mind about the  possibility of near-term AGI-like systems, and I'm implementing many behavioral updates to align my life with my new view.** This process started more than a year ago, but it has only accelerated since.
 
 ## Defining Artificial General Intelligence (AGI) is a distraction
 
-**First of all: Spending time defining “what is human intelligence” and “what is AGI” is a distraction.** I get why the question is appealing, and I think it is philosophically interesting. But discussing it isn’t necessary for addressing the progress we have made and the opportunities and challenges that brings. Great physicists will tell you that there is always another level of “why” that will stump them. The challenge is to find questions that we can make meaningful progress on now.
+**First of all: Spending time defining “what is human intelligence” and “what is AGI” is a distraction.** I get why the question is appealing, and I think it is philosophically interesting. But discussing it isn't necessary for addressing the progress we have made and the opportunities and challenges that brings. Great physicists will tell you that there is always another level of “why” that will stump them. The challenge is to find questions that we can make meaningful progress on now.
 
-We know, for a fact, that currently available language models can answer questions that make them a viable substitute for humans for a wide range of tasks. So in that sense, we have access to some form of general intelligence. I do not believe it is a form equivalent to the intelligence humans possess, but that’s not important. **Defining the tool, and relating it to humans, has no impact on its usefulness**. As a society, we must accept that large swaths of human workers are about to become obsolete.
+We know, for a fact, that currently available language models can answer questions that make them a viable substitute for humans for a wide range of tasks. So in that sense, we have access to some form of general intelligence. I do not believe it is a form equivalent to the intelligence humans possess, but that's not important. **Defining the tool, and relating it to humans, has no impact on its usefulness**. As a society, we must accept that large swaths of human workers are about to become obsolete.
 
 ## Progress will most likely be faster than we can imagine
 
@@ -42,21 +42,21 @@ You could start to notice in the mid-2010s that LLMs improved. Open AI was found
 
 ## The short-term impact of increasingly capable AI systems is underestimated
 
-People tend to be bad at recognizing and acknowledging exponential growth in its early phases. Politics is, ironically, both a slow and a short-term process. Most politicians are currently worried about the price of electricity, inflation, or the war in Ukraine. I get that. That said, we need to act with urgency to prepare for the violent disruption that AI will bring to the labor market. Large groups of people will need to reskill quickly. History shows this has a mostly negative impact on earnings. While I’m optimistic the long-term impact of AI will be positive, we should prepare for the short-term disruption.
+People tend to be bad at recognizing and acknowledging exponential growth in its early phases. Politics is, ironically, both a slow and a short-term process. Most politicians are currently worried about the price of electricity, inflation, or the war in Ukraine. I get that. That said, we need to act with urgency to prepare for the violent disruption that AI will bring to the labor market. Large groups of people will need to reskill quickly. History shows this has a mostly negative impact on earnings. While I'm optimistic the long-term impact of AI will be positive, we should prepare for the short-term disruption.
 
 ## The Alignment Problem
 
-I will quote from [Anthropic’s website](https://www.anthropic.com/index/core-views-on-ai-safety):
+I will quote from [Anthropic's website](https://www.anthropic.com/index/core-views-on-ai-safety):
 
 > **We do not know how to train AI systems to robustly behave well.** So far, no one knows how to train very powerful AI systems to be robustly helpful, honest, and harmless. Furthermore, rapid AI progress will be disruptive to society and may trigger competitive races that could lead corporations or nations to deploy untrustworthy AI systems. The results of this could be catastrophic, either because AI systems strategically pursue dangerous goals, or because these systems make more innocent mistakes in high-stakes situations.
 
-I think aligning AI systems with human values, and human preferences will be the main activity for both companies and governments for the foreseeable future. There is a new programming paradigm emerging with the advent of LLVMs. It’s already over ten years ago that we moved from programming with code to programming with examples. We are now in the middle of yet another transition: fine-tuning large models based on human feedback. I want to try and explain what I mean by that.
+I think aligning AI systems with human values, and human preferences will be the main activity for both companies and governments for the foreseeable future. There is a new programming paradigm emerging with the advent of LLVMs. It's already over ten years ago that we moved from programming with code to programming with examples. We are now in the middle of yet another transition: fine-tuning large models based on human feedback. I want to try and explain what I mean by that.
 
 ## Curating “The Essence of Concepts” in Latent Spaces
 
 **My interpretation of LLVMs is that they learn “the Essence of Concepts.”** Let me explain. Around 2010 it became clear that with enough labeled data, you can learn almost any task. Construct your dataset, carefully assemble labels, specify a loss function and neural network architecture, train your network, and deploy. This approach has been applied successfully to many tasks for the past decade.
 
-**But supervised learning has severe limitations** , the most notable of which is the shortage of labeled data. Even with a great Data Engine, such as the one [Kognic](https://www.kognic.com) provides, there won’t be enough labels to learn everything. Geoffrey Hinton is famous for saying:
+**But supervised learning has severe limitations** , the most notable of which is the shortage of labeled data. Even with a great Data Engine, such as the one [Kognic](https://www.kognic.com) provides, there won't be enough labels to learn everything. Geoffrey Hinton is famous for saying:
 
 > The brain has about 10^14 synapses and we only live for about 10^9 seconds. So we have a lot more parameters than data. This motivates the idea that we must do a lot of unsupervised learning since the perceptual input, including proprioception, is the only place we can get 10^5 dimensions of constraints per second.
 
@@ -76,7 +76,7 @@ So, how do we align model predictions with human values and preferences? Yann Le
 
 > “If intelligence is a cake, the bulk of the cake is unsupervised learning, the icing on the cake is supervised learning, and the cherry on the cake is reinforcement learning (RL).”
 
-The battlefield for AI in the coming years, I think, can be found in the intersection between these two ideas: 1) Learn a latent representation by observing a lot of sequences, and 2) Fine-tune model predictions based on learning a policy through reinforcement learning from human feedback (RLHF). **This paradigm of RLHF is quickly getting adopted by cutting-edge companies.** There’s a great outline of this approach [over at 🤗](https://huggingface.co/blog/rlhf).
+The battlefield for AI in the coming years, I think, can be found in the intersection between these two ideas: 1) Learn a latent representation by observing a lot of sequences, and 2) Fine-tune model predictions based on learning a policy through reinforcement learning from human feedback (RLHF). **This paradigm of RLHF is quickly getting adopted by cutting-edge companies.** There's a great outline of this approach [over at 🤗](https://huggingface.co/blog/rlhf).
 
 ![](https://storage.googleapis.com/langkilde-se-images/e54677a4-aa07-46d4-916e-60a0f7a54356.jpeg)
 
@@ -102,13 +102,13 @@ Anything. Assuming you have enough recorded data in sequences and a ton of compu
 
 ## Does this mean AGI is solved?
 
-No. Not even close. While LLVMs are an amazing step towards AGI, there are many, many things that such models cannot solve. I think we will see many novel model architectures in the years ahead and that GPT-styled models are a step on the ladder as opposed to the ultimate solution. But again, that doesn’t mean we shouldn’t embrace them and push them to their limit. It just means there’s a lot more to explore, discover and create.
+No. Not even close. While LLVMs are an amazing step towards AGI, there are many, many things that such models cannot solve. I think we will see many novel model architectures in the years ahead and that GPT-styled models are a step on the ladder as opposed to the ultimate solution. But again, that doesn't mean we shouldn't embrace them and push them to their limit. It just means there's a lot more to explore, discover and create.
 
-## What’s next?
+## What's next?
 
 Well, a lot, probably. But here are some obvious things:
 
-**All digital products will have embedded intelligence** through integration with some large language model. We are in the middle of the fastest new feature rollout bonanza I’ve ever seen. Since the integration is simple (just an API call to your LLM of choice), anyone can add intelligence to their product in hours.
+**All digital products will have embedded intelligence** through integration with some large language model. We are in the middle of the fastest new feature rollout bonanza I've ever seen. Since the integration is simple (just an API call to your LLM of choice), anyone can add intelligence to their product in hours.
 
 **Great products will require great RLHF solutions.** The user experience will need to be tuned. Even with perfect automation, humans have preferences and values that we constantly negotiate socially. Updating behaviors will require efficient ways to fine-tune the concepts encoded in the latent space of your Foundation Model.
 
@@ -116,6 +116,6 @@ Well, a lot, probably. But here are some obvious things:
 
 **Mixed modalities will grow fast.** Query and analyze text, video, and sound interchangeably. Store all your company meetings and literally _talk to them_. This will be a game-changer for business productivity.
 
-**Company knowledge bases will be changed forever.** Employees will start talking to their companies. I’m assuming they already are, but it will expand rapidly. No more hunting around in some shitty intranet. We will query, using natural language, all documents inside our companies.
+**Company knowledge bases will be changed forever.** Employees will start talking to their companies. I'm assuming they already are, but it will expand rapidly. No more hunting around in some shitty intranet. We will query, using natural language, all documents inside our companies.
 
 As a closing reminder: The future is already here. It is just unevenly distributed. **What a time to be alive.**

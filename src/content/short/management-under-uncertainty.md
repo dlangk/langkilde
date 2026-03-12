@@ -15,27 +15,27 @@ One consequence of this stability is a comparatively low spend on R&D. I think t
 
 As can be seen from the table below, automotive companies spend 3-8% of their revenue on R&D. Most of their activities are related to the manufacturing and distribution of vehicles, not the development of novel technologies. Pharma on the other hand spends 17-25%.
 
-At the top of the list in absolute spending is a former book store. Who could have imagined 20 years ago that the world’s biggest spender on research would be a retail company?
+At the top of the list in absolute spending is a former book store. Who could have imagined 20 years ago that the world's biggest spender on research would be a retail company?
 
 ![](https://storage.googleapis.com/langkilde-se-images/5a0c9298-4074-43e5-8687-850b6d57c535.jpeg)
 
-One consequence of the perceived stability in automotive has been that most vehicle production projects are planned in minute detail. Automotive companies love planning. There is a “Start of Production” date that engineers and managers live by. All activities need to be time-boxed and put in a sequence all the way up to the SoP. Thousands of engineerings and hundreds of companies need to deliver according to plan, or the vehicle will be delayed. 
+One consequence of the perceived stability in automotive has been that most vehicle production projects are planned in minute detail. Automotive companies love planning. There is a “Start of Production” date that engineers and managers live by. All activities need to be time-boxed and put in a sequence all the way up to the SoP. Thousands of engineerings and hundreds of companies need to deliver according to plan, or the vehicle will be delayed.
 
 As you might have noticed, Tesla (mostly) does not follow the traditional model year tradition. The value of a Tesla is determined by its features, not the date it was manufactured. With hardware and software updates being released continuously, the manufacturing year is not significant other than as a proxy for wear and tear.
 
-It’s much more demanding to operate in an environment where everything is uncertain. Uncertainty is not, by the way, the same as “disorder”. You can work in a very structured way with plenty of uncertainty.
+It's much more demanding to operate in an environment where everything is uncertain. Uncertainty is not, by the way, the same as “disorder”. You can work in a very structured way with plenty of uncertainty.
 
 ## Three Forces that Push Toward Detailed Planning
 
 As a founder, I understand more and more why a completely incremental approach is so hard to maintain. There are three forces that contribute to a tendency towards detailed planning.
 
-**Budgets and capital expenditure.** Companies by definition only fail for one reason: they run out of money. It takes courage and deep pockets to deal with risky and expensive product development. Chances are it takes much longer than expected, and the risk is that you run out of cash. But that’s also why innovation is rewarded by the market. Profit is the reward for risk-taking.
+**Budgets and capital expenditure.** Companies by definition only fail for one reason: they run out of money. It takes courage and deep pockets to deal with risky and expensive product development. Chances are it takes much longer than expected, and the risk is that you run out of cash. But that's also why innovation is rewarded by the market. Profit is the reward for risk-taking.
 
-**Fear of failure.** Fear is the [mind-killer](https://dune.fandom.com/wiki/Litany_Against_Fear). Humans are programmed to avoid discomfort and danger. It’s deeply rooted in our subconscious. The deeper your fear of failing, the lower the probability that you will create something truly unique and great. Organizations can easily end up preventing all possible negative outcomes and thereby completely eliminating any chance of novel thinking. (Of course, the ability to take risks in life is also determined by other things, like the safety net of your country, social class, etc.)
+**Fear of failure.** Fear is the [mind-killer](https://dune.fandom.com/wiki/Litany_Against_Fear). Humans are programmed to avoid discomfort and danger. It's deeply rooted in our subconscious. The deeper your fear of failing, the lower the probability that you will create something truly unique and great. Organizations can easily end up preventing all possible negative outcomes and thereby completely eliminating any chance of novel thinking. (Of course, the ability to take risks in life is also determined by other things, like the safety net of your country, social class, etc.)
 
-**Intellectual Laziness.** High-performing people are typically explorers. But most people are, by definition, average. The average person doesn’t want to go to work every day without knowing what to expect. If they have to do that, they will get exhausted and complain. A lot. So organizations, as they grow, slowly adapt to comfort those seeking predictability. I try and avoid hiring people who seek “an easy job”.
+**Intellectual Laziness.** High-performing people are typically explorers. But most people are, by definition, average. The average person doesn't want to go to work every day without knowing what to expect. If they have to do that, they will get exhausted and complain. A lot. So organizations, as they grow, slowly adapt to comfort those seeking predictability. I try and avoid hiring people who seek “an easy job”.
 
-Ironically the risks associated with systematically avoiding risks are larger than suffering the occasional negative experience. Personally, I think this is what causes larger companies to lose their edge. The challenge of navigating the risk-reward nexus can be found all the way from starting a company, to funding it, to setting the vision and scope for the company and maintaining its edge as it grows. It’s really hard to think really big. It takes a tremendous amount of courage and a gigantic risk appetite. You have to be comfortable with the risk of failure.
+Ironically the risks associated with systematically avoiding risks are larger than suffering the occasional negative experience. Personally, I think this is what causes larger companies to lose their edge. The challenge of navigating the risk-reward nexus can be found all the way from starting a company, to funding it, to setting the vision and scope for the company and maintaining its edge as it grows. It's really hard to think really big. It takes a tremendous amount of courage and a gigantic risk appetite. You have to be comfortable with the risk of failure.
 
 ## How to Run a Company Amidst Uncertainty
 
@@ -55,10 +55,10 @@ Dare to demand outstanding results from yourself, and those around you.
 
 ### Focus
 
-The hardest thing in life is saying no. To friends, to family, to colleagues, to customers. To yourself. The inability to cut away the noise often dilutes strategies. We cannot consider every option and every alternative all the time. We’d get nowhere. Just as a person cannot be good at everything. The curse of endless opportunities is limited time. We need to choose and learn to ignore that which we are missing out on. I sometimes err on the side of simplifying too much, but I’d rather do that than get stuck thinking about all options. I pick something, try it, learn, and move on. This approach isn’t just personal, I incorporate this mentality at Annotell too. That takes courage and leadership. And a fair amount of tolerance for conflict, since saying no means disappointing others.
+The hardest thing in life is saying no. To friends, to family, to colleagues, to customers. To yourself. The inability to cut away the noise often dilutes strategies. We cannot consider every option and every alternative all the time. We'd get nowhere. Just as a person cannot be good at everything. The curse of endless opportunities is limited time. We need to choose and learn to ignore that which we are missing out on. I sometimes err on the side of simplifying too much, but I'd rather do that than get stuck thinking about all options. I pick something, try it, learn, and move on. This approach isn't just personal, I incorporate this mentality at Annotell too. That takes courage and leadership. And a fair amount of tolerance for conflict, since saying no means disappointing others.
 
-## Seems simple, right? It’s not.
+## Seems simple, right? It's not.
 
-It’s a ton of hard work. It requires very strict hiring, thoughtful work from everyone involved, patience, and perseverance. And it’s fragile. A few bad apples easily spoil the bunch.
+It's a ton of hard work. It requires very strict hiring, thoughtful work from everyone involved, patience, and perseverance. And it's fragile. A few bad apples easily spoil the bunch.
 
-The best way to operate in a fast-paced environment that requires solving complex problems is to empower your team, strive for greatness, and focus. By setting huge goals, allowing time to explore, having the patience to spend on R&D, and the courage to trust your team to solve audacious problems - you will create a ton of value. Basically: Enormous expectations but also deep trust. Sometimes you will fail miserably, but that’s part of life. **No risk, no reward.**
+The best way to operate in a fast-paced environment that requires solving complex problems is to empower your team, strive for greatness, and focus. By setting huge goals, allowing time to explore, having the patience to spend on R&D, and the courage to trust your team to solve audacious problems - you will create a ton of value. Basically: Enormous expectations but also deep trust. Sometimes you will fail miserably, but that's part of life. **No risk, no reward.**
