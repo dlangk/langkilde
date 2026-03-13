@@ -46,4 +46,4 @@ static/*
 # │ Local images staged for upload to GCS
 # └───────────────────────────────────────────────
 images/*
-!images/.gitkeep
+!images/.gitkeep.venv-ga4/
