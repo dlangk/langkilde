@@ -1,14 +1,16 @@
 ---
 pubDate: "2026-03-11"
-title: Living with Artificial Superintelligence (ASI)
+title: Living with (Jagged) Artificial Superintelligence (ASI)
 image: "https://storage.googleapis.com/langkilde-se-images/the-human-frontier.jpeg"
-description: "A form of artificial superintelligence is here. Models learned to think and use tools, crossing a threshold where agents are genuinely useful. But the human brain remains remarkably cost-effective for dynamic, judgment-heavy problems. Stop trying to be a computer. Be more human instead."
+description: "A form of jagged artificial superintelligence is here. Models learned to think and use tools, crossing a threshold where agents are genuinely useful. But the human brain remains remarkably cost-effective for dynamic, judgment-heavy problems. Stop trying to be a computer. Be more human instead."
 ---
 import HarnessDiagram from '../../components/diagrams/HarnessDiagram.astro';
 import PipelineDiagram from '../../components/diagrams/PipelineDiagram.astro';
 import ThinkingDiagram from '../../components/diagrams/ThinkingDiagram.astro';
 
-**The last four months have been intense.** I've dedicated my professional life to understanding and developing artificial intelligence, and now I'd argue we're seeing the early signs of artificial superintelligence (ASI). [^asi-def] Available in your pocket. If that does not blow your mind, you lack imagination. This post is my attempt to make sense of where we are now, and what I think it means for humans. It is divided into four sections:
+**The last four months have been intense.** I've dedicated my professional life to understanding and developing artificial intelligence, and now I'd argue we have a form of (jagged [^jagged]) artificial superintelligence (ASI). [^asi-def] Available in your pocket. If that does not blow your mind, you lack imagination. This post is my attempt to make sense of where we are now, and what I think it means for humans. It is divided into four sections:
+
+[^jagged]: Jagged refers to the fact that capabilities are uneven across tasks. I explore this idea in more detail [below](#my-reflections).
 
 [^asi-def]: **I know calling current AI systems "superintelligent" is controversial.** Some reserve the term for (future) systems that exceed human capabilities across *every* domain. I'm using it more loosely: We now have systems that are superhuman *at a growing set of verifiable tasks*, while remaining worse than humans at others. Whether that qualifies as "super" depends on your definition. I use it since I think the recent capability jump is large enough to deserve a really strong word. And yes, "jagged superintelligence" is sort of an [~oxymoron|A figure of speech where two contradictory terms are combined, like "deafening silence" or "cruel kindness." If superintelligence means excelling at everything, then "jagged superintelligence" - excelling at some things while failing at others - contradicts itself.]. Some would say that a system with massive gaps in basic reasoning isn't superintelligent, which is fair 😅 But I think the traditional framing, where ASI arrives as a single moment of uniform god-like capability, is the wrong mental model. What we're getting instead is superintelligence that arrives unevenly, domain by domain. That's weirder, and I think harder to make sense of.
 
@@ -16,7 +18,8 @@ import ThinkingDiagram from '../../components/diagrams/ThinkingDiagram.astro';
 
 2. **[How do you use it?](#how-to-make-use-of-ai-agents)** Write everything down, find ways to verify agent output, and scaffold. Documentation is now code.
 
-3. **[What are the limits?](#my-reflections)** Most things aren't easily verified, the frontier will stay jagged, and humans remain cost-effective for dynamic, judgment-heavy problems.
+3. **[What are the limits?](#my-reflections)** Most real-world problems can't be verified automatically and don't
+reduce to pattern-matching over text, so the frontier of capabilities will become more jagged, not less. And for problems that are dynamic, subjective, and judgment-heavy, the human brain will remain the more cost-effective solution.
 
 4. **[What should you do?](#be-the-master-of-efficient-adaptation)** Stop trying to be a computer. Be more human instead.
 
