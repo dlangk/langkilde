@@ -27,9 +27,9 @@ function createTooltip(target: HTMLElement, content: string, html = false) {
     scheduleHide();
   });
 
-  // Bind nested ref-markers inside HTML tooltips
+  // Bind nested tooltips (concepts, footnotes, ref-markers) recursively
   if (html) {
-    bindRefMarkers(tip);
+    bindAllTooltips(tip);
   }
 
   const tipRect = tip.getBoundingClientRect();
@@ -56,6 +56,54 @@ function removeTooltips() {
 function scheduleHide() {
   if (hideTimeout) clearTimeout(hideTimeout);
   hideTimeout = setTimeout(removeTooltips, 150);
+}
+
+function bindConcepts(root: HTMLElement | Document) {
+  root.querySelectorAll<HTMLElement>(".concept").forEach((el) => {
+    const explanation = el.dataset.explanation;
+    if (!explanation) return;
+
+    el.addEventListener("mouseenter", () => createTooltip(el, explanation));
+    el.addEventListener("mouseleave", scheduleHide);
+    el.addEventListener("focus", () => createTooltip(el, explanation));
+    el.addEventListener("blur", removeTooltips);
+
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (document.querySelector(".annotation-tooltip")) {
+        removeTooltips();
+      } else {
+        createTooltip(el, explanation);
+      }
+    });
+  });
+}
+
+function bindFootnotes(root: HTMLElement | Document) {
+  root.querySelectorAll<HTMLAnchorElement>("a[data-footnote-ref]").forEach((el) => {
+    const href = el.getAttribute("href");
+    if (!href) return;
+
+    const footnoteId = href.replace("#", "");
+    const footnote = document.getElementById(footnoteId);
+    if (!footnote) return;
+
+    const clone = footnote.cloneNode(true) as HTMLElement;
+    clone.querySelectorAll("a[data-footnote-backref]").forEach((a) => a.remove());
+    const html = clone.innerHTML?.trim() || "";
+
+    el.addEventListener("mouseenter", () => createTooltip(el, html, true));
+    el.addEventListener("mouseleave", scheduleHide);
+
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (document.querySelector(".annotation-tooltip")) {
+        removeTooltips();
+      } else {
+        createTooltip(el, html, true);
+      }
+    });
+  });
 }
 
 function bindRefMarkers(root: HTMLElement | Document) {
@@ -88,57 +136,14 @@ function bindRefMarkers(root: HTMLElement | Document) {
   });
 }
 
+function bindAllTooltips(root: HTMLElement | Document) {
+  bindConcepts(root);
+  bindFootnotes(root);
+  bindRefMarkers(root);
+}
+
 function init() {
-  // Concept tooltips
-  document.querySelectorAll<HTMLElement>(".concept").forEach((el) => {
-    const explanation = el.dataset.explanation;
-    if (!explanation) return;
-
-    el.addEventListener("mouseenter", () => createTooltip(el, explanation));
-    el.addEventListener("mouseleave", scheduleHide);
-    el.addEventListener("focus", () => createTooltip(el, explanation));
-    el.addEventListener("blur", removeTooltips);
-
-    // Mobile: tap to toggle
-    el.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (document.querySelector(".annotation-tooltip")) {
-        removeTooltips();
-      } else {
-        createTooltip(el, explanation);
-      }
-    });
-  });
-
-  // Footnote reference tooltips
-  document.querySelectorAll<HTMLAnchorElement>("a[data-footnote-ref]").forEach((el) => {
-    const href = el.getAttribute("href");
-    if (!href) return;
-
-    const footnoteId = href.replace("#", "");
-    const footnote = document.getElementById(footnoteId);
-    if (!footnote) return;
-
-    // Get HTML content, stripping the back-reference arrow
-    const clone = footnote.cloneNode(true) as HTMLElement;
-    clone.querySelectorAll("a[data-footnote-backref]").forEach((a) => a.remove());
-    const html = clone.innerHTML?.trim() || "";
-
-    el.addEventListener("mouseenter", () => createTooltip(el, html, true));
-    el.addEventListener("mouseleave", scheduleHide);
-
-    el.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (document.querySelector(".annotation-tooltip")) {
-        removeTooltips();
-      } else {
-        createTooltip(el, html, true);
-      }
-    });
-  });
-
-  // Reference marker tooltips (with clickable links)
-  bindRefMarkers(document);
+  bindAllTooltips(document);
 
   // Smooth scroll for in-article anchor links (not sidebar, not footnote refs, not ref markers)
   document.querySelectorAll<HTMLAnchorElement>('.post-content a[href^="#"]').forEach((el) => {
