@@ -12,18 +12,21 @@ import ThinkingDiagram from '../../components/diagrams/ThinkingDiagram.astro';
 
 ![Jagged Intelligence](https://storage.googleapis.com/langkilde-se-images/jagged-intelligence.jpeg?v=2)
 
-This post is my attempt to make sense of where we are now and what it means for humans. It is divided into four sections:
+This post is my attempt to make sense of where we are now and what it means for humans. It is divided into six sections:
 
-[^asi-def]: **I know calling current AI systems "superintelligent" is controversial.** Some reserve the term for (future) systems that exceed human capabilities across *every* domain. I'm using it more loosely: We now have systems that are superhuman *at a growing set of verifiable tasks*, while remaining worse than humans at others. Whether that qualifies as "super" depends on your definition. I have been using it since the recent capability jump is large enough to deserve a really strong word. "Jagged" refers to this unevenness, i.e., superhuman at some tasks, mediocre or worse at others. And yes, "jagged superintelligence" is sort of an [~oxymoron|A figure of speech where two contradictory terms are combined, like "deafening silence" or "cruel kindness." If superintelligence means excelling at everything, then "jagged superintelligence", or excelling at some things while failing at others, contradicts itself.]. Some would say that a system with massive gaps in basic reasoning isn't superintelligent, which is fair 😅 But I think the traditional framing, where ASI arrives as a single moment of uniform god-like capability, is the wrong mental model. What we're getting instead is superintelligence that arrives unevenly, domain by domain. That's weirder, and I think harder to make sense of. I explore the implications of this jaggedness in more detail [below](#my-reflections).
+[^asi-def]: **I know calling current AI systems "superintelligent" is controversial.** Some reserve the term for (future) systems that exceed human capabilities across *every* domain. I'm using it more loosely: We now have systems that are superhuman *at a growing set of verifiable tasks*, while remaining worse than humans at others. Whether that qualifies as "super" depends on your definition. I have been using it since the recent capability jump is large enough to deserve a really strong word. "Jagged" refers to this unevenness, i.e., superhuman at some tasks, mediocre or worse at others. And yes, "jagged superintelligence" is sort of an [~oxymoron|A figure of speech where two contradictory terms are combined, like "deafening silence" or "cruel kindness." If superintelligence means excelling at everything, then "jagged superintelligence", or excelling at some things while failing at others, contradicts itself.]. Some would say that a system with massive gaps in basic reasoning isn't superintelligent, which is fair 😅 But I think the traditional framing, where ASI arrives as a single moment of uniform god-like capability, is the wrong mental model. What we're getting instead is superintelligence that arrives unevenly, domain by domain. That's weirder, and I think harder to make sense of. I explore the implications of this jaggedness in more detail [below](#the-jagged-frontier).
 
-1. **[What happened?](#what-happened-in-november-2025)** Models learned to (sort of) think and use tools. Combined with better scaffolding, we crossed a threshold in the last few months, and agents are now genuinely useful.
+1. **[Models Can (sort of) Think And Use Tools Now](#what-happened-in-november-2025)** Combined with better scaffolding, we crossed a threshold, and agents are now useful.
 
-2. **[How do you use it?](#how-to-make-use-of-ai-agents)** Write everything down, find ways to verify agent output, and scaffold. Documentation is now code.
+2. **[Verification Costs Determine Progress](#the-verification-bottleneck)** Progress is fastest in areas that allow automated verification. A lot of things humans care about can't be automatically verified.
 
-3. **[What are the limits?](#my-reflections)** Most real-world problems can't be verified automatically and don't
-reduce to pattern-matching over text, so the frontier of capabilities will become more jagged, not less. And for problems that are dynamic, subjective, and judgment-heavy, the human brain will remain the more cost-effective solution.
+3. **[The Frontier Will Become More Jagged](#the-jagged-frontier)** The frontier of capabilities will become more jagged, not less.
 
-4. **[What should you do?](#be-the-master-of-efficient-adaptation)** Stop trying to be a computer. Be more human instead.
+4. **[Agents Run On Text](#making-agents-work)** Write everything down, find ways to verify agent output, and scaffold. Documentation is now code.
+
+5. **[Humans Are Still More Efficient For Many Problems](#humans-remain-cost-effective)** For problems that are dynamic, subjective, and judgment-heavy, the human brain remains the more cost-effective solution. Become good at solving problems that are expensive to verify.
+
+6. **[This Means You Should Be More Human](#be-more-human)** Stop trying to be a computer. Be more human instead.
 
 I think by writing, and here are my thoughts:
 
@@ -31,7 +34,7 @@ I think by writing, and here are my thoughts:
 
 ## What Happened in November 2025?
 
-On November 24th, 2025, Anthropic released its Opus 4.5 model, and with that, we crossed a threshold for what large language models are able to do. Or actually, it might have been the scaffolding, Claude Code, that unlocked a new level of performance. Either way, agents can now solve complex, hours-long tasks that only expert humans could handle a few months ago.
+On November 24th, 2025, Anthropic released its Opus 4.5 model, and with that, we crossed a threshold for what large language models are able to do. Or actually, it might have been the scaffolding, Claude Code, that unlocked a new level of performance. Either way, **agents can now solve complex, hours-long tasks that only expert humans could handle a few months ago.**
 
 My attitude to new AI things has always been one of realistic skepticism, mostly because I've been responsible for making models perform well in critical production systems for most of my life. That humbles you. Every attempt I've made to get agents to work in the last few years has failed. The models couldn't quite put things together. It was close, but not enough. Hence, my policy has been: I'll periodically try it to be ready when scaling makes it work.
 
@@ -56,7 +59,7 @@ I think the only way to predict the future is to deeply understand both the past
 
 **"Thinking" is an extension of the bet that more tokens and more compute make models produce better solutions.** Brute-force training on internet-scale human knowledge remains the foundation, but labs have found that the largest gains are no longer coming from scaling this dimension alone. [4] Instead, they are increasingly focused on improving how models "think". The first paper I read that used this term was *Chain-of-Thought Prompting Elicits Reasoning in Large Language Models*, published in 2022. [5] The idea is that if you ask a model to "think step by step", it will generate a chain of thought that leads to the answer. *Synergizing Reasoning and Acting in Language Models* [6] then introduced the idea of "interleaving" reasoning with action, where models not only think, but take actions based on their thoughts. *Toolformer* [7] showed that giving models access to tools further enhanced their capabilities.
 
-In parallel, I think Noam Brown's work on game AI has shaped progress. He is famous for developing two poker bots: Libratus and Pluribus. This work demonstrated that letting models think for 20 seconds mid-hand gave roughly the same improvement as scaling up model size and training by 100,000x. [8] Gradually, it became clear that "inference-time compute" is a scaling axis. Labs shouldn't just make the model bigger; they should also let them think longer. Brown introduced the concept of the **[~generator-verifier gap|The observation that some problems are much harder to solve than to check. Math proofs, code that must pass tests, and games with clear outcomes all have large gaps, making them ideal targets for inference-time compute scaling.]**. [23] [^verification-gap] We will explain why "verifiability" is so important for ASI progress later. For now, the key point is that "thinking" is a powerful way to use more compute and achieve much better performance without scaling up the number of parameters in the underlying model.
+In parallel, I think Noam Brown's work on game AI has shaped progress. He is famous for developing two poker bots: Libratus and Pluribus. This work demonstrated that letting models think for 20 seconds mid-hand gave roughly the same improvement as scaling up model size and training by 100,000x. [8] Gradually, it became clear that "inference-time compute" is a scaling axis. Labs shouldn't just make the model bigger; they should also let them think longer. Brown introduced the concept of the **[~generator-verifier gap|The observation that some problems are much harder to solve than to check. Math proofs, code that must pass tests, and games with clear outcomes all have large gaps, making them ideal targets for inference-time compute scaling.]**. [23] [^verification-gap] The key point is that "thinking" is a powerful way to use more compute and achieve much better performance without scaling up the number of parameters in the underlying model.
 
 [^verification-gap]: **From his interview with Sequoia:** "I view it as the kinds of problems where there is a benefit from being able to consider more options and think for longer. You might call it, like, a generator verifier gap, where it's really hard to generate a correct solution, but it's much easier to recognize when you have one. I think all problems exist on the spectrum from really easy to verify relative to generation, like a Sudoku puzzle, versus just as hard to verify as it is to generate a solution, like naming the capital of Bhutan."
 
@@ -82,7 +85,7 @@ To mitigate these issues, people have started training [~process reward models (
 
 Anyway, once you have a reasoner, you can run it on new problems to generate many candidate solutions. You then apply the same automated verifiers to filter for correctness. A fresh model is fine-tuned on this curated output. This can be set up to create a [~synthetic data flywheel|A self-reinforcing loop where a model's own outputs, filtered for quality, become training data for its next version. Each cycle produces a better model that generates better data.].
 
-**It's important to note that this only works for verifiable problems!** The only reason model developers can "avoid" human involvement in this process is that they are working with problems that have verifiable answers. This is a critical point, because it means that the model's ability to "think" is currently limited to domains where correctness can be automatically verified. [^logic]
+**It's important to note that this only works for verifiable problems!** [^logic]
 
 [^logic]: I think, in some sense, we are reverse engineering the rules of logic but encode them in the weights of the model rather than explicitly programming them. The model learns to generate reasoning steps that lead to correct answers, but it doesn't necessarily understand the underlying principles of logic in a human-like way. This is why the model can be very good at generating plausible-sounding reasoning that ultimately leads to incorrect conclusions. It has learned patterns of reasoning that often work, but it doesn't have a deep understanding of why they work or when they might fail. It's like we are brute-forcing the space of logical rules, rather than learning them. It's not clear whether this is a problem, but it's certainly different from how I learned math...
 
@@ -108,7 +111,7 @@ Several specific advances have further improved this pipeline in recent months:
 
 ### 2. Models Can Use Tools Now
 
-Claude 4 was the first model to use [~interleaved thinking|An inference pattern where the model alternates between generating reasoning tokens and executing external actions (tool calls), incorporating real-world feedback into its thought process. It can read a file, reason about what it found, run a test, reason about why it failed, and revise its approach, with each cycle incorporating new information from the environment.]. This is qualitatively different from planning everything up front.
+**Claude 4 was the first model to use [~interleaved thinking|An inference pattern where the model alternates between generating reasoning tokens and executing external actions (tool calls), incorporating real-world feedback into its thought process. It can read a file, reason about what it found, run a test, reason about why it failed, and revise its approach, with each cycle incorporating new information from the environment.].** This is qualitatively different from planning everything up front.
 
 Giving models access to, e.g., a Unix shell and a file editor was a massive unlock. But it also turns out that the details of how those tools are designed matter. Researchers have tried switching models inside various [~agent harnesses|The scaffolding code surrounding a language model that manages tool execution, context windows, error recovery, and the plan-act-review loop. Research shows harness design affects performance 10-20x more than model selection.] and found that careful tool-interface design, like requiring absolute file paths to prevent confusion, writing detailed tool descriptions, rejecting syntactically invalid edits, makes a much bigger difference than pushing the underlying model a few percent. One study found that swapping models changed SWE-bench scores by 1%, while swapping the harness changed them by 22%. [15]
 
@@ -160,7 +163,75 @@ The pattern across most benchmarks is the same: capabilities are improving on a 
 
 ---
 
-## How To Make Use of AI Agents?
+## The Verification Bottleneck
+
+The entire reasoning-reinforcement-learning pipeline described earlier depends on one critical property: **automated verification**. DeepSeek-R1-Zero works because you can check if a math answer is correct. Code agents work because you can run a test suite. AlphaZero works because you can simulate games and evaluate outcomes. The synthetic data flywheel spins because each candidate solution can be graded programmatically at machine speed. When verification is automated, the model can generate millions of attempts, filter out incorrect ones, and train on its own best outputs. Math and code have very low verification costs, which explains why progress has been so dramatic in those domains.
+
+**But most things humans care about aren't easy to verify.**
+
+*"Do you like this design?"*
+
+*"Does this email strike the right tone?"*
+
+*"Will this strategy work?"*
+
+None of these can be checked by running a program. The only way to verify them is to show the output to someone and have them judge it. **The flywheel can't spin faster than we can verify the output.** Lots of things contribute to this, but here are a few of the most important ones:
+
+**Language is lossy.** Language is the best tool we have for transmitting preferences from one mind to another, but it still sucks. It's indirect and incomplete. When a product manager writes a PRD, they are transmitting a compressed, partial representation of what they actually want. Much of what they want is [~tacit knowledge|Knowledge that a person possesses but cannot fully articulate. It's encoded in years of experience, aesthetic judgment, taste, and contextual understanding. A chef knows when a sauce is "right" without being able to specify the exact threshold. An experienced driver knows a lane merge is dangerous without computing time-to-collision.] that they couldn't write down even if they tried.
+
+**People change based on what they are shown.** This is a [~coupled problem|A learning scenario where the learner's actions change the target being learned. Markets shift when you trade. Users' preferences change when you show them options. The target you learned from may no longer exist, partly because learning it changed the system.] in a deep sense. You don't know what you want until you see what you don't want. A designer shows three mockups: the client rejects all three but now has a much clearer sense of what they're after. This sense *did not exist* before seeing the mockups. The preference is literally created by the process of trying to learn it.
+
+**Human attention doesn't scale.** A human reviewer might evaluate ten things per hour. An automated test suite evaluates millions per second. That's a five orders-of-magnitude difference in verification bandwidth. Each human review costs real time, real energy, and real cognitive load.
+
+**Some things require extensive interaction with the world to be verified.** You can't check if a strategy works by running a program. You have to try it in the real world and see how the market respond. That takes time, and the feedback is noisy and delayed. Your company is sort of the program, and the market is sort of the computer. This is the same reason we are seeing much slower progress in robotics than in software.
+
+This creates an asymmetry in the rate of AI progress across domains based on the cost of verification. I'm using "verification" broadly here. My definition spans from deductive checking (Does this code compile? Is this proof valid?) to subjective evaluation (Does this email strike the right tone? Is this design good?). These are fundamentally different operations, and that difference is exactly why the frontier is jagged. Three classes of problems emerge:
+
+1. **Automated Verification**, like math, code, games, and formal proofs, the flywheel can spin at machine speed. We have basically unlimited training signals. This is why software engineering benchmarks have improved so dramatically.
+
+2. **Cheap Human Verification**, like image quality, grammar correction, simple classification, pairwise preference ranking. For these, the flywheel spins slowly, but it's reasonably affordable. Each human judgment takes seconds, and you can collect millions of comparisons at scale. This is how [~RLHF|Reinforcement Learning from Human Feedback. A training method where humans compare pairs of model outputs, and the model learns to produce outputs that the humans prefer. The speed, cost, and consistency of human evaluation limit the quality of the feedback.] produces models that are pleasant to chat with.
+
+3. **Expensive Human Verification**, like strategic decisions, complex design, complex annotation, and safety-critical judgment. Anything requiring domain expertise and extended reasoning. For these, the flywheel barely spins. Each verification requires context that can't be compressed into a quick pairwise comparison. Progress here is slowest, and this is where humans remain most valuable.
+
+**The obvious counterargument is the scalability of oversight.** Can you train a reward model on human judgments, then use it as an automated verifier? Methods like [~Constitutional AI|An alignment technique developed by Anthropic, where a model critiques and revises its own outputs according to a set of written principles, rather than relying on human feedback for every example. The principles act as a constitution that the model enforces on itself.] and [~RLAIF|Reinforcement Learning from AI Feedback. A variant of RLHF where another AI model provides the preference judgments instead of humans, dramatically reducing the cost and increasing the speed of the feedback loop.] are increasingly effective, and should steadily push problems from category 3 into category 2, and from 2 into 1. But I'm skeptical it fully closes the gap for the hardest cases. A reward model is a frozen approximation of a moving target. For non-stationary problems, where tastes shift, contexts evolve, and optimization itself changes what people want, the model drifts out of alignment with the humans it represents. This is the [~reward hacking|When an agent finds ways to maximize its reward signal without actually achieving the intended goal. The reward model is an imperfect proxy for what humans actually want, and sufficiently capable optimizers will exploit the gap between the proxy and the true objective.] problem, and it gets worse as the system becomes more capable. The verification boundary is moving. But I don't think it disappears. [^scalable-debate]
+
+[^scalable-debate]: There are two stronger versions of this counterargument worth addressing. First, [~AI Safety via Debate|A proposed alignment technique where two AI systems argue opposing sides of a question, forcing each other to surface flaws and distill complex judgments into simple, verifiable claims that even a non-expert human can evaluate. The idea is that debate provides cognitive leverage, making verification much cheaper than the original problem.]. This is clever, and it will work for many problems, but it assumes the relevant disagreements can be decomposed into verifiable claims. For problems where the crux is aesthetic, relational, or involves, e.g., competing values, decomposition may not be possible. Second, environmental verification: an agent optimizing a marketing campaign doesn't need a human to check if tastes have shifted. It can just A/B test it in the real world and verify via clicks, conversions, and revenue. This will work for a large class of problems I'm currently putting in category 3. But it only works when the metric you can measure actually captures what you care about. When it doesn't, like when optimizing for clicks degrades trust, or when maximizing conversions selects for manipulative patterns, you're back to needing human judgment about whether the metric itself is still the right one.
+
+**In coupled human-AI systems, human evaluation speed becomes the [~binding constraint|The single limiting factor that determines the overall performance of a system. Optimizing any other factor while the binding constraint remains fixed produces no improvement. Identifying which constraint binds is the first step in any efficiency analysis.] on the system's learning rate.** If evaluation is the bottleneck, generating more candidates faster is just wasteful. The energy-efficient strategy will be to maximize information per human evaluation by presenting the right comparisons, in the right context, at the right level of granularity, so that each human judgment moves the system as far as possible toward the target.
+
+**This is exactly what good annotation tooling does.** [^disclosure]
+
+[^disclosure]: **Full disclosure:** I'm the CEO of Kognic, a company that builds annotation and verification tools for AI. So yes, I have a financial stake in human verification remaining valuable. Take that into account as you evaluate my argument. I've tried to reason from first principles here, but I'd be naive to pretend my perspective isn't shaped by what I work on every day.
+
+And it has a counterintuitive implication: **as models get better at generating candidates, the value of human feedback increases!** Better models can produce more options faster and at lower cost. But someone still has to evaluate them. Every improvement in generation capability shifts more of the system's total value onto the verification side. The value of software, i.e., the verifiable part, plummets while the value of excellent human judgment grows.
+
+The fact that the binding constraint is moving from "Can the model generate a good answer?" to "Can we verify, at scale, whether the answer is actually good?" is the most underappreciated dynamic in discussions of AI progress today.
+
+---
+
+## The Jagged Frontier
+
+Given how much text we have available, it's tempting to think everything is written down. But that's not true. Not even close. Our human experience is deeply personal and rarely written down in any significant detail. Most of our knowledge is tacit, and most of our preferences are hidden. Epoch AI estimates the supply of quality, deduplicated, human-generated public text for AI training sits at around 300 trillion tokens (to be fair, their 90% confidence interval is 100T to 1,000T tokens). [12] If current LLM development trends continue, models will be trained on datasets roughly equal in size to this available stock sometime in the next few years.
+
+**This means that the "low-hanging fruit" of learning from human-generated text is almost gone.** [^low-hanging] The next wave of progress will have to come from other sources of training signal, like human judgment, self-supervision, and synthetic data generated by the models themselves. And as we've just seen, those signals are far more expensive to produce and verify than text. This is why the frontier of AI capabilities is not advancing evenly, and why it will become *more* jagged, not less.
+
+![Epoch AI training data projections](https://storage.googleapis.com/langkilde-se-images/epoch-training-data.png)
+
+[^low-hanging]: **"Low-hanging fruit" is of course relative!** In 2025, the major technology companies collectively spent over $300 billion on AI-related infrastructure (data centres, GPUs, energy, and annotation), and the frontier labs raised tens of billions more in equity on top of that. In 2026, the projected figure approaches $700 billion. [20] That is an extraordinary amount of capital directed at extracting value from a (mostly) fixed supply of human-generated text.
+
+Karpathy popularized the term "jagged intelligence" [13] to describe the observation that AI capabilities don't advance evenly. A model can solve differential equations that challenge PhD students, then fail to count the r's in "strawberry." It can draft a legal brief better than most lawyers, then hallucinate a nonexistent case citation. The boundary of what AI can and can't do doesn't follow human intuitions about difficulty. Tasks that seem equally hard to us sit on different sides of the frontier, and the shape of the frontier doesn't map on any difficulty gradient we are familiar with.
+
+Jaggedness has two causes, and understanding both is necessary to predict where the frontier will move.
+
+The first is **inductive bias mismatch**. Models are trained on text, so their capabilities mirror the structure of problems that can be solved through pattern-matching over sequences. Some tasks that are "hard" for humans (e.g., graduate-level math) are well-represented in the training data and closely aligned with the model's bias. Some tasks that are "easy" for humans (spatial reasoning, counting, physical intuition) are poorly matched and less represented. This mismatch is a big reason the frontier is jagged, as human difficulty and model difficulty measure different things.
+
+The second is **verification cost asymmetry**, i.e., the dynamic described in the previous section. Models improve rapidly where verification is automated, and slowly where verification requires expensive human judgment. The outward spikes on the jagged frontier are domains with low verification costs. The recesses are domains where each evaluation costs minutes of expert attention rather than microseconds of compute. This explains why the frontier *stays* jagged over time: the domains with automated verification pull ahead faster, while the domains that depend on human feedback improve at human speed.
+
+**These two causes reinforce each other.** A domain that is both well-matched to the model's inductive bias *and* cheaply verifiable will see rapid, compounding progress. Significant parts of software development fit this description. In contrast, a domain that is poorly matched *and* requires expensive human verification will lag on both fronts. The result is not a frontier that smooths out over time, but one that may become *more* jagged as the fast-improving domains accelerate away from the slow ones. This will be very confusing for people, as we will keep seeing AI perform superhuman feats almost instantly while completely failing at tasks we think are simple. That's already true, just take Chess as an example. The world chess champion would lose to a wristwatch running a chess engine, but the wristwatch has no clue how to make a sandwich. That's weird.
+
+---
+
+## Making Agents Work
 
 As promising as results are, they only really matter if we can operationalize them. **So, how do we do that?** And how do we know if it's working?
 
@@ -179,9 +250,9 @@ Agents run on text, so to make use of them, you need careful documentation. If y
 
 **Then just let it rip.** Your job, in this setting, is to be a person with values, experience, taste, and domain intuition. You steer the agents by writing down things and verifying the output. You do not perform tasks beyond what is necessary to outline the process and build understanding. Sometimes that requires months of work. I always work on things for a while before delegating them. The same will apply now.
 
-### The Importance of Writing Things Down
+### If It's Not Written Down, It Doesn't Exist
 
-**All processes, tasks, inputs, outputs, and tools must be documented in version-controlled files.** Documentation is code for agents, but not everything can be easily written down. As we'll see later, much of what makes human judgment valuable is tacit knowledge that resists explicit description. But everything that *can* be documented, *should* be, because that's the layer agents can operate on. Detailed documentation is a core requirement for maximizing the potential of agentic AI, just as digitalization has been for using computers. All learning, solutions, and new tools should be added to a shared repository for reuse across all projects. The effect is an instant, complete transfer of learning across all projects. Every agent operator receives all learnings as soon as the underlying scaffolding is updated.
+**All processes, tasks, inputs, outputs, and tools must be documented in version-controlled files.** Documentation is code for agents, but not everything can be easily written down. Much of what makes human judgment valuable is tacit knowledge that resists explicit description. But everything that *can* be documented, *should* be, because that's the layer agents can operate on. Detailed documentation is a core requirement for maximizing the potential of agentic AI, just as digitalization has been for using computers. All learning, solutions, and new tools should be added to a shared repository for reuse across all projects. The effect is an instant, complete transfer of learning across all projects. Every agent operator receives all learnings as soon as the underlying scaffolding is updated.
 
 This parallels what's happening inside the agent harness. Claude Code uses a file called **CLAUDE.md** as a form of memory. In there, it keeps the project's accumulated "wisdom" in plain text and loads it every time it starts. You need to apply the same principle at the organizational level: if something isn't documented in a way an agent can consume, it doesn't exist in the workflow. Humans tend to keep too much in their heads, as anyone who just started a new job quickly learns...
 
@@ -203,87 +274,9 @@ Since early 2026, we have been running projects under the theme **"Maximize Huma
 
 ---
 
-## My Reflections
+## Humans Remain Cost-Effective
 
-We have concluded that thinking and tool use have led to the emergence of some form of artificial superintelligence. It's not human, but it's powerful. Let's reflect on what this means. This will be a mix of forecasting and reasoning about limitations.
-
-### Most Things Aren't Written Down
-
-Given how much text we have available, it's tempting to think everything is written down. But that's not true. Not even close. Our human experience is deeply personal and rarely written down in any significant detail. Most of our knowledge is tacit, and most of our preferences are hidden. Epoch AI estimates the supply of quality, deduplicated, human-generated public text for AI training sits at around 300 trillion tokens (to be fair, their 90% confidence interval is 100T to 1,000T tokens). [12] If current LLM development trends continue, models will be trained on datasets roughly equal in size to this available stock sometime in the next few years.
-
-**This means that the "low-hanging fruit" of learning from human-generated text is almost gone.** [^low-hanging] The next wave of progress will have to come from other sources of training signal, like human judgment, self-supervision, and synthetic data generated by the models themselves. This is a critical point because it means the future of AI will be shaped not just by the quantity of data but also by the quality and diversity of the training signals we can provide beyond just text.
-
-![Epoch AI training data projections](https://storage.googleapis.com/langkilde-se-images/epoch-training-data.png)
-
-[^low-hanging]: **"Low-hanging fruit" is of course relative!** In 2025, the major technology companies collectively spent over $300 billion on AI-related infrastructure (data centres, GPUs, energy, and annotation), and the frontier labs raised tens of billions more in equity on top of that. In 2026, the projected figure approaches $700 billion. [20] That is an extraordinary amount of capital directed at extracting value from a (mostly) fixed supply of human-generated text.
-
-### Most Things Aren't Easily Verified
-
-The entire reasoning-reinforcement-learning pipeline described earlier depends on one critical property: **automated verification**. DeepSeek-R1-Zero works because you can check if a math answer is correct. Code agents work because you can run a test suite. AlphaZero works because you can simulate games and evaluate outcomes. The synthetic data flywheel spins because each candidate solution can be graded programmatically at machine speed. When verification is automated, the model can generate millions of attempts, filter out incorrect ones, and train on its own best outputs. Math and code have very low verification costs, which explains why progress has been so dramatic in those domains.
-
-**But most things humans care about aren't easy to verify.**
-
-*"Do you like this design?“*
-
-*"Does this email strike the right tone?"*
-
-*"Will this strategy work?"*
-
-*"What actually caused this traffic accident?"*
-
-*"Is this the right level of abstraction for this API?"*
-
-**None of these questions has a simple, predictable answer.** None of them can be checked by running a program. The only way to verify them is to show the output to someone and have them judge it. This matters enormously for predicting where AI will improve fast and where it will improve slowly.
-
-**The flywheel can't spin faster than we can verify the output.**
-
-To understand why, consider what's actually happening when a human evaluates something. The target, i.e., “what the human wants”, is a [~hidden state|A variable that causally influences observable outcomes but cannot be directly measured.]. You only see its downstream effects. Intentions, preferences, and mental models are all hidden states of the human mind. The learner never observes it directly. It only observes downstream effects: the human says yes or no, provides a correction, looks frustrated, asks for something different.
-
-Three things make learning hidden states particularly hard:
-
-**Language is lossy.** Language is the best tool we have for transmitting preferences from one mind to another, but it still sucks. It's indirect and incomplete. When a product manager writes a PRD, they are transmitting a compressed, partial representation of what they actually want. Much of what they want is [~tacit knowledge|Knowledge that a person possesses but cannot fully articulate. It's encoded in years of experience, aesthetic judgment, taste, and contextual understanding. A chef knows when a sauce is “right” without being able to specify the exact threshold. An experienced driver knows a lane merge is dangerous without computing time-to-collision.] that they couldn't write down even if they tried.
-
-**People change based on what they are shown.** This is a [~coupled problem|A learning scenario where the learner's actions change the target being learned. Markets shift when you trade. Users' preferences change when you show them options. The target you learned from may no longer exist, partly because learning it changed the system.] in a deep sense. You don't know what you want until you see what you don't want. A designer shows three mockups: the client rejects all three but now has a much clearer sense of what they're after. This sense *did not exist* before seeing the mockups. The preference is literally created by the process of trying to learn it.
-
-**Verification is expensive.** Each human review costs real time, real energy, and real cognitive load. A human reviewer might evaluate ten things per hour. An automated test suite evaluates millions per second. That's a five orders-of-magnitude difference in verification bandwidth.
-
-This creates an asymmetry in the rate of AI progress across domains based on "the cost of verification". I'm using "verification" broadly here. My definition spans from deductive checking (Does this code compile? Is this proof valid?) to subjective evaluation (Does this email strike the right tone? Is this design good?). These are fundamentally different operations, and that difference is exactly why the frontier is jagged. Three classes of problems emerge:
-
-1. **Automated Verification**, like math, code, games, and formal proofs, the flywheel can spin at machine speed. We have basically unlimited training signals. This is why we've seen a 40-percentage-point improvement in software engineering benchmarks in 18 months.
-
-2. **Cheap Human Verification**, like image quality, grammar correction, simple classification, pairwise preference ranking. For these, the flywheel spins slowly, but it's reasonably affordable. Each human judgment takes seconds, and you can collect millions of comparisons at scale. This is how [~RLHF|Reinforcement Learning from Human Feedback. A training method where humans compare pairs of model outputs, and the model learns to produce outputs that the humans prefer. The speed, cost, and consistency of human evaluation limit the quality of the feedback.] produces models that are pleasant to chat with.
-
-3. **Expensive Human Verification**, like strategic decisions, complex design, complex annotation, and safety-critical judgment. Anything requiring domain expertise and extended reasoning. For these, the flywheel barely spins. Each verification requires context that can't be compressed into a quick pairwise comparison. Progress here is slowest, and this is where humans remain most valuable.
-
-**The obvious counterargument is the scalability of oversight.** Researchers at Anthropic, DeepMind, and OpenAI are working hard on exactly this problem: Can you train a reward model on a finite dataset of human judgments, then use that model as an automated verifier so the flywheel can spin without a human in the loop? Methods like [~Constitutional AI|An alignment technique developed by Anthropic, where a model critiques and revises its own outputs according to a set of written principles, rather than relying on human feedback for every example. The principles act as a constitution that the model enforces on itself.] and [~RLAIF|Reinforcement Learning from AI Feedback. A variant of RLHF where another AI model provides the preference judgments instead of humans, dramatically reducing the cost and increasing the speed of the feedback loop.] are increasingly effective. This should steadily push problems from category 3 into category 2, and from category 2 into category 1. But I'm skeptical it fully closes the gap for the hardest cases. A reward model trained on human preferences is a frozen approximation of a moving target. It captures the distribution of preferences *at training time*, but for non-stationary problems, i.e., problems where tastes shift, contexts evolve, and the act of optimization itself changes what people want, the reward model drifts out of alignment with the humans it's supposed to represent. This is the [~reward hacking|When an agent finds ways to maximize its reward signal without actually achieving the intended goal. The reward model is an imperfect proxy for what humans actually want, and sufficiently capable optimizers will exploit the gap between the proxy and the true objective.] problem, and it gets worse as the system becomes more capable. So yes, the verification boundary is moving. But I don't think it disappears. [^scalable-debate]
-
-[^scalable-debate]: There are two stronger versions of this counterargument worth addressing. First, [~AI Safety via Debate|A proposed alignment technique where two AI systems argue opposing sides of a question, forcing each other to surface flaws and distill complex judgments into simple, verifiable claims that even a non-expert human can evaluate. The idea is that debate provides cognitive leverage, making verification much cheaper than the original problem.]. This is clever, and it will work for many problems, but it assumes the relevant disagreements can be decomposed into verifiable claims. For problems where the crux is aesthetic, relational, or involves, e.g., competing values, decomposition may not be possible. Second, environmental verification: an agent optimizing a marketing campaign doesn't need a human to check if tastes have shifted. It can just A/B test it in the real world and verify via clicks, conversions, and revenue. This will work for a large class of problems I'm currently putting in category 3. But it only works when the metric you can measure actually captures what you care about. When it doesn't, like when optimizing for clicks degrades trust, or when maximizing conversions selects for manipulative patterns, you're back to needing human judgment about whether the metric itself is still the right one.
-
-### The Frontier Will Become *More* Jagged
-
-Karpathy popularized the term “jagged intelligence” [13] to describe the observation that AI capabilities don't advance evenly. A model can solve differential equations that challenge PhD students, then fail to count the r's in “strawberry.” It can draft a legal brief better than most lawyers, then hallucinate a nonexistent case citation. The boundary of what AI can and can't do doesn't follow human intuitions about difficulty. Tasks that seem equally hard to us sit on different sides of the frontier, and the shape of the frontier doesn't map on any difficulty gradient we are familiar with.
-
-Jaggedness has two causes, and understanding both is necessary to predict where the frontier will move.
-
-The first is **inductive bias mismatch**. Models are trained on text, so their capabilities mirror the structure of problems that can be solved through pattern-matching over sequences. Some tasks that are “hard” for humans (e.g., graduate-level math) are well-represented in the training data and closely aligned with the model's bias. Some tasks that are “easy” for humans (spatial reasoning, counting, physical intuition) are poorly matched and less represented. This mismatch is a big reason the frontier is jagged, as human difficulty and model difficulty measure different things.
-
-The second is **verification cost asymmetry**, i.e., the dynamic I just described earlier. Models improve rapidly where verification is automated, and slowly where verification requires expensive human judgment. The outward spikes on the jagged frontier are domains with low verification costs. The recesses are domains where each evaluation costs minutes of expert attention rather than microseconds of compute. This explains why the frontier *stays* jagged over time: the domains with automated verification pull ahead faster, while the domains that depend on human feedback improve at human speed.
-
-**These two causes reinforce each other.** A domain that is both well-matched to the model's inductive bias *and* cheaply verifiable will see rapid, compounding progress. Significant parts of software development fit this description. In contrast, a domain that is poorly matched *and* requires expensive human verification will lag on both fronts. The result is not a frontier that smooths out over time, but one that may become *more* jagged as the fast-improving domains accelerate away from the slow ones. This will be very confusing for people, as we will keep seeing AI perform superhuman feats almost instantly while completely failing at tasks we think are simple. That's already true, just take Chess as an example. The world chess champion would lose to a wristwatch running a chess engine, but the wristwatch has no clue how to make a sandwich. That's weird.
-
-Then there is time. A single human evaluation might take five minutes, and you cannot parallelize a single person's judgment. One person can only evaluate one thing at a time, and they get tired, distracted, and need sleep. But they are cheap per evaluation for complex judgment tasks. The model, by contrast, can generate candidates at near-zero marginal time, but each candidate still needs a human to verify it. This is the core asymmetry: AI is fast at generation but bottlenecked by human verification speed. This will further contribute to the jagged frontier of ASI capabilities.
-
-**In coupled human-AI systems, human evaluation speed becomes the [~binding constraint|The single limiting factor that determines the overall performance of a system. Optimizing any other factor while the binding constraint remains fixed produces no improvement. Identifying which constraint binds is the first step in any efficiency analysis.] on the system's learning rate.** If evaluation is the bottleneck, generating more candidates faster is just wasteful. The energy-efficient strategy will be to maximize information per human evaluation by presenting the right comparisons, in the right context, at the right level of granularity, so that each human judgment moves the system as far as possible toward the target.
-
-**This is exactly what good annotation tooling does.** [^disclosure]
-
-[^disclosure]: **Full disclosure:** I'm the CEO of Kognic, a company that builds annotation and verification tools for AI. So yes, I have a financial stake in human verification remaining valuable. Take that into account as you evaluate my argument. I've tried to reason from first principles here, but I'd be naive to pretend my perspective isn't shaped by what I work on every day.
-
-And it has a counterintuitive implication: **as models get better at generating candidates, the value of human feedback increases!** Better models can produce more options faster and at lower cost. But someone still has to evaluate them. Every improvement in generation capability shifts more of the system's total value onto the verification side. The value of software, i.e., the verifiable part, plummets while the value of excellent human judgment grows.
-
-The fact that the binding constraint is moving from "Can the model generate a good answer?" to "Can we verify, at scale, whether the answer is actually good?" is the most underappreciated dynamic in discussions of AI progress today.
-
-### Dynamical Systems Require Efficient Adaptation
+### The World Doesn't Stand Still
 
 Many of the problems that matter most (markets, organizations, social dynamics, geopolitics) are [~non-stationary|A system in which the generating process changes over time. What was true yesterday may not be true today, not because you learned it wrong, but because the world changed. Non-stationary problems reward speed and adaptability over depth.] The target is moving. Past observations become irrelevant as the world drifts away from the process that generated them.
 
@@ -305,7 +298,7 @@ That's always been what made humans valuable. The difference now is that everyth
 
 [^intui]: **Full disclosure: I'm an investor in Intui**, [24] a Swedish company building neuroscience-inspired AI systems that learn the way biological organisms do, i.e., through interaction with their environment, rather than through massive offline training on curated datasets. If anyone cracks continuous real-world learning, it will look something like what they're doing.
 
-### Search And Prediction Is Still Hard
+### More Compute, Same Search Space
 
 A common mistake in thinking about AI is to assume that intelligence makes search easy. It doesn't. Some problems are intrinsically hard to search. For example, I don't expect superintelligent AI to crack AES encryption because the search space is 2^128 regardless of intelligence. There are physical limits to what we can expect for large search spaces. [^quantum]
 
@@ -321,25 +314,15 @@ What I'm about to argue is contrarian, but hear me out: I think The Bitter Lesso
 
 [~Resource rationality|A framework from cognitive science arguing that optimal behavior is not the strategy that maximizes performance, but the strategy that maximizes performance given the actual resources available, like time, energy, memory, or attention. A resource-rational agent doesn't find the best answer; it finds the best answer it can afford. The right question is never "which method performs best?" but "which method performs best per watt, per dollar, per hour of attention?"] is the key concept here.
 
-During 2025, the major technology companies collectively spent over $300 billion on AI-related infrastructure, and in 2026, the projected figure approaches $700 billion. [20] That capital funds bigger models, longer thinking, more candidates, and faster inference. This is clearly money well spent, given the benchmarks we've looked at. SWE-bench went from 30% to 80% in 18 months. GPQA is nearly saturated. And so on. For verifiable problems, the Bitter Lesson approach is clearly delivering.
+During 2025, the major technology companies collectively spent over $300 billion on AI-related infrastructure, and in 2026, the projected figure approaches $700 billion. [20] That capital funds bigger models, longer thinking, more candidates, and faster inference. The benchmarks speak for themselves. For verifiable problems, the Bitter Lesson approach is clearly delivering.
 
-**But look at what it costs.** Training a frontier model requires megawatts sustained over months. Inference at scale requires data centres with dedicated power plants. Karpathy calls outcome-based RL "sucking supervision through a straw": [19] the model does a minute of work, generates thousands of tokens of reasoning, and learns from a single bit. Right or wrong. That is a staggering amount of compute per bit of learning signal. Yes, the marginal cost of a single inference is fractions of a cent - but learning a new capability still requires millions of training examples and enormous infrastructure investment.
+**But look at what it costs.** Training a frontier model requires megawatts sustained over months. Inference at scale requires data centres with dedicated power plants. The model does a minute of work, generates thousands of tokens of reasoning, and learns from a single bit. Right or wrong. That is a staggering amount of compute per bit of learning signal. Yes, the marginal cost of a single inference is fractions of a cent, but learning a new capability still requires millions of training examples and enormous infrastructure investment.
 
 **Now compare that to a human.** A person can watch a single demonstration, extract the principle, and apply it to a novel situation. We learn subtle social dynamics from a handful of interactions. We update a lifetime of priors based on one well-chosen piece of evidence. The sample efficiency is extraordinary. A human costs $5-500/hour, which is expensive per unit of time, but for tasks that require learning from a few examples, adapting to novel situations, or exercising judgment that can't be automatically verified, the total cost of getting an AI system to match that performance can far exceed the cost of the human.
 
 **The Bitter Lesson tells us that compute beats hand-crafted heuristics. It does not tell us that computers beat humans on all problems when you account for the full cost.**
 
-Let's now tie all of this together:
-
-The **verification bottleneck** means that for most problems humans care about, the data flywheel cannot spin at machine speed. Each evaluation requires a human, and human attention is scarce and expensive. Pouring more compute into generation when evaluation is the binding constraint is wasteful.
-
-The **jagged frontier** means the domains where compute has the highest return (verifiable, well-matched to the model's inductive bias) are the domains where AI is already superhuman. The domains where compute returns are lowest (non-verifiable, poorly matched) are the domains where humans remain cost-effective. The frontier will get more and more jagged as more compute is poured into well-matched problems.
-
-**Non-stationarity** means that many of the most valuable problems are moving targets. Static knowledge depreciates as the world drifts. LLMs are trained on static snapshots, while humans continuously update from very few examples. For problems where the half-life of relevant knowledge is short, the cost of retraining a model may exceed the cost of simply asking a person.
-
-**Search hardness** means that some problems don't get easier with more computing power, period. The search space is the search space. You can move through it faster, but you can't shrink it. For problems at the edge of what's tractable, the marginal return on additional compute approaches zero long before the problem is solved.
-
-When I put these things together, I arrive at the following conclusion: **There will be a large and persistent class of problems where humans are more cost-effective than AI models. Not in terms of energy per operation, but in total system cost.** A GPU cluster is extraordinarily cheap per inference, but inference is not the bottleneck. The bottleneck is a mix of getting learning signals, verifying model output, adapting to non-stationarity, and searching in hard problem spaces. When you account for the full pipeline, i.e., not just the inference, but the human oversight, the failure recovery, the retraining, then I hypothesize that for a wide range of tasks, the total cost will exceed that of simply having a skilled person do the work.
+**I believe there will be a large and persistent class of problems where humans are more cost-effective than AI models. Not in terms of energy per operation, but in total system cost.** A GPU cluster is extraordinarily cheap per inference, but inference is not the bottleneck. The bottleneck is a mix of getting learning signals, verifying model output, adapting to non-stationarity, and searching in hard problem spaces. When you account for the full pipeline, i.e., not just the inference, but the human oversight, the failure recovery, the retraining, then I hypothesize that for a wide range of tasks, the total cost will exceed that of simply having a skilled person do the work.
 
 **Now, the obvious objection: compute costs are falling fast.** They always have been. GPUs get cheaper, architectures get more efficient, and inference gets optimized. Won't the boundary keep shifting until everything is worth automating? This would essentially be [~Jevons paradox|The observation that increasing efficiency in the use of a resource often increases total consumption of that resource rather than decreasing it. Cheaper computing doesn't reduce computing spending; it makes more problems worth throwing computing at.] applied to intelligence.
 
@@ -347,7 +330,7 @@ When I put these things together, I arrive at the following conclusion: **There 
 
 This means the frontier of automation will advance steadily into the space of problems with cheap or automatable verification, and slowly, constrained by the speed of human judgment, into everything else. The human doesn't need to outperform the data centre on raw throughput. It just needs to remain cheaper on the margin, for enough problems, for long enough. And on problems that require taste, adaptation, and judgment under uncertainty, it will. [^ai-economy]
 
-[^ai-economy]: One important caveat: this argument assumes humans are the ultimate consumers of AI output. A growing share of AI work is machine-to-machine - an AI writes an API, another AI consumes it, and verification is entirely programmatic. In these loops, human "hidden states" are irrelevant, and the flywheel spins at full speed. My argument about human cost-effectiveness applies specifically to the parts of the economy where humans are the end consumer or where the output ultimately serves human preferences. That's still most of the economy today, but the machine-to-machine slice is growing fast.
+[^ai-economy]: One important caveat: this argument assumes humans are the ultimate consumers of AI output. A growing share of AI work is machine-to-machine: an AI writes an API, another AI consumes it, and verification is entirely programmatic. In these loops, human "hidden states" are irrelevant, and the flywheel spins at full speed. My argument about human cost-effectiveness applies specifically to the parts of the economy where humans are the end consumer or where the output ultimately serves human preferences. That's still most of the economy today, but the machine-to-machine slice is growing fast.
 
 **We've actually seen signs of this at Kognic.** There are annotation tasks where we've tried to automate the judgment and found that the cost of building, validating, and maintaining the automated system (including the human oversight required to catch its failures) exceeds the cost of simply having a skilled annotator do the work. The model is faster per unit, but the total system cost is higher because the verification overhead eats the savings.
 
@@ -355,15 +338,11 @@ This means the frontier of automation will advance steadily into the space of pr
 
 ---
 
-## Be The Master of Efficient Adaptation
+## Be More Human
 
 For the last two hundred years, we've been training humans to be more like computers. In school, we are asked to sit still, memorize formulas, and optimize based on static constraints and perfect information. It may be the Industrial Revolution's fault. Whatever the reason, humanity decided we needed human-shaped cogs, so we built schools and offices to produce them. This has gradually been rolled back, and today, new companies recognize that agency and drive are more important than fixed knowledge. **The arrival of *Jagged ASI* means the era of computer-like human work is finally over.**
 
-Everything I've raised in this text points to the same conclusion: **the things that made you a good data-driven cog are now the things a computer does better than you.** If your professional value today comes from following documented processes, executing known calculations, or producing well-structured text from clear specifications, then you need to reinvent yourself fast. That work is now in the "automated verification zone". That flywheel can spin without a human.
-
-**But the things that make you *human* are exactly what remains valuable.** Your ability to adapt on the fly. To read a room. To know something is off before you can say why. Your ability to update your entire worldview based on a single conversation. Feeling your way through ambiguity. Building trust. Having taste. These aren't soft skills. **These are the skills that make you valuable in the "expensive human verification zone".**
-
-These are the capabilities that evolution spent millions of years optimizing at 20 watts, and that the $700-billion-a-year AI industry still cannot replicate. AI companies aren't failing at this because models aren't smart enough. They fail because these problems are non-stationary, the preferences are hidden, the verification is expensive, and the search space doesn't shrink with more computing.
+**The things that make you *human* are exactly what remains valuable.** Your ability to adapt on the fly. To read a room. To know something is off before you can say why. Your ability to update your entire worldview based on a single conversation. Feeling your way through ambiguity. Building trust. Having taste. These aren't soft skills. These are the capabilities that evolution spent millions of years optimizing at 20 watts, and that the $700-billion-a-year AI industry still cannot replicate.
 
 ![The Human Frontier](https://storage.googleapis.com/langkilde-se-images/the-human-frontier.jpeg)
 
@@ -371,7 +350,7 @@ So, here is my advice:
 
 **Stop trying to be a computer.** The value of human-as-computer is going to zero. Every hour you spend manually formatting spreadsheets or writing boilerplate is an hour wasted. Push that work to the models. As soon as something is understood, documented, and stable, push it to AI. If you don't, someone else will, and they'll move faster than you.
 
-**Get comfortable not knowing.** Planning was the critical skill when environments were stable enough to plan for. The world will never be stable again. The pace of change is accelerating, and things are becoming increasingly complex. That won't stop. But that is a good thing! It means our ability to adapt is becoming increasingly valuable. Your ability to encounter something you didn't expect, update your thoughts, and act on the new information before the world shifts again. Humans have literally evolved to be good at exactly this. LLMs are trained on static snapshots. We are not.
+**Get comfortable not knowing.** The world will never be stable again. The pace of change is accelerating, and things are becoming increasingly complex. That won't stop. But that is a good thing! It means our ability to adapt is becoming increasingly valuable. Your ability to encounter something you didn't expect, update your thoughts, and act on the new information before the world shifts again. Humans have literally evolved to be good at exactly this.
 
 **Invest in relationships, not just knowledge.** What you know is less important than what you can act on, and what you can act on depends on who you know and who trusts you. Knowledge without a social fabric to act on it isn't useful. The glue that holds companies together is the informal agreements, the contextual judgments, the "I know who to call for this". These things are all dynamic, low-sample, and high-frequency. That's what makes them almost impossible for statistical systems to learn. You, however, can be that glue!
 
