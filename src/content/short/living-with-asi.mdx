@@ -105,7 +105,7 @@ Thanks to all this, the model learns not to respond immediately to your question
 
 Several specific advances have further improved this pipeline in recent months:
 
-**Anti-reward-hacking training.** One problem in succeeding with RL is that models tend to take shortcuts if they can. Early coding agents would, for example, turn off failing tests to improve test coverage scores. Claude 4 models were trained to be 65% less likely to take such shortcuts, [10] instead faithfully following the intended reasoning process. For complex coding tasks, this means the model actually traces through the relevant code and identifies the root cause, rather than pattern-matching to a superficially plausible fix.
+**Anti-reward-hacking training.** One problem in succeeding with RL is that models tend to take shortcuts if they can. Early coding agents would, for example, turn off failing tests to improve test coverage scores. Claude 4 models were trained to be 65% less likely to take such shortcuts, [10] and instead actually obeying the user intent. For complex coding tasks, this means the model really reads the code and identifies the root cause, rather than applying some superficial fix or hack. At least, that's the idea. It's not perfect yet, but it's gotten a hell of a lot better in the last year.
 
 **Self-correction.** Anthropic's analysis noted that upgraded models showed "an ability to try several different solutions, rather than getting stuck making the same mistake over and over." [14] Self-correction is a necessary trait, as real-world coding tasks involve hundreds of steps and often rely on testing and debugging to reach the right answer.
 
