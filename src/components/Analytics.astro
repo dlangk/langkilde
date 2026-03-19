@@ -20,8 +20,11 @@ import { ANALYTICS } from "../lib/constants";
     const normalizedPath = rawPath.replace(/\/+$/, "") || "/";
 
     gtag("js", new Date());
+    // Strip hash from page_location so GA4 Enhanced Measurement
+    // doesn't fire extra page_view events on TOC/footnote/reference clicks
     gtag("config", gaId, {
       page_path: normalizedPath,
+      page_location: window.location.origin + normalizedPath,
     });
   }
 
