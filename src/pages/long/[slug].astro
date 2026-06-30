@@ -1,24 +1,24 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PostPage from "../../components/PostPage.astro";
-import { getCollection, getEntryBySlug } from "astro:content";
+import { render } from "astro:content";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("long");
-  return posts.map((post) => ({ params: { slug: post.slug } }));
+  // Long writings are unfinished and intentionally not published.
+  // The content stays in src/content/long/ but no pages are built.
+  // To republish: return posts.map((post) => ({ params: { slug: post.id }, props: { post } }))
+  return [];
 }
 
-const { slug } = Astro.params;
-const post = await getEntryBySlug("long", slug);
-const { Content, headings } = await post.render();
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
 ---
 
-<BaseLayout title={post.data.title}>
+<BaseLayout title={post.data.title} image={post.data.image} description={post.data.description}>
   <PostPage
     post={post}
     headings={headings}
     Content={Content}
     pathname={Astro.url.pathname}
-    collection="long"
   />
 </BaseLayout>

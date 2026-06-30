@@ -4,16 +4,16 @@ import { SITE } from "../lib/constants";
 interface Props {
   post: {
     id: string;
+    filePath?: string;
     data: { title: string; pubDate: string };
   };
   headings: { depth: number; slug: string; text: string }[];
   Content: any;
   pathname: string;
-  collection: string;
 }
 
-const { post, headings, Content, pathname, collection } = Astro.props;
-const githubUrl = `https://github.com/dlangk/langkilde/blob/main/src/content/${collection}/${post.id}`;
+const { post, headings, Content, pathname } = Astro.props;
+const githubUrl = `https://github.com/dlangk/langkilde/blob/main/${post.filePath}`;
 ---
 
 <nav id="sidebar">

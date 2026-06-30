@@ -1,16 +1,15 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PostPage from "../../components/PostPage.astro";
-import { getCollection, getEntryBySlug } from "astro:content";
+import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("short");
-  return posts.map((post) => ({ params: { slug: post.slug } }));
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
 }
 
-const { slug } = Astro.params;
-const post = await getEntryBySlug("short", slug);
-const { Content, headings } = await post.render();
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
 ---
 
 <BaseLayout title={post.data.title} image={post.data.image} description={post.data.description}>
@@ -19,6 +18,5 @@ const { Content, headings } = await post.render();
     headings={headings}
     Content={Content}
     pathname={Astro.url.pathname}
-    collection="short"
   />
 </BaseLayout>

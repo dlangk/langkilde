@@ -5,7 +5,6 @@ import { sortByDate } from "../lib/utils";
 import { PATHS } from "../lib/constants";
 
 const shortPosts = sortByDate(await getCollection("short"));
-const longPosts = sortByDate(await getCollection("long"));
 ---
 
 <BaseLayout title="Home">
@@ -14,7 +13,6 @@ const longPosts = sortByDate(await getCollection("long"));
     <ul id="toc">
       <li><a href="/about">About</a></li>
       <li><a href="#short-writing">Short Writings</a></li>
-      <li><a href="#long-writings">Long Writings</a></li>
       <li><a href="/investments">Investments</a></li>
       <li><a href="/memes">Memes</a></li>
       <link
@@ -34,23 +32,7 @@ const longPosts = sortByDate(await getCollection("long"));
         {
           shortPosts.map((post) => (
             <li>
-              <a href={`${PATHS.short}/${post.slug}`}>
-                {post.data.title} <small>({post.data.pubDate})</small>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-
-    <!-- Long Writings Section -->
-    <section id="long-writings" class="post-list">
-      <h1>Long Writings</h1>
-      <ul>
-        {
-          longPosts.map((post) => (
-            <li>
-              <a href={`${PATHS.long}/${post.slug}`}>
+              <a href={`${PATHS.short}/${post.id}`}>
                 {post.data.title} <small>({post.data.pubDate})</small>
               </a>
             </li>
