@@ -100,7 +100,9 @@ else
     -H "Content-Type: application/json" \
     --data '{"purge_everything":true}')
 
-  if echo "$CF_RESPONSE" | grep -q '"success": true'; then
+  # Tolerate both `"success":true` and `"success": true` — the API returns
+  # no space, which made this check report false failures for every deploy.
+  if echo "$CF_RESPONSE" | grep -qE '"success": ?true'; then
     CF_SUCCESS=true
     log_info "Cache purged successfully"
   else
