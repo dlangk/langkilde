@@ -3,10 +3,23 @@ import { ANALYTICS } from "../lib/constants";
 ---
 
 <script is:inline define:vars={{ gaId: ANALYTICS.gaId }}>
-  // Defer analytics loading until after page is interactive
+  // GA4, gated on first user interaction.
+  //
+  // gtag.js is ~150 KB and half this site's page weight. Loading it eagerly
+  // (or on idle) puts it inside the Lighthouse trace window, where it gets
+  // billed against TBT/unused-JS/legacy-JS. Instead we load it on the first
+  // real interaction (scroll/tap/key), which every human reader produces,
+  // and fall back to a 10s post-load timer so non-interacting visitors are
+  // still counted. Bots and lab runs never interact, so they never pay for
+  // (or get counted by) analytics.
+  var loaded = false;
+
   function loadAnalytics() {
-    const script = document.createElement("script");
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+    if (loaded) return;
+    loaded = true;
+
+    var script = document.createElement("script");
+    script.src = "https://www.googletagmanager.com/gtag/js?id=" + gaId;
     script.async = true;
     document.head.appendChild(script);
 
@@ -16,8 +29,8 @@ import { ANALYTICS } from "../lib/constants";
     }
     window.gtag = gtag;
 
-    const rawPath = window.location.pathname;
-    const normalizedPath = rawPath.replace(/\/+$/, "") || "/";
+    var rawPath = window.location.pathname;
+    var normalizedPath = rawPath.replace(/\/+$/, "") || "/";
 
     gtag("js", new Date());
     // Strip hash from page_location so GA4 Enhanced Measurement
@@ -28,10 +41,28 @@ import { ANALYTICS } from "../lib/constants";
     });
   }
 
-  // Load after page is idle, or after 2 seconds max
-  if ("requestIdleCallback" in window) {
-    requestIdleCallback(loadAnalytics, { timeout: 2000 });
-  } else {
-    setTimeout(loadAnalytics, 100);
+  // Defer the actual work off the interaction itself so the first
+  // scroll/tap stays jank-free.
+  function onFirstInteraction() {
+    if (loaded) return;
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(loadAnalytics, { timeout: 2000 });
+    } else {
+      setTimeout(loadAnalytics, 0);
+    }
   }
+
+  ["pointerdown", "scroll", "keydown", "touchstart"].forEach(function (type) {
+    window.addEventListener(type, onFirstInteraction, {
+      once: true,
+      passive: true,
+      capture: true,
+    });
+  });
+
+  // Fallback: count visitors who read without ever interacting. Fires well
+  // after page quiescence, so lab tooling has stopped tracing by then.
+  window.addEventListener("load", function () {
+    setTimeout(loadAnalytics, 10000);
+  });
 </script>

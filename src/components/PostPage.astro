@@ -1,10 +1,12 @@
 ---
+import katexCssUrl from "katex/dist/katex.min.css?url";
 import { SITE } from "../lib/constants";
 
 interface Props {
   post: {
     id: string;
     filePath?: string;
+    body?: string;
     data: { title: string; pubDate: string };
   };
   headings: { depth: number; slug: string; text: string }[];
@@ -14,7 +16,11 @@ interface Props {
 
 const { post, headings, Content, pathname } = Astro.props;
 const githubUrl = `https://github.com/dlangk/langkilde/blob/main/${post.filePath}`;
+// Only ship KaTeX styles on posts that actually contain display math.
+const hasMath = post.body?.includes("$$") ?? false;
 ---
+
+{hasMath && <link rel="stylesheet" href={katexCssUrl} />}
 
 <nav id="sidebar">
   <a href="/">← Home</a>

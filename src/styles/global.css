@@ -6,7 +6,9 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/fonts/newsreader-normal-400.ttf") format("truetype");
+  src:
+    url("/fonts/newsreader-normal-400.woff2") format("woff2"),
+    url("/fonts/newsreader-normal-400.ttf") format("truetype");
 }
 
 @font-face {
@@ -14,7 +16,9 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("/fonts/newsreader-normal-700.ttf") format("truetype");
+  src:
+    url("/fonts/newsreader-normal-700.woff2") format("woff2"),
+    url("/fonts/newsreader-normal-700.ttf") format("truetype");
 }
 
 @font-face {
@@ -22,7 +26,9 @@
   font-style: italic;
   font-weight: 400;
   font-display: swap;
-  src: url("/fonts/newsreader-italic-400.ttf") format("truetype");
+  src:
+    url("/fonts/newsreader-italic-400.woff2") format("woff2"),
+    url("/fonts/newsreader-italic-400.ttf") format("truetype");
 }
 
 @font-face {
@@ -30,7 +36,9 @@
   font-style: italic;
   font-weight: 700;
   font-display: swap;
-  src: url("/fonts/newsreader-italic-700.ttf") format("truetype");
+  src:
+    url("/fonts/newsreader-italic-700.woff2") format("woff2"),
+    url("/fonts/newsreader-italic-700.ttf") format("truetype");
 }
 
 /*--------------------------------------------------------------
@@ -41,6 +49,9 @@
   --text-color: #050505;
   --font-size-base: 20px;
   --accent-color: rgba(255, 77, 0, 0.6);
+  /* Solid accent for text: >=4.5:1 contrast on --bg-color (WCAG AA).
+     The translucent --accent-color blends to ~2:1 and fails for text. */
+  --accent-solid: #c33d00;
   --text-fade: rgba(87, 87, 87, 0.3);
   --quote-bg: rgba(0, 0, 0, 0.035);
 }
@@ -49,6 +60,7 @@
   --bg-color: #121212;
   --text-color: #f0efea;
   --accent-color: rgba(253, 123, 58, 0.7);
+  --accent-solid: #fd7b3a;
   --text-fade: rgba(240, 240, 240, 0.25);
   --quote-bg: rgba(255, 255, 255, 0.05);
 }
@@ -68,16 +80,6 @@ body {
   position: relative;
 }
 
-/* Canvas Background */
-#canvas-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-}
 
 a {
   color: inherit;
@@ -124,7 +126,9 @@ a {
   font-family: "Newsreader", serif;
   font-size: 17px;
   color: var(--text-color);
-  opacity: 0.5;
+  /* 0.65 keeps links visibly muted while clearing the 4.5:1 contrast
+     ratio on both themes (0.5 blended to ~3.8:1 in light mode). */
+  opacity: 0.65;
   font-weight: 400;
   line-height: 1.3;
   text-align: left;
@@ -146,7 +150,7 @@ a {
 }
 
 #sidebar a.active {
-  color: var(--accent-color);
+  color: var(--accent-solid);
 }
 
 .sidebar-toggle {
@@ -1008,7 +1012,7 @@ hr {
 }
 
 .post-content figcaption a {
-  color: var(--accent-color);
+  color: var(--accent-solid);
   text-decoration: underline;
 }
 
