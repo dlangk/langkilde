@@ -4,7 +4,11 @@ import { getCollection } from "astro:content";
 import { sortByDate } from "../lib/utils";
 import { PATHS } from "../lib/constants";
 
-const shortPosts = sortByDate(await getCollection("short"));
+const shortPosts = sortByDate(
+  (await getCollection("short")).filter(
+    (post) => !post.data.draft || import.meta.env.DEV
+  )
+);
 ---
 
 <BaseLayout title="Home">

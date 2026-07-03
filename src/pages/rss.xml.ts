@@ -3,7 +3,9 @@ import { getCollection } from "astro:content";
 import { SITE, PATHS } from "../lib/constants";
 
 export async function GET() {
-  const shortPosts = await getCollection("short");
+  const shortPosts = (await getCollection("short")).filter(
+    (post) => !post.data.draft || import.meta.env.DEV
+  );
 
   // Long writings are unfinished and intentionally not published, so they
   // are excluded from the feed.

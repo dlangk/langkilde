@@ -5,7 +5,10 @@ import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("short");
-  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+  return posts
+    // Drafts are viewable in `astro dev` but excluded from production builds.
+    .filter((post) => !post.data.draft || import.meta.env.DEV)
+    .map((post) => ({ params: { slug: post.id }, props: { post } }));
 }
 
 const { post } = Astro.props;

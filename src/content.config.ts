@@ -6,6 +6,9 @@ const postSchema = z.object({
   pubDate: z.string(),
   image: z.string().optional(),
   description: z.string().optional(),
+  // Unfinished posts: kept in the repo and built locally, but excluded from
+  // the homepage, RSS feed, and route generation (no public page).
+  draft: z.boolean().optional().default(false),
 });
 
 const short = defineCollection({

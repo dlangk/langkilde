@@ -1,0 +1,278 @@
+---
+// AutomationFrontier.astro — Interactive phase diagram of the automation
+// frontier. Volume × frequency on the x-axis, drift rate on the y-axis,
+// colour shows whether capital or labour is cheaper. Sliders drive the model.
+//
+// Integration notes (vs. the original standalone script):
+//   - CSS variables the script expects (--text-secondary, --font-mono,
+//     --surface-1, --radius, --text-accent, --text-danger) don't exist in
+//     this repo, so they're mapped to the site's real variables on .afe-wrap.
+//   - Dark mode here is class-based (.dark on <html>), not prefers-color-scheme,
+//     so the canvas reads document.documentElement and redraws on theme toggle.
+//   - Styles are is:global because the sliders are built in JS; Astro's scoped
+//     CSS would not reach dynamically-created elements.
+---
+
+<div class="afe-wrap">
+  <h2 class="sr-only">Interactive phase diagram of the automation frontier: volume on the x-axis, drift rate on the y-axis, color showing whether capital or labor is cheaper, with sliders for the remaining parameters.</h2>
+
+  <div class="afe-btns">
+    <button type="button" id="afe-p0">Invoice OCR</button>
+    <button type="button" id="afe-p1">Code generation</button>
+    <button type="button" id="afe-p2">School-zone safety judgment</button>
+    <button type="button" id="afe-reset">Reset</button>
+  </div>
+
+  <div style="width:100%">
+    <canvas id="afe-cv" role="img" aria-label="Phase diagram. The horizontal axis is volume times frequency on a log scale from 1 to one million instances per period. The vertical axis is drift rate on a log scale. Blue regions mean capital is cheaper (automate); red regions mean labor is cheaper. A line marks the frontier where the two effective costs are equal.">Phase diagram of automation cost: blue where automating is cheaper, red where human labor is cheaper, separated by the cost-equality frontier.</canvas>
+  </div>
+
+  <div class="afe-leg">
+    <span><span class="afe-sw" style="background:#2a78d6"></span>Automate (capital cheaper)</span>
+    <span><span class="afe-sw" style="background:#e34948"></span>Stay human (labor cheaper)</span>
+    <span><span class="afe-sw" style="background:var(--text-primary);width:16px;height:3px;border-radius:0"></span>Frontier (equal cost)</span>
+  </div>
+
+  <div class="afe-read" id="afe-read">Click anywhere on the map to test a task.</div>
+
+  <div id="afe-primary"></div>
+  <button type="button" id="afe-adv-btn" style="margin:10px 0 4px">Show advanced parameters</button>
+  <div id="afe-advanced" style="display:none"></div>
+</div>
+
+<style is:global>
+  .afe-wrap{
+    --text-primary: var(--text-color);
+    --text-secondary: #898781;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --surface-1: var(--quote-bg);
+    --radius: 6px;
+    --text-accent: #2a78d6;
+    --text-danger: #e34948;
+    margin: 1.75rem 0;
+  }
+  .dark .afe-wrap{
+    --text-accent: #3987e5;
+    --text-danger: #e66767;
+  }
+  .afe-wrap .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+  .afe-row{display:flex;align-items:center;gap:10px;margin:6px 0}
+  .afe-row label{font-size:13px;color:var(--text-secondary);flex:0 0 132px}
+  .afe-row .afe-val{font-size:13px;color:var(--text-primary);font-family:var(--font-mono);flex:0 0 92px;text-align:right}
+  .afe-row input[type=range]{flex:1}
+  .afe-btns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+  .afe-leg{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--text-secondary);margin:10px 0 4px}
+  .afe-leg span{display:flex;align-items:center;gap:6px}
+  .afe-sw{width:12px;height:12px;border-radius:3px}
+  .afe-read{font-size:13px;color:var(--text-primary);background:var(--surface-1);border-radius:var(--radius);padding:10px 12px;margin:8px 0;line-height:1.6}
+</style>
+
+<script is:inline>
+(function(){
+  var ROOT = document.documentElement;
+  function detectDark(){ return ROOT.classList.contains('dark'); }
+  var isDark = detectDark();
+  function makeCOL(){
+    return {
+      blue: isDark ? [57,135,229] : [42,120,214],
+      red:  isDark ? [230,103,103] : [227,75,72],
+      mid:  isDark ? [56,56,53] : [240,239,236],
+      front: isDark ? [255,255,255] : [17,17,17],
+      ink: isDark ? '#ffffff' : '#0b0b0b',
+      muted: '#898781'
+    };
+  }
+  var COL = makeCOL();
+  var SPAN = 1.2;
+
+  var meta = [
+    {k:'wage', label:'wage ($/inst)', min:0.1, max:100, log:true, def:5, group:'primary', fmt:fMoney},
+    {k:'number_labels', label:'number_labels', min:1, max:1e6, log:true, def:10000, group:'primary', fmt:fInt},
+    {k:'quality_capital', label:'quality_capital', min:0.5, max:1, log:false, step:0.01, def:0.9, group:'primary', fmt:fQ},
+    {k:'inference_cost', label:'inference_cost ($)', min:0.0001, max:1, log:true, def:0.01, group:'adv', fmt:fMoney},
+    {k:'number_label_cost', label:'label_cost ($)', min:0.01, max:10, log:true, def:0.5, group:'adv', fmt:fMoney},
+    {k:'theta', label:'θ (drift-life)', min:0.1, max:10, log:true, def:1, group:'adv', fmt:fNum2},
+    {k:'h', label:'h (human drift)', min:0.01, max:5, log:true, def:0.5, group:'adv', fmt:fNum2},
+    {k:'quality_labor', label:'quality_labor', min:0.5, max:1, log:false, step:0.01, def:0.95, group:'adv', fmt:fQ}
+  ];
+  var params = {}; meta.forEach(function(m){ params[m.k]=m.def; });
+  var inputs = {}, valSpans = {};
+
+  var presets = {
+    p0:{wage:2,number_labels:2000,quality_capital:0.95,inference_cost:0.005,number_label_cost:0.2,theta:1,h:0.3,quality_labor:0.9,_N:5e5,_d:0.05},
+    p1:{wage:8,number_labels:20,quality_capital:0.9,inference_cost:0.02,number_label_cost:0.1,theta:1,h:0.5,quality_labor:0.95,_N:1e5,_d:0.3},
+    p2:{wage:15,number_labels:200000,quality_capital:0.6,inference_cost:0.05,number_label_cost:2,theta:1,h:0.4,quality_labor:0.97,_N:40,_d:1.5}
+  };
+
+  function fMoney(v){ return v>=1 ? '$'+v.toFixed(2) : '$'+v.toPrecision(2); }
+  function fInt(v){ return Math.round(v).toLocaleString(); }
+  function fQ(v){ return v.toFixed(2); }
+  function fNum2(v){ return v.toFixed(2); }
+
+  var Nmin=1,Nmax=1e6, dmin=0.01,dmax=3;
+  var lNmin=Math.log10(Nmin),lNmax=Math.log10(Nmax),lDmin=Math.log10(dmin),lDmax=Math.log10(dmax);
+
+  var cv = document.getElementById('afe-cv');
+  var ctx = cv.getContext('2d');
+  var cssW=660,cssH=420, mL=56,mR=14,mT=14,mB=40;
+  var plotX=mL,plotY=mT,plotW=cssW-mL-mR,plotH=cssH-mT-mB;
+  var dpr=window.devicePixelRatio||1;
+  cv.width=cssW*dpr; cv.height=cssH*dpr; cv.style.width='100%'; cv.style.maxWidth=cssW+'px'; cv.style.height='auto';
+  ctx.scale(dpr,dpr);
+
+  var off=document.createElement('canvas'); off.width=plotW; off.height=plotH;
+  var octx=off.getContext('2d');
+
+  var marker={N:1000,d:0.3};
+
+  function capEff(N,d){ return (params.inference_cost + params.number_label_cost*params.number_labels*d/(N*params.theta))/params.quality_capital; }
+  function labEff(d){ return (params.wage + params.h*d)/params.quality_labor; }
+  function marginAt(N,d){ return Math.log10(labEff(d)/capEff(N,d)); }
+
+  function lerp(a,b,t){ return [Math.round(a[0]+(b[0]-a[0])*t),Math.round(a[1]+(b[1]-a[1])*t),Math.round(a[2]+(b[2]-a[2])*t)]; }
+  function colorFor(mg){
+    var t=mg/SPAN; if(t>1)t=1; if(t<-1)t=-1;
+    return t>=0 ? lerp(COL.mid,COL.blue,t) : lerp(COL.mid,COL.red,-t);
+  }
+
+  function xToN(px){ var f=(px-plotX)/plotW; return Math.pow(10,lNmin+f*(lNmax-lNmin)); }
+  function yToD(py){ var f=(py-plotY)/plotH; return Math.pow(10,lDmax-f*(lDmax-lDmin)); }
+  function nToX(N){ return plotX + (Math.log10(N)-lNmin)/(lNmax-lNmin)*plotW; }
+  function dToY(d){ return plotY + (lDmax-Math.log10(d))/(lDmax-lDmin)*plotH; }
+
+  function draw(){
+    var img=octx.createImageData(plotW,plotH);
+    var data=img.data;
+    var prevRow=new Float32Array(plotW);
+    for(var yy=0;yy<plotH;yy++){
+      var d=Math.pow(10,lDmax-(yy/plotH)*(lDmax-lDmin));
+      var prevM=null;
+      for(var xx=0;xx<plotW;xx++){
+        var N=Math.pow(10,lNmin+(xx/plotW)*(lNmax-lNmin));
+        var mg=marginAt(N,d);
+        var c=colorFor(mg);
+        var sgn=mg>=0?1:-1;
+        var isF=false;
+        if(prevM!==null && ((prevM>=0?1:-1)!==sgn)) isF=true;
+        if(yy>0 && ((prevRow[xx]>=0?1:-1)!==sgn)) isF=true;
+        var idx=(yy*plotW+xx)*4;
+        if(isF){ data[idx]=COL.front[0];data[idx+1]=COL.front[1];data[idx+2]=COL.front[2];data[idx+3]=255; }
+        else { data[idx]=c[0];data[idx+1]=c[1];data[idx+2]=c[2];data[idx+3]=255; }
+        prevM=mg; prevRow[xx]=mg;
+      }
+    }
+    octx.putImageData(img,0,0);
+    ctx.clearRect(0,0,cssW,cssH);
+    ctx.imageSmoothingEnabled=true;
+    ctx.drawImage(off,plotX,plotY,plotW,plotH);
+
+    ctx.strokeStyle=COL.muted; ctx.lineWidth=1; ctx.globalAlpha=0.5;
+    ctx.strokeRect(plotX,plotY,plotW,plotH); ctx.globalAlpha=1;
+
+    ctx.fillStyle=COL.muted; ctx.font='11px '+(getComputedStyle(document.body).fontFamily||'sans-serif');
+    ctx.textAlign='center'; ctx.textBaseline='top';
+    var xticks=[0,2,4,6];
+    xticks.forEach(function(e){ var px=plotX+(e-lNmin)/(lNmax-lNmin)*plotW;
+      ctx.fillText(e===0?'1':'10^'+e, px, plotY+plotH+6); });
+    ctx.textAlign='right'; ctx.textBaseline='middle';
+    var dticks=[{v:0.01,l:'0.01'},{v:0.1,l:'0.1'},{v:1,l:'1'},{v:3,l:'3'}];
+    dticks.forEach(function(t){ var py=dToY(t.v); if(py>=plotY-1&&py<=plotY+plotH+1) ctx.fillText(t.l, plotX-8, py); });
+
+    ctx.textAlign='center'; ctx.textBaseline='top';
+    ctx.fillStyle=COL.muted;
+    ctx.fillText('volume × frequency  (instances / period)  →', plotX+plotW/2, plotY+plotH+22);
+    ctx.save(); ctx.translate(14,plotY+plotH/2); ctx.rotate(-Math.PI/2);
+    ctx.textBaseline='middle'; ctx.fillText('drift rate  δ  ↑',0,0); ctx.restore();
+
+    var mx=nToX(marker.N), my=dToY(marker.d);
+    mx=Math.max(plotX,Math.min(plotX+plotW,mx)); my=Math.max(plotY,Math.min(plotY+plotH,my));
+    ctx.beginPath(); ctx.arc(mx,my,7,0,Math.PI*2);
+    ctx.fillStyle=COL.ink; ctx.fill();
+    ctx.beginPath(); ctx.arc(mx,my,7,0,Math.PI*2);
+    ctx.lineWidth=2; ctx.strokeStyle=isDark?'#0b0b0b':'#ffffff'; ctx.stroke();
+  }
+
+  function readout(){
+    var ce=capEff(marker.N,marker.d), le=labEff(marker.d);
+    var ratio=le/ce;
+    var auto=ratio>1;
+    var el=document.getElementById('afe-read');
+    var verb = auto ? '<span style="color:var(--text-accent)">automate</span>' : '<span style="color:var(--text-danger)">stay human</span>';
+    var factor = auto ? (ratio).toFixed(1)+'× cheaper to automate' : (1/ratio).toFixed(1)+'× cheaper to keep human';
+    el.innerHTML = 'At N = '+fInt(marker.N)+' / period, δ = '+marker.d.toFixed(2)+
+      ' &nbsp;·&nbsp; capital '+fMoney(ce)+'/inst vs labor '+fMoney(le)+'/inst &nbsp;→&nbsp; '+verb+' ('+factor+').';
+  }
+
+  cv.addEventListener('click',function(ev){
+    var r=cv.getBoundingClientRect();
+    var scale=cssW/r.width;
+    var px=(ev.clientX-r.left)*scale, py=(ev.clientY-r.top)*scale;
+    if(px<plotX||px>plotX+plotW||py<plotY||py>plotY+plotH) return;
+    marker={N:xToN(px),d:yToD(py)};
+    draw(); readout();
+  });
+
+  function buildSliders(){
+    meta.forEach(function(m){
+      var wrap=document.createElement('div'); wrap.className='afe-row';
+      var lab=document.createElement('label'); lab.textContent=m.label;
+      var inp=document.createElement('input'); inp.type='range';
+      var val=document.createElement('span'); val.className='afe-val';
+      if(m.log){
+        inp.min=0; inp.max=1000; inp.step=1;
+        var lo=Math.log10(m.min), hi=Math.log10(m.max);
+        inp.value=Math.round(1000*(Math.log10(m.def)-lo)/(hi-lo));
+        inp.addEventListener('input',function(){
+          var t=+inp.value/1000; params[m.k]=Math.pow(10,lo+t*(hi-lo));
+          val.textContent=m.fmt(params[m.k]); draw(); readout();
+        });
+      } else {
+        inp.min=m.min; inp.max=m.max; inp.step=m.step; inp.value=m.def;
+        inp.addEventListener('input',function(){
+          params[m.k]=+inp.value; val.textContent=m.fmt(params[m.k]); draw(); readout();
+        });
+      }
+      val.textContent=m.fmt(m.def);
+      inputs[m.k]=inp; valSpans[m.k]=val;
+      wrap.appendChild(lab); wrap.appendChild(inp); wrap.appendChild(val);
+      document.getElementById(m.group==='primary'?'afe-primary':'afe-advanced').appendChild(wrap);
+    });
+  }
+
+  function syncInput(m){
+    var inp=inputs[m.k], val=valSpans[m.k];
+    if(m.log){ var lo=Math.log10(m.min),hi=Math.log10(m.max);
+      inp.value=Math.round(1000*(Math.log10(params[m.k])-lo)/(hi-lo)); }
+    else inp.value=params[m.k];
+    val.textContent=m.fmt(params[m.k]);
+  }
+  function applyConfig(cfg){
+    meta.forEach(function(m){ if(cfg[m.k]!==undefined){ params[m.k]=cfg[m.k]; syncInput(m); } });
+    if(cfg._N!==undefined) marker={N:cfg._N,d:cfg._d};
+    draw(); readout();
+  }
+
+  buildSliders();
+  document.getElementById('afe-adv-btn').addEventListener('click',function(){
+    var a=document.getElementById('afe-advanced');
+    var show=a.style.display==='none';
+    a.style.display=show?'block':'none';
+    this.textContent=show?'Hide advanced parameters':'Show advanced parameters';
+  });
+  document.getElementById('afe-p0').addEventListener('click',function(){applyConfig(presets.p0);});
+  document.getElementById('afe-p1').addEventListener('click',function(){applyConfig(presets.p1);});
+  document.getElementById('afe-p2').addEventListener('click',function(){applyConfig(presets.p2);});
+  document.getElementById('afe-reset').addEventListener('click',function(){
+    var d={}; meta.forEach(function(m){ d[m.k]=m.def; }); d._N=1000; d._d=0.3; applyConfig(d);
+  });
+
+  draw(); readout();
+
+  // Redraw when the site's dark-mode toggle flips the .dark class on <html>.
+  var themeObserver = new MutationObserver(function(){
+    var d = detectDark();
+    if(d !== isDark){ isDark = d; COL = makeCOL(); draw(); }
+  });
+  themeObserver.observe(ROOT, { attributes:true, attributeFilter:['class'] });
+})();
+</script>

@@ -1,0 +1,194 @@
+---
+title: "Complexity Is The AI Frontier"
+pubDate: "2026-06-30"
+draft: true
+description: "An economist's model of which tasks get automated and when, why the frontier of automation moves slower than most people think, and how that ties into the question of whether you can manufacture luck."
+---
+import AutomationFrontier from '../../components/diagrams/AutomationFrontier.astro';
+
+## Background: The Rise of Brains Over Muscles
+
+For centuries, humanity has increasingly rewarded experts. As we began organizing ourselves into rule-based societies and distancing ourselves from the use of force, a good brain became increasingly valuable. While there has been an unfortunate recent resurgence of violence as a solution, the world is overall much more peaceful today than ever before.
+
+As a consequence, school grades have become a measure of a person's ability to remember facts and crunch numbers. The more operations you can keep in your head, and the longer the sequence of logical steps you can run, the more positive feedback society will provide. We have spent centuries training humans to be good computers.
+
+I think the value of expert intelligence peaked in the early 2000s when the world gorged on software. Computer scientists and hackers suddenly found themselves at the top of extremely valuable companies. The wealth of high-functioning autistics today would have made Solomon blush. Wall Street is occupied by quants. Hollywood movies have been made about neuroatypical kids becoming billionaires by moving fast and breaking things. In an environment with abundant data and compute, but limited intelligence, computer-like humans became extremely valuable.
+
+## Computers Marked the Beginning of the End
+
+It is well known that value comes from scarcity and utility. While some things, as with a Pollock painting, can provide utility by stroking a rich person's ego, most utility is more practical. Food gives us nutrients. Electrical power allows us to heat or cool our homes.
+
+In the past, expert intelligence was valuable because it was both scarce and useful. The world faced a shortage of intelligent people capable of remembering many details and then applying them to solve complicated problems. These rare individuals were highly effective at solving business problems.
+
+The decline in the value of expert intelligence started the moment we got computing machines. Actually, the etymology of the word "computer" is telling. It was used as a term for a person performing computations as early as the 1600s. The first mention in the Oxford English Dictionary is from 1613. It's only much later, around the time of von Neumann's 1945 EDVAC, that the term became shorthand for a programmable electronic device. With the advent of the computer age, tasks that previously required years of deliberate practice began to be taken over by algorithms.
+
+## Predicting the Frontier of Automation
+
+It would be very useful to be able to predict the rate of automation of work. For Kognic, the company I founded, it's a critical task. We provide human judgement into autonomy data flywheels. Our value proposition is that there is a frontier of work that needs to be done in order to advance the capabilities of physical AI systems.
+
+I'm convinced this frontier of automation is moving forward slower than most people think. My conviction comes from more than 15 years of working with applying machine learning to safety-critical problems. The empirical observation I make is that most people massively underestimate how sparse and idiosyncratic the long-tail of rare tasks is. Almost nothing ever happens, especially not twice.
+
+This text is an attempt to formalize my beliefs into a model. It ties together several things that I've been reflecting on for the past several years, including the question of "can you manufacture luck". It might seem, at face value, like the frontier of automation and entrepreneurship and luck are three distinct topics, but I think they tie into each other in a very profound way.
+
+Let's start by applying an economist's lens to the problem of predicting automation.
+
+## Labor versus Capital: A Model for the Economic Value of Automating a Task
+
+I'm sorry to say, but we're going to need some math for this to make sense. I don't like using math if I can avoid it, because it scares people away from reading, but sometimes it's necessary. I hope you grind through this part. I'll do my best to keep equations easy to read.
+
+Economists typically model work as a continuum of tasks that can be completed by either humans (labor) or machines (capital). MIT Professor and Nobel Prize Winner Daron Acemoglu, together with Yale economist Pascual Restrepo, have formulated an automation criterion that I really like:
+
+> A task is automated when the effective cost of capital is below the effective cost of labor.
+
+Let's start from this statement, and specify in the context of AI performing work tasks, what goes into each variable. The effective cost of capital, i.e. the cost of automating a task using AI, could be broken down as:
+
+$$
+\text{Capital}_{\text{effective}} = \frac{\text{inference\_cost} + \dfrac{\text{train\_cost}}{\text{number\_tasks} \cdot \tau(\delta)}}{\text{quality\_capital}}
+$$
+
+where:
+
+- `inference_cost` — marginal inference cost
+- `train_cost` — the cost of one retrain cycle (compute, plus the human labels that define ground truth, plus engineering)
+- `number_tasks` — instances served per unit time
+- `τ(δ) = θ/δ` — the useful life of a trained model before quality decays below threshold
+- `quality_capital` — quality of a capital output
+
+The labor side of the equation could be broken down as:
+
+$$
+\text{Labor}_{\text{effective}} = \frac{\text{wage} + h(\delta)}{\text{quality\_labor}}
+$$
+
+where:
+
+- `wage` — the fully-loaded per-instance wage
+- `h(δ)` — the human drift
+- `quality_labor` — human output quality
+
+Thanks to this formalization, we can study for example the effect of non-stationarity on whether capital or labor is favored. Let's see how drift influences which solution is preferred:
+
+$$
+\begin{aligned}
+\frac{\partial R_{\text{eff}}}{\partial \delta} &= \frac{\text{train\_cost}}{\text{number\_tasks} \cdot \delta \cdot \text{quality\_capital}} \\[4pt]
+\frac{\partial W_{\text{eff}}}{\partial \delta} &= \frac{h(\delta)}{\text{quality\_labor}}
+\end{aligned}
+$$
+
+By rearrangement, we get that this is determined by the instances served per unit of time:
+
+$$
+\text{number\_tasks}_{\text{critical}} < \frac{\text{train\_cost} \cdot \text{quality\_labor}}{\delta \cdot \text{quality\_machine} \cdot h(\delta)}
+$$
+
+This means that labor is preferred below a certain critical volume of tasks that need to be solved during the time interval, i.e. the less frequently a task needs to be completed, the larger the labor advantage.
+
+When a machine is built and trained, the fixed cost `train_cost` benefits all instances `number_tasks`. That means that the per-instance drift cost `train_cost · δ / (number_tasks · δ)` shrinks with N. We can combine all of this into a sort of "human judgement leverage" measure:
+
+$$
+\lambda = \frac{\text{number\_tasks} \cdot \tau(\delta)}{\text{number\_labels}}
+$$
+
+where `number_labels` is the labels needed per retrain cycle. λ then becomes a measure of the number of machine-served inferences you get per unit of human judgment. Combine it all back together and we get:
+
+$$
+\text{capital}_{\text{effective}} \approx \frac{\text{inference\_cost} + \dfrac{\text{number\_label\_cost}}{\lambda}}{\text{quality\_capital}}
+$$
+
+This means that the effective cost of capital is inversely proportional to the human judgment leverage ratio. This model is nice because it:
+
+- **Groups Volume, Frequency and Stationarity into λ.**
+- **Absorbs sparsity into `number_labels`**, because the sparser the task, the more permutations we need to cover, and the higher the Bayes error means more samples are needed to pin down `P(Y|X)`.
+- **Means verifiability drives `number_labels → 0`**, which explains why code and math automated first. For verifiable tasks, ground truth is free, so `λ → ∞` and `capital_effective → inference_cost / quality_capital ≈ 0`.
+- **Captures that low observability and high ambiguity reduce `quality_machine`.**
+- **Captures that wage and hazard influence the labor side, raising `labor_effective`.**
+
+## What Does the Frontier of Automation Look Like?
+
+According to our model, the automation frontier is traced by the following equality:
+
+$$
+\frac{\text{inference\_cost} + \dfrac{\text{number\_labels\_cost}}{\lambda}}{\text{quality\_machine}} = \frac{\text{wage} + h \cdot \delta}{\text{quality\_human}}
+$$
+
+Unfortunately, it's really fucking hard for humans to develop an intuition about multidimensional surfaces. Let's start with a few observations:
+
+It's natural for humans to assume the frontier of automation resembles the frontier of human learning, but it's usually incorrect. We assume machines will learn to do things in an order similar to what is easy for humans to learn. That's clearly not the case, as has been observed over and over again. Computers have already beat humans at playing chess, but still cannot make a sandwich.
+
+The technological frontier, i.e. what can be automated, does not look the same as the economical frontier, i.e. what is worth automating. If, for example, `quality_capital` is too low or `number_labels` is too high, labor will be better even if the task can be automated. In both those cases, the task is stuck with labor as the preferred solution. I suspect that we currently overestimate the forecasted reduction in cost of capital for automation, and therefore overspend on capital. That, to me, is the most likely source of an end to the current AI-bull run. It's not that technology isn't advancing, it's that we are subsidizing the capital side of the equation on the belief that cost will go down fast and eventually overtake labor. It will in some cases, but not in all.
+
+My experience is that it's very hard to predict `quality_capital` until you deploy a solution. In practice, that means that near the boundary, the decision to automate depends on the cost of error and risk tolerance. If you have a high risk tolerance and low cost of error, you are comfortable betting more on automation. But if the cost of error is very high, and your risk tolerance is very low, as with e.g. autonomous vehicles, labor has a more persistent advantage.
+
+I've tried to design a visualization tool to build a better intuition of the frontier:
+
+<AutomationFrontier />
+
+## How Has the Shape of the Frontier Changed in Recent Years?
+
+Recently, language models have become capable of learning static facts and then reasoning about them with human-like fluency. It's important to note that for this to work, the knowledge needs to be static and relatively unambiguous. That's frequently the case, but certainly not always. One area that is fairly stationary and unambiguous is computer code. As a result, the value of being a great human hacker is plummeting right now. I think human coding in 2026 is where chess was in 1996.
+
+What happens now that we have "intelligence too cheap to meter"? What is the price elasticity of expert intelligence, i.e., how does demand change with price? And what are the most valuable abilities in this new environment?
+
+Every task that can be performed in the world req
+
+First of all, I don't think most businesses are limited by expert intelligence anymore. But, contrary to most people, I don't think they have been for quite some time. The first piece of evidence of this is that intelligence is a weak predictor of wealth. The richest people in the world aren't the smartest. Intelligence is merely a good predictor of salary, i.e., it predicts the value per hour worked. Salary is not an effective way to build wealth. It's possible, but it's relatively slow. In most cases, even those who become wealthy from "a regular job" do so thanks to some sort of partnership position where their earnings are decoupled from the number of hours they put in.
+
+The idea is that markets, over time, will correctly set prices for all goods based on all available information. Price changes should occur only when new information becomes available. In this idealized world, you could only make money by gaining information more quickly and acting before everyone else.
+
+## Complexity Is the Next Frontier of Automation
+
+Before we go deeper, I think the next frontier of human advantage over computers is complexity. It used to be that humans made money solving complicated problems. And while mastering complicated things can still be a reasonable way to make a living, it's increasingly threatened by AI.
+
+To understand why, let's be a bit more precise about the two types of systems we are talking about:
+
+**Complicated systems** are hard to build but ultimately decomposable and predictable. There are many parts, but they are fixed in knowable ways. The whole system is the sum of the parts, and relationships between inputs and outputs are mostly linear. Examples include mechanical watches, jet engines, and CPUs.
+
+**Complex systems** are hard to predict or control but easy to decompose. While each part is simple, its interactions are not. Parts interact, adapt and feedback each other, so the overall behavior emerges in a way that is not easily predicted. Behavior is determined by nonlinearity, feedback loops, path dependence, history-sensitivity, and emergence. Almost the same input can yield very different outputs depending on context and history.
+
+Being good at solving complicated problems used to be a decent way to make a living. Go back a couple of hundred years and look at high-status professions, and you find a lot of craftspeople. Entire guilds were built around master craftsmen. Yes, there were the occasional traders and bankers, too, but most people made money by taking inputs and producing outputs according to some well-understood but often complicated process.
+
+I think automation has historically followed the complication gradient, i.e., year by year, we have learned to automate more and more complicated work. Software and machines are able to master increasingly complex work. There is, from first principle, no upper bound on how much automation can do in the complication-dimension, it's just a matter of data volume and compute capacity.
+
+## What Does It Take to Perform in Complex Environments?
+
+In complicated environments, it pays off to invest in deep knowledge. Deliberate practice and solitary studying will, over time, be rewarded. The problems you are tasked do not change much over time, but are full of important details you need to master. When looking at historical research of what traits best predict performance for such jobs, we find that high general aptitude (IQ) and conscientiousness rank the highest, i.e. being smart, organized and hard working. Research shows that IQ is a great predictor of income, but ironically a much weaker predictor of wealth. The reason is that in complex environments, other traits dominate outcomes.
+
+In order to perform in a complex environment, you cannot engineer the outcome. You cannot reach into the tail of outcomes and just grab a nice one. That's not how it works. Anyone doing professional investing knows about mean reversion. There is a reason all financial advisors need to declare that "past performance is not indicative of future results".
+
+Yet, it's in the complex where the most profit is to be extracted today. As markets get more efficient, and skill becomes increasingly commditized, the next frontier is mastering complexity.
+
+This brings us to the ultimate question: can you manufacture luck? If complex systems puts us up against irreduceable randomness, what do we do? Give up? Of course not.
+
+## Manufacturing Luck
+
+Let me start by saying that I've read countless books and biographies on this topic, and spent an obscene amount of time chatting with Claude about this question. I don't pretend to know the answer, but I've been pleasantly surprised that there are some clear patterns that emerge from all the literature I've reviewed. So, this is my attempt to write up a recipe for how manufacture luck. I also want to add an important caveat: all of which I'm about to share is about producing outlier returns financially. That may or may not make you a happy, satisfied person proud of your life on your deathbed. Anyway:
+
+**Don't die.** Either literally or metaphorically. Time is your single biggest asset when working in dynamic environments. Why? Well, it's because you will be playing a game of chance. Any sufficiently dynamical system introduces significant randomness, which means a great outcome requires many draws from the distribution. Dying in this context means you don't get to make more bets. No matter how much you skew the odds, you cannot make up for the fact that you are not there to draw. Life and business is full of "absorbing barriers", i.e. events that can make you go broke. Avoid those with some margin. It's the surest way to win big in the long-run. While it's tempting to go all in at various points in life, it's never the rational strategy. Bet big - in fact, bet as big as you can when a good bet becomes available - but always ensure you stay alive.
+
+**Know and respect your risk limit.** Entrepreneurs need to accept they face concentrated risk. You only start the one company, and the odds are against you. A diversified investor can lose a few companies, a founder cannot. This will inevitably pit investors and founders against each other in many cases: a diversified investors will prefer several, uncorrelated bets with unlimited upside over fewer, smaller wins with higher probability of success. Something similar usually happens in teams and businesses. Most founders tend to be willing to make larger bets, while professionals prefer smaller bets with higher probability of success. The latter is a more diversified, lower variance approach, but at the expense of the amplitude of the wins. The fact that brashness is prized among investors is an expression of their risk preference, not the fact that it actually helps entrepreneurs succeed. There is little to no evidence that aggression as such correlates with success, but it is correlated with risk taking which in turn correlates with outliers. Correlation is not causality. It's the risk taking that is the thing, not the personality or behaviour.
+
+**Place many uncorrelated, assymetrical bets.** A high quality bet has the following characteristics: small downsize, unlimited upside (assymetrical) and independent from other bets. Finance people refer to this as a long call option. It's a "call" since it pays off on the upside and it's "long" because you are the one holding it. Equity in a startup can be a high quality bet. There can be a chance you win big, and the worst case is that you lose a small amount of money or time.
+
+In most cases, huge fortunes start with one really successful idea. That then buys the opportunity to start placing many uncorrelated, asymmetrical bets. The flywheel is the goal, but it requires fuel to get started. Some thoughts on how to get the flywheel started:
+
+**Start a compounding chain of events.** In order to start placing bets, you need cash and connections. There are tons of mechanisms that favor those already successful, preferential attachment being the most important. Success allows you to put in motion a flywheel of capital, network, reputation, and access that compounds over time. I think building a business - any business - is the best way to start the flywheel. Or, attach yourself to a successful founder and stay close to them. I started by working with a successful founder, then moved on to start my own company. That gave me both some seed money to start the flywheel, and a lot of valuable connections.
+
+**Find an intersection between 2-3 skills on top of 1-2 massive waves.** It's really, really difficult to become the best in the world in any one domain. But you can more easily reach the top 5% in 2-3 domains. That usually makes you stand out a lot. If you then review the world, and focus you skills at problems that ride on top of 1-2 massive waves, you will be exposed to a great starting point for the flywheel. Personally, I'm in the top 5% at synthesizing data and telling stories, and my company is riding the artificial intelligence wave.
+
+**Don't get greedy.** If you aim too big with the first bet, you risk not nailing a starting node for your compounding chain. It's great if your first win is massive, but it's not necessary to generate generational wealth on the first swing. You just need to start somewhere. A small business that generates a few million in net income gives you plenty of money and access in order to start placing tail-eligable bets. With aggressive networking and curiosity, you can turn that first cash generator into the foundation of an empire. The best long-term play is to own as much as possible. Investors will tell you that it's better to own a smaller part of a larger company, but again, that's because that serves their business model.
+
+**Increase the size of your bets as your portfolio grows and becomes more diversified.** Consistent with the requirement that you "don't die", you should only start raising the stakes in proportion to the size of your fortune.
+
+**Build a risk-diversified portfolio.** Eventually, you can start splitting assets into various tranches. Real-estate, stocks, bonds and venture.
+
+In terms of company management, I think there are completely symmetrical lessons to be learned. Classical management favored careful planning and detailed analysis. If your company acts in a dynamic market today, you are better off:
+
+**Every project is a bet.** A lot of work today is speculative. You have to have the courage to bet on new technology before it is proven. You should always place as many and as large bets as possible, but never so large that they risk killing you. As you get more information from the bet, you cut your losers and ride your winners. Same as the venture funds do.
+
+**Probe, sense, respond.** Run many safe-to-fail experiments, see what happens, and adapt your strategy to the results. Only the paranoid survive in complex regimes. Your company will constantly be faced with new circumstances. You can never assume what used to work will continue to work, so you always need to place new, sufficiently uncorrelated bets. How uncorrelated depends on the amount of money you have available. The less money, the more correlated.
+
+**Understand the Ansoff matrix.** When expanding, i.e. placing bets, you have four squares to consider:
+
+**Don't expand.** This is frequently the right answer. In a stationary regime dominated by deep investment in complicated problems, the answer is almost never to expand. It's to extend your lead and protect your cash generating core. You should only expand if there is evidence that your core is deteriorating due to exogenous factors, like technological disruption or environmental change.
+
+**Develop new products to the same customers.** Since there is a minimum cost of any expansion bet, you likely cannot afford more than a handful. As a result, it makes sense to maximize the probability of success.
