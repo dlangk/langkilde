@@ -1,5 +1,6 @@
 ---
 pubDate: "2019-12-27"
+description: "Society is trapped by the fallacy that logic always beats emotion. But innovation is faith, willing something new into existence before the facts exist to justify it. I reward courage as much as success. Believe in something."
 title: Believe in something
 ---
 

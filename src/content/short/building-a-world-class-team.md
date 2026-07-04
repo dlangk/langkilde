@@ -1,5 +1,6 @@
 ---
 pubDate: "2023-09-19"
+description: "Culture isn't what you write in a document — it's the sum of your daily actions. Great teams are built by selecting people who share your goals, risk appetite, and determination. Combine relentless urgency with real trust, and refuse to be an asshole about any of it."
 title: Building a world-class team
 ---
 

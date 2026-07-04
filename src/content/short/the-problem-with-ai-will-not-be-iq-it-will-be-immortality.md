@@ -1,5 +1,6 @@
 ---
 pubDate: "2024-04-07"
+description: "Give a machine an IQ of 1500 and it still can't manifest hit after hit — reality is too noisy, markets too zero-sum. The real danger isn't intelligence. It's an immortal player that just compounds, quietly, until it owns everything. It's a good thing humans die."
 title: The problem with AI will not be IQ, it will be immortality
 ---
 

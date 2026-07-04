@@ -1,5 +1,6 @@
 ---
 pubDate: "2023-01-09"
+description: "Every company eventually becomes an asset in someone's portfolio. Venture capital is a power-law game where most bets return less than you put in. If you want massive returns, take massive risks — but be honest about them, and know exactly what kind of asset you are."
 title: Building Extremely Valuable Companies
 ---
 

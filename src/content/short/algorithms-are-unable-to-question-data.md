@@ -1,5 +1,6 @@
 ---
 pubDate: "2018-01-17"
+description: "Given enough data, supervised learning can copy almost any behavior. But it can't question that data, or negotiate what the data even means. That gap is why judgment keeps people invaluable — and why general intelligence isn't as close as the headlines claim."
 title: Algorithms are Unable to Question Data
 ---
 

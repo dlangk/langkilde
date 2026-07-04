@@ -1,5 +1,6 @@
 ---
 pubDate: "2022-07-30"
+description: "In school, working hard guarantees success. The moment you leave, that deal expires: greatness now demands bets, and most of them fail — but losing one doesn't make you a failure. Stop chasing the probable and start chasing the possible."
 title: Extraordinary Success Requires Betting
 ---
 

@@ -1,5 +1,6 @@
 ---
 pubDate: "2024-01-02"
+description: "Let's build an imaginary venture fund and run the numbers. Almost every bet returns less than you put in; a single homerun carries the whole thing. Do the math and you stop resenting how picky VCs are — and start understanding it."
 title: Let's start a VC fund and make money!
 ---
 

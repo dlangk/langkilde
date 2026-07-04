@@ -1,5 +1,6 @@
 ---
 pubDate: "2016-09-10"
+description: "Everyone thinks the real work is the algorithm. After years building NLP systems, I've learned the hard part comes earlier: getting well-annotated data. \"I know it when I see it\" won't cut it. Skip the groundwork and your project fails before the coding starts."
 title: The Importance of Annotated Data in NLP
 ---
 

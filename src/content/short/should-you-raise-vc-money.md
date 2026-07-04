@@ -1,5 +1,6 @@
 ---
 pubDate: "2023-12-17"
+description: "VC money is like powering your car with an unstable nuclear reactor: you fly fast, but the likeliest outcome is a meltdown. The math only works for companies that can plausibly return 100x — so be honest about whether that's the company you're actually building."
 title: Should you raise VC money?
 ---
 

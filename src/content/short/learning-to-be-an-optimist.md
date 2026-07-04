@@ -1,5 +1,6 @@
 ---
 pubDate: "2021-07-15"
+description: "For every big idea, I used to ask: can this be done? That's the wrong question. Ask \"must this be done?\" instead, because if the answer is yes, others will believe too, and the how tends to take care of itself."
 title: Learning to be an Optimist
 ---
 

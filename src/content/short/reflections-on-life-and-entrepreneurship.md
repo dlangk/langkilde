@@ -1,5 +1,6 @@
 ---
 pubDate: "2023-01-04"
+description: "I have two goals: enjoy life with the people I love, and build extraordinary things. Almost everything hard lives in the tension between them. These are the patterns I keep returning to, on leverage, luck, sacrifice, and playing the long game without playing too long."
 title: Reflections on Life and Entrepreneurship
 ---
 

@@ -1,5 +1,6 @@
 ---
 pubDate: "2024-05-20"
+description: "Language models are like an internet that can generalize — powerful enough to write new knowledge into being. But writing something down doesn't make it true, and most business failures come from sampling reality at the wrong resolution. The real frontier isn't more text. It's experimentation."
 title: Sampling Reality
 ---
 

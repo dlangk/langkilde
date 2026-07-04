@@ -1,5 +1,6 @@
 ---
 pubDate: "2023-04-25"
+description: "Super-intelligent AI might turn out to be a lot like a company: a distributed optimizer we already know how to regulate. Progress in AI is mostly good, and I'll take humans over machines as a moral axiom. Our best defense against automation is that we don't know why we exist."
 title: Anthropocentrism, Alignment, and Personalization
 ---
 

@@ -1,5 +1,6 @@
 ---
 pubDate: "2023-01-02"
+description: "What's left for humans when machines can combine any idea we've ever written down? Memory and pattern-matching are becoming as cheap as a calculator. The edge moves to uncommon sense: dream up weird things that should exist, then convince your friends to build them."
 title: Relationships and Uncommon Sense in a time of AI
 ---
 

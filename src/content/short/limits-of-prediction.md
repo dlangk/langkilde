@@ -1,5 +1,6 @@
 ---
 pubDate: "2024-08-11"
+description: "We all assume being smarter is a superpower. But if predicting the future gets exponentially more expensive the further out you look, intelligence has diminishing returns. A great Yatzy player still loses to a decent one. Maybe the same is true for intelligence."
 title: Limits of Prediction
 ---
 

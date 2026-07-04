@@ -1,5 +1,6 @@
 ---
 pubDate: "2021-01-12"
+description: "The only durable advantage left is constantly adapting to new, complex situations. Automotive plans every project down to the day; pharma triages risk and spends four times as much on R&D. Empower your team, demand greatness, and focus. No risk, no reward."
 title: Management Under Uncertainty
 ---
 

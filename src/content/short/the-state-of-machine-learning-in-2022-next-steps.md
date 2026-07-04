@@ -1,5 +1,6 @@
 ---
 pubDate: "2022-05-12"
+description: "PaLM and Flamingo produce mind-blowing demos, but the sharper question isn't what they do — it's why they work better than before. One pattern holds: bigger models keep getting better. Human-level virtual entities may be only a few years off. Be prepared."
 title: The State of Machine Learning in 2022 - Next steps?
 ---
 

@@ -1,5 +1,6 @@
 ---
 pubDate: "2023-06-08"
+description: "I've oscillated from terrified to worried to excited and back again. My mind has finally settled: despite real risks, I'm excited about AI. Here's the chain of assumptions that got me there — starting with the one that matters most, that humans are more important than machines."
 title: Why I am excited about AI
 ---
 

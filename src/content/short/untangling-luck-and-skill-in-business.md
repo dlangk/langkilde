@@ -1,5 +1,6 @@
 ---
 pubDate: "2024-03-27"
+description: "I hate failing, and I take every setback personally — but often the outcome was simply luck. Skill improves your odds; outlier success still needs the coin to land your way. Business is a bundle of bets. Be undaunted, and busy building."
 title: Untangling Luck and Skill in Business
 ---
 

@@ -1,5 +1,6 @@
 ---
 pubDate: "2022-04-09"
+description: "Working hard when you're already comfortable makes no sense. Some people do it anyway, and I'm one of them. I've stopped pretending that makes me better, but if you want to build something great, find partners who keep going too."
 title: The energy to keep going
 ---
 

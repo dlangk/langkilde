@@ -1,5 +1,6 @@
 ---
 pubDate: "2024-01-14"
+description: "Venture capitalists survive by placing many small bets, each with a shot at an outlier outcome. The same logic works for a life, not just a fund. Secure a floor, size your bets without emotion, and stack the odds of getting lucky."
 title: Many small bets with outlier potential
 ---
 

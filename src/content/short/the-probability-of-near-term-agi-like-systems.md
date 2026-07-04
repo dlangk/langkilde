@@ -1,5 +1,6 @@
 ---
 pubDate: "2023-03-26"
+description: "I spent years insisting computers were dumb and that \"AI\" sounded pompous. I've changed my mind. Today's models are a form of general intelligence, capable enough to substitute for humans across a wide range of work. Stop debating definitions. The disruption is already underway."
 title: The Probability Of Near-Term AGI-Like Systems
 ---
 

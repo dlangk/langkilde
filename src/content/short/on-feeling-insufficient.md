@@ -1,5 +1,6 @@
 ---
 pubDate: "2025-12-22"
+description: "One word sums up how this year actually felt: insufficient. The feeling never stops, and it's exhausting. Maybe the point isn't to beat it, but to tell myself a kinder story about why it's there."
 title: On Feeling Insufficient 😣
 ---
 

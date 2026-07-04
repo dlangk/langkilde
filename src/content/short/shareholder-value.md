@@ -1,5 +1,6 @@
 ---
 pubDate: "2024-05-06"
+description: "The purpose of a company is to create shareholder value. If that's not your goal, start an NGO instead. Most founders think the job is to raise and spend money. It's actually to convert capital into enterprise value faster than that capital costs you."
 title: Shareholder Value
 ---
 

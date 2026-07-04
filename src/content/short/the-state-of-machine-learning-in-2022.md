@@ -1,5 +1,6 @@
 ---
 pubDate: "2022-04-18"
+description: "I built my first robot out of Lego 20 years ago, and machine learning still blindsides me. Embeddings, attention, transformers, DALLE2 — here's how the breakthroughs actually work. Understand the mechanics, or you'll never work out what they mean for your business."
 title: The State of Machine Learning in 2022
 ---
 

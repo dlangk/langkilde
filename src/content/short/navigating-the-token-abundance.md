@@ -1,5 +1,6 @@
 ---
 pubDate: "2026-02-24"
+description: "Text has never been worth less. Anyone can sound articulate at the push of a button, so the premium is no longer on writing things down. It's on thinking something worth saying, proving it's true, and making people feel it in their bones. That's the superpower no AI can give you."
 title: Navigating the Token Abundance
 ---
 

@@ -1,5 +1,6 @@
 ---
 pubDate: "2025-05-01"
+description: "Every AI has a system prompt — instructions that shape its behavior, tone, and limits. I think humans do too; ours is just never written down. So I wrote mine: my goals, my philosophy of life, my values, and the lines I refuse to cross."
 title: My Systems Prompt
 ---
 

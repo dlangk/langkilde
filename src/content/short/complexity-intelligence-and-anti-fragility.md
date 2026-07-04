@@ -1,5 +1,6 @@
 ---
 pubDate: "2024-06-13"
+description: "Engineers and CEOs want to reduce the world to simple models. But society, your body, your company are complex, not merely complicated — and no amount of compute tames that. Pattern-matching is becoming a commodity. If your job is deciding from data, lean into complexity instead."
 title: Complexity, Intelligence and Anti-Fragility
 ---
 

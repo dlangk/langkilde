@@ -1,5 +1,6 @@
 ---
 pubDate: "2020-06-20"
+description: "The hardest thing in business is saying no. Focus unlocks flow, craftsmanship, and compounding momentum — but market size, timing, and the fear of being blindsided constantly tempt teams to do too much. Find one problem worth years of obsession, and guard it."
 title: Commercial Ikigai
 ---
 

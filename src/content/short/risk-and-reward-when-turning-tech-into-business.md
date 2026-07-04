@@ -1,5 +1,6 @@
 ---
 pubDate: "2021-11-07"
+description: "New technology only becomes valuable when someone pays for it, and the more audacious the product, the bigger the bet. There's no universal answer for how far out on the risk-reward curve you should sit. It starts with knowing yourself and what you actually want."
 title: Risk and reward when turning tech into business
 ---
 

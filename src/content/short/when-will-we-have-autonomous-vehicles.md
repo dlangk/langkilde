@@ -1,5 +1,6 @@
 ---
 pubDate: "2019-10-18"
+description: "Everyone asks me when we'll get self-driving cars. My answer: decades, not years. Three words explain why — sparsity, fragility, complexity. Machines will master the boring highway miles long before they handle a construction site full of pedestrians."
 title: When will we have Autonomous Vehicles?
 ---
 

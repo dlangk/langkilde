@@ -1,5 +1,6 @@
 ---
 pubDate: "2026-02-16"
+description: "It's 2040. The systems generate everything overnight — the garden, the daycare, the whole housing block. Maya's job is to catch what they couldn't infer, because no one thought to say it. A story about the one thing still done on twenty watts: judgment."
 title: A Tuesday in the Year 2040
 ---
 

@@ -1,5 +1,6 @@
 ---
 pubDate: "2023-07-27"
+description: "Language models read the whole internet to learn what a child picks up by watching. Robust intelligence needs a world model — grounding, common sense, an intuition for physics. For 15 years we've built perception as a separate, hand-labeled step. I think that's the mistake."
 title: Learning World Models for Robust AI
 ---
 

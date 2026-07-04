@@ -1,5 +1,6 @@
 ---
 pubDate: "2024-09-16"
+description: "Don't start with a cool technology or a clever solution. Start with a deep, powerful need, because there is always a legitimate need, even when customers describe it badly. Everything after that, how radical you dare to be, is just risk preference."
 title: Understanding Need, Risk and Excitement
 ---
 

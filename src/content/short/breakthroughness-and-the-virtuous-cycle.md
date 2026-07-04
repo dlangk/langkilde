@@ -1,5 +1,6 @@
 ---
 pubDate: "2023-02-27"
+description: "Life is a flywheel. Each book you read and person you meet feels insignificant, but small early wins compound into momentum that's hard to stop. Some things stay useless until they suddenly aren't. How did it happen? Gradually, then suddenly."
 title: Breakthroughness and The Virtuous Cycle
 ---
 

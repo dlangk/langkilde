@@ -1,5 +1,6 @@
 ---
 pubDate: "2023-04-06"
+description: "Super-intelligent AGI is probably still distant; I put the odds of today's models self-improving below 5%. But I can't dismiss the tail risk. In the end, how you feel about AI comes down to how you handle a tiny chance of catastrophe."
 title: Artificial Intelligence and Scaling Laws
 ---
 
