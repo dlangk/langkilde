@@ -136,6 +136,40 @@ function bindRefMarkers(root: HTMLElement | Document) {
   });
 }
 
+function bindPostPreviews(root: HTMLElement | Document) {
+  // Post previews render into a fixed panel at the bottom of the sidebar
+  // (not a floating tooltip), to keep the writings list uncluttered.
+  const panel = document.getElementById("post-preview");
+  if (!panel) return;
+
+  let clearTimer: ReturnType<typeof setTimeout> | null = null;
+  const show = (text: string) => {
+    if (clearTimer) {
+      clearTimeout(clearTimer);
+      clearTimer = null;
+    }
+    panel.textContent = text;
+  };
+  // Short delay so moving between adjacent links doesn't flash the panel empty.
+  const hide = () => {
+    if (clearTimer) clearTimeout(clearTimer);
+    clearTimer = setTimeout(() => {
+      panel.textContent = "";
+    }, 200);
+  };
+
+  root.querySelectorAll<HTMLElement>("a[data-preview]").forEach((el) => {
+    const preview = el.dataset.preview;
+    if (!preview) return;
+
+    // Hover/focus only — no click handler, so the link still navigates.
+    el.addEventListener("mouseenter", () => show(preview));
+    el.addEventListener("mouseleave", hide);
+    el.addEventListener("focus", () => show(preview));
+    el.addEventListener("blur", hide);
+  });
+}
+
 function bindAllTooltips(root: HTMLElement | Document) {
   bindConcepts(root);
   bindFootnotes(root);
@@ -144,6 +178,7 @@ function bindAllTooltips(root: HTMLElement | Document) {
 
 function init() {
   bindAllTooltips(document);
+  bindPostPreviews(document);
 
   // Smooth scroll for in-article anchor links (not sidebar, not footnote refs, not ref markers)
   document.querySelectorAll<HTMLAnchorElement>('.post-content a[href^="#"]').forEach((el) => {

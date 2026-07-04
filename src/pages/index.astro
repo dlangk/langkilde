@@ -26,6 +26,7 @@ const shortPosts = sortByDate(
         title="RSS Feed"
       />
     </ul>
+    <div id="post-preview" class="sidebar-preview" aria-live="polite"></div>
   </nav>
 
   <main>
@@ -36,7 +37,7 @@ const shortPosts = sortByDate(
         {
           shortPosts.map((post) => (
             <li>
-              <a href={`${PATHS.short}/${post.id}`}>
+              <a href={`${PATHS.short}/${post.id}`} data-preview={post.data.description}>
                 {post.data.title} <small>({post.data.pubDate})</small>
               </a>
             </li>
@@ -47,3 +48,5 @@ const shortPosts = sortByDate(
     <div class="bottom-spacer"></div>
   </main>
 </BaseLayout>
+
+<script src="../scripts/tooltips.ts"></script>

@@ -158,6 +158,28 @@ a {
   color: var(--accent-solid);
 }
 
+/* Post-preview panel: appears right below the sidebar nav on hover, and
+   collapses to nothing when idle so it leaves no gap under the menu. */
+.sidebar-preview {
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--text-color);
+  opacity: 0.72;
+}
+
+.sidebar-preview:not(:empty) {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--text-fade);
+}
+
+@media (max-width: 800px) {
+  .sidebar-preview {
+    display: none;
+  }
+}
+
 .sidebar-toggle {
   display: none;
 }
