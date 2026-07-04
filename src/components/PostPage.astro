@@ -7,7 +7,7 @@ interface Props {
     id: string;
     filePath?: string;
     body?: string;
-    data: { title: string; pubDate: string };
+    data: { title: string; pubDate: string; description?: string };
   };
   headings: { depth: number; slug: string; text: string }[];
   Content: any;
@@ -50,6 +50,8 @@ const hasMath = post.body?.includes("$$") ?? false;
       <span class="separator">|</span>
       <a href={githubUrl} class="permalink" target="_blank" rel="noopener">GitHub</a>
     </div>
+
+    {post.data.description && <p class="post-dek">{post.data.description}</p>}
 
     <div class="post-content">
       <Content />

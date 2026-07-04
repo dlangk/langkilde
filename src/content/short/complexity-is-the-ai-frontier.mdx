@@ -1,20 +1,18 @@
 ---
-title: "Complexity Is The AI Frontier"
+title: "Complexity Is The Next AI Frontier"
 pubDate: "2026-06-30"
+description: "We spent centuries training humans to be good computers. Now intelligence is too cheap to meter. But automation moves slower than most people think — proving a machine safe enough demands the most expensive labels in the world. Complexity is the next frontier of human advantage."
 draft: true
-description: "An economist's model of which tasks get automated and when, why the frontier of automation moves slower than most people think, and how that ties into the question of whether you can manufacture luck."
 ---
 import AutomationFrontier from '../../components/diagrams/AutomationFrontier.astro';
 
-## Background: The Rise of Brains Over Muscles
+## The Rise and Fall of Human Computers
 
 For centuries, humanity has increasingly rewarded experts. As we began organizing ourselves into rule-based societies and distancing ourselves from the use of force, a good brain became increasingly valuable. While there has been an unfortunate recent resurgence of violence as a solution, the world is overall much more peaceful today than ever before.
 
 As a consequence, school grades have become a measure of a person's ability to remember facts and crunch numbers. The more operations you can keep in your head, and the longer the sequence of logical steps you can run, the more positive feedback society will provide. We have spent centuries training humans to be good computers.
 
 I think the value of expert intelligence peaked in the early 2000s when the world gorged on software. Computer scientists and hackers suddenly found themselves at the top of extremely valuable companies. The wealth of high-functioning autistics today would have made Solomon blush. Wall Street is occupied by quants. Hollywood movies have been made about neuroatypical kids becoming billionaires by moving fast and breaking things. In an environment with abundant data and compute, but limited intelligence, computer-like humans became extremely valuable.
-
-## Computers Marked the Beginning of the End
 
 It is well known that value comes from scarcity and utility. While some things, as with a Pollock painting, can provide utility by stroking a rich person's ego, most utility is more practical. Food gives us nutrients. Electrical power allows us to heat or cool our homes.
 
@@ -24,11 +22,11 @@ The decline in the value of expert intelligence started the moment we got comput
 
 ## Predicting the Frontier of Automation
 
-It would be very useful to be able to predict the rate of automation of work. For Kognic, the company I founded, it's a critical task. We provide human judgement into autonomy data flywheels. Our value proposition is that there is a frontier of work that needs to be done in order to advance the capabilities of physical AI systems.
+It would be very useful to be able to predict the rate of automation of work. For Kognic, the company I founded, it's of critical value since we provide human judgement into autonomy data flywheels. Our core belief is that there is a frontier of work that needs to be done by humans in order to advance the capabilities of physical AI systems.
 
-I'm convinced this frontier of automation is moving forward slower than most people think. My conviction comes from more than 15 years of working with applying machine learning to safety-critical problems. The empirical observation I make is that most people massively underestimate how sparse and idiosyncratic the long-tail of rare tasks is. Almost nothing ever happens, especially not twice.
+**I am convinced this frontier of automation is moving forward slower than most people think.** This belief comes from more than 15 years of working with applying machine learning to safety-critical problems. The observation I make is that most people massively underestimate how sparse and idiosyncratic the long-tail of rare tasks is. Almost nothing ever happens, especially not twice.
 
-This text is an attempt to formalize my beliefs into a model. It ties together several things that I've been reflecting on for the past several years, including the question of "can you manufacture luck". It might seem, at face value, like the frontier of automation and entrepreneurship and luck are three distinct topics, but I think they tie into each other in a very profound way.
+This post is an attempt to formalize my beliefs into a model. It ties together several things that I've been reflecting on for the past several years, including the question of "can you manufacture luck". It might seem, at face value, like the frontier of automation and entrepreneurship and luck are three distinct topics, but I think they tie into each other in a very profound way.
 
 Let's start by applying an economist's lens to the problem of predicting automation.
 
@@ -36,11 +34,30 @@ Let's start by applying an economist's lens to the problem of predicting automat
 
 I'm sorry to say, but we're going to need some math for this to make sense. I don't like using math if I can avoid it, because it scares people away from reading, but sometimes it's necessary. I hope you grind through this part. I'll do my best to keep equations easy to read.
 
-Economists typically model work as a continuum of tasks that can be completed by either humans (labor) or machines (capital). MIT Professor and Nobel Prize Winner Daron Acemoglu, together with Yale economist Pascual Restrepo, have formulated an automation criterion that I really like:
+Economists typically model work as a continuum of tasks that can be completed by either humans (labor) or machines (capital). MIT Professor and Nobel Prize winner Daron Acemoglu, together with Yale economist Pascual Restrepo, have formulated an automation criterion that I really like:
 
 > A task is automated when the effective cost of capital is below the effective cost of labor.
 
-Let's start from this statement, and specify in the context of AI performing work tasks, what goes into each variable. The effective cost of capital, i.e. the cost of automating a task using AI, could be broken down as:
+Let's start from this statement and specify, in the context of AI performing work tasks, what goes into each variable. The purpose is to answer one question: what does it really cost, all in all, to have a machine do one instance of a task, expressed so that it can be compared against a human's wage?
+
+### The cost of automation
+
+Automating a task incurs cost in two ways:
+
+1. The **Marginal cost** you pay every single time the machine runs, i.e. your `inference_cost`. In practice, this is something like the fully loaded GPU-seconds required for one forward pass.
+2. The **Fixed cost** you pay once per train cycle, i.e. your `train_cost`. In this we bundle engineering, compute, reinforcement learning, and all the human labels that define what a correct answer looks like.
+
+A fixed cost can't be compared to a per-instance wage until you spread it over the instances it serves:
+
+$$
+\frac{\text{train\_cost}}{\text{number\_tasks} \cdot \tau(\delta)}
+$$
+
+The denominator is "how many instances does one trained model serve before it becomes useless". It's the same arithmetic as pricing a printing press: cost per page = ink per page + (press price / pages printed over the press's life).
+
+Here, $$\tau(\delta)$$ is the useful life of the model. A trained model is a frozen snapshot of the world at training time. If the task drifts, i.e. the definition of success shifts, performance decays. We express the lifespan as $$\tau(\delta) = \theta/\delta$$, where $$\theta$$ is a drift resistance factor: how much cumulative change the model can absorb before quality falls below our acceptance threshold, and $$\delta$$ is the rate at which the world spends that budget. It's like a tire: life = tread depth / wear rate. A stationary task means $$\tau \to \infty$$: You train once and amortize forever. A fast-drifting task means the fixed cost gets spread over few instances and comes back constantly.
+
+Finally, we need a `quality_capital` factor that converts dollars-per-inference into dollars-per-good-inference. If the machine produces an acceptable output 80% of the time, each usable result costs 1/0.8 = 1.25 attempts. Put together:
 
 $$
 \text{Capital}_{\text{effective}} = \frac{\text{inference\_cost} + \dfrac{\text{train\_cost}}{\text{number\_tasks} \cdot \tau(\delta)}}{\text{quality\_capital}}
@@ -54,54 +71,163 @@ where:
 - `τ(δ) = θ/δ` — the useful life of a trained model before quality decays below threshold
 - `quality_capital` — quality of a capital output
 
+Substituting τ(δ) = θ/δ makes the drift dependence explicit:
+
+$$
+\text{Capital}_{\text{effective}} = \frac{1}{\text{quality\_capital}} \left( \text{inference\_cost} + \frac{\text{train\_cost} \cdot \delta}{\text{number\_tasks} \cdot \theta} \right)
+$$
+
+Drift enters linearly, and always in the ratio δ / number_tasks. Doubling the drift rate does exactly what halving the volume does. Remember that. It's the core of everything below.
+
+### The cost of labor
+
 The labor side of the equation could be broken down as:
 
 $$
-\text{Labor}_{\text{effective}} = \frac{\text{wage} + h(\delta)}{\text{quality\_labor}}
+\text{Labor}_{\text{effective}} = \frac{\text{wage} + h \cdot \delta}{\text{quality\_labor}}
 $$
 
 where:
 
 - `wage` — the fully-loaded per-instance wage
-- `h(δ)` — the human drift
+- `h · δ` — the human drift tax, with h as the human adaptation cost per unit of drift
 - `quality_labor` — human output quality
 
-Thanks to this formalization, we can study for example the effect of non-stationarity on whether capital or labor is favored. Let's see how drift influences which solution is preferred:
+Humans also pay for a changing world: retraining, errors during transitions, turnover. That's the h·δ term. When an adapted worker leaves, their learning leaves with them.
+
+### Drift decides through volume
+
+Thanks to this formalization, we can study the effect of non-stationarity on whether capital or labor is favored. Differentiate both sides by the drift rate:
 
 $$
 \begin{aligned}
-\frac{\partial R_{\text{eff}}}{\partial \delta} &= \frac{\text{train\_cost}}{\text{number\_tasks} \cdot \delta \cdot \text{quality\_capital}} \\[4pt]
-\frac{\partial W_{\text{eff}}}{\partial \delta} &= \frac{h(\delta)}{\text{quality\_labor}}
+\frac{\partial\, \text{Capital}_{\text{effective}}}{\partial \delta} &= \frac{\text{train\_cost}}{\text{number\_tasks} \cdot \theta \cdot \text{quality\_capital}} \\[4pt]
+\frac{\partial\, \text{Labor}_{\text{effective}}}{\partial \delta} &= \frac{h}{\text{quality\_labor}}
 \end{aligned}
 $$
 
-By rearrangement, we get that this is determined by the instances served per unit of time:
+Rising drift tips the balance toward labor exactly when capital's cost is the more drift-sensitive of the two. Rearranging, that condition is determined by the instances served per unit of time:
 
 $$
-\text{number\_tasks}_{\text{critical}} < \frac{\text{train\_cost} \cdot \text{quality\_labor}}{\delta \cdot \text{quality\_machine} \cdot h(\delta)}
+\text{number\_tasks} < \frac{\text{train\_cost} \cdot \text{quality\_labor}}{\theta \cdot \text{quality\_capital} \cdot h} \equiv \text{number\_tasks}_{\text{critical}}
 $$
 
-This means that labor is preferred below a certain critical volume of tasks that need to be solved during the time interval, i.e. the less frequently a task needs to be completed, the larger the labor advantage.
+Below this critical volume, increasing drift works in labor's favor. The less frequently a task needs to be completed, the larger the labor advantage.
 
-When a machine is built and trained, the fixed cost `train_cost` benefits all instances `number_tasks`. That means that the per-instance drift cost `train_cost · δ / (number_tasks · δ)` shrinks with N. We can combine all of this into a sort of "human judgement leverage" measure:
+The reason is an amortization asymmetry. When a machine is retrained, the fixed cost `train_cost` benefits all `number_tasks` instances at once, so the per-instance drift cost `train_cost · δ / (number_tasks · θ)` shrinks with volume. When a human adapts, that update is trapped in one head and does not transfer. The per-instance drift tax is constant in volume. Sample efficiency does not save labor at scale. Amortization defeats it.
+
+### Human judgment leverage
+
+We can combine all of this into a single measure:
 
 $$
 \lambda = \frac{\text{number\_tasks} \cdot \tau(\delta)}{\text{number\_labels}}
 $$
 
-where `number_labels` is the labels needed per retrain cycle. λ then becomes a measure of the number of machine-served inferences you get per unit of human judgment. Combine it all back together and we get:
+where `number_labels` is the labels needed per retrain cycle. λ measures the number of machine-served inferences you get per unit of human judgment. For judgment-heavy tasks, `train_cost` is dominated by label production, i.e. `train_cost ≈ number_label_cost · number_labels`. Combine it all back together and we get:
 
 $$
-\text{capital}_{\text{effective}} \approx \frac{\text{inference\_cost} + \dfrac{\text{number\_label\_cost}}{\lambda}}{\text{quality\_capital}}
+\text{Capital}_{\text{effective}} \approx \frac{\text{inference\_cost} + \dfrac{\text{number\_label\_cost}}{\lambda}}{\text{quality\_capital}}
 $$
 
-This means that the effective cost of capital is inversely proportional to the human judgment leverage ratio. This model is nice because it:
+The effective cost of capital is inversely proportional to the human judgment leverage ratio. This model is nice because it:
 
 - **Groups Volume, Frequency and Stationarity into λ.**
-- **Absorbs sparsity into `number_labels`**, because the sparser the task, the more permutations we need to cover, and the higher the Bayes error means more samples are needed to pin down `P(Y|X)`.
-- **Means verifiability drives `number_labels → 0`**, which explains why code and math automated first. For verifiable tasks, ground truth is free, so `λ → ∞` and `capital_effective → inference_cost / quality_capital ≈ 0`.
-- **Captures that low observability and high ambiguity reduce `quality_machine`.**
-- **Captures that wage and hazard influence the labor side, raising `labor_effective`.**
+- **Absorbs sparsity into `number_labels`**, because the sparser the task, the more permutations we need to cover, and the higher the Bayes error, the more samples are needed to pin down `P(Y|X)`.
+- **Means verifiability drives $$\text{number\_labels} \to 0$$**, which explains why code and math automated first. For verifiable tasks, ground truth is free, so $$\lambda \to \infty$$ and $$\text{Capital}_{\text{effective}} \to \text{inference\_cost}/\text{quality\_capital} \approx 0$$.
+- **Captures that low observability and high ambiguity reduce `quality_capital`**, and no amount of training pushes past the ambiguity ceiling.
+- **Captures that wage and hazard influence the labor side, raising `Labor_effective`.**
+
+### The cost of being wrong
+
+The model so far has a hidden assumption. The division by quality prices every error as one wasted attempt. That is a rework model: it assumes a bad output is always caught, costlessly, before it touches the world, and the only loss is running the machine again. True for code with tests. True for a draft with review. False for a car at 70 km/h. There, the output is not a draft. It's an action. There is no retry.
+
+In safety-critical applications the asymmetry is brutal: the value of a good output is small, the cost of a bad one can be enormous. We need two new variables:
+
+- `cost_error` — the expected harm of one bad output that reaches the world
+- `d` — the detection probability, i.e. the chance a bad output is intercepted before it has consequences
+
+Write the per-attempt production cost as:
+
+$$
+\text{attempt\_cost} = \text{inference\_cost} + \frac{\text{train\_cost}}{\text{number\_tasks} \cdot \tau(\delta)}
+$$
+
+Each attempt produces a good output, a caught error (costing a retry), or an escaped error (costing `cost_error`). The expected cost per delivered instance becomes:
+
+$$
+\text{Capital}_{\text{effective}} = \frac{\text{attempt\_cost} + (1 - \text{quality\_capital}) \cdot (1 - d) \cdot \text{cost\_error}}{1 - (1 - \text{quality\_capital}) \cdot d}
+$$
+
+Check the limits. At d = 1, every error is caught: the denominator becomes `quality_capital`, the harm term vanishes, and we recover the original equation exactly. The entire model above was the perfect-verifier special case. At d = 0, nothing is caught: cost collapses to `attempt_cost + (1 − quality_capital) · cost_error`. You pay production plus expected harm, every instance. Real-time control lives at d ≈ 0. Note that the quality division disappears in this regime. Dividing by quality is retry math, and there are no retries. Errors become an additive harm term instead.
+
+The human side gets the same treatment, and this is where automation debates usually cheat:
+
+$$
+\text{Labor}_{\text{effective}} = \text{wage} + h \cdot \delta + (1 - \text{quality\_labor}) \cdot \text{cost\_error}
+$$
+
+Humans crash too. That cost is already priced into the status quo.
+
+Now compare the two in the execution regime, assuming for a moment that an error costs the same regardless of who made it. Automation pays when:
+
+$$
+\underbrace{(\text{wage} + h \cdot \delta) - \text{attempt\_cost}}_{\text{production savings}} > (\text{quality\_labor} - \text{quality\_capital}) \cdot \text{cost\_error}
+$$
+
+Rearrange for the quality deficit you can tolerate:
+
+$$
+\Delta q^{*} = \frac{\text{production\_savings}}{\text{cost\_error}}
+$$
+
+The tolerable quality gap is hyperbolic in the cost of error. The value of a good output is capped by the wage it displaces. The cost of a bad one is unbounded. As `cost_error` grows, no wage savings can buy even a sliver of extra risk.
+
+Run driving through it. A $25/hour driver at 65 km/h saves you roughly $0.63 per mile. The human harm baseline: about 1.3 fatalities per 100 million vehicle-miles, times a value of statistical life of $13.7M, is roughly $0.18 per mile of expected fatal harm. Mature insurance markets price per-mile risk at about this level, i.e. a quarter of the wage. Driving is a task where the cost of error is already the same order of magnitude as the cost of labor, before any machine shows up.
+
+### A machine as safe as a human still loses
+
+The symmetric-harm assumption above is false, and the asymmetry has a direction. Human error is dispersed across millions of insured individuals, damage-capped, and socially forgiven. We literally call it "human error." Machine error concentrates on one deep-pocketed manufacturer, under product liability, punitive damages, regulatory response, and algorithm aversion: people abandon an algorithm after one visible mistake they would forgive in a person. So write `cost_error_machine = L · cost_error_human` with L well above 1.
+
+Plug that in and set the qualities equal. The machine still carries a penalty of `(1 − quality) · cost_error_human · (L − 1)`, which is positive. A machine exactly as safe as a human loses. Its error rate has to be roughly L times lower before wage savings even enter the comparison.
+
+Cruise is the empirical measurement of L. One escaped error in October 2023, a pedestrian-dragging incident where the initial collision was caused by a human hit-and-run driver, triggered permit suspension, a nationwide grounding, and eventually GM shutting the unit down after roughly $10B invested. One incident, priced orders of magnitude above the statistical value of a life. A human driver doing the same would have been a tragedy and an insurance claim.
+
+There is a second asymmetry: correlation. A thousand human drivers are a thousand nearly independent error processes. One model deployed on a thousand vehicles is a single correlated position. Same expected harm, much fatter tail. A flaw is not an incident, it's a fleet event plus a recall. And every retrain injects fresh common-mode risk into the entire installed base at once, which couples this problem directly to drift.
+
+### Proving safety is quadratically expensive
+
+You don't deploy on true quality. You deploy on demonstrated quality. Rare, costly errors are exactly the hardest thing to measure: resolving a quality difference of Δq from rare events takes on the order of 1/Δq² observations. And the resolution you need is the tolerable gap from above, Δq* = production_savings / cost_error. So the evidence required for certification scales as:
+
+$$
+\text{number\_labels}_{\text{cert}} \propto \left( \frac{\text{cost\_error}}{\text{production\_savings}} \right)^{2}
+$$
+
+Quadratic in the cost of error. This is the RAND result in our notation: on the order of 275 million failure-free miles just to show an autonomous vehicle matches human fatality rates, and billions of miles to demonstrate a modest improvement with statistical confidence.
+
+Worse: certification is voided by retraining. Change the weights, reset the proof. So the certification cost amortizes over τ(δ), not over product life:
+
+$$
+\text{attempt\_cost} = \text{inference\_cost} + \frac{\text{train\_cost} + \text{cert\_cost}}{\text{number\_tasks} \cdot \tau(\delta)}
+$$
+
+The product `cert_cost · δ` is the real blocker: proof burden times drift. It explains the observed shape of safety-critical automation at a glance. Aviation runs frozen, certified autopilot code, buying $$\tau \to \infty$$ by outlawing drift. Autonomous vehicles launch geofenced, shrinking the operating domain to cut effective drift and collapse the certification space. Safety drivers persisted for years: paying for d > 0 to get back into the rework regime, at the price of paying wage and machine simultaneously. Medical AI ships as decision support, where d ≈ 1 converts unbounded harm into a bounded review cost. The human in the loop is not just a verifier. They absorb `cost_error`. They are the liability sponge, what Madeleine Elish calls the moral crumple zone. The legal system knows how to insure a human. It does not yet know how to insure a model.
+
+Certification evidence is labels: miles with annotated outcomes, scenario ground truth, the safety case itself. So it folds straight into λ:
+
+$$
+\lambda = \frac{\text{number\_tasks} \cdot \tau(\delta)}{\text{number\_labels} + \text{number\_labels}_{\text{cert}}}
+$$
+
+The master claim survives: the effective cost of capital is inversely proportional to human judgment leverage. Safety-critical work is simply the corner of task space where the label bill is inflated quadratically by the cost of error, and where τ is capped by re-certification.
+
+### The frontier
+
+Automate when `Capital_effective < Labor_effective`. The equality between the two traces the automation frontier, and every factor we've discussed places a task on one side of it: volume and drift (through λ and τ), sparsity and ambiguity (through `number_labels` and the quality ceiling), verifiability (which drives `number_labels` toward zero), wage and hazard (which raise the labor side), and the cost of error, which enters three times. Directly, as expected harm. Quadratically, as certification labels. Structurally, by deciding whether you are in the rework regime or the execution regime.
+
+One last property is worth knowing. In high `cost_error` territory the frontier is bistable. Below proven superiority, humans win by miles: the harm term dominates and no wage savings can compensate. The moment superiority is proven, the same term flips sign and dominates wages just as brutally in the other direction. High-stakes automation doesn't creep. It sticks, then snaps. Years of nothing while someone pays the certification activation energy, then a hard flip. Waymo banking on the order of 100 million rider-only miles of published crash-rate data is exactly that: paying the activation energy. Cruise is what one escaped error costs before the proof is banked.
+
+In practice, I think the cost of error is the biggest blocker for automation. Not because machines can't get good enough, but because proving it requires the most expensive label set in the world.
 
 ## What Does the Frontier of Automation Look Like?
 

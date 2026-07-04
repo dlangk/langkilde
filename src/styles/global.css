@@ -52,6 +52,9 @@
   /* Solid accent for text: >=4.5:1 contrast on --bg-color (WCAG AA).
      The translucent --accent-color blends to ~2:1 and fails for text. */
   --accent-solid: #c33d00;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --code-bg: rgba(0, 0, 0, 0.05);
+  --code-border: rgba(0, 0, 0, 0.09);
   --text-fade: rgba(87, 87, 87, 0.3);
   --quote-bg: rgba(0, 0, 0, 0.035);
 }
@@ -61,6 +64,8 @@
   --text-color: #f0efea;
   --accent-color: rgba(253, 123, 58, 0.7);
   --accent-solid: #fd7b3a;
+  --code-bg: rgba(255, 255, 255, 0.07);
+  --code-border: rgba(255, 255, 255, 0.12);
   --text-fade: rgba(240, 240, 240, 0.25);
   --quote-bg: rgba(255, 255, 255, 0.05);
 }
@@ -1014,6 +1019,45 @@ hr {
 .post-content figcaption a {
   color: var(--accent-solid);
   text-decoration: underline;
+}
+
+/* Dek: the 2-3 sentence summary at the top of a post, rendered from the
+   frontmatter `description`. Accent rule + slightly smaller muted text —
+   enough presence to lure, not enough to crowd the opening paragraph. */
+.post-dek {
+  border-left: 3px solid var(--accent-color);
+  padding-left: 1rem;
+  margin: 1.75rem 0 2.25rem;
+  font-size: 0.9em;
+  line-height: 1.55;
+  opacity: 0.78;
+}
+
+/* Inline code (variables like `train_cost`): monospace renders optically
+   larger than the serif body, so scale it down and set it on a subtle
+   rounded chip in the accent color, Slack-style. Excludes code blocks. */
+.post-content :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.8em;
+  color: var(--accent-solid);
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+/* KaTeX display math: shrink from the 1.21em default to body size, and
+   give equations more breathing room from surrounding prose. */
+.post-content .katex-display {
+  margin: 2.25rem 0;
+  overflow-x: auto; /* wide equations scroll instead of breaking layout */
+  overflow-y: hidden;
+}
+
+/* Applies to both display and inline math (KaTeX defaults to 1.21em,
+   which makes inline math tower over the surrounding prose). */
+.post-content .katex {
+  font-size: 1em;
 }
 
 .intro {
