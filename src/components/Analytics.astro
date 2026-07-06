@@ -1,9 +1,17 @@
 ---
 import { ANALYTICS } from "../lib/constants";
+
+// Never emit the tag in dev. `npm run dev` and `npm run preview` both serve on
+// localhost, and without this guard every reload/interaction hits the live GA4
+// property. `preview` serves the production build (PROD is true there), so we
+// also gate on hostname at runtime below.
+const enabled = import.meta.env.PROD;
 ---
 
-<script is:inline define:vars={{ gaId: ANALYTICS.gaId }}>
-  // GA4, gated on first user interaction.
+{
+  enabled && (
+    <script is:inline define:vars={{ gaId: ANALYTICS.gaId }}>
+      // GA4, gated on first user interaction.
   //
   // gtag.js is ~150 KB and half this site's page weight. Loading it eagerly
   // (or on idle) puts it inside the Lighthouse trace window, where it gets
@@ -16,6 +24,13 @@ import { ANALYTICS } from "../lib/constants";
 
   function loadAnalytics() {
     if (loaded) return;
+    // Belt-and-suspenders: `preview` serves the production build on localhost,
+    // so refuse to fire anywhere but the real host.
+    if (
+      location.hostname === "localhost" ||
+      location.hostname === "127.0.0.1"
+    )
+      return;
     loaded = true;
 
     var script = document.createElement("script");
@@ -65,4 +80,6 @@ import { ANALYTICS } from "../lib/constants";
   window.addEventListener("load", function () {
     setTimeout(loadAnalytics, 10000);
   });
-</script>
+    </script>
+  )
+}
