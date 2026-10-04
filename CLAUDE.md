@@ -117,27 +117,37 @@ The site is deployed as a static build served by NGINX. No Node.js runtime is in
 
 ### Deployment Flow
 
+`deploy.sh` runs **on the server** (`dl-server`, from `~/langkilde`), not on the Mac. Push to `main` first: the script does `git reset --hard origin/main`, so unpushed work is not deployed.
+
 ```bash
-./deploy.sh
+git push origin main
+ssh dl-server 'cd ~/langkilde && ./deploy.sh'
 ```
 
 The deployment script performs the following steps:
 
-1. **Verify repository** - Checks for `package.json` and `astro.config.mjs`
-2. **Pull latest code** - `git pull --ff-only`
-3. **Install dependencies** - `npm install`
-4. **Build static site** - `npm run build` (outputs to `./dist/`)
-5. **Sync to production** - `rsync dist/ → /srv/astro/` with `--delete` flag
-6. **Validate NGINX config** - `docker exec nginx nginx -t`
-7. **Reload NGINX** - `docker exec nginx nginx -s reload`
+1. **Check git status** - Warns about and discards uncommitted changes (`git reset --hard`, `git clean -fd`)
+2. **Pull latest code** - `git fetch` + `git reset --hard origin/main`
+3. **Clear build cache** - Removes `dist`, `.astro`, `node_modules/.cache`
+4. **Install dependencies** - `npm install --legacy-peer-deps`
+5. **Build static site** - `npm run build` (outputs to `./dist/`)
+6. **Sync to production** - `sudo rsync -av --delete dist/ → /srv/astro/`, then `docker exec nginx nginx -t` and `nginx -s reload`
+7. **Purge Cloudflare cache** - Purges everything via the API, using zone ID (line 1) and API token (line 2) from `~/.cloudflare` on the server
 
 ### Production Architecture
 
 - **Build location**: `~/langkilde` on host
 - **Static files**: Synced to `/srv/astro/` on host
 - **Web server**: NGINX running in Docker container (defined in `~/nginx-langkilde-se/`)
+- **CDN**: Cloudflare in front of NGINX; cache is purged on every deploy
 - **NGINX serves**: Static files from `/srv/astro/` over HTTPS
 - **No runtime Node**: Site is fully static, no app server required
+
+### Deploy Prerequisites (on the server)
+
+- Node >= 22.12 and npm
+- Passwordless `sudo rsync` and access to the `nginx` Docker container
+- `~/.cloudflare` present (without it the deploy succeeds but reports a purge error)
 
 ## Important Implementation Details
 
